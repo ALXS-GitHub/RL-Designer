@@ -1,0 +1,13 @@
+{
+    "Dominus": {
+		"BodyID": 403,
+		"SkinID": 0,
+		"Chassis": {
+			"Diffuse": "Dominus_Chassis.png"
+		},
+		"Body": {
+			"Diffuse": "Dominus_Diffuse.png",
+			"Skin": "Dom_Skin.png"
+		}
+    }
+}

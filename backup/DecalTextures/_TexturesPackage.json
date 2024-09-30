@@ -1,0 +1,13 @@
+{
+    "HyperBeast": {
+		"BodyID": 23,
+		"SkinID": 0,
+		"Chassis": {
+			"Diffuse": "HyperBeast_Chassis.png"
+		},
+		"Body": {
+			"Diffuse": "HyperBeast_Diffuse.png",
+			"Skin": "HyperBeast_Mask.png"
+		}
+    }
+}

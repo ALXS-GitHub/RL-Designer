@@ -1,0 +1,97 @@
+LODInfo[1] =
+{
+    LODInfo[0] =
+    {
+        DisplayFactor = 0
+        LODHysteresis = 0.02
+        LODMaterialMap[0] = {}
+        bEnableShadowCasting[2] = { true, true }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+}
+Sockets[9] =
+{
+    Sockets[0] =
+    {
+        SocketName = AmbBoost_L
+        BoneName = chassis_jnt
+        RelativeLocation = { X=-57.3008, Y=-7.16558, Z=22.6432 }
+        RelativeRotation = { Yaw=0, Pitch=0, Roll=0 }
+        RelativeScale = { X=1, Y=1, Z=1 }
+    }
+    Sockets[1] =
+    {
+        SocketName = AmbBoost_R
+        BoneName = chassis_jnt
+        RelativeLocation = { X=-57.3008, Y=7.41543, Z=22.6432 }
+        RelativeRotation = { Yaw=0, Pitch=0, Roll=0 }
+        RelativeScale = { X=1, Y=1, Z=1 }
+    }
+    Sockets[2] =
+    {
+        SocketName = AntennaSocket
+        BoneName = chassis_jnt
+        RelativeLocation = { X=-38, Y=-16.7896, Z=22.25 }
+        RelativeRotation = { Yaw=0, Pitch=0, Roll=0 }
+        RelativeScale = { X=1, Y=1, Z=1 }
+    }
+    Sockets[3] =
+    {
+        SocketName = BoostEmitterLeft
+        BoneName = chassis_jnt
+        RelativeLocation = { X=-55, Y=-8.5, Z=8.25 }
+        RelativeRotation = { Yaw=0, Pitch=0, Roll=0 }
+        RelativeScale = { X=1, Y=1, Z=1 }
+    }
+    Sockets[4] =
+    {
+        SocketName = BoostEmitterRight
+        BoneName = chassis_jnt
+        RelativeLocation = { X=-55, Y=8.5, Z=8.25 }
+        RelativeRotation = { Yaw=0, Pitch=0, Roll=0 }
+        RelativeScale = { X=1, Y=1, Z=1 }
+    }
+    Sockets[5] =
+    {
+        SocketName = FrontSocket
+        BoneName = chassis_jnt
+        RelativeLocation = { X=73.7364, Y=0, Z=-3.5 }
+        RelativeRotation = { Yaw=0, Pitch=0, Roll=0 }
+        RelativeScale = { X=1, Y=1, Z=1 }
+    }
+    Sockets[6] =
+    {
+        SocketName = RocketBoost
+        BoneName = chassis_jnt
+        RelativeLocation = { X=-60, Y=0, Z=2.25 }
+        RelativeRotation = { Yaw=0, Pitch=0, Roll=0 }
+        RelativeScale = { X=1, Y=1, Z=1 }
+    }
+    Sockets[7] =
+    {
+        SocketName = Underglow
+        BoneName = chassis_jnt
+        RelativeLocation = { X=0, Y=0, Z=0 }
+        RelativeRotation = { Yaw=0, Pitch=0, Roll=0 }
+        RelativeScale = { X=1, Y=1, Z=1 }
+    }
+    Sockets[8] =
+    {
+        SocketName = HatSocket
+        BoneName = body_front_jnt
+        RelativeLocation = { X=-53, Y=0, Z=25 }
+        RelativeRotation = { Yaw=0, Pitch=-910, Roll=0 }
+        RelativeScale = { X=1, Y=1, Z=1 }
+    }
+}
+bHasVertexColors = true
+EnableTwistBoneFixers = true
+EnableClavicleFixer = true
+Skeleton = None
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'Body_NeoBike.MIC_Chassis_JJ_NeoBike'
+    Materials[1] = MaterialInstanceConstant'Body_NeoBike.Anim.Body_NeoBike_MIC'
+}

@@ -1,0 +1,12 @@
+# Blender 4.1.1 MTL File: 'None'
+# www.blender.org
+
+newmtl Tex_0051_0.dds
+Ns 20.000006
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd C:/Users/alxsm/Desktop/Design/NinjaRipper/NinjaRipper Extractions/_NinjaRipper/2019.10.11_19.13.58_RocketLeague.exe_11016/2019.10.11_19.15.32_RocketLeague.exe/Tex_0051_0.dds

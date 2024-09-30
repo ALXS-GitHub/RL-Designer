@@ -1,0 +1,124 @@
+ERROR: Package "body_bb_SF_decrypted.upk": wrong name index 720896000
+UnPackage::SerializeFName: pos=000A849B <- FObjectExport::Serialize3 <- UnPackage::LoadExportTable <- UnPackage::UnPackage: body_bb_SF_decrypted.upk, ver=868/32, game=ue3 <- UnPackage::LoadPackage(info): body_bb_SF_decrypted.upk <- CUmodelApp::ShowPackageUI <- Main: umodel_build=1573
+
+ERROR: Package "body_bb_SF_decrypted.upk": wrong name index 720896000
+UnPackage::SerializeFName: pos=000A849B <- FObjectExport::Serialize3 <- UnPackage::LoadExportTable <- UnPackage::UnPackage: body_bb_SF_decrypted.upk, ver=868/32, game=ue3 <- UnPackage::LoadPackage(info): body_bb_SF_decrypted.upk <- CUmodelApp::ShowPackageUI <- Main: umodel_build=1573
+
+ERROR: Package "body_bb_SF_decrypted.upk": wrong name index 720896000
+UnPackage::SerializeFName: pos=000A849B <- FObjectExport::Serialize3 <- UnPackage::LoadExportTable <- UnPackage::UnPackage: body_bb_SF_decrypted.upk, ver=868/32, game=ue3 <- UnPackage::LoadPackage(info): body_bb_SF_decrypted.upk <- CUmodelApp::ShowPackageUI <- Main: umodel_build=1573
+
+ERROR: Package "body_bb_SF_decrypted.upk": wrong name index 720896000
+UnPackage::SerializeFName: pos=000A849B <- FObjectExport::Serialize3 <- UnPackage::LoadExportTable <- UnPackage::UnPackage: body_bb_SF_decrypted.upk, ver=868/32, game=ue3 <- UnPackage::LoadPackage(info): body_bb_SF_decrypted.upk <- CUmodelApp::ShowPackageUI <- Main: umodel_build=1573
+
+
+******** Loading object Texture2D'body_bb_SF_decrypted.BB_Body_NORM' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.BB_Chassis_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.Endo_Chassis_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.headlight_DiamondGrid_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.Side_BPW_Normal' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.Blank_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.BB_Back_00_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.BB_Back_Tire_00_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.BB_Front_00_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.BB_Front_Tire_00_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.OEM_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.BB_Body_NORM' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.BB_Chassis_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.Endo_Chassis_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.headlight_DiamondGrid_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.Side_BPW_Normal' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.Blank_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.BB_Back_00_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.BB_Back_Tire_00_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.BB_Front_00_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.BB_Front_Tire_00_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'body_bb_SF_decrypted.OEM_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'Body_NeoBike_SF_decrypted.Endo_Chassis_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'Body_NeoBike_SF_decrypted.Body_Esper_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'Body_NeoBike_SF_decrypted.NeoBike_Car_Chasis_OBJECTS_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'Body_NeoBike_SF_decrypted.Endo_Chassis_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'Body_NeoBike_SF_decrypted.Body_Esper_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings
+
+******** Loading object Texture2D'Body_NeoBike_SF_decrypted.NeoBike_Car_Chasis_OBJECTS_N' ********
+
+unknown member TC_NormalmapSwizzle of enum ETextureCompressionSettings

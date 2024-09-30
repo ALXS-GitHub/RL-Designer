@@ -1,0 +1,1 @@
+umodel.exe -path=D:\Projects\BakkesMod\Tools\Decryptor\out -gltf
