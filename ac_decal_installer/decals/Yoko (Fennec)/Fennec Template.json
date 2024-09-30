@@ -1,0 +1,13 @@
+{
+    "Yoko (Fennec)": {
+		"BodyID": 4284,
+		"SkinID": 0,
+		"Chassis": {
+			"Diffuse": "Fennec_Chassis.png"
+		},
+		"Body": {
+			"Diffuse": "fennec_texture.png",
+			"Skin": "fennec_skin.png"
+		}
+    }
+}
