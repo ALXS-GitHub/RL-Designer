@@ -1,0 +1,13 @@
+{
+    "Chaewon LeSserafim (Octane)": {
+		"BodyID": 23,
+		"SkinID": 0,
+		"Chassis": {
+			"Diffuse": "lesserafim_chassis.png"
+		},
+		"Body": {
+			"Diffuse": "chaewon_diffuse.png",
+			"Skin": "chaewon_skin.png"
+		}
+    }
+}

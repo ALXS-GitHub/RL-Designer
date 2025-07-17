@@ -1,0 +1,436 @@
+// Design System Variables
+// Based on Tailwind CSS color palette and design tokens
+
+:root {
+  // ==========================================
+  // COLOR PALETTE
+  // ==========================================
+  
+  // Gray Scale
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --gray-950: #030712;
+
+  // Blue Scale (Based on your brand colors)
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
+  --blue-950: #172554;
+
+  // Indigo Scale
+  --indigo-50: #eef2ff;
+  --indigo-100: #e0e7ff;
+  --indigo-200: #c7d2fe;
+  --indigo-300: #a5b4fc;
+  --indigo-400: #818cf8;
+  --indigo-500: #6366f1;
+  --indigo-600: #4f46e5;
+  --indigo-700: #4338ca;
+  --indigo-800: #3730a3;
+  --indigo-900: #312e81;
+  --indigo-950: #1e1b4b;
+
+  // Cyan Scale
+  --cyan-50: #ecfeff;
+  --cyan-100: #cffafe;
+  --cyan-200: #a5f3fc;
+  --cyan-300: #67e8f9;
+  --cyan-400: #22d3ee;
+  --cyan-500: #06b6d4;
+  --cyan-600: #0891b2;
+  --cyan-700: #0e7490;
+  --cyan-800: #155e75;
+  --cyan-900: #164e63;
+  --cyan-950: #083344;
+
+  // Green Scale
+  --green-50: #f0fdf4;
+  --green-100: #dcfce7;
+  --green-200: #bbf7d0;
+  --green-300: #86efac;
+  --green-400: #4ade80;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --green-700: #15803d;
+  --green-800: #166534;
+  --green-900: #14532d;
+  --green-950: #052e16;
+
+  // Yellow Scale
+  --yellow-50: #fefce8;
+  --yellow-100: #fef3c7;
+  --yellow-200: #fde68a;
+  --yellow-300: #fcd34d;
+  --yellow-400: #fbbf24;
+  --yellow-500: #f59e0b;
+  --yellow-600: #d97706;
+  --yellow-700: #b45309;
+  --yellow-800: #92400e;
+  --yellow-900: #78350f;
+  --yellow-950: #451a03;
+
+  // Orange Scale
+  --orange-50: #fff7ed;
+  --orange-100: #ffedd5;
+  --orange-200: #fed7aa;
+  --orange-300: #fdba74;
+  --orange-400: #fb923c;
+  --orange-500: #f97316;
+  --orange-600: #ea580c;
+  --orange-700: #c2410c;
+  --orange-800: #9a3412;
+  --orange-900: #7c2d12;
+  --orange-950: #431407;
+
+  // Red Scale
+  --red-50: #fef2f2;
+  --red-100: #fee2e2;
+  --red-200: #fecaca;
+  --red-300: #fca5a5;
+  --red-400: #f87171;
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+  --red-700: #b91c1c;
+  --red-800: #991b1b;
+  --red-900: #7f1d1d;
+  --red-950: #450a0a;
+
+  // Pink Scale
+  --pink-50: #fdf2f8;
+  --pink-100: #fce7f3;
+  --pink-200: #fbcfe8;
+  --pink-300: #f9a8d4;
+  --pink-400: #f472b6;
+  --pink-500: #ec4899;
+  --pink-600: #db2777;
+  --pink-700: #be185d;
+  --pink-800: #9d174d;
+  --pink-900: #831843;
+  --pink-950: #500724;
+
+  // Purple Scale
+  --purple-50: #faf5ff;
+  --purple-100: #f3e8ff;
+  --purple-200: #e9d5ff;
+  --purple-300: #d8b4fe;
+  --purple-400: #c084fc;
+  --purple-500: #a855f7;
+  --purple-600: #9333ea;
+  --purple-700: #7c3aed;
+  --purple-800: #6b21a8;
+  --purple-900: #581c87;
+  --purple-950: #3b0764;
+
+  // ==========================================
+  // SEMANTIC COLORS
+  // ==========================================
+
+  // Success colors
+  --success-50: var(--green-50);
+  --success-100: var(--green-100);
+  --success-200: var(--green-200);
+  --success-300: var(--green-300);
+  --success-400: var(--green-400);
+  --success-500: var(--green-500);
+  --success-600: var(--green-600);
+  --success-700: var(--green-700);
+  --success-800: var(--green-800);
+  --success-900: var(--green-900);
+
+  // Error colors
+  --error-50: var(--red-50);
+  --error-100: var(--red-100);
+  --error-200: var(--red-200);
+  --error-300: var(--red-300);
+  --error-400: var(--red-400);
+  --error-500: var(--red-500);
+  --error-600: var(--red-600);
+  --error-700: var(--red-700);
+  --error-800: var(--red-800);
+  --error-900: var(--red-900);
+
+  // Warning colors
+  --warning-50: var(--yellow-50);
+  --warning-100: var(--yellow-100);
+  --warning-200: var(--yellow-200);
+  --warning-300: var(--yellow-300);
+  --warning-400: var(--yellow-400);
+  --warning-500: var(--yellow-500);
+  --warning-600: var(--yellow-600);
+  --warning-700: var(--yellow-700);
+  --warning-800: var(--yellow-800);
+  --warning-900: var(--yellow-900);
+
+  // Info colors
+  --info-50: var(--cyan-50);
+  --info-100: var(--cyan-100);
+  --info-200: var(--cyan-200);
+  --info-300: var(--cyan-300);
+  --info-400: var(--cyan-400);
+  --info-500: var(--cyan-500);
+  --info-600: var(--cyan-600);
+  --info-700: var(--cyan-700);
+  --info-800: var(--cyan-800);
+  --info-900: var(--cyan-900);
+
+  // Overlay colors
+  --gray-50-rgb: 249, 250, 251; // For rgba usage
+  --overlay-50: rgba(var(--gray-50-rgb, 249, 250, 251), 0.8);
+  --gray-200-rgb: 229, 231, 235; // For rgba usage
+  --overlay-200: rgba(var(--gray-200-rgb, 229, 231, 235), 0.7);
+
+  // ==========================================
+  // SPACING SCALE
+  // ==========================================
+  
+  --space-0: 0px;
+  --space-px: 1px;
+  --space-0_5: 0.125rem;   // 2px
+  --space-1: 0.25rem;      // 4px
+  --space-1_5: 0.375rem;   // 6px
+  --space-2: 0.5rem;       // 8px
+  --space-2_5: 0.625rem;   // 10px
+  --space-3: 0.75rem;      // 12px
+  --space-3_5: 0.875rem;   // 14px
+  --space-4: 1rem;         // 16px
+  --space-5: 1.25rem;      // 20px
+  --space-6: 1.5rem;       // 24px
+  --space-7: 1.75rem;      // 28px
+  --space-8: 2rem;         // 32px
+  --space-9: 2.25rem;      // 36px
+  --space-10: 2.5rem;      // 40px
+  --space-11: 2.75rem;     // 44px
+  --space-12: 3rem;        // 48px
+  --space-14: 3.5rem;      // 56px
+  --space-16: 4rem;        // 64px
+  --space-20: 5rem;        // 80px
+  --space-24: 6rem;        // 96px
+  --space-28: 7rem;        // 112px
+  --space-32: 8rem;        // 128px
+  --space-36: 9rem;        // 144px
+  --space-40: 10rem;       // 160px
+  --space-44: 11rem;       // 176px
+  --space-48: 12rem;       // 192px
+  --space-52: 13rem;       // 208px
+  --space-56: 14rem;       // 224px
+  --space-60: 15rem;       // 240px
+  --space-64: 16rem;       // 256px
+  --space-72: 18rem;       // 288px
+  --space-80: 20rem;       // 320px
+  --space-96: 24rem;       // 384px
+
+  // ==========================================
+  // FONT SIZES
+  // ==========================================
+  
+  --text-xs: 0.75rem;      // 12px
+  --text-sm: 0.875rem;     // 14px
+  --text-base: 1rem;       // 16px
+  --text-lg: 1.125rem;     // 18px
+  --text-xl: 1.25rem;      // 20px
+  --text-2xl: 1.5rem;      // 24px
+  --text-3xl: 1.875rem;    // 30px
+  --text-4xl: 2.25rem;     // 36px
+  --text-5xl: 3rem;        // 48px
+  --text-6xl: 3.75rem;     // 60px
+  --text-7xl: 4.5rem;      // 72px
+  --text-8xl: 6rem;        // 96px
+  --text-9xl: 8rem;        // 128px
+
+  // ==========================================
+  // FONT WEIGHTS
+  // ==========================================
+  
+  --font-thin: 100;
+  --font-extralight: 200;
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  --font-black: 900;
+
+  // ==========================================
+  // LINE HEIGHTS
+  // ==========================================
+  
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  // ==========================================
+  // BORDER RADIUS
+  // ==========================================
+  
+  --radius-none: 0px;
+  --radius-sm: 0.125rem;    // 2px
+  --radius-base: 0.25rem;   // 4px
+  --radius-md: 0.375rem;    // 6px
+  --radius-lg: 0.5rem;      // 8px
+  --radius-xl: 0.75rem;     // 12px
+  --radius-2xl: 1rem;       // 16px
+  --radius-3xl: 1.5rem;     // 24px
+  --radius-full: 9999px;
+
+  // ==========================================
+  // SHADOWS
+  // ==========================================
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  --shadow-none: 0 0 #0000;
+
+  // ==========================================
+  // Z-INDEX SCALE
+  // ==========================================
+  
+  --z-auto: auto;
+  --z-0: 0;
+  --z-default: 0;
+  
+  // Semantic z-index values
+  --z-dropdown: 1000;
+  --z-sticky: 1200;
+  --z-fixed: 1300;
+  --z-modal-backdrop: 1400;
+  --z-modal: 1500;
+  --z-popover: 1600;
+  --z-tooltip: 1700;
+  --z-toast: 1800;
+  --z-overlay: 2000;
+  --z-navbar: 5000;
+  --z-top: 9999;
+  --z-important: 10000;
+
+  // ==========================================
+  // BREAKPOINTS (for reference in JS)
+  // ==========================================
+  
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  // ==========================================
+  // CONTAINER SIZES
+  // ==========================================
+  
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1536px;
+
+  // ==========================================
+  // TRANSITIONS
+  // ==========================================
+  
+  --transition-none: none;
+  --transition-all: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-default: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-colors: color, background-color, border-color, text-decoration-color, fill, stroke 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-opacity: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-shadow: box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-transform: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  // ==========================================
+  // ANIMATION DURATIONS
+  // ==========================================
+  
+  --duration-75: 75ms;
+  --duration-100: 100ms;
+  --duration-150: 150ms;
+  --duration-200: 200ms;
+  --duration-300: 300ms;
+  --duration-500: 500ms;
+  --duration-700: 700ms;
+  --duration-1000: 1000ms;
+
+  // ==========================================
+  // ANIMATION TIMING FUNCTIONS
+  // ==========================================
+  
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  // ==========================================
+  // LAYOUT VALUES
+  // ==========================================
+  
+  --width-auto: auto;
+  --width-full: 100%;
+  --width-screen: 100vw;
+  --width-min: min-content;
+  --width-max: max-content;
+  --width-fit: fit-content;
+
+  --height-auto: auto;
+  --height-full: 100%;
+  --height-screen: 100vh;
+  --height-min: min-content;
+  --height-max: max-content;
+  --height-fit: fit-content;
+
+  // ==========================================
+  // OPACITY SCALE
+  // ==========================================
+  
+  --opacity-0: 0;
+  --opacity-5: 0.05;
+  --opacity-10: 0.1;
+  --opacity-20: 0.2;
+  --opacity-25: 0.25;
+  --opacity-30: 0.3;
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+  --opacity-70: 0.7;
+  --opacity-75: 0.75;
+  --opacity-80: 0.8;
+  --opacity-90: 0.9;
+  --opacity-95: 0.95;
+  --opacity-100: 1;
+}
+
+// ==========================================
+// DARK MODE OVERRIDES
+// ==========================================
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    // Override semantic colors for dark mode
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.2);
+    --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+  }
+}

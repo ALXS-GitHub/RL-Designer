@@ -1,0 +1,79 @@
+.decal-card {
+    display: flex;
+    width: 300px;
+    flex-direction: column;
+    background-color: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-xl);
+    padding: var(--space-4);
+    gap: var(--space-3);
+    transition: var(--transition-all);
+    box-shadow: var(--shadow-sm);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--blue-300);
+  }
+
+  .decal-image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    background-color: var(--gray-100);
+    border: 1px solid var(--gray-200);
+  }
+
+  h2 {
+    margin: 0;
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    color: var(--gray-900);
+    text-align: center;
+    line-height: var(--leading-tight);
+  }
+
+  .variants {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    justify-content: center;
+
+    .variant-dropdown {
+
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: var(--space-2);
+        font-weight: var(--font-medium);
+        font-size: var(--text-md);
+
+        &.remove-decal {
+            color: red;
+        }
+    }
+
+
+
+    .variant {
+      padding: var(--space-1_5) var(--space-3);
+      background-color: var(--blue-100);
+      color: var(--blue-800);
+      border: 1px solid var(--blue-200);
+      border-radius: var(--radius-base);
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      transition: var(--transition-colors);
+      white-space: nowrap;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--blue-200);
+        border-color: var(--blue-300);
+        color: var(--blue-900);
+      }
+    }
+  }
+}

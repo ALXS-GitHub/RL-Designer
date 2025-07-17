@@ -1,0 +1,116 @@
+// Import design system variables
+@use "./styles/variables.scss" as *;
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: var(--leading-normal);
+  font-weight: var(--font-normal);
+
+  // Legacy color variables (for backward compatibility)
+  --indigo-dye: #133c55;
+  --bice-blue: #386fa4;
+  --picton-blue: #59a5d8;
+  --pale-azure: #84d2f6;
+  --non-photo-blue: #91e5f6;
+
+  --primary-color: var(--bice-blue);
+  --secondary-color: var(--picton-blue);
+  --tertiary-color: var(--pale-azure);
+  --quaternary-color: var(--non-photo-blue);
+  --quinary-color: var(--indigo-dye);
+
+  --primary-color-transparent: #59a5d880;
+  --secondary-color-transparent: #84d2f680;
+  --tertiary-color-transparent: #91e5f680;
+  --quaternary-color-transparent: #133c5580;
+  --quinary-color-transparent: #386fa480;
+
+  // Light mode defaults
+  --background-color: var(--gray-50);
+  --text-color: var(--gray-900);
+  --text-color-dark: var(--gray-900);
+  --text-color-light: var(--gray-50);
+
+  --navbar-height: var(--space-16);
+  --content-height: calc(100vh - var(--navbar-height));
+
+  color-scheme: light dark;
+  color: var(--text-color);
+  background-color: var(--background-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+#root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+// ==========================================
+// * CUSTOM SCROLLBAR
+// ==========================================
+
+// Webkit-based browsers (Chrome, Safari, Edge)
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray-200);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg, 
+    var(--primary-color) 0%, 
+    var(--secondary-color) 100%
+  );
+  border-radius: var(--radius-md);
+  border: 2px solid var(--gray-100);
+  transition: var(--transition-colors);
+  
+  &:hover {
+    background: linear-gradient(
+      180deg, 
+      var(--secondary-color) 0%, 
+      var(--tertiary-color) 100%
+    );
+    border-color: var(--gray-50);
+  }
+  
+  &:active {
+    background: var(--primary-color);
+  }
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--gray-100);
+}
+
+// Firefox scrollbar
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) var(--gray-100);
+}

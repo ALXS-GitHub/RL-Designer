@@ -1,0 +1,45 @@
+.checkbox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+
+    &__container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border: 2px solid var(--primary-color);
+        border-radius: 4px;
+        background-color: var(--tertiary-color);
+        transition: background-color 0.3s, border-color 0.3s;
+
+        &:hover {
+            background-color: var(--tertiary-color-transparent);
+        }
+
+        .checkbox__icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            color: var(--primary-color);
+            transition: color 0.3s;
+    
+            &--checked {
+                color: var(--grey-900);
+            }
+    
+            &--unchecked {
+                color: var(--grey-900);
+            }
+        }
+    }
+
+}

@@ -1,0 +1,10 @@
+{
+    // set the days that have been completed so rust-analyzer stop indexing them
+    "rust-analyzer.files.exclude": [
+        "old_installer/zip_installer",
+        "old_installer/ac_decal_installer",
+    ],
+    "rust-analyzer.linkedProjects": [
+        "rl-designer/src-tauri/Cargo.toml",
+    ]
+}

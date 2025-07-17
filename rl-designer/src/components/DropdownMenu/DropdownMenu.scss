@@ -1,0 +1,93 @@
+.dropdown-menu {
+  position: relative;
+  display: flex;
+
+  &__toggle {
+    cursor: pointer;
+    padding: var(--space-2); // 8px
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent; // For focus outline consistency
+    border-radius: var(--radius-sm); // 4px
+
+    &:focus {
+      outline: none;
+      border-color: var(--blue-500);
+      box-shadow: 0 0 0 2px var(--blue-200);
+      border-radius: var(--radius-lg);
+    }
+  }
+
+  &__toggle-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; // Space between lines
+    width: 24px; // Hamburger icon width
+    height: 20px; // Hamburger icon height
+    justify-content: space-around;
+  }
+
+  &__toggle-line {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--gray-700);
+    border-radius: var(--radius-xs); // 2px
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  &__content {
+    position: absolute;
+    bottom: calc(100% + var(--space-1)); // Position below the toggle with a small gap
+    right: 50%; // Align to the right of the toggle, adjust if needed
+    transform: translateX(50%); 
+    background-color: var(--gray-50);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md); // 6px
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-2) 0; // Padding top/bottom, no left/right for items to fill
+    // min-width: 180px;
+    z-index: var(--z-dropdown, 1000); // Ensure it's above other content
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2); // Space between icon and text
+    padding: var(--space-2_5) var(--space-4); // 10px 16px
+    font-size: var(--text-sm); // 14px
+    color: var(--gray-800);
+    cursor: pointer;
+    text-align: left;
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+      background-color: var(--gray-100);
+      color: var(--blue-600);
+    }
+
+    &:focus {
+      outline: none;
+      background-color: var(--gray-200);
+      color: var(--blue-700);
+    }
+
+    &.delete {
+      color: var(--red-600);
+
+      &:hover {
+        background-color: var(--red-100);
+      }
+
+      &:focus {
+        background-color: var(--red-200);
+      }
+
+    }
+
+  }
+}

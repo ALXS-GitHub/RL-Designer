@@ -1,0 +1,51 @@
+.loading-overlay {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--overlay-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-overlay, 1000); // Consider adding --z-index-loading to variables.scss
+  backdrop-filter: blur(2px);
+
+  &--full-page {
+    position: fixed; // Take up the whole viewport
+    z-index: var(--z-overlay); // Ensure it's above other content
+  }
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3); // 12px
+  padding: var(--space-6); // 24px
+  background-color: var(--overlay-50);
+  border-radius: var(--radius-lg); // 8px
+  border: 1px solid var(--gray-300);
+  box-shadow: var(--shadow-lg);
+}
+
+.loading-spinner {
+  width: var(--space-10); // 40px
+  height: var(--space-10); // 40px
+  border: var(--space-1) solid var(--blue-200); // 4px
+  border-top-color: var(--blue-600);
+  border-radius: var(--radius-full);
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  font-size: var(--text-lg); // 18px
+  font-weight: var(--font-medium);
+  color: var(--gray-700);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
