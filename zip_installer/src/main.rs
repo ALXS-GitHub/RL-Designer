@@ -3,6 +3,7 @@ use std::io::{self, Write};
 use std::path::Path;
 use zip::write::FileOptions;
 use zip::ZipWriter;
+use toml::Value;
 
 fn main() -> io::Result<()> {
 
@@ -20,7 +21,21 @@ fn main() -> io::Result<()> {
     }
 
     let prepend_path = Path::new("../ac_decal_installer");
-    let version = "1.0.0";
+    let cargo_toml_path = prepend_path.join("Cargo.toml");
+
+    // Read the Cargo.toml file
+    let cargo_toml_content = fs::read_to_string(cargo_toml_path)
+        .expect("Failed to read Cargo.toml");
+
+    // Parse the Cargo.toml content
+    let cargo_toml: Value = cargo_toml_content.parse::<Value>()
+        .expect("Failed to parse Cargo.toml");
+
+    // Extract the version field
+    let version = cargo_toml["package"]["version"]
+        .as_str()
+        .expect("Failed to get version");
+
 
     let exe_path = prepend_path.join("target/release/ac_decal_installer.exe");
     let decals_folder = prepend_path.join("decals");

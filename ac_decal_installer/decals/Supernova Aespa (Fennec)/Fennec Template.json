@@ -1,0 +1,13 @@
+{
+    "Supernova Aespa (Fennec)": {
+		"BodyID": 4284,
+		"SkinID": 0,
+		"Chassis": {
+			"Diffuse": "Fennec_Chassis.png"
+		},
+		"Body": {
+			"Diffuse": "supernova_diffuse.png",
+			"Skin": "supernova_skin.png"
+		}
+    }
+}

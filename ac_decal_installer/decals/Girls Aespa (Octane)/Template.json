@@ -7,7 +7,7 @@
 		},
 		"Body": {
 			"Diffuse": "Girls_diffuse.png",
-			"Skin": "oct_decal.png"
+			"Skin": "girls_skin.png"
 		}
     }
 }
