@@ -1,0 +1,3 @@
+[submodule "decals-data"]
+	path = decals-data
+	url = git@github.com:ALXSRL/RL-Desinger-Decals.git
