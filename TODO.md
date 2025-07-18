@@ -11,6 +11,7 @@
 ## Important
 
 - [ ] Use another github account to host the public repo of the decals. Add my current account as collaborator. We will be able to fetch the decals from there without api. Add this as a submodule in the main repo.
+- [ ] Make a script to make sure the decals in `decals/decals` are the same as the ones in the submodule. The one in `decals/decals` should be considered the "master" version, the one in the submodule is just a copy of it that is being used as a public repo to host the decals.
 
 ## Medium
 

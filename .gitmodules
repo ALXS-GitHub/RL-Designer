@@ -1,3 +1,4 @@
-[submodule "decals-data"]
-	path = decals-data
+[submodule "decals-host"]
+	path = decals-host
 	url = git@github.com:ALXSRL/RL-Desinger-Decals.git
+	branch = main
