@@ -1,0 +1,2 @@
+pub const GITHUB_DECALS_API_URL: &str = "https://api.github.com/repos/ALXSRL/RL-Desinger-Decals/contents/decals";
+pub const GITHUB_DECALS_RAW_URL: &str = "https://raw.githubusercontent.com/ALXSRL/RL-Desinger-Decals/main";

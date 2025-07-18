@@ -11,5 +11,12 @@ export default defineConfig({
     alias: {
       '@': '/src'
     }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: '@use "@/styles/custom-variables.scss" as *;'
+      }
+    }
   }
 })

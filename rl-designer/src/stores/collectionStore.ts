@@ -19,7 +19,14 @@ export const useCollectionStore = create<CollectionState>((set) => ({
         if (decalExists) {
             return {
                 decals: state.decals.map(d =>
-                    d.name === decal ? { ...d, variants: [...d.variants, variant] } : d
+                    d.name === decal 
+                        ? { 
+                            ...d, 
+                            variants: d.variants.includes(variant) 
+                                ? d.variants 
+                                : [...d.variants, variant] 
+                          } 
+                        : d
                 )
             };
         } else {

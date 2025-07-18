@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.scss'
-import { Home, Collection, Explore } from '@/pages'
+import { Home, Collection, Explore, About } from '@/pages'
 import Notifications from '@/components/Notifications/Notifications.tsx'
 import Navbar from '@/components/Navbar/Navbar.tsx'
 import ConfirmationDialog from './components/ConfirmationDialog/ConfirmationDialog'
@@ -18,11 +18,14 @@ function App() {
           <Navbar />
           <Notifications />
           <ConfirmationDialog />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/my-collection" element={<Collection />} />
-            <Route path="/explore" element={<Explore />} />
-          </Routes>
+          <div className="app__content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/my-collection" element={<Collection />} />
+              <Route path="/explore" element={<Explore />} />
+            </Routes>
+          </div>
         </BrowserRouter>
       </QueryClientProvider>
     </div>

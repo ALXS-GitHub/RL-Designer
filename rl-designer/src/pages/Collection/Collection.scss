@@ -4,12 +4,13 @@
     align-items: center;
     gap: var(--space-6);
     padding: var(--space-6);
+    width: 100%;
 
     &__decals {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, $decal-card-width); // Fixed width cards
         gap: var(--space-4);
+        width: 100%;
         justify-content: center;
     }
-    
 }

@@ -5,6 +5,8 @@ pub mod types;
 pub mod commands;
 
 use crate::commands::collection::{get_decal_texture_folders, remove_decal_variant};
+use crate::commands::explorer::get_decals_from_github;
+use crate::commands::download::download_decal_variant;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -22,7 +24,11 @@ pub fn run() {
 
     .invoke_handler(tauri::generate_handler![
       get_decal_texture_folders,
-      remove_decal_variant
+      remove_decal_variant,
+
+      get_decals_from_github,
+
+      download_decal_variant,
     ])
 
     .run(tauri::generate_context!())
