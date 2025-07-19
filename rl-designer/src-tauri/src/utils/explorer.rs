@@ -1,8 +1,8 @@
+use crate::constants::GITHUB_DECALS_RAW_URL;
+use crate::types::decal::DecalTextures;
 use reqwest;
 use serde::{Deserialize, Serialize};
-use crate::types::decal::DecalTextures;
 use serde_json::Value;
-use crate::constants::GITHUB_DECALS_RAW_URL;
 
 #[derive(Debug, Deserialize)]
 pub struct DecalsIndex {
@@ -24,13 +24,13 @@ pub struct VariantInfo {
 
 pub async fn fetch_decal_index() -> Result<DecalsIndex, String> {
     let index_url = format!("{}/index.json", GITHUB_DECALS_RAW_URL);
-    
+
     let client = reqwest::Client::builder()
         .user_agent("RL-Designer-App/1.0")
         .timeout(std::time::Duration::from_secs(30))
         .build()
         .map_err(|e| format!("Failed to create HTTP client: {}", e))?;
-    
+
     // Fetch the index.json file
     let response = client
         .get(&index_url)
@@ -39,8 +39,9 @@ pub async fn fetch_decal_index() -> Result<DecalsIndex, String> {
         .map_err(|e| format!("Failed to fetch decals index: {}", e))?;
 
     if !response.status().is_success() {
-        return Err(format!("Failed to fetch decals index: {} - {}", 
-            response.status(), 
+        return Err(format!(
+            "Failed to fetch decals index: {} - {}",
+            response.status(),
             response.text().await.unwrap_or_default()
         ));
     }
@@ -61,7 +62,8 @@ pub async fn fetch_decals_from_github_raw() -> Result<Vec<DecalTextures>, String
 
     // Process each decal from the index
     for decal_info in decals_index.decals {
-        let variants: Vec<String> = decal_info.variants
+        let variants: Vec<String> = decal_info
+            .variants
             .iter()
             .map(|v| v.variant.clone())
             .collect();
@@ -91,5 +93,3 @@ pub async fn fetch_decals_from_github_raw() -> Result<Vec<DecalTextures>, String
 
     Ok(decals)
 }
-
-

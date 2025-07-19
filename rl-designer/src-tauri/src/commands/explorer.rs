@@ -1,5 +1,5 @@
-use crate::utils::explorer::{fetch_decals_from_github_raw};
 use crate::types::decal::DecalTextures;
+use crate::utils::explorer::fetch_decals_from_github_raw;
 
 #[derive(Debug, serde::Serialize)]
 pub struct GitHubDecalsResponse {

@@ -35,6 +35,15 @@
     "icon": [
       "icons/logo.png",
       "icons/logo.ico"
+    ],
+    "createUpdaterArtifacts": true
+  },
+  "plugins": {
+  "updater": {
+    "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDgzM0FDOTlFRUY2M0ZERjkKUldUNS9XUHZuc2s2Zy9rNjJtci9UbC8zRElOYXJXcUg4dUVCK24rSnlJTURZWE9uYXd5Vk1CblMK",
+    "endpoints": [
+      "https://github.com/ALXSRL/RL-Designer/releases/latest/download/latest.json"
     ]
+  }
   }
 }
