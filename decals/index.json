@@ -1,0 +1,231 @@
+{
+  "decals": [
+    {
+      "name": "Born To Be Itzy",
+      "variants": [
+        {
+          "variant": "Octane",
+          "files": [
+            "HyperBeast_Chassis.png",
+            "oct_decal.png",
+            "oct_diffuse.png",
+            "Template.json"
+          ]
+        }
+      ],
+      "preview_path": "decals/Born To Be Itzy/Octane/oct_diffuse.png"
+    },
+    {
+      "name": "Chaewon Heart LeSserafim",
+      "variants": [
+        {
+          "variant": "Fennec",
+          "files": [
+            "chaewon_diffuse.png",
+            "chaewon_skin.png",
+            "lesserafim_chassis.png",
+            "Template.json"
+          ]
+        },
+        {
+          "variant": "Octane",
+          "files": [
+            "chaewon_diffuse.png",
+            "chaewon_skin.png",
+            "lesserafim_chassis.png",
+            "Template.json"
+          ]
+        }
+      ],
+      "preview_path": "decals/Chaewon Heart LeSserafim/Fennec/chaewon_diffuse.png"
+    },
+    {
+      "name": "Chaewon LeSserafim",
+      "variants": [
+        {
+          "variant": "Fennec",
+          "files": [
+            "chaewon_diffuse.png",
+            "chaewon_nobg2.png",
+            "chaewon_skin.png",
+            "lesserafim_chassis.png",
+            "Template.json"
+          ]
+        },
+        {
+          "variant": "Octane",
+          "files": [
+            "chaewon_diffuse - Copie.png",
+            "chaewon_diffuse.png",
+            "chaewon_nobg.png",
+            "chaewon_skin.png",
+            "lesserafim_chassis.png",
+            "Template.json"
+          ]
+        }
+      ],
+      "preview_path": "decals/Chaewon LeSserafim/Fennec/chaewon_diffuse.png"
+    },
+    {
+      "name": "Fast And Furious Skyline",
+      "variants": [
+        {
+          "variant": "Esper",
+          "files": [
+            "esper_body_diffuse.png",
+            "esper_chassis.png",
+            "esper_skin.png",
+            "Template.json"
+          ]
+        }
+      ],
+      "preview_path": "decals/Fast And Furious Skyline/Esper/esper_body_diffuse.png"
+    },
+    {
+      "name": "Girls Aespa",
+      "variants": [
+        {
+          "variant": "Octane",
+          "files": [
+            "Girls_diffuse.png",
+            "girls_nobg.png",
+            "girls_skin.png",
+            "HyperBeast_Chassis.png",
+            "Template.json"
+          ]
+        }
+      ],
+      "preview_path": "decals/Girls Aespa/Octane/Girls_diffuse.png"
+    },
+    {
+      "name": "Staboz",
+      "variants": [
+        {
+          "variant": "Octane",
+          "files": [
+            "HyperBeast_Chassis.png",
+            "oct_decal.png",
+            "oct_diffuse.png",
+            "Template.json"
+          ]
+        }
+      ],
+      "preview_path": "decals/Staboz/Octane/oct_diffuse.png"
+    },
+    {
+      "name": "Supernova Aespa",
+      "variants": [
+        {
+          "variant": "Fennec",
+          "files": [
+            "Fennec Template.json",
+            "Fennec_Chassis.png",
+            "supernova_diffuse.png",
+            "supernova_skin.png"
+          ]
+        }
+      ],
+      "preview_path": "decals/Supernova Aespa/Fennec/supernova_diffuse.png"
+    },
+    {
+      "name": "Templates",
+      "variants": [
+        {
+          "variant": "Dominus",
+          "files": [
+            "Dom_Skin.png",
+            "Dominus Template.json",
+            "Dominus_Chassis.png",
+            "Dominus_Diffuse.png"
+          ]
+        },
+        {
+          "variant": "Fennec",
+          "files": [
+            "Fen_Skin.png",
+            "Fennec Template.json",
+            "Fennec_Chassis.png",
+            "Fennec_Diffuse.png"
+          ]
+        },
+        {
+          "variant": "Octane",
+          "files": [
+            "HyperBeast_Chassis.png",
+            "oct_decal.png",
+            "oct_diffuse.png",
+            "Template.json"
+          ]
+        }
+      ],
+      "preview_path": "decals/Templates/Dominus/Dominus_Diffuse.png"
+    },
+    {
+      "name": "Winter Aespa",
+      "variants": [
+        {
+          "variant": "Fennec",
+          "files": [
+            "Fen_Skin.png",
+            "Fennec Template.json",
+            "Fennec_Chassis.png",
+            "Fennec_Diffuse.png",
+            "Fennec_Diffuse_nobg.png"
+          ]
+        },
+        {
+          "variant": "Octane",
+          "files": [
+            "HyperBeast_Chassis.png",
+            "oct_diffuse.png",
+            "oct_nobg.png",
+            "Template.json",
+            "winter_skin.png"
+          ]
+        }
+      ],
+      "preview_path": "decals/Winter Aespa/Fennec/Fennec_Diffuse.png"
+    },
+    {
+      "name": "Yoko",
+      "variants": [
+        {
+          "variant": "Fennec",
+          "files": [
+            "Fennec Template.json",
+            "Fennec_Chassis.png",
+            "fennec_skin.png",
+            "fennec_texture.png"
+          ]
+        }
+      ],
+      "preview_path": "decals/Yoko/Fennec/fennec_texture.png"
+    },
+    {
+      "name": "Yuna Itzy",
+      "variants": [
+        {
+          "variant": "Fennec",
+          "files": [
+            "Fennec Template.json",
+            "Fennec_Chassis.png",
+            "Fennec_Diffuse.png",
+            "yuna_nobg.png",
+            "yuna_skin.png"
+          ]
+        },
+        {
+          "variant": "Octane",
+          "files": [
+            "HyperBeast_Chassis.png",
+            "oct_diffuse.png",
+            "Template.json",
+            "yuna_nobg.png",
+            "yuna_skin.png"
+          ]
+        }
+      ],
+      "preview_path": "decals/Yuna Itzy/Fennec/Fennec_Diffuse.png"
+    }
+  ]
+}

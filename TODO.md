@@ -10,7 +10,10 @@
 
 ## Important
 
+- [ ] Make the how to page. First section is about how to use the app itself, second section is about how to make a decal and the third section is about how to manage the decals files and make the pull request to add them to the app. Each of those sections should be collapsable (collapsed by default) -> 3 components, one for each section.
+
 - [ ] If possible make something that can automatically update the app
+- [ ] Make a version management script that update the version app everywhere it needs to be updated (tauri.conf.json, package.json, etc.). This script should also update the version in the About page.
 
 - [ ] Make a script to make sure the decals in `decals/decals` are the same as the ones in the submodule. The one in `decals/decals` should be considered the "master" version, the one in the submodule is just a copy of it that is being used as a public repo to host the decals.
 
@@ -23,3 +26,4 @@
 - [X] Make the download / update functionality.
 
 - [X] Use another github account to host the public repo of the decals. Add my current account as collaborator. We will be able to fetch the decals from there without api. Add this as a submodule in the main repo.
+- [X] Add the navigation arrows on the navbar.

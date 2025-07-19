@@ -1,0 +1,12 @@
+.how-to {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: var(--space-8);
+
+    &__sections {
+        width: 100%
+    }
+}

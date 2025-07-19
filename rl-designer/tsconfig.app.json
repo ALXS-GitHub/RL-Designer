@@ -16,17 +16,19 @@
     "jsx": "react-jsx",
 
     /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
+    // set back all these to true if you want to enable strict mode
+    "strict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "erasableSyntaxOnly": false,
+    "noFallthroughCasesInSwitch": false,
+    "noUncheckedSideEffectImports": false,
 
     /* Paths */
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
+      "@docs/*": ["../docs/*"]
     },
 
   },

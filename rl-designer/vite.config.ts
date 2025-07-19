@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import path from 'path';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -9,7 +10,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': '/src'
+      '@': '/src',
+      '@docs': path.resolve(__dirname, '../docs'),
     }
   },
   css: {
@@ -18,5 +20,6 @@ export default defineConfig({
         additionalData: '@use "@/styles/custom-variables.scss" as *;'
       }
     }
-  }
+  },
+  assetsInclude: ['**/*.md', '**/*.svg', '**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif'],
 })

@@ -1,0 +1,129 @@
+.collapsible-section {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: white;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-all);
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.collapsible-section__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-6) var(--space-8);
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid transparent;
+  transition: var(--transition-all);
+
+  &:hover {
+    border-bottom-color: var(--gray-200);
+  }
+}
+
+.collapsible-section__title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--gray-900);
+  margin: 0;
+  flex: 1;
+  line-height: var(--leading-tight);
+  
+  @media (max-width: 768px) {
+    font-size: var(--text-xl);
+  }
+}
+
+.collapsible-section__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background-color: var(--gray-100);
+  color: var(--gray-600);
+  font-size: var(--text-lg);
+  transition: var(--transition-all);
+  flex-shrink: 0;
+  margin-left: var(--space-4);
+
+  &:hover {
+    background-color: var(--primary-color);
+    color: white;
+  }
+}
+
+.collapsible-section__content {
+  border-top: 1px solid var(--gray-200);
+  background-color: var(--gray-50);
+}
+
+.collapsible-section__content-inner {
+  padding: var(--space-6) var(--space-8);
+}
+
+// Variants for different styles
+.collapsible-section--minimal {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+
+  .collapsible-section__header {
+    padding: var(--space-4) 0;
+    
+    &:hover {
+      background-color: transparent;
+      border-bottom-color: var(--primary-color);
+    }
+  }
+
+  .collapsible-section__content {
+    border-top: 1px solid var(--gray-200);
+    background-color: transparent;
+  }
+
+  .collapsible-section__content-inner {
+    padding: var(--space-4) 0;
+  }
+}
+
+.collapsible-section--large {
+  .collapsible-section__title {
+    font-size: var(--text-3xl);
+    
+    @media (max-width: 768px) {
+      font-size: var(--text-2xl);
+    }
+  }
+
+  .collapsible-section__header {
+    padding: var(--space-8) var(--space-10);
+  }
+
+  .collapsible-section__content-inner {
+    padding: var(--space-8) var(--space-10);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .collapsible-section__header {
+    padding: var(--space-4) var(--space-6);
+  }
+
+  .collapsible-section__content-inner {
+    padding: var(--space-4) var(--space-6);
+  }
+
+  .collapsible-section__arrow {
+    width: 36px;
+    height: 36px;
+    font-size: var(--text-base);
+  }
+}

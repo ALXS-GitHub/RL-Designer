@@ -72,7 +72,7 @@ const About = () => {
                 New to creating decals? Check out our comprehensive tutorial on how to create 
                 and structure your files properly for submission.
               </p>
-              <Link to="/howto" className="about__contribute-link">
+              <Link to="/how-to" className="about__contribute-link">
                 View Tutorial
               </Link>
             </div>
@@ -133,7 +133,7 @@ const About = () => {
             <Link to="/explore" className="about__cta-button about__cta-primary">
               Explore Decals
             </Link>
-            <Link to="/howto" className="about__cta-button about__cta-secondary">
+            <Link to="/how-to" className="about__cta-button about__cta-secondary">
               Learn to Create
             </Link>
           </div>
