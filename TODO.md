@@ -10,6 +10,7 @@
 
 ## Important
 
+- [ ] Watch back the video tutorial to make a decal (because I don't even remember myself how to do it) and update the Designer Guide with the new steps.
 - [ ] Make the how to page. First section is about how to use the app itself, second section is about how to make a decal and the third section is about how to manage the decals files and make the pull request to add them to the app. Each of those sections should be collapsable (collapsed by default) -> 3 components, one for each section.
 
 - [ ] If possible make something that can automatically update the app

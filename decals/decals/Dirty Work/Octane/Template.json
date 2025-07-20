@@ -1,0 +1,13 @@
+{
+    "Template": {
+		"BodyID": 23,
+		"SkinID": 0,
+		"Chassis": {
+			"Diffuse": "aespa_chassis.png"
+		},
+		"Body": {
+			"Diffuse": "oct_diffuse.png",
+			"Skin": "oct_skin.png"
+		}
+    }
+}
