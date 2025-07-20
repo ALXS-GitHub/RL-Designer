@@ -67,6 +67,21 @@
       "preview_path": "decals/Chaewon LeSserafim/Fennec/chaewon_diffuse.png"
     },
     {
+      "name": "Dirty Work",
+      "variants": [
+        {
+          "variant": "Octane",
+          "files": [
+            "aespa_chassis.png",
+            "oct_diffuse.png",
+            "oct_skin.png",
+            "Template.json"
+          ]
+        }
+      ],
+      "preview_path": "decals/Dirty Work/Octane/oct_diffuse.png"
+    },
+    {
       "name": "Fast And Furious Skyline",
       "variants": [
         {
