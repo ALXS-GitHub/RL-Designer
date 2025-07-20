@@ -18,6 +18,75 @@ In this guide, we will focus on GIMP as the 2D image editor and Blender as the 3
 Here are some video tutorials that I recommend watching if this tutorial is not enough for you:
 - [HOW TO: Blender set up for Rocket League cars | Custom Decals](https://www.youtube.com/watch?v=kqnoKMSz9yM)
 
+Also you can find a lot of in game decals and models here : [https://npc.nepmia.fr/s/dMYfWrK6pXGMaXk](https://npc.nepmia.fr/s/dMYfWrK6pXGMaXk)
+
+If some of the models are missing, here is the tutorial to extract them from the game files and converting it to an .obj file: [https://www.youtube.com/watch?v=RdgA_RMLDeU](https://www.youtube.com/watch?v=RdgA_RMLDeU)
+
+## Preparing the model in Blender
+
+Before you start creating your decal, you need to prepare the model in Blender. This will allow you to see how your decal will look like on the car and also to create more complex decals with 3D models.
+
+Let's start by either downloading a model or extracting it from the game files (the links are available in the ["Before You Start"](#before-you-start) section).
+
+Now open Blender and remove the default cube by selecting it and pressing `X` to delete it. Then import the model you downloaded or extracted by going to `File` > `Import` > `Wavefront (.obj)` and selecting the model file.
+
+Here you can either import the body, chassis, both or even another part of the car if available. For this tutorial, we will focus on the Body of the car, but the same principles apply to the rest.
+
+However when importing for the first time, you might notice that the model is not properly oriented or scaled (but apparently this is not the case for every model). 
+To fix this, first go in the "Object" tab, and select the "Transform" section. Here you can reset the rotation of the model. For the scale you can use the "S" key to scale the model to the desired size. (I recommend scaling it down util you see the camera and lights appearing in the viewport)
+
+![](images/2025-07-20-21-02-11.png)
+
+Now there is something very important to check before starting to create your decal (maybe you will be able to notice it once you start painting on the car and this is really something important to check). You absolutely need to check that the car UV map is oriented properly, e.g. if you paint on a right side it should appear to be the right side for the UV map. If this is not the case there is a fix for this : You have to set you X scale to a negative value (- `your_value`) and set the Z rotation to 180 degrees. This will flip the UV map and make it oriented properly. 
+
+![](images/2025-07-20-21-07-09.png).
+
+Now at this point you should not have any UV map yet, and any way to paint on the car. So let's create this.
+
+For the UV map, you can go in the "UV Editing" tab.
+
+Go in "Edit Mode" and press `A` to select all the vertices.
+
+![](images/2025-07-20-21-17-53.png)
+
+Then press `alt` + `N` and then select "Recalculate Outside" to recalculate the UV map. This will ensure that the UV map is properly oriented and that you can paint on the car.
+
+![](images/2025-07-20-21-18-35.png)
+
+Then in the "Data" tab, go in "Geometry Data" and click on "Clear custom split normals data". This will ensure that the normals are properly oriented and that you can paint on the car.
+
+![](images/2025-07-20-21-12-17.png)
+
+Now in the "Texture Paint" tab, add a new image and set the size to 2048x2048.
+
+![](images/2025-07-20-21-14-34.png)
+
+This should make your texture appear in the UV map.
+
+![](images/2025-07-20-21-20-12.png)
+
+Now go in the "Shading" panel and create a new material for the car. 
+
+![](images/2025-07-20-21-23-03.png)
+
+Next add an "Image Texture (Color)" node and link it to the "Base Color" of the "Principled BSDF" node. Then select the image you just created in the "Image Texture (Color)" node.
+
+![](images/2025-07-20-21-26-25.png)
+
+At this point you should check if the UV map is properly oriented. If this is not the case, you can go back in the "UV Editing" tab and adjust the UV map to make sure it is properly oriented. By redoing some of the steps above.
+
+At this point we only have a single Texture, but I recommend to have a second texture. One will be for the background (in order to better see the decal), and the other one will be for the decal itself.
+
+For this in the "Shading" panel, add a "Mix (Mix)" node. Link your "background" texture to A, and create a new "Image Texture (Color)" node for the decal and link it to B. Then link the "Mix (Mix)" node to the "Base Color" of the "Principled BSDF" node. Add a new Image for the newly added "Image Texture (Color)" node and set the size to 2048x2048.
+
+![](images/2025-07-20-21-32-52.png)
+
+Now for your decal texture, I recommend to completely remove the background and make it transparent, by using the "Erase Alpha" mode in the "Texture Paint" tab. This will allow you to see the decal on the car without any background.
+
+![](images/2025-07-20-21-35-26.png)
+
+Now you can save this blender project so you can easily come back to it later and use it as a template for your decals.
+
 ## Creating a Decal
 
 Multiple layers are used in Rocket League decals, and each layer has a specific purpose. The main layers are:
@@ -60,11 +129,7 @@ Perfect! Now you can make the same for all the images you want to use in your de
 Let's start with the diffuse image, which is the main design of the decal. This image will be applied to the car's body. 
 Why starting with the diffuse image? Because it is the most important part of the decal, and it will be used to create the skin image later on (for example just filling the skin image on the areas where the diffuse image is applied).
 
-TODO : complete with tutorial on how to load the model in Blender.
-
-Let's start creating the sticker in Blender. Here you will have to load the car body's model, and create a new material for the decal. (...to complete...)
-
-TODO : complete with tutorial on how to create the texture in Blender
+Let's start creating the sticker in Blender. Here you will have to load the car body's model, and create a new material for the decal. 
 
 I recommend using a template decal image with a with a monochrome color (like green as it will act as a green screen when we will extract the skin image later on) so you can easily see the areas where the decal will be applied.
 Make sure this template decal is another layer than your main decal image so you can easily extract the decal part when saving the diffuse image. Here in this example you can see that we are using two layers: one for the background (Undefined) and the other one for the decal itself (Image)
@@ -145,7 +210,7 @@ After that, since blender still paint some lower alpha pixels, I recommend to di
 
 Now the next part is one of the most important parts, as it will require to make sure that the skin image matches the diffuse image properly so the image you want to display will appear correctly on the car.
 
-For this, you will first need to open the diffuse image you created earlier as a new layer in your image editor. In GIMP, you can do this by going to `File` > `Open as Layers...` and selecting the diffuse image file.
+For this, you will first need to open the diffuse image with no background you created earlier as a new layer in your image editor. In GIMP, you can do this by going to `File` > `Open as Layers...` and selecting the diffuse image file.
 
 Then select all the pixels on this new layer and fill them with `2b0000` (or any other color if you want team colors to be applied later, but for this tutorial we consider that the logo is not influenced by the team colors).
 
@@ -153,15 +218,15 @@ Then select all the pixels on this new layer and fill them with `2b0000` (or any
 
 In order to make the `0 opacity red` color, you have to make a new layer with `#FF0000` (red) as the main color (Make sure this is either your main or secondary color, so you fill the new mask with this color). 
 
-![](images/2025-07-20-15-30-19.png)
+![](images/2025-07-20-19-20-19.png)
 
 Then you have to add a mask with options 'White (full opacity)'.
 
-![](images/2025-07-20-17-40-59.png)
+![](images/2025-07-20-19-21-03.png)
 
 Then click on this mask and fill it with black so the layer become transparent.
 
-![](images/2025-07-20-17-41-22.png)
+![](images/2025-07-20-19-21-59.png)
 
 Finally when you want to save the image, MAKE SURE TO SAVE THE COLORS FOR THE TRANSPARENCY.
 
