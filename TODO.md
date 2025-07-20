@@ -10,8 +10,9 @@
 
 ## Important
 
-- [ ] Fix bug : when going first to explorer page, the collection decals store are not initialized and it says all stickers from the explorer are not installed yet...
+- [ ] Fix bug : when going first to explorer page, the collection decals store are not initialized and it says all stickers from the explorer are not installed yet... (also have the same behavior on refreshing the page)
 - [ ] Create a script to automatically generate a template folder for a car based on a name and a variant.
+- [ ] Maybe just update the design tutorial steps for the red background, because it could be more clear (and I failed it for the tutorial...)
 
 - [ ] Watch back the video tutorial to make a decal (because I don't even remember myself how to do it) and update the Designer Guide with the new steps.
 - [ ] Make the how to page. First section is about how to use the app itself, second section is about how to make a decal and the third section is about how to manage the decals files and make the pull request to add them to the app. Each of those sections should be collapsable (collapsed by default) -> 3 components, one for each section.

@@ -98,7 +98,13 @@ Once finished, you can save the diffuse image by going to `Image` > `Save` and s
 
 ![](images/2025-07-20-12-33-37.png)
 
-If you also save your blender project at this point, it will automatically use the saved diffuse image as the texture for the decal, so you can easily see how it looks on the car.
+Note : If you also save your blender project at this point, it will automatically use the saved diffuse image as the texture for the decal, so you can easily see how it looks on the car.
+
+One last thing I would highly recommend is to keep a copy of the diffuse image and name it something like "no background" version as the final diffuse image will have a black background but this could be annoying when we are going to use our diffuse image as a template for the skin image.
+
+The final step is the fill the background of the diffuse image in black in the 2D image editor (make sure you have your no background copy saved before doing this) : 
+
+![](images/2025-07-20-19-16-00.png)
 
 Last tip, since blender still paint some lower alpha pixels, I recommend to directly go in your 2D image editor and select the decal part of the diffuse image and fill it with the 100% opaque color you want to use for the decal. To do this, right click the layer, then add a new layer mask with "Transfer Alpha Channel" option. Then bucket fill the mask with white color, and finally right click the layer again and select "Apply Layer Mask". This will ensure that the decal is fully opaque and ready to be used in Rocket League Designer.
 There is an alternative way to do this in Blender : Select the "add alpha" paint mode and paint all the decal with white color. This will ensure that the decal is fully opaque, but it will make a black background. You can finally remove this black background by selecting the background color and deleting it in your 2D image editor.
