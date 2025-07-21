@@ -15,7 +15,7 @@
 - [ ] Make the preview thumbnails (with the car and decal on it), when hovering a variant, it should change the preview thumbnail to the one of the variant. After this in the dedicated preview page, the user should be able to switch between the variants but also change the color of the car (primary and secondary color) to see how it looks with the decal.
 - [ ] Create a script to automatically generate a template folder for a car based on a name and a variant.
 
-- [ ] TODO : fix roadhog model -> still have the chassis part on it
+- [ ] TODO : fix roadhog model -> still have the chassis part on it (split by different materials I think this would work)
 
 - [ ] Make the how to page. First section is about how to use the app itself, second section is about how to make a decal and the third section is about how to manage the decals files and make the pull request to add them to the app. Each of those sections should be collapsable (collapsed by default) -> 3 components, one for each section.
 

@@ -28,7 +28,7 @@ If some of the models are missing, here is the tutorial to extract them from the
 
 Before you start creating your decal, you need to prepare the model in Blender. This will allow you to see how your decal will look like on the car and also to create more complex decals with 3D models.
 
-Let's start by either downloading a model or extracting it from the game files (the links are available in the ["Before You Start"](#before-you-start) section).
+Let's start by either downloading a model or extracting it from the game files (the links are available in the ["Before You Start"](#before-you-start) section). Note : If you extracted the model from the game files, you will most likely already have two materials for the car, one for the body and the other one for the chassis. You can find in the ["Tips"](#tips) section how to split the model into two parts as it will be easier to create the decal for each part separately.
 
 Now open Blender and remove the default cube by selecting it and pressing `X` to delete it. Then import the model you downloaded or extracted by going to `File` > `Import` > `Wavefront (.obj)` and selecting the model file.
 
@@ -247,6 +247,28 @@ In blender, you can softly rotate the camera any way to want using the numpad ke
 When painting, I recommend using a square brush in the Falloff section of the Brush panel for a more efficient brush. 
 
 ![](images/2025-07-20-13-03-44.png)
+
+### Splitting the Model
+
+If you have a single model with both the body and chassis, you can split it into two parts to make it easier to create the decal for each part separately. If you extracted it from the game files, you will most likely already have two materials for the car. This is what we are going to use to split the model.
+
+![](images/2025-07-21-21-27-11.png)
+
+As you can see in the image above, we have a material for the body and a material for the chassis. 
+
+To split the model, first go into "Edit Mode", then in the "Material" tab, select the material you want to split (for example the chassis material), and then click on the "Select" button next to it. This will select all the vertices that are using this material.
+
+![](images/2025-07-21-21-29-57.png)
+
+Now press `P` and select "Selection" to separate the selected vertices into a new object. This will create a new object with the selected vertices, which you can then rename to "Chassis" or whatever you want.
+
+There is even a quick alternative. I you directly press `P` on edit mode, you can select "By Material" and it will automatically split the model into two parts and even remove automatically the material that is not used by the new object.
+
+![](images/2025-07-21-21-33-06.png)
+
+Now when exporting, don't forget to first select the part of the model you want to export (for example the chassis), then go to `File` > `Export` > `Wavefront (.obj)` and select the file name and location. Make sure to check "Limit to Selected Only" to export only the selected part of the model. This will ensure that you have two separate models for the body and chassis, which will make it easier to create the decal for each part separately.
+
+![](images/2025-07-21-21-36-06.png)
 
 ## Issues
 
