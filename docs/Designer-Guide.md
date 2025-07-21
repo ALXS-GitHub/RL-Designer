@@ -22,6 +22,8 @@ Also you can find a lot of in game decals and models here : [https://npc.nepmia.
 
 If some of the models are missing, here is the tutorial to extract them from the game files and converting it to an .obj file: [https://www.youtube.com/watch?v=RdgA_RMLDeU](https://www.youtube.com/watch?v=RdgA_RMLDeU)
 
+⚠️I still highly recommend to use the models from the game files, as they are more accurate and up to date. This will avoid any issues with the models that are not matching the game (as I got this issue...).
+
 ## Preparing the model in Blender
 
 Before you start creating your decal, you need to prepare the model in Blender. This will allow you to see how your decal will look like on the car and also to create more complex decals with 3D models.
@@ -180,7 +182,7 @@ First make sure to use Falloff -> Constant in the Brush panel.
 
 ![](images/2025-07-20-14-58-05.png)
 
-Then create a copy of you texture and enable the "Color Ramp" option with mode "Constant" (!! Very important !!) (Please don't forget to set to "Constant" Too). Now you can set the first trigger to black (or white) with 0% alpha and the second trigger to white with 100% alpha. This will allow you to paint only the pixels that are fully opaque. Paint this texture with Mix mode. Keep the first trigger at 0, and move the second triger to adjust the alpha threshold. The more the second trigger is to the right, the less pixels will be painted, and the more it is to the left, the more pixels will be painted (more likely pixels that are supposed to be transparent in this case)
+Then create a copy of you texture and enable the "Color Ramp" option with mode "Constant" (!! Very important !!) (Please don't forget to set to "Constant" Too). Now you can set the first trigger to black (or white) with 0% alpha and the second trigger to white with 100% alpha. This will allow you to paint only the pixels that are fully opaque. Paint this texture with Mix mode. Keep the first trigger at 0, and move the second trigger to adjust the alpha threshold. The more the second trigger is to the right, the less pixels will be painted, and the more it is to the left, the more pixels will be painted (more likely pixels that are supposed to be transparent in this case). It is also recommended to deactivate the "Interpolation" option in the Sampling panel that is in the Image panel of the Texture tab, this will ensure that the pixels are not interpolated and that the decal is fully opaque.
 
 ![](images/2025-07-20-15-05-09.png)
 
@@ -189,6 +191,8 @@ Then you need to take your original image back and apply it with the "Multiply" 
 ![](images/2025-07-20-15-06-51.png)
 
 Those steps might be a bit hard to understand at first, but the more you practice, the easier it will become.
+
+If you have any other issues, try to seek for a fix in the ["Issues"](#issues) section below, there could be some tips that will help you to fix some issue.
 
 ### Skin Image
 
@@ -244,3 +248,16 @@ When painting, I recommend using a square brush in the Falloff section of the Br
 
 ![](images/2025-07-20-13-03-44.png)
 
+## Issues
+
+Here are the known issues that you might encounter when creating decals, and how to fix them.
+
+### Blender - Painting white version of decal has holes
+
+Here is an illustration showcasing the first layer of the decal we are suppose to apply in white color, however when we apply it, we can see that there are some holes in the decal. 
+
+![](images/2025-07-21-17-16-21.png)
+
+In order to fix this, you may try to go in the "Texture" tab, then in "Sampling" section and try to deactivate the "Interpolation" option. This will ensure that the pixels are not interpolated and that the decal is fully opaque.
+
+![](images/2025-07-21-17-17-20.png)

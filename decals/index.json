@@ -73,6 +73,7 @@
           "variant": "Octane",
           "files": [
             "aespa_chassis.png",
+            "nobg.png",
             "oct_diffuse.png",
             "oct_skin.png",
             "Template.json"
@@ -237,6 +238,14 @@
             "Template.json",
             "yuna_nobg.png",
             "yuna_skin.png"
+          ]
+        },
+        {
+          "variant": "Roadhog",
+          "files": [
+            "body_diffuse.png",
+            "body_skin.png",
+            "Template.json"
           ]
         }
       ],
