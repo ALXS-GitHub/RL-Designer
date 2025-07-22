@@ -114,6 +114,20 @@
       "preview_path": "decals/Girls Aespa/Octane/Girls_diffuse.png"
     },
     {
+      "name": "Jordan",
+      "variants": [
+        {
+          "variant": "Fennec",
+          "files": [
+            "body_diffuse.png",
+            "body_skin.png",
+            "Template.json"
+          ]
+        }
+      ],
+      "preview_path": "decals/Jordan/Fennec/body_diffuse.png"
+    },
+    {
       "name": "Staboz",
       "variants": [
         {
