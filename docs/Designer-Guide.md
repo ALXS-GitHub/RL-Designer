@@ -204,8 +204,6 @@ Here are the main colors used in Rocket League decals:
 - **Decal Color**: This is represented in the skin image as `#2b0000`. What I call decal color here is the color that specify that we should use the exact color of the decal image, and that is not influenced by the team color.
 - **Windows Color**: This is represented in the skin image as `blue`, `#0000FF` (a fully opaque blue).
 
-TODO : `2b0000` for what color ???
-
 The first step I would recommend before starting the skin image is to create a default skin image with the windows in blue. For this go back in blender and color in blue the areas where the windows are, and then save the image as `<car_name|sticker_name>_skin.png` (for example `oct_skin.png`). This will be the base skin image that you will use to create the skin image for your decal.
 
 ![](images/2025-07-20-13-58-27.png)

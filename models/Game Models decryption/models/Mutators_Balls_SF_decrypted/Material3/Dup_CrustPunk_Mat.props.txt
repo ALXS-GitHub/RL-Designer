@@ -1,0 +1,110 @@
+TwoSided = false
+bDisableDepthTest = false
+bIsMasked = false
+ReferencedTextures[3] =
+{
+    ReferencedTextures[0] = Texture2D'wheel_pizzacrustpunk.TRI_PizzaCrustPunk_SM6_Normal'
+    ReferencedTextures[1] = Texture2D'wheel_pizzacrustpunk.TRI_PizzaCrustPunk_SM6_Diffuse'
+    ReferencedTextures[2] = Texture2D'wheel_pizzacrustpunk.mouthmaskPizza'
+}
+Expressions[77] =
+{
+    Expressions[0] = MaterialExpressionTextureSampleParameter2D'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionTextureSampleParameter2D_3'
+    Expressions[1] = MaterialExpressionScalarParameter'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionScalarParameter_1'
+    Expressions[2] = MaterialExpressionStaticSwitchParameter'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionStaticSwitchParameter_1'
+    Expressions[4] = MaterialExpressionScalarParameter'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionScalarParameter_2'
+    Expressions[6] = MaterialExpressionScalarParameter'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionScalarParameter_6'
+    Expressions[9] = MaterialExpressionTextureSampleParameter2D'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionTextureSampleParameter2D_2'
+    Expressions[12] = MaterialExpressionStaticSwitchParameter'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionStaticSwitchParameter_3'
+    Expressions[13] = MaterialExpressionTextureSampleParameter2D'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionTextureSampleParameter2D_5'
+    Expressions[16] = MaterialExpressionVectorParameter'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionVectorParameter_1'
+    Expressions[19] = MaterialExpressionScalarParameter'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionScalarParameter_3'
+    Expressions[24] = MaterialExpressionScalarParameter'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionScalarParameter_0'
+    Expressions[28] = MaterialExpressionScalarParameter'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionScalarParameter_4'
+    Expressions[32] = MaterialExpressionStaticSwitchParameter'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionStaticSwitchParameter_6'
+    Expressions[33] = MaterialExpressionStaticSwitchParameter'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionStaticSwitchParameter_4'
+    Expressions[39] = MaterialExpressionStaticSwitchParameter'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionStaticSwitchParameter_2'
+    Expressions[59] = MaterialExpressionStaticSwitchParameter'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionStaticSwitchParameter_7'
+    Expressions[63] = MaterialExpressionTextureSampleParameter2D'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionTextureSampleParameter2D_4'
+    Expressions[66] = MaterialExpressionVectorParameter'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionVectorParameter_0'
+    Expressions[70] = MaterialExpressionStaticSwitchParameter'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionStaticSwitchParameter_0'
+    Expressions[71] = MaterialExpressionTextureSampleParameter2D'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionTextureSampleParameter2D_1'
+    Expressions[72] = MaterialExpressionStaticSwitchParameter'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionStaticSwitchParameter_8'
+    Expressions[73] = MaterialExpressionVectorParameter'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionVectorParameter_2'
+    Expressions[74] = MaterialExpressionTextureSampleParameter2D'ball_pizza.Dup_CrustPunk_Mat.MaterialExpressionTextureSampleParameter2D_6'
+}
+CachedExpressionData = 
+BlendMode = BLEND_Opaque (0)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[6] =
+{
+    CollectedTextureParameters[0] =
+    {
+        Texture = Texture2D'wheel_pizzacrustpunk.TRI_PizzaCrustPunk_SM6_Normal'
+        Name = Normal
+        Group = None
+    }
+    CollectedTextureParameters[1] =
+    {
+        Texture = Texture2D'wheel_pizzacrustpunk.TRI_PizzaCrustPunk_SM6_Diffuse'
+        Name = Diffuse
+        Group = None
+    }
+    CollectedTextureParameters[2] =
+    {
+        Texture = Texture2D'antenna_paintbrush.Paintbrush_1kS'
+        Name = Specular
+        Group = None
+    }
+    CollectedTextureParameters[3] =
+    {
+        Texture = Texture2D'wheel_pizzacrustpunk.mouthmaskPizza'
+        Name = Masks
+        Group = None
+    }
+    CollectedTextureParameters[4] =
+    {
+        Texture = None
+        Name = AnimatedDetailNorm'sDiffuseAdditive
+        Group = None
+    }
+    CollectedTextureParameters[5] = { Texture=None, Name=DetailDiffuseAdd2, Group=None }
+}
+CollectedScalarParameters[6] =
+{
+    CollectedScalarParameters[0] = { Value=24, Name=SpecPower, Group=None }
+    CollectedScalarParameters[1] = { Value=1, Name=SpecBrightness, Group=None }
+    CollectedScalarParameters[2] = { Value=0.5, Name=DiffuseSpec, Group=None }
+    CollectedScalarParameters[3] = { Value=2, Name=RimValue, Group=None }
+    CollectedScalarParameters[4] = { Value=2, Name=RimSharpness, Group=None }
+    CollectedScalarParameters[5] = { Value=0.5, Name=DiffuseRim, Group=None }
+}
+CollectedVectorParameters[3] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=1, G=1, B=1, A=0.5 }
+        Name = FresnelColor
+        Group = None
+    }
+    CollectedVectorParameters[1] =
+    {
+        Value = { R=1, G=0, B=0.0252275, A=1 }
+        Name = CustomColor
+        Group = None
+    }
+    CollectedVectorParameters[2] =
+    {
+        Value = { R=1, G=0.610951, B=0, A=1 }
+        Name = detailDiffuseAddColor2
+        Group = None
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

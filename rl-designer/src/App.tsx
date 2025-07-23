@@ -5,16 +5,25 @@ import Notifications from '@/components/Notifications/Notifications.tsx'
 import Navbar from '@/components/Navbar/Navbar.tsx'
 import ConfirmationDialog from './components/ConfirmationDialog/ConfirmationDialog'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import useCollection from '@/hooks/useCollection';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 const queryClient = new QueryClient();
+
+const AppInitializer: React.FC = () => {
+  useCollection(); // Initialize collection store to ensure it's ready
+
+  return null; 
+}
+
 
 function App() {
   return (
     <div className="app">
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
+          <AppInitializer />
           <Navbar />
           <Notifications />
           <ConfirmationDialog />

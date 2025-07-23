@@ -1,0 +1,75 @@
+TwoSided = false
+bDisableDepthTest = false
+bIsMasked = true
+ReferencedTextures[5] =
+{
+    ReferencedTextures[0] = Texture2D'Breakout_FX.Ball.Textures.Ball_Breakout_N'
+    ReferencedTextures[1] = Texture2D'Breakout_FX.Ball.Textures.Ball_Breakout_Mask'
+    ReferencedTextures[3] = Texture2D'Breakout_FX.Ball.Textures.Ball_Breakout_D'
+}
+Expressions[84] =
+{
+    Expressions[2] = MaterialExpressionTextureSampleParameter2D'Breakout_FX.Ball.Materials.BreakOutBall_MAT.MaterialExpressionTextureSampleParameter2D_2'
+    Expressions[4] = MaterialExpressionScalarParameter'Breakout_FX.Ball.Materials.BreakOutBall_MAT.MaterialExpressionScalarParameter_0'
+    Expressions[11] = MaterialExpressionScalarParameter'Breakout_FX.Ball.Materials.BreakOutBall_MAT.MaterialExpressionScalarParameter_2'
+    Expressions[22] = MaterialExpressionScalarParameter'Breakout_FX.Ball.Materials.BreakOutBall_MAT.MaterialExpressionScalarParameter_4'
+    Expressions[27] = MaterialExpressionTextureSampleParameter2D'Breakout_FX.Ball.Materials.BreakOutBall_MAT.MaterialExpressionTextureSampleParameter2D_0'
+    Expressions[47] = MaterialExpressionScalarParameter'Breakout_FX.Ball.Materials.BreakOutBall_MAT.MaterialExpressionScalarParameter_1'
+    Expressions[54] = MaterialExpressionVectorParameter'Breakout_FX.Ball.Materials.BreakOutBall_MAT.MaterialExpressionVectorParameter_1'
+    Expressions[55] = MaterialExpressionTextureSampleParameter2D'Breakout_FX.Ball.Materials.BreakOutBall_MAT.MaterialExpressionTextureSampleParameter2D_1'
+    Expressions[82] = MaterialExpressionVectorParameter'Breakout_FX.Ball.Materials.BreakOutBall_MAT.MaterialExpressionVectorParameter_2'
+}
+CachedExpressionData = 
+BlendMode = BLEND_Masked (1)
+OpacityMaskClipValue = 0.1
+CollectedTextureParameters[3] =
+{
+    CollectedTextureParameters[0] =
+    {
+        Texture = Texture2D'Breakout_FX.Ball.Textures.Ball_Breakout_N'
+        Name = Normal
+        Group = None
+    }
+    CollectedTextureParameters[1] =
+    {
+        Texture = Texture2D'Breakout_FX.Ball.Textures.Ball_Breakout_D'
+        Name = Diffuse
+        Group = None
+    }
+    CollectedTextureParameters[2] =
+    {
+        Texture = Texture2D'Breakout_FX.Ball.Textures.Ball_Breakout_Mask'
+        Name = Mask
+        Group = None
+    }
+}
+CollectedScalarParameters[4] =
+{
+    CollectedScalarParameters[0] = { Value=1, Name=Dissolve, Group=None }
+    CollectedScalarParameters[1] = { Value=0, Name=Damage_01, Group=None }
+    CollectedScalarParameters[2] = { Value=200, Name=GoalLine, Group=None }
+    CollectedScalarParameters[3] = { Value=1, Name=DamageTeam, Group=None }
+}
+CollectedVectorParameters[2] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=0.464071, G=0.464071, B=0.464071, A=1 }
+        Name = DefaultColor
+        Group = None
+    }
+    CollectedVectorParameters[1] =
+    {
+        Value = { R=5000, G=4300, B=5000, A=1 }
+        Name = CubeMapPosition
+        Group = None
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

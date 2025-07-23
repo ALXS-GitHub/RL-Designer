@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Loading, Error } from '@/components';
 
 const Explore = () => {
+
   const [decals, setDecals] = useState<DecalTextures[]>([]);
 
   const { data: decalsData, error: decalsError, isLoading: decalsLoading } = useQuery({

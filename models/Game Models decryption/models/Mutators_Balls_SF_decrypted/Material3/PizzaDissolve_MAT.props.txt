@@ -1,0 +1,85 @@
+TwoSided = false
+bDisableDepthTest = false
+bIsMasked = false
+ReferencedTextures[7] =
+{
+    ReferencedTextures[0] = Texture2D'Ball_Default_Textures.Textures.Ball_Default00_N'
+    ReferencedTextures[2] = Texture2D'Ball_Default_Textures.Textures.Ball_Default00_RGB'
+    ReferencedTextures[3] = Texture2D'Ball_Default_Textures.Textures.Ball_Default00_D'
+    ReferencedTextures[5] = Texture2D'ItemsMode.Car.Textures.Clouds_RGB_T'
+}
+Expressions[75] =
+{
+    Expressions[9] = MaterialExpressionScalarParameter'ball_pizza.PizzaDissolve_MAT.MaterialExpressionScalarParameter_0'
+    Expressions[46] = MaterialExpressionVectorParameter'ball_pizza.PizzaDissolve_MAT.MaterialExpressionVectorParameter_0'
+    Expressions[61] = MaterialExpressionTextureSampleParameter2D'ball_pizza.PizzaDissolve_MAT.MaterialExpressionTextureSampleParameter2D_0'
+    Expressions[62] = MaterialExpressionTextureSampleParameter2D'ball_pizza.PizzaDissolve_MAT.MaterialExpressionTextureSampleParameter2D_1'
+    Expressions[63] = MaterialExpressionTextureSampleParameter2D'ball_pizza.PizzaDissolve_MAT.MaterialExpressionTextureSampleParameter2D_2'
+    Expressions[64] = MaterialExpressionTextureSampleParameter2D'ball_pizza.PizzaDissolve_MAT.MaterialExpressionTextureSampleParameter2D_4'
+    Expressions[65] = MaterialExpressionStaticSwitchParameter'ball_pizza.PizzaDissolve_MAT.MaterialExpressionStaticSwitchParameter_0'
+    Expressions[67] = MaterialExpressionStaticSwitchParameter'ball_pizza.PizzaDissolve_MAT.MaterialExpressionStaticSwitchParameter_1'
+    Expressions[69] = MaterialExpressionStaticSwitchParameter'ball_pizza.PizzaDissolve_MAT.MaterialExpressionStaticSwitchParameter_3'
+    Expressions[70] = MaterialExpressionStaticSwitchParameter'ball_pizza.PizzaDissolve_MAT.MaterialExpressionStaticSwitchParameter_5'
+    Expressions[72] = MaterialExpressionScalarParameter'ball_pizza.PizzaDissolve_MAT.MaterialExpressionScalarParameter_1'
+    Expressions[73] = MaterialExpressionScalarParameter'ball_pizza.PizzaDissolve_MAT.MaterialExpressionScalarParameter_2'
+    Expressions[74] = MaterialExpressionVectorParameter'ball_pizza.PizzaDissolve_MAT.MaterialExpressionVectorParameter_1'
+}
+CachedExpressionData = 
+BlendMode = BLEND_Translucent (2)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[4] =
+{
+    CollectedTextureParameters[0] =
+    {
+        Texture = Texture2D'Ball_Default_Textures.Textures.Ball_Default00_N'
+        Name = Normal
+        Group = None
+    }
+    CollectedTextureParameters[1] =
+    {
+        Texture = Texture2D'Ball_Default_Textures.Textures.Ball_Default00_RGB'
+        Name = Masks
+        Group = None
+    }
+    CollectedTextureParameters[2] =
+    {
+        Texture = Texture2D'Ball_Default_Textures.Textures.Ball_Default00_D'
+        Name = Diffuse
+        Group = None
+    }
+    CollectedTextureParameters[3] =
+    {
+        Texture = Texture2D'Ball_Default_Textures.Textures.Ball_Default00_RGB'
+        Name = Masks
+        Group = None
+    }
+}
+CollectedScalarParameters[3] =
+{
+    CollectedScalarParameters[0] = { Value=0.65, Name=Dissolve, Group=None }
+    CollectedScalarParameters[1] = { Value=64, Name=Spec_power, Group=None }
+    CollectedScalarParameters[2] = { Value=2, Name=Spec_Multi, Group=None }
+}
+CollectedVectorParameters[2] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=0.151058, G=0.625345, B=0.409826, A=20 }
+        Name = DissolveColor
+        Group = None
+    }
+    CollectedVectorParameters[1] =
+    {
+        Value = { R=0.5, G=0.5, B=1, A=1 }
+        Name = Normal_Multi
+        Group = None
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

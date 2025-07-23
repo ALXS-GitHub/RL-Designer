@@ -1,0 +1,51 @@
+TwoSided = false
+bDisableDepthTest = false
+bIsMasked = true
+ReferencedTextures[7] =
+{
+    ReferencedTextures[0] = Texture2D'Ball_BasketBall.Ball_Basketball_N'
+    ReferencedTextures[1] = Texture2D'Ball_BasketBall.Ball_Basketball_RGB'
+    ReferencedTextures[2] = Texture2D'ItemsMode.Car.Textures.Clouds_RGB_T'
+    ReferencedTextures[3] = Texture2D'Ball_Default_Textures.Textures.Ball_Default00_RGB'
+    ReferencedTextures[5] = Texture2D'Ball_BasketBall.Ball_Basketball_D'
+}
+Expressions[79] =
+{
+    Expressions[48] = MaterialExpressionStaticSwitchParameter'Ball_BasketBall.MAT_BasketBall_Dissolve.MaterialExpressionStaticSwitchParameter_1'
+    Expressions[49] = MaterialExpressionTextureSampleParameter2D'Ball_BasketBall.MAT_BasketBall_Dissolve.MaterialExpressionTextureSampleParameter2D_1'
+    Expressions[62] = MaterialExpressionScalarParameter'Ball_BasketBall.MAT_BasketBall_Dissolve.MaterialExpressionScalarParameter_1'
+    Expressions[72] = MaterialExpressionVectorParameter'Ball_BasketBall.MAT_BasketBall_Dissolve.MaterialExpressionVectorParameter_1'
+}
+CachedExpressionData = 
+BlendMode = BLEND_Masked (1)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[1] =
+{
+    CollectedTextureParameters[0] =
+    {
+        Texture = Texture2D'Ball_Default_Textures.Textures.Ball_Default00_RGB'
+        Name = Masks
+        Group = None
+    }
+}
+CollectedScalarParameters[1] =
+{
+    CollectedScalarParameters[0] = { Value=0.65, Name=Dissolve, Group=None }
+}
+CollectedVectorParameters[1] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=0.151058, G=0.625345, B=0.409826, A=20 }
+        Name = DissolveColor
+        Group = None
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}
