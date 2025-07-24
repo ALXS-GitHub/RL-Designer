@@ -7,6 +7,7 @@
 
 - [?] Add ball texture support
   - Before doing ball texture support we need to find a way to have the ball in online games (as it is not allowed by alpha console)
+  - Check https://github.com/smallest-cock/Custom-Ball-Online, this is a patch for allowing custom ball textures in online games. If possible make an automatic installation/updater script for it.
 - [ ] Add wheel texture support
   - For both ball and wheel, we should make add those collections / explorer inside the already existing pages, just make a select to choose between the car, ball or wheel textures. We should also manage how they are stored locally and how they are stored in the public repo. + Do they need variants ? I suppose yes, a ball even if the same object can have different textures for a same logo.
   
@@ -14,13 +15,11 @@
 - [ ] Update All Installed Button
 
 - [ ] Decal setup verification script (to make sure no issue will happen / and that no recommended fields (such as Group) are missing)
-
-- [ ] Check for the "Group" Field in the Template.json (example in the ballTexture folder, ... maybe we could use this to create a group of decals inside the game. This could be useful to set all our variants here)
-- [ ] Make the HowTo README files fetched from the public repo instead of them being fetched locally on build. (+ the images should also be fetched from the public repo so they are rendered properly in the HowTo page).
-- [ ] Make the preview thumbnails (with the car and decal on it), when hovering a variant, it should change the preview thumbnail to the one of the variant. After this in the dedicated preview page, the user should be able to switch between the variants but also change the color of the car (primary and secondary color) to see how it looks with the decal.
 - [ ] Create a script to automatically generate a template folder for a car based on a name and a variant.
 
-- [ ] fix internal links not working in the HowTo page. + Fix external links opening inside the app instead of opening in an external browser.
+- [ ] Make the preview thumbnails (with the car and decal on it), when hovering a variant, it should change the preview thumbnail to the one of the variant. After this in the dedicated preview page, the user should be able to switch between the variants but also change the color of the car (primary and secondary color) to see how it looks with the decal.
+
+- [ ] fix internal links not working in the HowTo page.
 
 - [ ] Maybe add a "Last update" field in the index.json (in fact with the scrip get the latest modification of any file from the public repo (just check locally)). We should also add this in some way when downloading so we can compare (maybe the last modification of the local files)
   
@@ -48,3 +47,6 @@
   - as alpha console can find json files in subfolders it will be easier to have a folder for each decal and then the variants for each car in it. eg : Girls Aespa / Octane / Template.json, Girls Aespa / Fennec / Template.json, ...
   - The name of the decal is the one specified in the Template.json file, so it should be the same for all variants of the decal but with the car name in it.
 - [X] Fix bug : when going first to explorer page, the collection decals store are not initialized and it says all stickers from the explorer are not installed yet... (also have the same behavior on refreshing the page)
+- [X] Check for the "Group" Field in the Template.json (example in the ballTexture folder, ... maybe we could use this to create a group of decals inside the game. This could be useful to set all our variants here)
+- [X] Fix external links opening inside the app instead of opening in an external browser.
+- [X] Make the HowTo README files fetched from the public repo instead of them being fetched locally on build. (+ the images should also be fetched from the public repo so they are rendered properly in the HowTo page).
