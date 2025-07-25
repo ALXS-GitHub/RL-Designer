@@ -1,1 +1,0 @@
-# Make a script to update version everywhere in the codebase

@@ -64,7 +64,7 @@ const arrowIconVariants: Variants = {
         }
     },
     hover: {
-        color: "white",
+        color: "#ffffff",
         transition: {
             duration: 0.3
         }

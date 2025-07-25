@@ -34,6 +34,7 @@ function App() {
               <Route path="/my-collection" element={<Collection />} />
               <Route path="/explore" element={<Explore />} />
               <Route path="/how-to" element={<HowTo />} />
+              <Route path="*" element={<Home />} /> 
             </Routes>
           </div>
         </BrowserRouter>

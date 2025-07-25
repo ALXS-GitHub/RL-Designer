@@ -6,33 +6,24 @@
 ## Important
 
 - [ ] Add ball texture support
-  - Before doing ball texture support we need to find a way to have the ball in online games (as it is not allowed by alpha console)
-  - Check https://github.com/smallest-cock/Custom-Ball-Online, this is a patch for allowing custom ball textures in online games. If possible make an automatic installation/updater script for it.
 - [ ] Add wheel texture support
   - For both ball and wheel, we should make add those collections / explorer inside the already existing pages, just make a select to choose between the car, ball or wheel textures. We should also manage how they are stored locally and how they are stored in the public repo. + Do they need variants ? I suppose yes, a ball even if the same object can have different textures for a same logo.
 
-- [ ] Automate the release process for new versions of the tauri app. Using GitHub Actions (maybe triggered on release branch push)
-  - For now I am currently testing this on another repository (just for the testing purpose)
-
-- [ ] Install All Variants button
-- [ ] Update All Installed Button
-
-- [ ] Decal setup verification script (to make sure no issue will happen / and that no recommended fields (such as Group) are missing)
-- [ ] Create a script to automatically generate a template folder for a car based on a name and a variant.
+- [~] Automate the release process for new versions of the tauri app. Using GitHub Actions (maybe triggered on release branch push) -> Still need to check if it works...
 
 - [ ] Make the preview thumbnails (with the car and decal on it), when hovering a variant, it should change the preview thumbnail to the one of the variant. After this in the dedicated preview page, the user should be able to switch between the variants but also change the color of the car (primary and secondary color) to see how it looks with the decal.
 
-- [ ] fix internal links not working in the HowTo page.
-
-- [ ] Maybe add a "Last update" field in the index.json (in fact with the scrip get the latest modification of any file from the public repo (just check locally)). We should also add this in some way when downloading so we can compare (maybe the last modification of the local files)
-  
-- [ ] Add the Hyperbeast decal.
-
-- [ ] Make a version management script that update the version app everywhere it needs to be updated (tauri.conf.json, package.json, etc.). This script should also update the version in the About page.
-
 ## Medium
 
+- [ ] Install All Variants button
+- [ ] Update All Installed Button - At the same place as the type select, add the update all button.
+- [ ] Add the Hyperbeast decal.
+
 ## Low
+
+- [ ] Maybe add a "Last update" field in the index.json (in fact with the scrip get the latest modification of any file from the public repo (just check locally)). We should also add this in some way when downloading so we can compare (maybe the last modification of the local files)
+- [ ] fix internal links not working in the HowTo page.
+- [ ] Decal setup verification script (to make sure no issue will happen / and that no recommended fields (such as Group) are missing)
 
 ## Done
 - [X] Add the Loading and Error components on the pages.
@@ -53,3 +44,6 @@
 - [X] Check for the "Group" Field in the Template.json (example in the ballTexture folder, ... maybe we could use this to create a group of decals inside the game. This could be useful to set all our variants here)
 - [X] Fix external links opening inside the app instead of opening in an external browser.
 - [X] Make the HowTo README files fetched from the public repo instead of them being fetched locally on build. (+ the images should also be fetched from the public repo so they are rendered properly in the HowTo page).
+- [X] Make a version management script that update the version app everywhere it needs to be updated (tauri.conf.json, package.json, etc.).
+- [X] Move the .env vars to constants in the app, it will be easier for deployment
+- [X] Check https://github.com/smallest-cock/Custom-Ball-Online, this is a patch for allowing custom ball textures in online games. If possible make an automatic installation/updater script for it.

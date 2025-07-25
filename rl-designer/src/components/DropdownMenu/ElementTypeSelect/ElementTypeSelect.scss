@@ -1,0 +1,88 @@
+.element-select {
+  display: inline-block;
+  position: relative;
+
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2_5) var(--space-4);
+    background: var(--gray-50);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 140px;
+    font-size: var(--text-sm);
+
+    &:hover:not(&--disabled) {
+      background: var(--gray-100);
+      border-color: var(--gray-400);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--blue-500);
+      box-shadow: 0 0 0 2px var(--blue-200);
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+
+  &__label {
+    color: var(--gray-600);
+    font-weight: 500;
+  }
+
+  &__current {
+    flex: 1;
+    color: var(--gray-800);
+    font-weight: 500;
+  }
+
+  &__arrow {
+    color: var(--gray-600);
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    &--selected {
+      background: var(--blue-50);
+      color: var(--blue-700);
+    }
+
+    &-label {
+      flex: 1;
+    }
+
+    &-check {
+      color: var(--blue-600);
+      font-weight: bold;
+      margin-left: var(--space-2);
+    }
+  }
+
+  // Minimal adjustments to dropdown positioning for this use case
+  .dropdown-menu__content {
+    min-width: 160px;
+    bottom: auto;
+    top: calc(100% + var(--space-1));
+    left: 0;
+    right: auto;
+    transform: none;
+  }
+}

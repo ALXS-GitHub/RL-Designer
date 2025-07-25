@@ -3,6 +3,7 @@ use crate::types::decal::DecalTextures;
 use reqwest;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
+use crate::types::elements::ElementType;
 
 #[derive(Debug, Deserialize)]
 pub struct DecalsIndex {
@@ -22,8 +23,8 @@ pub struct VariantInfo {
     pub files: Vec<String>,
 }
 
-pub async fn fetch_decal_index() -> Result<DecalsIndex, String> {
-    let index_url = format!("{}/index.json", GITHUB_DECALS_RAW_URL);
+pub async fn fetch_decal_index(element_type: ElementType) -> Result<DecalsIndex, String> {
+    let index_url = format!("{}/{}", GITHUB_DECALS_RAW_URL, element_type.get_index_name());
 
     let client = reqwest::Client::builder()
         .user_agent("RL-Designer-App/1.0")
@@ -54,9 +55,9 @@ pub async fn fetch_decal_index() -> Result<DecalsIndex, String> {
     Ok(decals_index)
 }
 
-pub async fn fetch_decals_from_github_raw() -> Result<Vec<DecalTextures>, String> {
+pub async fn fetch_decals_from_github_raw(element_type: ElementType) -> Result<Vec<DecalTextures>, String> {
     // Fetch the decals index from GitHub
-    let decals_index = fetch_decal_index().await?;
+    let decals_index = fetch_decal_index(element_type).await?;
 
     let mut decals = Vec::new();
 

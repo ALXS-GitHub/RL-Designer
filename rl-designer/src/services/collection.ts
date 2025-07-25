@@ -1,5 +1,6 @@
 import { invoke } from '@tauri-apps/api/core';
 import type { DecalTextures } from '@/types';
+import type { ElementType } from '@/constants/elements';
 
 interface FetchResult {
   success: boolean;
@@ -7,12 +8,12 @@ interface FetchResult {
   error?: string;
 }
 
-export const getDecalFolders = async (): Promise<FetchResult> => {
+export const getDecalFolders = async (elementType: ElementType): Promise<FetchResult> => {
   try {
-    const result = await invoke<FetchResult>('get_decal_texture_folders');
+    const result = await invoke<FetchResult>(`get_${elementType}_decal_texture_folder`);
     return result;
   } catch (error) {
-    console.error('Failed to fetch decal folders:', error);
+    console.error(`Failed to fetch ${elementType} decal folders:`, error);
     return {
       success: false,
       decals: [],
@@ -26,12 +27,18 @@ interface RemoveResult {
   error?: string;
 }
 
-export const removeDecalVariant = async (decalName: string, variantName: string): Promise<RemoveResult> => {
+interface RemoveDecalVariantParams {
+  elementType: ElementType;
+  decalName: string;
+  variantName: string;
+}
+
+export const removeDecalVariant = async ({elementType, decalName, variantName}: RemoveDecalVariantParams): Promise<RemoveResult> => {
   try {
-    const result = await invoke<RemoveResult>('remove_decal_variant', { decalName, variantName });
+    const result = await invoke<RemoveResult>(`remove_${elementType}_decal_variant`, { decalName, variantName });
     return result;
   } catch (error) {
-    console.error('Failed to remove decal variant:', error);
+    console.error(`Failed to remove ${elementType} decal variant:`, error);
     return {
       success: false,
       error: `Failed to invoke command: ${error}`

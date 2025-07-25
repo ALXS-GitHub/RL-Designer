@@ -6,8 +6,8 @@ import 'highlight.js/styles/github.css';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import { Loading, Error as ErrorComponent } from '@/components';
-
-const GITHUB_REPO_RAW_URL = import.meta.env.VITE_GITHUB_REPO_RAW_URL || 'https://raw.githubusercontent.com/ALXS-GitHub/RL-Designer/main';
+import Requirements from './Sections/Requirements';
+import { GITHUB_REPO_RAW_URL } from '@/constants';
 
 interface DocumentContent {
     userGuide: string;
@@ -132,6 +132,9 @@ const HowTo: React.FC = () => {
         <div className="how-to">
             <h1 className="how-to__title">How to use RL Designer</h1>
             <div className="how-to__sections">
+                <CollapsibleSection title="Requirements">
+                    <Requirements />
+                </CollapsibleSection>
                 <CollapsibleSection title="How to use the application">
                     <ReactMarkdown
                         remarkPlugins={[remarkGfm]}

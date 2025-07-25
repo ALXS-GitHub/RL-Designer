@@ -5,14 +5,17 @@ import type { DecalTextures } from '@/types';
 import DecalCardExplorer from '@/components/DecalCard/DecalCardExplorer';
 import { useQuery } from '@tanstack/react-query';
 import { Loading, Error } from '@/components';
+import useSelectedElementStore from '@/stores/selectedElementStore';
+import ElementTypeSelect from '@/components/DropdownMenu/ElementTypeSelect/ElementTypeSelect';
 
 const Explore = () => {
 
+  const { selectedElement, setSelectedElement } = useSelectedElementStore();
   const [decals, setDecals] = useState<DecalTextures[]>([]);
 
   const { data: decalsData, error: decalsError, isLoading: decalsLoading } = useQuery({
-    queryKey: ['decals'],
-    queryFn: getDecalsFromGitHub,
+    queryKey: ['GitDecals', selectedElement],
+    queryFn: () => getDecalsFromGitHub(selectedElement),
     refetchOnWindowFocus: false,
   });
 
@@ -33,6 +36,11 @@ const Explore = () => {
   return (
     <div className="explore">
       <h1>Explore Page</h1>
+      <ElementTypeSelect
+          selectedElement={selectedElement}
+          onElementChange={setSelectedElement}
+          className="explore__element-select"
+        />
       <div className="explore__decals">
       {decals.map((decal) => (
           <DecalCardExplorer key={decal.name} decal={decal} />

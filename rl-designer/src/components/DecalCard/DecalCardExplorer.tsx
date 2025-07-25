@@ -4,7 +4,7 @@ import Placeholder from '@/assets/placeholder.jpg';
 import { useExplorer } from '@/hooks/useExplorer';
 
 import DecalCardDesign from "./DecalCardDesign"
-import { useCollectionStore } from '@/stores/collectionStore';
+import useCollection from '@/hooks/useCollection';
 import { FaEye, FaDownload, FaSync } from 'react-icons/fa';
 
 interface DecalCardExplorerProps {
@@ -14,7 +14,7 @@ interface DecalCardExplorerProps {
 const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
 
     const { downloadDecalVariant } = useExplorer();
-    const { decals: collectionDecals } = useCollectionStore();
+    const { decals: collectionDecals } = useCollection();
 
     const isVariantInstalled = (decalName: string, variant: string) => {
         return collectionDecals.some(d => d.name === decalName && d.variants.includes(variant));

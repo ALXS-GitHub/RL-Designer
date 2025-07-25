@@ -1,4 +1,5 @@
 .explore {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,5 +13,12 @@
         gap: var(--space-4);
         width: 100%;
         justify-content: center;
+    }
+
+    .explore__element-select {
+        position: fixed;
+        top: var(--space-20);
+        left: var(--space-4);
+        z-index: var(--z-dropdown);
     }
 }

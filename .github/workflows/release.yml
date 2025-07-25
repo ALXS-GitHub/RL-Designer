@@ -1,0 +1,47 @@
+name: 'Release App'
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  publish-tauri:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: 'windows-latest'
+            args: ''
+
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: install frontend dependencies
+        run: npm ci
+        working-directory: ./rl-designer
+
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        with:
+          projectPath: ./rl-designer
+          tagName: app-v__VERSION__ # the action automatically replaces __VERSION__ with the app version.
+          releaseName: 'Tauri Update Test App v__VERSION__'
+          releaseBody: 'See the assets to download this version and install.'
+          releaseDraft: false
+          prerelease: false
+          args: ${{ matrix.args }}

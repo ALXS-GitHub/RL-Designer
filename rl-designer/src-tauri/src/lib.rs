@@ -6,10 +6,6 @@ pub mod utils;
 
 use tauri_plugin_updater::UpdaterExt;
 
-use crate::commands::collection::{get_decal_texture_folders, remove_decal_variant};
-use crate::commands::download::download_decal_variant;
-use crate::commands::explorer::get_decals_from_github;
-
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -30,10 +26,18 @@ pub fn run() {
         })
         .plugin(tauri_plugin_updater::Builder::new().build())
         .invoke_handler(tauri::generate_handler![
-            get_decal_texture_folders,
-            remove_decal_variant,
-            get_decals_from_github,
-            download_decal_variant,
+            crate::commands::collection::get_car_decal_texture_folder,
+            crate::commands::collection::get_ball_decal_texture_folder,
+            crate::commands::collection::remove_car_decal_variant,
+            crate::commands::collection::remove_ball_decal_variant,
+
+            crate::commands::explorer::get_car_decals_from_github,
+            crate::commands::explorer::get_ball_decals_from_github,
+            
+            crate::commands::download::download_car_decal_variant,
+            crate::commands::download::download_ball_decal_variant,
+
+            crate::commands::online_ball_patch::install_ball_patch,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

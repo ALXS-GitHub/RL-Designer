@@ -2,13 +2,15 @@ use crate::config::get_install_path;
 use crate::constants::GITHUB_DECALS_RAW_URL;
 use crate::utils::explorer::fetch_decal_index;
 use std::fs;
+use crate::types::elements::ElementType;
 
 pub async fn download_decal_variant_logic(
+    element: ElementType,
     decal_name: &str,
     variant_name: &str,
 ) -> Result<(), String> {
     // Get the list of files for the specified decal and variant
-    let decals_index = fetch_decal_index().await?;
+    let decals_index = fetch_decal_index(element).await?;
     let decal_info = decals_index
         .decals
         .iter()
@@ -35,7 +37,7 @@ pub async fn download_decal_variant_logic(
 
     // Get the installation path
     let install_path =
-        get_install_path().map_err(|e| format!("Failed to get install path: {}", e))?;
+        get_install_path(element).map_err(|e| format!("Failed to get install path: {}", e))?;
 
     // Create decal directory if it doesn't exist
     let decal_dir = install_path.join(decal_name);
@@ -71,7 +73,7 @@ pub async fn download_decal_variant_logic(
 
     // Download each file
     for filename in &variant_info.files {
-        let file_url = get_decal_file_url(decal_name, variant_name, filename);
+        let file_url = get_decal_file_url(element, decal_name, variant_name, filename);
         let file_path = variant_dir.join(filename);
 
         // Download the file
@@ -111,10 +113,11 @@ pub async fn download_decal_variant_logic(
 }
 
 // Helper function for downloading decal files (for future use)
-pub fn get_decal_file_url(decal_name: &str, variant_name: &str, filename: &str) -> String {
+pub fn get_decal_file_url(element: ElementType,decal_name: &str, variant_name: &str, filename: &str) -> String {
     format!(
-        "{}/decals/{}/{}/{}",
+        "{}/{}/{}/{}/{}",
         GITHUB_DECALS_RAW_URL,
+        element.get_git_folder_name(),
         urlencoding::encode(decal_name),
         urlencoding::encode(variant_name),
         urlencoding::encode(filename)

@@ -1,5 +1,6 @@
 use crate::types::decal::DecalTextures;
 use crate::utils::collection::{fetch_decal_folders, remove_decal_variant_logic};
+use crate::types::elements::ElementType;
 
 #[derive(Debug, serde::Serialize)]
 pub struct FetchResult {
@@ -8,9 +9,8 @@ pub struct FetchResult {
     error: Option<String>,
 }
 
-#[tauri::command]
-pub fn get_decal_texture_folders() -> FetchResult {
-    match fetch_decal_folders() {
+fn get_decal_texture_element_logic(element: ElementType) -> FetchResult {
+    match fetch_decal_folders(element) {
         Ok(decals) => FetchResult {
             success: true,
             decals,
@@ -24,16 +24,26 @@ pub fn get_decal_texture_folders() -> FetchResult {
     }
 }
 
+#[tauri::command]
+pub fn get_car_decal_texture_folder() -> FetchResult {
+    get_decal_texture_element_logic(ElementType::Car)
+}
+
+#[tauri::command]
+pub fn get_ball_decal_texture_folder() -> FetchResult {
+    get_decal_texture_element_logic(ElementType::Ball)
+}
+
+
+
 #[derive(Debug, serde::Serialize)]
 pub struct RemoveResult {
     success: bool,
     error: Option<String>,
 }
 
-#[tauri::command]
-pub fn remove_decal_variant(decal_name: String, variant_name: String) -> RemoveResult {
-    // Implement the logic to remove a decal variant
-    match remove_decal_variant_logic(&decal_name, &variant_name) {
+fn remove_decal_variant_element_logic(element: ElementType, decal_name: &str, variant_name: &str) -> RemoveResult {
+    match remove_decal_variant_logic(element, decal_name, variant_name) {
         Ok(_) => RemoveResult {
             success: true,
             error: None,
@@ -43,4 +53,14 @@ pub fn remove_decal_variant(decal_name: String, variant_name: String) -> RemoveR
             error: Some(error),
         },
     }
+}
+
+#[tauri::command]
+pub fn remove_car_decal_variant(decal_name: String, variant_name: String) -> RemoveResult {
+    remove_decal_variant_element_logic(ElementType::Car, &decal_name, &variant_name)
+}
+
+#[tauri::command]
+pub fn remove_ball_decal_variant(decal_name: String, variant_name: String) -> RemoveResult {
+    remove_decal_variant_element_logic(ElementType::Ball, &decal_name, &variant_name)
 }

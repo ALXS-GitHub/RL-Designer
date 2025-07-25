@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.scss';
 
+import Requirements from '@/pages/HowTo/Sections/Requirements';
+
 const Home = () => {
   return (
     <div className="home">
@@ -104,34 +106,7 @@ const Home = () => {
       </section>
 
       {/* Requirements Section */}
-      <section className="home__requirements">
-        <div className="home__container">
-          <h2 className="home__section-title">Requirements</h2>
-          <div className="home__requirements-content">
-            <div className="home__requirement-item">
-              <span className="home__requirement-icon">🎮</span>
-              <div>
-                <h4>Rocket League</h4>
-                <p>The game must be installed on your system</p>
-              </div>
-            </div>
-            <div className="home__requirement-item">
-              <span className="home__requirement-icon">🔧</span>
-              <div>
-                <h4>BakkesMod</h4>
-                <p>Required for mod support and customization</p>
-              </div>
-            </div>
-            <div className="home__requirement-item">
-              <span className="home__requirement-icon">📁</span>
-              <div>
-                <h4>AlphaConsole Plugin</h4>
-                <p>Must be installed and enabled in BakkesMod</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Requirements />
 
       {/* CTA Section */}
       <section className="home__cta">

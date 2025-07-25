@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import type { DecalTextures } from '@/types';
-import Placeholder from '@/assets/placeholder.jpg';
-import { convertFileSrc } from '@tauri-apps/api/core';
 import DropdownMenu from '@/components/DropdownMenu/DropdownMenu';
-import useCollection from '@/hooks/useCollection';
-import { useExplorer } from '@/hooks/useExplorer';
 import type { DropdownItem } from '../DropdownMenu/Dropdown';
 
 
 import './DecalCard.scss';
-import { FaEye, FaTrash, FaDownload, FaSync } from 'react-icons/fa';
 
 interface DecalCardProps {
   decal: DecalTextures;

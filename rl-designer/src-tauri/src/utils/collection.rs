@@ -2,11 +2,12 @@ use crate::config::get_install_path;
 use crate::types::decal::DecalTextures;
 use serde_json::Value;
 use std::fs;
+use crate::types::elements::ElementType;
 
-pub fn fetch_decal_folders() -> Result<Vec<DecalTextures>, String> {
+pub fn fetch_decal_folders(element: ElementType) -> Result<Vec<DecalTextures>, String> {
     // Get the AppData environment variable
     let install_path =
-        get_install_path().map_err(|e| format!("Failed to get install path: {}", e))?;
+        get_install_path(element).map_err(|e| format!("Failed to get install path: {}", e))?;
 
     // Check if the install path exists
     if !install_path.exists() {
@@ -59,7 +60,7 @@ pub fn fetch_decal_folders() -> Result<Vec<DecalTextures>, String> {
             };
 
             if let Some(first_variant) = variants.first() {
-                let body_diffuse = read_body_diffuse_from_variant(&path, first_variant);
+                let body_diffuse = read_body_diffuse_from_variant(element, &path, first_variant);
                 if let Ok(diffuse) = body_diffuse {
                     decal.preview_path = Some(diffuse);
                 }
@@ -76,6 +77,7 @@ pub fn fetch_decal_folders() -> Result<Vec<DecalTextures>, String> {
 }
 
 pub fn read_body_diffuse_from_variant(
+    element: ElementType,
     decal_path: &std::path::Path,
     variant_name: &str,
 ) -> Result<String, String> {
@@ -100,8 +102,8 @@ pub fn read_body_diffuse_from_variant(
             // Extract body diffuse from any top-level key
             if let Some(obj) = json_value.as_object() {
                 for (_, value) in obj {
-                    if let Some(body) = value.get("Body") {
-                        if let Some(diffuse) = body.get("Diffuse") {
+                    if let Some(body) = value.get(element.get_body_diffuse().body.as_str()) {
+                        if let Some(diffuse) = body.get(element.get_body_diffuse().diffuse.as_str()) {
                             if let Some(diffuse_filename) = diffuse.as_str() {
                                 // Build the full path to the diffuse image
                                 let diffuse_path = variant_path.join(diffuse_filename);
@@ -122,9 +124,9 @@ pub fn read_body_diffuse_from_variant(
     Err("No body diffuse file found".to_string())
 }
 
-pub fn remove_decal_variant_logic(decal_name: &str, variant_name: &str) -> Result<(), String> {
+pub fn remove_decal_variant_logic(element: ElementType, decal_name: &str, variant_name: &str) -> Result<(), String> {
     let install_path =
-        get_install_path().map_err(|e| format!("Failed to get install path: {}", e))?;
+        get_install_path(element).map_err(|e| format!("Failed to get install path: {}", e))?;
 
     let decal_path = install_path.join(&decal_name);
     let variant_path = decal_path.join(&variant_name);
