@@ -5,12 +5,15 @@
 
 ## Important
 
-- [?] Add ball texture support
+- [ ] Add ball texture support
   - Before doing ball texture support we need to find a way to have the ball in online games (as it is not allowed by alpha console)
   - Check https://github.com/smallest-cock/Custom-Ball-Online, this is a patch for allowing custom ball textures in online games. If possible make an automatic installation/updater script for it.
 - [ ] Add wheel texture support
   - For both ball and wheel, we should make add those collections / explorer inside the already existing pages, just make a select to choose between the car, ball or wheel textures. We should also manage how they are stored locally and how they are stored in the public repo. + Do they need variants ? I suppose yes, a ball even if the same object can have different textures for a same logo.
-  
+
+- [ ] Automate the release process for new versions of the tauri app. Using GitHub Actions (maybe triggered on release branch push)
+  - For now I am currently testing this on another repository (just for the testing purpose)
+
 - [ ] Install All Variants button
 - [ ] Update All Installed Button
 
