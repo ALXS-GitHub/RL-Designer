@@ -1,0 +1,50 @@
+{
+  "ball_textures": [
+    {
+      "name": "Aespa",
+      "variants": [
+        {
+          "variant": "Default",
+          "files": [
+            "diffuse.png",
+            "Template.json"
+          ]
+        }
+      ],
+      "preview_path": "ball_textures/Aespa/Default/diffuse.png"
+    },
+    {
+      "name": "Itzy",
+      "variants": [
+        {
+          "variant": "Default",
+          "files": [
+            "diffuse.png",
+            "Template.json"
+          ]
+        },
+        {
+          "variant": "Zomahx",
+          "files": [
+            "diffuse.png",
+            "Template.json"
+          ]
+        }
+      ],
+      "preview_path": "ball_textures/Itzy/Default/diffuse.png"
+    },
+    {
+      "name": "Zomahx",
+      "variants": [
+        {
+          "variant": "Zomahx",
+          "files": [
+            "diffuse.png",
+            "Template.json"
+          ]
+        }
+      ],
+      "preview_path": "ball_textures/Zomahx/Zomahx/diffuse.png"
+    }
+  ]
+}
