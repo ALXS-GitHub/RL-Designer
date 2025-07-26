@@ -42,12 +42,20 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
                 children: (
                     <div className="global-dropdown remove-decal">
                         <FaTrash className="icon" />
-                        Remove
+                        Remove All
                     </div>
                 ),
                 onClick: () => {
                     // Logic to remove the decal
-                    // use the confirmation dialog store to confirm removal
+                    openConfirmationDialog(
+                        `Are you sure you want to remove all variants for decal ${decal.name}?`,
+                        () => {
+                            for (const variant of decal.variants) {
+                                removeDecalVariant(decal.name, variant);
+                            }
+                        },
+                        () => {}
+                    );
                 },
             }
         ];

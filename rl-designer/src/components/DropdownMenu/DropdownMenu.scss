@@ -44,6 +44,7 @@
 
   &__content {
     position: absolute;
+    width: max-content;
     bottom: calc(100% + var(--space-1)); // Position below the toggle with a small gap
     right: 50%; // Align to the right of the toggle, adjust if needed
     transform: translateX(50%); 

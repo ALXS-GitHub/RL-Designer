@@ -27,6 +27,37 @@ const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
         return <img src={Placeholder} alt="Placeholder image" className="decal-image" />;
     }
 
+    const generateGlobalDropdownItems = () => {
+        const items = [
+            {
+                children: (
+                    <div className="global-dropdown preview-decal">
+                        <FaEye className="icon" />
+                        Preview
+                    </div>
+                ),
+                onClick: () => {
+                    // Logic to preview the decal
+                    console.log(`Preview decal ${decal.name}`);
+                },
+            },
+            {
+                children: (
+                    <div className="global-dropdown download-decal">
+                        <FaDownload className="icon" />
+                        Install / Update All
+                    </div>
+                ),
+                onClick: () => {
+                    for (const variant of decal.variants) {
+                        downloadDecalVariant(decal.name, variant);
+                    }
+                },
+            }
+        ];
+        return items;
+    }
+
     const generateVariantItems = (variant: string) => {
         const items = [
             {
@@ -69,7 +100,13 @@ const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
 
     return (
         <>
-            <DecalCardDesign decal={decal} generateVariantDropdownItems={generateVariantItems} previewImage={renderImage(decal)} extraVariantClasses={extraVariantClasses} />
+            <DecalCardDesign 
+                decal={decal} 
+                generateGlobalDropdownItems={generateGlobalDropdownItems} 
+                generateVariantDropdownItems={generateVariantItems} 
+                previewImage={renderImage(decal)} 
+                extraVariantClasses={extraVariantClasses} 
+            />
         </>
     );
 };
