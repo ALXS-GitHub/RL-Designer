@@ -1,7 +1,7 @@
 import React from 'react';
 import type { DecalTextures } from '@/types';
 import Placeholder from '@/assets/placeholder.jpg';
-import { useExplorer } from '@/hooks/useExplorer';
+import { useExplorerActions } from '@/hooks/useExplorer';
 
 import DecalCardDesign from "./DecalCardDesign"
 import useCollection from '@/hooks/useCollection';
@@ -13,7 +13,7 @@ interface DecalCardExplorerProps {
 
 const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
 
-    const { downloadDecalVariant } = useExplorer();
+    const { downloadDecalVariant } = useExplorerActions();
     const { decals: collectionDecals } = useCollection();
 
     const isVariantInstalled = (decalName: string, variant: string) => {
@@ -27,7 +27,7 @@ const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
         return <img src={Placeholder} alt="Placeholder image" className="decal-image" />;
     }
 
-    const generateItems = (variant: string) => {
+    const generateVariantItems = (variant: string) => {
         const items = [
             {
                 children: (
@@ -69,7 +69,7 @@ const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
 
     return (
         <>
-            <DecalCardDesign decal={decal} generateDropdownItems={generateItems} previewImage={renderImage(decal)} extraVariantClasses={extraVariantClasses} />
+            <DecalCardDesign decal={decal} generateVariantDropdownItems={generateVariantItems} previewImage={renderImage(decal)} extraVariantClasses={extraVariantClasses} />
         </>
     );
 };

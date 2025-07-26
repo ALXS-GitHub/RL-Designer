@@ -130,20 +130,29 @@ def update_tauri_config(file_path: Path, new_version: str) -> bool:
         return False
 
 def update_cargo_toml(file_path: Path, new_version: str) -> bool:
-    """Update version in Cargo.toml"""
+    """Update version in Cargo.toml (only under [package] section)"""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
         
-        # Find current version
-        version_match = re.search(r'version\s*=\s*["\']([^"\']+)["\']', content)
-        old_version = version_match.group(1) if version_match else 'unknown'
+        # Pattern to match version line specifically under [package] section
+        # This looks for [package] followed by any content, then captures the version line
+        pattern = r'(\[package\](?:[^\[])*?)version\s*=\s*["\']([^"\']+)["\']'
         
-        # Replace version
+        match = re.search(pattern, content, re.DOTALL | re.MULTILINE)
+        
+        if not match:
+            print(f"⚠️  version field not found under [package] section in {file_path.name}")
+            return False
+        
+        old_version = match.group(2)
+        
+        # Replace only the version under [package] section
         new_content = re.sub(
-            r'(version\s*=\s*["\'])[^"\']+(["\'])',
-            f'\\g<1>{new_version}\\g<2>',
-            content
+            r'(\[package\](?:[^\[])*?)version\s*=\s*["\'][^"\']+["\']',
+            rf'\1version = "{new_version}"',
+            content,
+            flags=re.DOTALL | re.MULTILINE
         )
         
         with open(file_path, 'w', encoding='utf-8') as f:
@@ -322,12 +331,27 @@ def read_version_from_json(file_path: Path) -> str:
         return 'error'
 
 def read_version_from_cargo(file_path: Path) -> str:
-    """Read version from Cargo.toml"""
+    """Read version from Cargo.toml (only from [package] section)"""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
-            content = f.read()
-        version_match = re.search(r'version\s*=\s*["\']([^"\']+)["\']', content)
-        return version_match.group(1) if version_match else 'not found'
+            lines = f.readlines()
+        
+        in_package_section = False
+        
+        for line in lines:
+            stripped_line = line.strip()
+            
+            # Check if we're entering a new section
+            if stripped_line.startswith('['):
+                in_package_section = stripped_line == '[package]'
+            
+            # If we're in package section and this is a version line
+            if in_package_section and stripped_line.startswith('version'):
+                version_match = re.search(r'version\s*=\s*["\']([^"\']+)["\']', line)
+                if version_match:
+                    return version_match.group(1)
+        
+        return 'not found'
     except:
         return 'error'
 

@@ -6,6 +6,7 @@ import type { ElementType } from '@/constants/elements';
 import { ELEMENTS } from '@/constants/elements';
 import useSelectedElementStore from '@/stores/selectedElementStore';
 import ElementTypeSelect from '@/components/DropdownMenu/ElementTypeSelect/ElementTypeSelect';
+import UpdateAllButton from '@/components/UpdateAllButton/UpdateAllButton';
 
 import './Collection.scss';
 
@@ -24,6 +25,7 @@ const Collection = () => {
           onElementChange={setSelectedElement}
           className="collection__element-select"
         />
+      <UpdateAllButton className="collection__update-all-button" />
       <div className="collection__decals">
       {decals.map((decal) => (
           <DecalCardCollection key={decal.name} decal={decal} />

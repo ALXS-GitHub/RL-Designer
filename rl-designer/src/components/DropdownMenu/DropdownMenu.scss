@@ -2,6 +2,11 @@
   position: relative;
   display: flex;
 
+  &--cursor {
+    // When using cursor positioning, the container doesn't need to be relative
+    position: static;
+  }
+
   &__toggle {
     cursor: pointer;
     padding: var(--space-2); // 8px
@@ -47,7 +52,6 @@
     border-radius: var(--radius-md); // 6px
     box-shadow: var(--shadow-lg);
     padding: var(--space-2) 0; // Padding top/bottom, no left/right for items to fill
-    // min-width: 180px;
     z-index: var(--z-dropdown, 1000); // Ensure it's above other content
     display: flex;
     flex-direction: column;

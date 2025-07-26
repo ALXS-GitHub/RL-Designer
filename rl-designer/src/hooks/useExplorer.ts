@@ -4,14 +4,58 @@ import { useCarCollectionStore } from '@/stores/collectionStore'
 import type { ElementType } from '@/constants/elements';
 import { ElementsMap } from '@/constants/elementsMap';
 import useSelectedElementStore from '@/stores/selectedElementStore';
+import type { DecalTextures } from '@/types';
+import { useQuery } from '@tanstack/react-query';
+import { getDecalsFromGitHub } from '@/services/explorer';
+import { useState } from 'react';
 
-interface UseExplorerReturn {
+interface UseExplorerDataReturn {
+    decals: DecalTextures[];
+    isLoading: boolean;
+    isError: Error | null;
+}
+
+export const useExplorerData = (): UseExplorerDataReturn => {
+    const { selectedElement } = useSelectedElementStore();
+    // const { useStore } = ElementsMap[selectedElement];
+    // const { decals, setDecals } = useStore();
+    const [decals, setDecals] = useState<DecalTextures[]>([]);
+    const { isLoading, isError, executeAsync } = useAsyncOperations();
+
+
+    const fetchData = async () => {
+    return executeAsync({
+        operation: async () => {
+        const result = await getDecalsFromGitHub(selectedElement);
+        if (!result.success) throw new Error(result.error || 'Failed to fetch decals');
+        setDecals(result.decals);
+        return result.decals;
+        }, 
+        errorMessage: `Failed to fetch explorer decals for ${selectedElement}`,
+    });
+    };
+
+    useQuery({
+        queryKey: ['GitDecals', selectedElement],
+        queryFn: fetchData,
+        refetchOnWindowFocus: false,
+        retry: false,
+    });
+
+    return {
+        decals,
+        isLoading,
+        isError,
+    };
+};
+
+interface UseExplorerActionsReturn {
     downloadDecalVariant: (decalName: string, variantName: string) => Promise<string | undefined>;
     isLoading: boolean;
     isError: Error | null;
 }
 
-export const useExplorer = (): UseExplorerReturn => {
+export const useExplorerActions = (): UseExplorerActionsReturn => {
     const { selectedElement } = useSelectedElementStore();
     const { useStore } = ElementsMap[selectedElement];
     const { addVariant } = useStore();

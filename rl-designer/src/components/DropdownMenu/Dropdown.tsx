@@ -9,11 +9,13 @@ export interface DropdownItem {
 export interface DropdownProps {
   items: DropdownItem[];
   setIsOpen?: (isOpen: boolean) => void;
+  className?: string;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({ 
     items,
     setIsOpen,
+    className = '',
 }) => {
 
     const handleItemClick = (action: () => void) => {
@@ -22,7 +24,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     };
 
     return (
-    <div className="dropdown-menu__content" role="menu">
+    <div className={`dropdown-menu__content ${className}`} role="menu">
         {items.map((item, index) => (
         <div
             key={index}

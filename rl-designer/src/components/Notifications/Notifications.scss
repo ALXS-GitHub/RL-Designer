@@ -1,6 +1,7 @@
 .journal-notification-container {
   width: auto;
   max-width: 400px;
+  z-index: var(--z-notification);
 }
 
 .journal-notification {

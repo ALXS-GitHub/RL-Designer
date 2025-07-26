@@ -1,14 +1,14 @@
 .decal-card {
-    display: flex;
-    width: $decal-card-width;
-    flex-direction: column;
-    background-color: var(--gray-50);
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius-xl);
-    padding: var(--space-4);
-    gap: var(--space-3);
-    transition: var(--transition-all);
-    box-shadow: var(--shadow-sm);
+  display: flex;
+  width: $decal-card-width;
+  flex-direction: column;
+  background-color: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  gap: var(--space-3);
+  transition: var(--transition-all);
+  box-shadow: var(--shadow-sm);
 
   &:hover {
     transform: translateY(-2px);
@@ -34,36 +34,13 @@
     line-height: var(--leading-tight);
   }
 
+
+
   .variants {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-2);
     justify-content: center;
-
-    .variant-dropdown {
-
-        position: relative;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: var(--space-2);
-        font-weight: var(--font-medium);
-        font-size: var(--text-md);
-
-        &.remove-decal {
-            color: var(--red-600);
-        }
-
-        &.download-decal {
-            color: var(--blue-600);
-        }
-
-        &.update-decal {
-            color: var(--green-600);
-        }
-    }
-
-
 
     .variant {
       padding: var(--space-1_5) var(--space-3);
@@ -99,5 +76,29 @@
 
       }
     }
+  }
+}
+
+.variant-dropdown,
+.global-dropdown {
+
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: var(--font-medium);
+  font-size: var(--text-md);
+
+  &.remove-decal {
+      color: var(--red-600);
+  }
+
+  &.download-decal {
+      color: var(--blue-600);
+  }
+
+  &.update-decal {
+      color: var(--green-600);
   }
 }

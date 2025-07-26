@@ -5,19 +5,16 @@
 
 ## Important
 
-- [ ] Add ball texture support
-- [ ] Add wheel texture support
-  - For both ball and wheel, we should make add those collections / explorer inside the already existing pages, just make a select to choose between the car, ball or wheel textures. We should also manage how they are stored locally and how they are stored in the public repo. + Do they need variants ? I suppose yes, a ball even if the same object can have different textures for a same logo.
 
-- [~] Automate the release process for new versions of the tauri app. Using GitHub Actions (maybe triggered on release branch push) -> Still need to check if it works...
 
+- [ ] Install All Variants button
 - [ ] Make the preview thumbnails (with the car and decal on it), when hovering a variant, it should change the preview thumbnail to the one of the variant. After this in the dedicated preview page, the user should be able to switch between the variants but also change the color of the car (primary and secondary color) to see how it looks with the decal.
 
 ## Medium
 
-- [ ] Install All Variants button
-- [ ] Update All Installed Button - At the same place as the type select, add the update all button.
 - [ ] Add the Hyperbeast decal.
+- [ ] Add wheel texture support
+  - For both ball and wheel, we should make add those collections / explorer inside the already existing pages, just make a select to choose between the car, ball or wheel textures. We should also manage how they are stored locally and how they are stored in the public repo. + Do they need variants ? I suppose yes, a ball even if the same object can have different textures for a same logo.
 
 ## Low
 
@@ -47,3 +44,7 @@
 - [X] Make a version management script that update the version app everywhere it needs to be updated (tauri.conf.json, package.json, etc.).
 - [X] Move the .env vars to constants in the app, it will be easier for deployment
 - [X] Check https://github.com/smallest-cock/Custom-Ball-Online, this is a patch for allowing custom ball textures in online games. If possible make an automatic installation/updater script for it.
+- [X] Fix infinite loading when refreshing on the Collection page.
+- [X] Update All Installed Button - At the same place as the type select, add the update all button.
+- [X] Add ball texture support
+- [X] Automate the release process for new versions of the tauri app. Using GitHub Actions (maybe triggered on release branch push) -> Still need to check if it works...

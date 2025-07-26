@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import type { DecalTextures } from '@/types';
 import DropdownMenu from '@/components/DropdownMenu/DropdownMenu';
+import Dropdown from '@/components/DropdownMenu/Dropdown';
 import type { DropdownItem } from '../DropdownMenu/Dropdown';
 
 
@@ -9,28 +10,44 @@ import './DecalCard.scss';
 interface DecalCardProps {
   decal: DecalTextures;
   previewImage: React.ReactNode;
-  generateDropdownItems?: (variant: string) => DropdownItem[];
+  generateGlobalDropdownItems?: () => DropdownItem[];
+  generateVariantDropdownItems?: (variant: string) => DropdownItem[];
   extraVariantClasses?: (variant: string) => string;
 }
 
-// TODO for better management, the decalCard design should have its own component, and 
-// we should make two separate components to manage the logic for collection vs git.
+// TODO : add the card click to download all variants
 const DecalCard = ({ 
     decal,
     previewImage,
-    generateDropdownItems = (variant: string) => [],
+    generateGlobalDropdownItems = () => [],
+    generateVariantDropdownItems = (variant: string) => [],
     extraVariantClasses = (variant: string) => '',
 }: DecalCardProps) => {
 
+    const [parentDropdownOpen, setParentDropdownOpen] = useState(false);
+
+    const stopPropagation = (e: React.MouseEvent) => {
+        e.stopPropagation(); // Prevent the click from bubbling up
+    }
+
+    const handleChildDropdownOpen = () => {
+        // Close parent dropdown when any child dropdown opens
+        setParentDropdownOpen(false);
+    };
+
     return (
-        <div className="decal-card">
+        <DropdownMenu
+        isOpen={parentDropdownOpen}
+        setIsOpen={setParentDropdownOpen}
+        button={<div className="decal-card">
             {previewImage}
             <h2>{decal.name}</h2>
-            <div className="variants">
+            <div className="variants" onClick={stopPropagation}>
                 {decal.variants.map((variant) => (
                     <DropdownMenu 
                         key={variant} 
-                        items={generateDropdownItems(variant)}
+                        onOpen={handleChildDropdownOpen}
+                        items={generateVariantDropdownItems(variant)}
                         button={
                         <div className={`variant ${extraVariantClasses ? extraVariantClasses(variant) : ''}`}>
                             {variant}
@@ -39,8 +56,11 @@ const DecalCard = ({
                     />
                 ))}
             </div>
-        </div>
-    )
+        </div>}
+        items={generateGlobalDropdownItems()}
+        dropdownAtCursor
+    />
+    );
 
 }
 

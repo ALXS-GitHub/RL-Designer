@@ -1,36 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import './Explore.scss';
-import { getDecalsFromGitHub } from '@/services/explorer';
-import type { DecalTextures } from '@/types';
 import DecalCardExplorer from '@/components/DecalCard/DecalCardExplorer';
-import { useQuery } from '@tanstack/react-query';
 import { Loading, Error } from '@/components';
 import useSelectedElementStore from '@/stores/selectedElementStore';
 import ElementTypeSelect from '@/components/DropdownMenu/ElementTypeSelect/ElementTypeSelect';
+import { useExplorerData } from '@/hooks/useExplorer'
+import useCollection from '@/hooks/useCollection';
+import UpdateAllButton from '@/components/UpdateAllButton/UpdateAllButton';
 
 const Explore = () => {
 
+  useCollection(); // Ensure collection store is initialized
   const { selectedElement, setSelectedElement } = useSelectedElementStore();
-  const [decals, setDecals] = useState<DecalTextures[]>([]);
+  const { decals, isLoading, isError } = useExplorerData();
 
-  const { data: decalsData, error: decalsError, isLoading: decalsLoading } = useQuery({
-    queryKey: ['GitDecals', selectedElement],
-    queryFn: () => getDecalsFromGitHub(selectedElement),
-    refetchOnWindowFocus: false,
-  });
-
-  useEffect(() => {
-    if (decalsData) {
-      setDecals(decalsData.decals);
-    }
-  }, [decalsData]);
-
-  if (decalsLoading) {
+  if (isLoading) {
     return <Loading />;
   }
 
-  if (decalsError) {
-    return <Error message={decalsError.message} />;
+  if (isError) {
+    return <Error message={isError.message} />;
   }
 
   return (
@@ -41,6 +30,7 @@ const Explore = () => {
           onElementChange={setSelectedElement}
           className="explore__element-select"
         />
+        <UpdateAllButton className="explore__update-all-button" />
       <div className="explore__decals">
       {decals.map((decal) => (
           <DecalCardExplorer key={decal.name} decal={decal} />

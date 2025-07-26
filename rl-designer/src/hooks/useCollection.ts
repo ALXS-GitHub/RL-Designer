@@ -29,7 +29,8 @@ const useCollection = (): UseCollectionReturn => {
         if (!result.success) throw new Error(result.error || 'Failed to fetch decals');
         setDecals(result.decals);
         return result.decals;
-      }
+      },
+      errorMessage: `Failed to fetch collection decals for ${selectedElement}`,
     });
   };
 

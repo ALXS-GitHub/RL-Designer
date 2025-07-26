@@ -24,7 +24,37 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
         return <img src={Placeholder} alt="Placeholder image" className="decal-image" />;
     }
 
-    const generateItems = (variant: string) => {
+    const generateGlobalDropdownItems = () => {
+        const items = [
+            {
+                children: (
+                    <div className="global-dropdown preview-decal">
+                        <FaEye className="icon" />
+                        Preview
+                    </div>
+                ),
+                onClick: () => {
+                    // Logic to preview the decal
+                    console.log(`Preview decal ${decal.name}`);
+                },
+            },
+            {
+                children: (
+                    <div className="global-dropdown remove-decal">
+                        <FaTrash className="icon" />
+                        Remove
+                    </div>
+                ),
+                onClick: () => {
+                    // Logic to remove the decal
+                    // use the confirmation dialog store to confirm removal
+                },
+            }
+        ];
+        return items;
+    }
+
+    const generateVariantItems = (variant: string) => {
         const items = [
             {
                 children: (
@@ -60,7 +90,12 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
     }
     return (
         <>
-            <DecalCardDesign decal={decal} generateDropdownItems={generateItems} previewImage={renderImage(decal)} />
+            <DecalCardDesign 
+                decal={decal} 
+                generateGlobalDropdownItems={generateGlobalDropdownItems}
+                generateVariantDropdownItems={generateVariantItems} 
+                previewImage={renderImage(decal)} 
+            />
         </>
     );
 };
