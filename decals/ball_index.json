@@ -8,10 +8,10 @@
           "files": [
             "diffuse.png",
             "Template.json"
-          ]
+          ],
+          "preview_path": "ball_textures/Aespa/Default/diffuse.png"
         }
-      ],
-      "preview_path": "ball_textures/Aespa/Default/diffuse.png"
+      ]
     },
     {
       "name": "Itzy",
@@ -21,17 +21,18 @@
           "files": [
             "diffuse.png",
             "Template.json"
-          ]
+          ],
+          "preview_path": "ball_textures/Itzy/Default/diffuse.png"
         },
         {
           "variant": "Zomahx",
           "files": [
             "diffuse.png",
             "Template.json"
-          ]
+          ],
+          "preview_path": "ball_textures/Itzy/Zomahx/diffuse.png"
         }
-      ],
-      "preview_path": "ball_textures/Itzy/Default/diffuse.png"
+      ]
     },
     {
       "name": "Zomahx",
@@ -41,10 +42,10 @@
           "files": [
             "diffuse.png",
             "Template.json"
-          ]
+          ],
+          "preview_path": "ball_textures/Zomahx/Zomahx/diffuse.png"
         }
-      ],
-      "preview_path": "ball_textures/Zomahx/Zomahx/diffuse.png"
+      ]
     }
   ]
 }
