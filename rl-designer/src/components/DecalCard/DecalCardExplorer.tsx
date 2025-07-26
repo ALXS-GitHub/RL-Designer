@@ -17,13 +17,16 @@ const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
     const { decals: collectionDecals } = useCollection();
 
     const isVariantInstalled = (decalName: string, variant: string) => {
-        return collectionDecals.some(d => d.name === decalName && d.variants.includes(variant));
+        return collectionDecals.some(d => d.name === decalName && d.variants.some(v => v.variant_name === variant));
     }
 
-    const renderImage = (decal: DecalTextures) => {
-        if (decal.preview_path && decal.preview_path.startsWith('http')) {
-            return <img src={decal.preview_path} alt={`${decal.name} preview`} className="decal-image" />;
+    // TODO update this to change the image on hover variants
+    const renderImage = (variant_name: string) => {
+        const variant = decal.variants.find(v => v.variant_name === variant_name);
+        if (variant?.preview_path && variant.preview_path.startsWith('http')) {
+            return <img src={variant.preview_path} alt={`${decal.name} preview`} className="decal-image" />;
         }
+
         return <img src={Placeholder} alt="Placeholder image" className="decal-image" />;
     }
 
@@ -50,7 +53,7 @@ const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
                 ),
                 onClick: () => {
                     for (const variant of decal.variants) {
-                        downloadDecalVariant(decal.name, variant);
+                        downloadDecalVariant(decal.name, variant.variant_name);
                     }
                 },
             }
@@ -104,7 +107,7 @@ const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
                 decal={decal} 
                 generateGlobalDropdownItems={generateGlobalDropdownItems} 
                 generateVariantDropdownItems={generateVariantItems} 
-                previewImage={renderImage(decal)} 
+                previewImage={renderImage} 
                 extraVariantClasses={extraVariantClasses} 
             />
         </>

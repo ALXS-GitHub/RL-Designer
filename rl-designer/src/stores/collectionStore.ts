@@ -1,11 +1,11 @@
 import { create } from "zustand";
-import type { DecalTextures } from "@/types";
+import type { DecalTextures, VariantFrontInfo } from "@/types";
 
 export interface CollectionState {
     decals: DecalTextures[];
     setDecals: (decals: DecalTextures[]) => void;
-    addVariant: (decal: string, variant: string) => void;
-    removeVariant: (decal: string, variant: string) => void;
+    addVariant: (decal: string, variant: VariantFrontInfo) => void;
+    removeVariant: (decal: string, variant_name: string) => void;
     addDecal: (decal: DecalTextures) => void;
     removeDecal: (decal: DecalTextures) => void;
 }
@@ -23,7 +23,7 @@ const createCollectionStore = () => {
                         d.name === decal 
                             ? { 
                                 ...d, 
-                                variants: d.variants.includes(variant) 
+                                variants: d.variants.some(v => v.variant_name === variant.variant_name) 
                                     ? d.variants 
                                     : [...d.variants, variant] 
                             } 
@@ -36,9 +36,9 @@ const createCollectionStore = () => {
                 };
             }
         }),
-        removeVariant: (decal, variant) => set((state) => {
+        removeVariant: (decal, variant_name) => set((state) => {
             const updatedDecals = state.decals.map(d =>
-                d.name === decal ? { ...d, variants: d.variants.filter(v => v !== variant) } : d
+                d.name === decal ? { ...d, variants: d.variants.filter(v => v.variant_name !== variant_name) } : d
             );
             
             // Remove any decals that now have empty variant arrays

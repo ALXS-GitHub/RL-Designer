@@ -60,10 +60,9 @@
     align-items: center;
   }
 
-
   &-image {
-    width: 60px; /* Adjust size as needed */
-    height: 60px; /* Adjust size as needed */
+    width: 60px;
+    height: 60px;
     border-radius: var(--radius-full);
     margin-right: var(--space-2);
   }
@@ -73,7 +72,6 @@
     font-weight: var(--font-semibold);
     color: var(--gray-800);
   }
-
 }
 
 .navbar__logo-english {
@@ -84,6 +82,22 @@
   display: flex;
   align-items: center;
   height: 100%;
+
+  // Desktop links - visible by default
+  &--desktop {
+    @media (max-width: 896px) {
+      display: none;
+    }
+  }
+
+  // Mobile burger menu - hidden by default
+  &--mobile {
+    display: none;
+    
+    @media (max-width: 896px) {
+      display: flex;
+    }
+  }
 
   ul {
     list-style: none;
@@ -104,57 +118,81 @@
       margin-left: 0;
     }
 
-    // Target the NavLink inside the list item
     a {
       display: flex;
       align-items: center;
-      height: 100%; // Ensure link fills height
+      height: 100%;
       color: var(--gray-700);
       text-decoration: none;
-      padding: 0 var(--space-4); // Keep padding for text spacing
+      padding: 0 var(--space-4);
       font-size: var(--text-base);
       font-weight: var(--font-medium);
-      position: relative; // Needed for absolute positioning of underline
+      position: relative;
       transition: color var(--duration-100);
-      border-radius: var(--radius-sm); // Keep subtle rounding if desired
+      border-radius: var(--radius-sm);
 
-      // Remove direct hover color change if animation handles it
-      // &:hover {
-      //   color: var(--primary-color);
-      // }
-
-      // Style for active NavLink
       &.active {
         color: var(--primary-color);
         font-weight: var(--font-semibold);
-        // Remove background color if underline indicates active state
-        // background-color: var(--color-gray-100);
       }
 
-      // Style for the animated underline span
       .navbar__underline {
         position: absolute;
-        bottom: 10px; // Position underline below text, adjust as needed
-        left: var(--space-4); // Align with text padding
-        right: var(--space-4); // Align with text padding
-        height: 2px; // Thickness of the underline
-        background-color: var(--primary-color); // Color of the underline
-        transform-origin: center; // Ensure scaling happens from the center
+        bottom: 10px;
+        left: var(--space-4);
+        right: var(--space-4);
+        height: 2px;
+        background-color: var(--primary-color);
+        transform-origin: center;
       }
 
-      // Optionally make active link's underline always visible
       &.active .navbar__underline {
-         transform: scaleX(1); // Keep underline visible for active link
+         transform: scaleX(1);
       }
     }
   }
 }
 
-.navbar__arrows {
+.navbar__burger {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  margin-left: var(--space-6);
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--gray-300);
+  background-color: var(--gray-100);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-200);
+  font-size: var(--text-lg);
+  color: var(--gray-700);
+
+  &:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-200);
+  }
+}
+
+.navbar__mobile-dropdown {
+  top: calc(100% + var(--space-1)); // Position below the toggle with a small gap
+  right: 0%;
+  transform: translateX(0%);
+  height: max-content
+  
+  // .dropdown-item {
+  //   padding: var(--space-3) var(--space-4);
+  //   font-weight: var(--font-medium);
+    
+  //   &:hover {
+  //     background-color: var(--primary-100);
+  //     color: var(--primary-700);
+  //   }
+  // }
 }
 
 .navbar__arrows {
@@ -162,6 +200,11 @@
   align-items: center;
   gap: var(--space-2);
   margin-left: var(--space-6);
+
+  @media (max-width: 640px) {
+    margin-left: var(--space-4);
+    gap: var(--space-1);
+  }
 }
 
 .navbar__arrow {
@@ -176,6 +219,11 @@
   justify-content: center;
   cursor: pointer;
   overflow: hidden;
+  
+  @media (max-width: 640px) {
+    width: 36px;
+    height: 36px;
+  }
   
   &:hover {
     border-color: var(--primary-color);
@@ -200,4 +248,39 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  @media (max-width: 640px) {
+    font-size: var(--text-xs);
+  }
+}
+
+// Additional responsive adjustments
+@media (max-width: 640px) {
+  .navbar__container {
+    padding: 0 var(--space-4);
+  }
+  
+  .navbar__logo {
+    &-image {
+      width: 50px;
+      height: 50px;
+      margin-right: var(--space-1_5);
+    }
+    
+    &-text {
+      font-size: var(--text-base);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar__logo {
+    &-text {
+      display: none; // Hide text on very small screens
+    }
+    
+    &-image {
+      margin-right: 0;
+    }
+  }
 }

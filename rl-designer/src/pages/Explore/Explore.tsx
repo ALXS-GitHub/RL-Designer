@@ -7,6 +7,7 @@ import ElementTypeSelect from '@/components/DropdownMenu/ElementTypeSelect/Eleme
 import { useExplorerData } from '@/hooks/useExplorer'
 import useCollection from '@/hooks/useCollection';
 import UpdateAllButton from '@/components/UpdateAllButton/UpdateAllButton';
+import DecalsContainer from '@/containers/DecalsContainer/DecalsContainer';
 
 const Explore = () => {
 
@@ -23,21 +24,17 @@ const Explore = () => {
   }
 
   return (
-    <div className="explore">
-      <h1>Explore Page</h1>
-      <ElementTypeSelect
-          selectedElement={selectedElement}
-          onElementChange={setSelectedElement}
-          className="explore__element-select"
-        />
-        <UpdateAllButton className="explore__update-all-button" />
-      <div className="explore__decals">
-      {decals.map((decal) => (
-          <DecalCardExplorer key={decal.name} decal={decal} />
-      ))}
+    <DecalsContainer>
+      <div className="explore">
+        <h1>Explore Page</h1>
+        <div className="explore__decals">
+        {decals.map((decal) => (
+            <DecalCardExplorer key={decal.name} decal={decal} />
+        ))}
+        </div>
+        {decals.length === 0 && <div className="explore__empty">No decals found in Explorer.</div>}
       </div>
-      {decals.length === 0 && <div className="explore__empty">No decals found in Explorer.</div>}
-    </div>
+    </DecalsContainer>
   );
 };
 

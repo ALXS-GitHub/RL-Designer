@@ -17,10 +17,13 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
     const { removeDecalVariant } = useCollection();
     const { openConfirmationDialog } = useConfirmationDialogStore();
 
-    const renderImage = (decal: DecalTextures) => {
-        if (decal.preview_path) {
-            return <img src={convertFileSrc(decal.preview_path)} alt={`${decal.name} preview`} className="decal-image" />;
+    // TODO update this to change the image on hover variants
+    const renderImage = (variant_name: string) => {
+        const variant = decal.variants.find(v => v.variant_name === variant_name);
+        if (variant?.preview_path) {
+            return <img src={convertFileSrc(variant.preview_path)} alt={`${decal.name} preview`} className="decal-image" />;
         }
+
         return <img src={Placeholder} alt="Placeholder image" className="decal-image" />;
     }
 
@@ -51,7 +54,7 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
                         `Are you sure you want to remove all variants for decal ${decal.name}?`,
                         () => {
                             for (const variant of decal.variants) {
-                                removeDecalVariant(decal.name, variant);
+                                removeDecalVariant(decal.name, variant.variant_name);
                             }
                         },
                         () => {}
@@ -102,7 +105,7 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
                 decal={decal} 
                 generateGlobalDropdownItems={generateGlobalDropdownItems}
                 generateVariantDropdownItems={generateVariantItems} 
-                previewImage={renderImage(decal)} 
+                previewImage={renderImage} 
             />
         </>
     );

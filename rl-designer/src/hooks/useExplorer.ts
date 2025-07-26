@@ -65,8 +65,8 @@ export const useExplorerActions = (): UseExplorerActionsReturn => {
         return executeAsync({
             operation: async () => {
                 const result = await downloadDecalVariantService({ elementType: selectedElement, decalName, variantName });
-                if (!result.success) throw new Error(result.error || 'Failed to download decal variant');
-                addVariant(decalName, variantName);
+                if (!result.success || !result.variant_info) throw new Error(result.error || 'Failed to download decal variant');
+                addVariant(decalName, result.variant_info);
                 return result.message;
             },
             successMessage: `Downloaded variant ${variantName} of decal ${decalName}`,

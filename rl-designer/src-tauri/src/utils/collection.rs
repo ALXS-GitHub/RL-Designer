@@ -1,5 +1,5 @@
 use crate::config::get_install_path;
-use crate::types::decal::DecalTextures;
+use crate::types::decal::{DecalTextures, VariantFrontInfo};
 use serde_json::Value;
 use std::fs;
 use crate::types::elements::ElementType;
@@ -53,18 +53,19 @@ pub fn fetch_decal_folders(element: ElementType) -> Result<Vec<DecalTextures>, S
                 continue;
             }
 
-            let mut decal = DecalTextures {
+            let variants_with_preview: Vec<VariantFrontInfo> = variants
+                .iter()
+                .map(|variant_name| VariantFrontInfo {
+                    variant_name: variant_name.clone(),
+                    preview_path: read_body_diffuse_from_variant(element, &path, variant_name).ok(),
+                })
+                .collect();
+
+            let decal = DecalTextures {
                 name: name.clone(),
-                variants: variants.clone(),
+                variants: variants_with_preview,
                 ..DecalTextures::default()
             };
-
-            if let Some(first_variant) = variants.first() {
-                let body_diffuse = read_body_diffuse_from_variant(element, &path, first_variant);
-                if let Ok(diffuse) = body_diffuse {
-                    decal.preview_path = Some(diffuse);
-                }
-            }
 
             folders.push(decal);
         }

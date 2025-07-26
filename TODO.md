@@ -5,14 +5,10 @@
 
 ## Important
 
-
-
-- [ ] Install All Variants button
-- [ ] Make the preview thumbnails (with the car and decal on it), when hovering a variant, it should change the preview thumbnail to the one of the variant. After this in the dedicated preview page, the user should be able to switch between the variants but also change the color of the car (primary and secondary color) to see how it looks with the decal.
+- [ ] Make the preview thumbnails (with the car and decal on it). In the dedicated preview page, the user should be able to switch between the variants but also change the color of the car (primary and secondary color) to see how it looks with the decal.
 
 ## Medium
 
-- [ ] Add the Hyperbeast decal.
 - [ ] Add wheel texture support
   - For both ball and wheel, we should make add those collections / explorer inside the already existing pages, just make a select to choose between the car, ball or wheel textures. We should also manage how they are stored locally and how they are stored in the public repo. + Do they need variants ? I suppose yes, a ball even if the same object can have different textures for a same logo.
 
@@ -48,3 +44,5 @@
 - [X] Update All Installed Button - At the same place as the type select, add the update all button.
 - [X] Add ball texture support
 - [X] Automate the release process for new versions of the tauri app. Using GitHub Actions (maybe triggered on release branch push) -> Still need to check if it works...
+- [X] Install All Variants button
+- [X] when hovering a variant, it should change the preview thumbnail to the one of the variant

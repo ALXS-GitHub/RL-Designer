@@ -7,6 +7,7 @@ import { ELEMENTS } from '@/constants/elements';
 import useSelectedElementStore from '@/stores/selectedElementStore';
 import ElementTypeSelect from '@/components/DropdownMenu/ElementTypeSelect/ElementTypeSelect';
 import UpdateAllButton from '@/components/UpdateAllButton/UpdateAllButton';
+import DecalsContainer from '@/containers/DecalsContainer/DecalsContainer';
 
 import './Collection.scss';
 
@@ -18,21 +19,17 @@ const Collection = () => {
   if (isError) return <Error message="Error loading collection" />;
 
   return (
-    <div className="collection">
-      <h1>My Collection</h1>
-      <ElementTypeSelect
-          selectedElement={selectedElement}
-          onElementChange={setSelectedElement}
-          className="collection__element-select"
-        />
-      <UpdateAllButton className="collection__update-all-button" />
-      <div className="collection__decals">
-      {decals.map((decal) => (
-          <DecalCardCollection key={decal.name} decal={decal} />
-      ))}
-      </div>
-      {decals.length === 0 && <div className="collection__empty">No decals found in your collection.</div>}
-  </div>
+    <DecalsContainer>
+      <div className="collection">
+        <h1>My Collection</h1>
+        <div className="collection__decals">
+        {decals.map((decal) => (
+            <DecalCardCollection key={decal.name} decal={decal} />
+        ))}
+        </div>
+        {decals.length === 0 && <div className="collection__empty">No decals found in your collection.</div>}
+    </div>
+  </DecalsContainer>
 );
 };
 

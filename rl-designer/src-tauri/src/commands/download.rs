@@ -1,11 +1,13 @@
 use crate::utils::download::download_decal_variant_logic;
 use crate::types::elements::ElementType;
+use crate::types::decal::VariantFrontInfo;
 
 #[derive(Debug, serde::Serialize)]
 pub struct DownloadResponse {
     success: bool,
     message: String,
     error: Option<String>,
+    variant_info: Option<VariantFrontInfo>,
 }
 
 async fn download_decal_variant_element_logic(
@@ -14,12 +16,13 @@ async fn download_decal_variant_element_logic(
     variant_name: &str,
 ) -> DownloadResponse  {
     match download_decal_variant_logic(element, &decal_name, &variant_name).await {
-        Ok(()) => DownloadResponse {
+        Ok(variant_info) => DownloadResponse {
             success: true,
             message: format!(
                 "Successfully downloaded '{}' variant '{}'",
                 decal_name, variant_name
             ),
+            variant_info: Some(variant_info),
             error: None,
         },
         Err(e) => DownloadResponse {
@@ -28,6 +31,7 @@ async fn download_decal_variant_element_logic(
                 "Failed to download '{}' variant '{}'",
                 decal_name, variant_name
             ),
+            variant_info: None,
             error: Some(e),
         },
     }

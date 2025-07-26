@@ -1,8 +1,13 @@
+#[derive(Debug, serde::Serialize, Clone)]
+pub struct VariantFrontInfo {
+    pub variant_name: String,
+    pub preview_path: Option<String>,
+}
+
 #[derive(Debug, serde::Serialize)]
 pub struct DecalTextures {
     pub name: String,
-    pub variants: Vec<String>,
-    pub preview_path: Option<String>,
+    pub variants: Vec<VariantFrontInfo>,
 }
 
 impl Default for DecalTextures {
@@ -10,7 +15,6 @@ impl Default for DecalTextures {
         DecalTextures {
             name: String::new(),
             variants: Vec::new(),
-            preview_path: None,
         }
     }
 }

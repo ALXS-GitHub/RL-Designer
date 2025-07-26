@@ -3,12 +3,14 @@ use crate::constants::GITHUB_DECALS_RAW_URL;
 use crate::utils::explorer::fetch_decal_index;
 use std::fs;
 use crate::types::elements::ElementType;
+use crate::types::decal::{DecalTextures, VariantFrontInfo};
+use crate::utils::collection::read_body_diffuse_from_variant;
 
 pub async fn download_decal_variant_logic(
     element: ElementType,
     decal_name: &str,
     variant_name: &str,
-) -> Result<(), String> {
+) -> Result<VariantFrontInfo, String> {
     // Get the list of files for the specified decal and variant
     let decals_index = fetch_decal_index(element).await?;
     let decal_info = decals_index
@@ -109,7 +111,14 @@ pub async fn download_decal_variant_logic(
         "Successfully downloaded decal '{}' variant '{}'",
         decal_name, variant_name
     );
-    Ok(())
+
+    // Read the body diffuse from the variant
+    let body_diffuse_path = read_body_diffuse_from_variant(element, &decal_dir, &variant_name).ok();
+
+    Ok(VariantFrontInfo {
+        variant_name: variant_name.to_string(),
+        preview_path: body_diffuse_path,
+    })
 }
 
 // Helper function for downloading decal files (for future use)

@@ -1,10 +1,11 @@
 import { invoke } from '@tauri-apps/api/core';
-import type { DecalTextures } from '@/types';
+import type { DecalTextures, VariantFrontInfo } from '@/types';
 import type { ElementType } from '@/constants/elements';
 
 interface DownloadResponse {
   success: boolean;
   message: string;
+  variant_info?: VariantFrontInfo;
   error?: string;
 }
 

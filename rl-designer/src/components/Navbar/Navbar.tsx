@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Route, Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { motion, easeOut } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import Logo from '@/assets/logo.png';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaBars, FaTimes } from 'react-icons/fa';
+import DropdownMenu from '@/components/DropdownMenu/DropdownMenu';
+import type { DropdownItem } from '@/components/DropdownMenu/Dropdown';
 
 import './Navbar.scss';
 
@@ -121,8 +123,8 @@ const ArrowButton: React.FC<{ onClick: () => void; icon: React.ReactNode }> = ({
   };
 
 const Navbar: React.FC<NavbarProps> = () => {
-
     const navigate = useNavigate();
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const handleBack = () => {
         navigate(-1);
@@ -132,14 +134,49 @@ const Navbar: React.FC<NavbarProps> = () => {
         navigate(1);
     }
 
+    const navigationItems: DropdownItem[] = [
+        {
+            children: <div>Home</div>,
+            onClick: () => {
+                navigate('/');
+                setIsMobileMenuOpen(false);
+            }
+        },
+        {
+            children: <div>About</div>,
+            onClick: () => {
+                navigate('/about');
+                setIsMobileMenuOpen(false);
+            }
+        },
+        {
+            children: <div>My Collection</div>,
+            onClick: () => {
+                navigate('/my-collection');
+                setIsMobileMenuOpen(false);
+            }
+        },
+        {
+            children: <div>Explore</div>,
+            onClick: () => {
+                navigate('/explore');
+                setIsMobileMenuOpen(false);
+            }
+        },
+        {
+            children: <div>How to</div>,
+            onClick: () => {
+                navigate('/how-to');
+                setIsMobileMenuOpen(false);
+            }
+        }
+    ];
+
     return (
         <div className="navbar">
-            {/* Use header semantic tag */}
             <div className="navbar__container">
-                {/* Container for centering */}
                 <div className="navbar__left">
                     <div className="navbar__logo">
-                        {/* Use NavLink for logo to link to home */}
                         <Link to="/" className="navbar__logo-link">
                             <img src={Logo} alt="RL Designer" className="navbar__logo-image" />
                             <span className="navbar__logo-text">RL Designer</span>
@@ -150,7 +187,9 @@ const Navbar: React.FC<NavbarProps> = () => {
                         <ArrowButton onClick={handleForward} icon={<FaArrowRight />} />
                     </div>
                 </div>
-                <div className="navbar__links">
+                
+                {/* Desktop Navigation */}
+                <div className="navbar__links navbar__links--desktop">
                     <ul>
                         <AnimatedNavItem to="/">Home</AnimatedNavItem>
                         <AnimatedNavItem to="/about">About</AnimatedNavItem>
@@ -160,6 +199,23 @@ const Navbar: React.FC<NavbarProps> = () => {
                         <AnimatedNavItem to="/explore">Explore</AnimatedNavItem>
                         <AnimatedNavItem to="/how-to">How to</AnimatedNavItem>
                     </ul>
+                </div>
+
+                {/* Mobile Navigation */}
+                <div className="navbar__links navbar__links--mobile">
+                    <DropdownMenu
+                        items={navigationItems}
+                        isOpen={isMobileMenuOpen}
+                        setIsOpen={setIsMobileMenuOpen}
+                        button={
+                            <div
+                                className="navbar__burger"
+                            >
+                                {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+                            </div>
+                        }
+                        dropdownClassName="navbar__mobile-dropdown"
+                    />
                 </div>
             </div>
         </div>

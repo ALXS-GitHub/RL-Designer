@@ -19,18 +19,18 @@ const UpdateAllButton: React.FC<UpdateAllButtonProps> = ({ className }) => {
     const { decals: explorerDecals } = useExplorerData();
     const { downloadDecalVariant } = useExplorerActions();
 
-    const [updatableDecals, setUpdatableDecals] = React.useState<{ name: string, variant: string }[]>([]);
+    const [updatableDecals, setUpdatableDecals] = React.useState<{ name: string, variant_name: string }[]>([]);
 
     const handleUpdateAll = async () => {
-        for (const { name, variant } of updatableDecals) {
-            downloadDecalVariant(name, variant);
+        for (const { name, variant_name } of updatableDecals) {
+            downloadDecalVariant(name, variant_name);
         }
     };
 
     useEffect(() => {
         if (!collectionDecals || !explorerDecals) return;
         if (collectionDecals.length === 0 || explorerDecals.length === 0) return;
-        const newUpdatableDecals: { name: string, variant: string }[] = [];
+        const newUpdatableDecals: { name: string, variant_name: string }[] = [];
         collectionDecals.forEach(collectionDecal => {
             const matchingExplorerDecal = explorerDecals.find(
                 explorerDecal => explorerDecal.name === collectionDecal.name
@@ -39,10 +39,12 @@ const UpdateAllButton: React.FC<UpdateAllButtonProps> = ({ className }) => {
             if (matchingExplorerDecal) {
                 // Find variants in explorer that are in collection
                 matchingExplorerDecal.variants.forEach(variant => {
-                    if (collectionDecal.variants.includes(variant)) {
+                    if (collectionDecal.variants.some(
+                        collectionVariant => collectionVariant.variant_name === variant.variant_name
+                    )) {
                         newUpdatableDecals.push({
                             name: collectionDecal.name,
-                            variant: variant
+                            variant_name: variant.variant_name
                         });
                     }
                 });

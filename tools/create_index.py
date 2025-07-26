@@ -96,20 +96,25 @@ def create_single_index(config):
             
             # Only add variant if it has files
             if files:
-                variants.append({
+                # Get preview path for this specific variant
+                preview_path = get_preview_path(texture_item_name, variant_name, files, config["dir"])
+                
+                variant_data = {
                     "variant": variant_name,
                     "files": files
-                })
+                }
+                
+                # Add preview_path only if it exists
+                if preview_path:
+                    variant_data["preview_path"] = preview_path
+                
+                variants.append(variant_data)
         
         # Only add texture if it has variants
         if variants:
-            # Get preview path from first variant
-            preview_path = get_preview_path(texture_item_name, variants[0], config["dir"]) if variants else None
-            
             index_data[texture_name].append({
                 "name": texture_item_name,
-                "variants": variants,
-                "preview_path": preview_path
+                "variants": variants
             })
     
     # Write the index file
@@ -121,18 +126,31 @@ def create_single_index(config):
     
     # Print summary
     for texture_item in index_data[texture_name]:
-        preview_status = "✅" if texture_item.get("preview_path") else "❌"
-        print(f"  📁 {texture_item['name']}: {len(texture_item['variants'])} variants {preview_status}")
+        variants_with_preview = sum(1 for v in texture_item['variants'] if v.get('preview_path'))
+        total_variants = len(texture_item['variants'])
+        print(f"  📁 {texture_item['name']}: {total_variants} variants ({variants_with_preview} with preview)")
+        
+        # Show preview status for each variant
+        for variant in texture_item['variants']:
+            preview_status = "✅" if variant.get("preview_path") else "❌"
+            print(f"    📄 {variant['variant']}: {preview_status}")
     
     return True
 
-def get_preview_path(texture_name, first_variant, base_dir):
+def get_preview_path(texture_name, variant_name, files, base_dir):
     """
-    Extract preview path from the first variant by reading JSON files
+    Extract preview path from a variant by reading JSON files
     and looking for Body.Diffuse field (or Ball.Diffuse, Wheel.Diffuse for other types)
+    
+    Args:
+        texture_name: Name of the texture folder
+        variant_name: Name of the variant folder
+        files: List of files in the variant folder
+        base_dir: Base directory path
+    
+    Returns:
+        str or None: Preview path if found, None otherwise
     """
-    variant_name = first_variant["variant"]
-    files = first_variant["files"]
     
     # Find the first JSON file
     json_files = [f for f in files if f.endswith('.json')]
@@ -162,7 +180,7 @@ def get_preview_path(texture_name, first_variant, base_dir):
                                 diffuse_filename = value[parent_key][child_key]
                                 if diffuse_filename in files:
                                     preview_path = f"{base_dir}/{texture_name}/{variant_name}/{diffuse_filename}"
-                                    print(f"    ✅ Preview found: {diffuse_filename}")
+                                    print(f"    ✅ Preview found for {variant_name}: {diffuse_filename}")
                                     return preview_path
                     else:
                         # Direct pattern like "Diffuse"
@@ -170,20 +188,20 @@ def get_preview_path(texture_name, first_variant, base_dir):
                             diffuse_filename = value[pattern]
                             if diffuse_filename in files:
                                 preview_path = f"{base_dir}/{texture_name}/{variant_name}/{diffuse_filename}"
-                                print(f"    ✅ Preview found: {diffuse_filename}")
+                                print(f"    ✅ Preview found for {variant_name}: {diffuse_filename}")
                                 return preview_path
         
-        print(f"    ⚠️  No diffuse field found in {json_file}")
+        print(f"    ⚠️  No diffuse field found in {json_file} for {variant_name}")
         return None
         
     except json.JSONDecodeError as e:
-        print(f"    ❌ Error parsing JSON {json_file}: {e}")
+        print(f"    ❌ Error parsing JSON {json_file} for {variant_name}: {e}")
         return None
     except FileNotFoundError:
         print(f"    ❌ JSON file not found: {json_path}")
         return None
     except Exception as e:
-        print(f"    ❌ Error reading {json_file}: {e}")
+        print(f"    ❌ Error reading {json_file} for {variant_name}: {e}")
         return None
 
 def preview_structure(texture_type="all"):

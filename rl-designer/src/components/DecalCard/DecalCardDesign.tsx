@@ -9,7 +9,7 @@ import './DecalCard.scss';
 
 interface DecalCardProps {
   decal: DecalTextures;
-  previewImage: React.ReactNode;
+  previewImage: (variant_name: string) => React.ReactNode;
   generateGlobalDropdownItems?: () => DropdownItem[];
   generateVariantDropdownItems?: (variant: string) => DropdownItem[];
   extraVariantClasses?: (variant: string) => string;
@@ -20,15 +20,25 @@ const DecalCard = ({
     decal,
     previewImage,
     generateGlobalDropdownItems = () => [],
-    generateVariantDropdownItems = (variant: string) => [],
-    extraVariantClasses = (variant: string) => '',
+    generateVariantDropdownItems = (variant_name: string) => [],
+    extraVariantClasses = (variant_name: string) => '',
 }: DecalCardProps) => {
 
+    if (!decal || decal.variants.length === 0) {
+        console.warn('DecalCard received an empty decal or no variants:', decal);
+        throw new Error('DecalCard received an empty decal or no variants');
+    }
+
     const [parentDropdownOpen, setParentDropdownOpen] = useState(false);
+    const [lastHoveredVariant, setLastHoveredVariant] = useState<string>(decal.variants[0].variant_name);
 
     const stopPropagation = (e: React.MouseEvent) => {
         e.stopPropagation(); // Prevent the click from bubbling up
     }
+
+    const handleVariantHover = (variantName: string) => {
+        setLastHoveredVariant(variantName);
+    };
 
     const handleChildDropdownOpen = () => {
         // Close parent dropdown when any child dropdown opens
@@ -40,17 +50,20 @@ const DecalCard = ({
         isOpen={parentDropdownOpen}
         setIsOpen={setParentDropdownOpen}
         button={<div className="decal-card">
-            {previewImage}
+            {previewImage(lastHoveredVariant)}
             <h2>{decal.name}</h2>
             <div className="variants" onClick={stopPropagation}>
                 {decal.variants.map((variant) => (
                     <DropdownMenu 
-                        key={variant} 
+                        key={variant.variant_name} 
                         onOpen={handleChildDropdownOpen}
-                        items={generateVariantDropdownItems(variant)}
+                        items={generateVariantDropdownItems(variant.variant_name)}
                         button={
-                        <div className={`variant ${extraVariantClasses ? extraVariantClasses(variant) : ''}`}>
-                            {variant}
+                        <div 
+                            className={`variant ${extraVariantClasses ? extraVariantClasses(variant.variant_name) : ''}`}
+                            onMouseEnter={() => handleVariantHover(variant.variant_name)}
+                        >
+                            {variant.variant_name}
                         </div>
                     } 
                     />

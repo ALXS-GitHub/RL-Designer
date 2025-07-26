@@ -57,7 +57,7 @@ const About = () => {
                 Just make a pull request on our GitHub repository with your decal files and a brief description.
               </p>
               <a 
-                href="https://github.com/ALXSRL/RL-Desinger-Decals" 
+                href="https://github.com/ALXS-GitHub/RL-Designer" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="about__contribute-link"

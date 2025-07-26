@@ -1,5 +1,5 @@
 use crate::constants::GITHUB_DECALS_RAW_URL;
-use crate::types::decal::DecalTextures;
+use crate::types::decal::{DecalTextures, VariantFrontInfo};
 use reqwest;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
@@ -14,13 +14,13 @@ pub struct DecalsIndex {
 pub struct DecalInfo {
     pub name: String,
     pub variants: Vec<VariantInfo>,
-    pub preview_path: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct VariantInfo {
     pub variant: String,
     pub files: Vec<String>,
+    pub preview_path: Option<String>,
 }
 
 pub async fn fetch_decal_index(element_type: ElementType) -> Result<DecalsIndex, String> {
@@ -63,26 +63,22 @@ pub async fn fetch_decals_from_github_raw(element_type: ElementType) -> Result<V
 
     // Process each decal from the index
     for decal_info in decals_index.decals {
-        let variants: Vec<String> = decal_info
+        let variants: Vec<VariantFrontInfo> = decal_info
             .variants
-            .iter()
-            .map(|v| v.variant.clone())
+            .into_iter()
+            .map(|v| VariantFrontInfo {
+                variant_name: v.variant,
+                preview_path: v.preview_path.map(|p| format!("{}/{}", GITHUB_DECALS_RAW_URL, p)),
+            })
             .collect();
 
         if variants.is_empty() {
             continue;
         }
 
-        let preview_path: Option<String> = if let Some(path) = decal_info.preview_path.clone() {
-            Some(format!("{}/{}", GITHUB_DECALS_RAW_URL, path))
-        } else {
-            None
-        };
-
         let decal = DecalTextures {
             name: decal_info.name.clone(),
             variants: variants.clone(),
-            preview_path,
             ..DecalTextures::default()
         };
 

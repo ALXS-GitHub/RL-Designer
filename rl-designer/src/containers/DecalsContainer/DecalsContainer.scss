@@ -1,0 +1,49 @@
+.decals-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    gap: var(--space-6);
+    padding: var(--space-6);
+    width: 100%;
+
+    &__settings {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: sticky;
+        top: var(--space-24);
+        left: var(--space-4);
+        gap: var(--space-4);
+        z-index: var(--z-dropdown);
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-6);
+        width: 100%;
+    }
+
+    &__element-select {
+        z-index: var(--z-fixed);
+    }
+
+    &__update-all-button {
+        z-index: var(--z-fixed);
+    }
+}
+
+@media (max-width: 896px) {
+    .decals-container {
+        flex-direction: column;
+
+        &__settings {
+            position: fixed;
+            top: var(--space-24);
+            left: var(--space-4);
+        }
+    }
+}
