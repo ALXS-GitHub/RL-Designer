@@ -4,6 +4,15 @@
       "name": "Born To Be Itzy",
       "variants": [
         {
+          "variant": "Fennec",
+          "files": [
+            "body_diffuse.png",
+            "body_skin.png",
+            "Template.json"
+          ],
+          "preview_path": "decals/Born To Be Itzy/Fennec/body_diffuse.png"
+        },
+        {
           "variant": "Octane",
           "files": [
             "HyperBeast_Chassis.png",
@@ -12,6 +21,15 @@
             "Template.json"
           ],
           "preview_path": "decals/Born To Be Itzy/Octane/oct_diffuse.png"
+        },
+        {
+          "variant": "Venom",
+          "files": [
+            "body_diffuse.png",
+            "body_skin.png",
+            "Template.json"
+          ],
+          "preview_path": "decals/Born To Be Itzy/Venom/body_diffuse.png"
         }
       ]
     },
@@ -269,6 +287,15 @@
             "Template.json"
           ],
           "preview_path": "decals/Yuna Itzy/Roadhog/body_diffuse.png"
+        },
+        {
+          "variant": "Venom",
+          "files": [
+            "body_diffuse.png",
+            "body_skin.png",
+            "Template.json"
+          ],
+          "preview_path": "decals/Yuna Itzy/Venom/body_diffuse.png"
         }
       ]
     }

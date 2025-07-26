@@ -1,0 +1,11 @@
+{
+    "Born To Be Itzy (Venom)": {
+		"Group": "Born To Be Itzy",
+		"BodyID": 31,
+		"SkinID": 0,
+		"Body": {
+			"Diffuse": "body_diffuse.png",
+			"Skin": "body_skin.png"
+		}
+    }
+}

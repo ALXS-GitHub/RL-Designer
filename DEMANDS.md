@@ -1,7 +1,16 @@
-Born To Be -> Fennec / Venom
-Yuna Itzy -> Venom
-Itzy Ball
+# DEMANDS.md
+
+- [ ] *Zomahx* : Born To Be -> Venom
 
 --- perso ---
 
-add the hyperbeast deal
+- [ ] *ALXS* : hyperbeast decal -> Octane
+
+## To Verify
+
+- [ ] *Zomahx* : Yuna Itzy -> Venom
+- [ ] *Zomahx* : Born To Be -> Fennec 
+
+## Done
+
+- [X] *Zomahx* : Itzy Ball

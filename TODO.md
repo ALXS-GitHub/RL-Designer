@@ -9,6 +9,7 @@
 
 ## Medium
 
+- [ ] Refactor Navbar (to have a cleaner way to handle the two display modes of the navbar)
 - [ ] Add wheel texture support
   - For both ball and wheel, we should make add those collections / explorer inside the already existing pages, just make a select to choose between the car, ball or wheel textures. We should also manage how they are stored locally and how they are stored in the public repo. + Do they need variants ? I suppose yes, a ball even if the same object can have different textures for a same logo.
 

@@ -1,6 +1,6 @@
 [package]
 name = "rl-designer"
-version = "0.3.0"
+version = "0.4.0"
 description = "A Rocket League Designer application to manage custom decals"
 authors = ["ALXS"]
 license = ""

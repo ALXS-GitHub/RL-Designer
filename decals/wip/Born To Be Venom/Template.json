@@ -1,0 +1,14 @@
+{
+    "(Venom)": {
+		"Group": "",
+		"BodyID": 31,
+		"SkinID": 0,
+		"Chassis": {
+			"Diffuse": "chassis_diffuse.png"
+		},
+		"Body": {
+			"Diffuse": "body_diffuse.png",
+			"Skin": "body_skin.png"
+		}
+    }
+}
