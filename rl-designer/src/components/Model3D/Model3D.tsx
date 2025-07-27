@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useFrame, useLoader } from '@react-three/fiber';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
-import { TextureLoader, Mesh, Group, Box3, Vector3, DoubleSide, MeshBasicMaterial, ShaderMaterial, Color, Texture, Material } from 'three';
+import { TextureLoader, Mesh, Group, Box3, Vector3, DoubleSide, MeshPhongMaterial, ShaderMaterial, Color, Texture, Material } from 'three';
 import useModelSettingsStore from '@/stores/modelSettingsStore';
 import { resolveImagePath } from '@/utils/images';
 import { colorReplacementVertexShader, colorReplacementFragmentShader } from '@/shaders/index';
@@ -15,7 +15,7 @@ export interface Model3DProps {
     mainTeamColor?: string;
 }
 
-// Custom shader for color replacement
+// Custom shader for color replacement with lighting
 const createColorReplacementShader = (
     decalTexture: Texture,
     skinTexture: Texture,
@@ -26,12 +26,12 @@ const createColorReplacementShader = (
       decalTexture: { value: decalTexture },
       skinTexture: { value: skinTexture },
       mainTeamColor: { value: new Color(mainTeamColor) },
-      windowsColor: { value: new Color('#87CEEB') }, // Default sky blue for windows
+      windowsColor: { value: new Color('#87CEEB') },
     },
     vertexShader: colorReplacementVertexShader,
     fragmentShader: colorReplacementFragmentShader,
     side: DoubleSide,
-    transparent: true
+    transparent: true,
   });
 };
 
@@ -55,12 +55,16 @@ const createMaterial = (
   if (skinTexture && skinPath) {
     return createColorReplacementShader(decalTexture, skinTexture, mainTeamColor);
   } else {
-    return new MeshBasicMaterial({
+    return new MeshPhongMaterial({
       map: decalTexture,
       color: new Color(mainTeamColor),
       side: DoubleSide,
       transparent: true,
-      alphaTest: 0.1
+      alphaTest: 0.1,
+      // Add shininess properties
+      shininess: 30,           // Controls the size of the specular highlight (0-100+)
+      specular: new Color(0x222222), // Color of the specular reflection (subtle gray)
+      reflectivity: 0.1        // How much the material reflects the environment
     });
   }
 };

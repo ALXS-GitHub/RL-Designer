@@ -86,18 +86,24 @@ const Model3DPreview: React.FC<Model3DPreviewProps> = ({
           />
           
           {/* Lighting */}
-          <ambientLight intensity={0.4} />
+          <ambientLight intensity={0.3} color="#ffffff" />
           <directionalLight 
             position={[5, 5, 5]} 
             intensity={0.8}
+            color="#ffffff"
             castShadow
             shadow-mapSize-width={2048}
             shadow-mapSize-height={2048}
           />
-          <pointLight position={[-5, 5, 5]} intensity={0.3} />
+          <directionalLight 
+            position={[-3, 2, 3]} 
+            intensity={0.4}
+            color="#ffffff"
+          />
+          <pointLight position={[-5, 5, 5]} intensity={0.2} color="#ffffff" />
           
           {/* Environment for reflections */}
-          <Environment preset="studio" />
+          <Environment preset="sunset" />
 
           <Model3DWithErrorBoundary
             modelPath={modelPath}

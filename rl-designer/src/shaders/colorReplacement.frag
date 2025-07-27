@@ -4,6 +4,8 @@ uniform vec3 mainTeamColor;
 uniform vec3 windowsColor;
 
 varying vec2 vUv;
+varying vec3 vNormal;
+varying vec3 vViewPosition;
 
 void main() {
     vec4 decalColor = texture2D(decalTexture, vUv);
@@ -11,25 +13,73 @@ void main() {
 
     vec3 finalColor = decalColor.rgb;
     float alpha = decalColor.a;
+    bool isWindow = false;
 
     // Check skin color to determine what to replace
-    // Main Team Color: Transparent red (#FF000000)
     if (skinColor.r > 0.9 && skinColor.g < 0.1 && skinColor.b < 0.1 && skinColor.a < 0.1) {
         finalColor = mainTeamColor;
     }
-    // Secondary Color: Red (#FF0000) - for future implementation
     else if (skinColor.r > 0.9 && skinColor.g < 0.1 && skinColor.b < 0.1 && skinColor.a > 0.9) {
-        // Keep secondary color unchanged for now, or implement secondary color logic
         finalColor = decalColor.rgb;
     }
-    // Decal Color: Dark red (#2b0000) - keep original decal color
     else if (skinColor.r > 0.15 && skinColor.r < 0.18 && skinColor.g < 0.05 && skinColor.b < 0.05) {
         finalColor = decalColor.rgb;
     }
-    // Windows Color: Blue (#0000FF)
     else if (skinColor.b > 0.9 && skinColor.r < 0.1 && skinColor.g < 0.1) {
         finalColor = windowsColor;
+        isWindow = true;
     }
 
+    vec3 normal = normalize(vNormal);
+    vec3 viewDir = normalize(vViewPosition);
+    
+    if (isWindow) {
+        // Glass-like rendering for windows with stronger reflections
+        
+        // Enhanced Fresnel effect - more reflective at grazing angles
+        float fresnel = pow(1.0 - abs(dot(normal, viewDir)), 1.5);
+        fresnel = clamp(fresnel, 0.4, 0.95); // Increased minimum reflection
+        
+        // Create reflection effect using normal
+        vec3 reflectionDir = reflect(-viewDir, normal);
+        
+        // Enhanced sky reflection with more intensity
+        float skyIntensity = abs(reflectionDir.y) * 0.6 + 0.4;
+        vec3 skyColor = mix(vec3(0.3, 0.6, 1.0), vec3(0.9, 0.95, 1.0), skyIntensity);
+        
+        // Stronger environment reflection
+        vec3 envReflection = skyColor * fresnel;
+        
+        // Reduced base window tint (less of the original color shows through)
+        vec3 baseTint = finalColor * (1.0 - fresnel * 0.9);
+        
+        // Combine with stronger reflection influence
+        finalColor = mix(baseTint, envReflection, fresnel * 0.85);
+        
+        // Much stronger specular highlights
+        vec3 lightDir1 = normalize(vec3(1.0, 1.0, 1.0));
+        vec3 lightDir2 = normalize(vec3(-1.0, 1.0, 0.5));
+        
+        // Multiple specular highlights for more realistic glass
+        vec3 reflectDir1 = reflect(-lightDir1, normal);
+        vec3 reflectDir2 = reflect(-lightDir2, normal);
+        
+        float spec1 = pow(max(dot(viewDir, reflectDir1), 0.0), 128.0); // Higher exponent for sharper reflection
+        float spec2 = pow(max(dot(viewDir, reflectDir2), 0.0), 64.0);
+        
+        // Stronger specular contribution
+        finalColor += vec3(1.0) * (spec1 * 0.6 + spec2 * 0.3);
+        
+        // Reduced transparency - windows are much less transparent
+        alpha = alpha * 0.95 + fresnel * 0.05; // Much less transparent
+        
+    } else {
+        // Regular car body lighting
+        float lightFactor = 0.5 + 0.5 * abs(normal.z);
+        lightFactor += 0.2 * abs(normal.x) + 0.1 * abs(normal.y);
+        lightFactor = clamp(lightFactor, 0.4, 1.0);
+        finalColor = finalColor * lightFactor;
+    }
+    
     gl_FragColor = vec4(finalColor, alpha);
 }
