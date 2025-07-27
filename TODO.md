@@ -5,11 +5,14 @@
 
 ## Important
 
-- [ ] Make the preview thumbnails (with the car and decal on it). In the dedicated preview page, the user should be able to switch between the variants but also change the color of the car (primary and secondary color) to see how it looks with the decal.
+- [ ] Make the preview thumbnails (with the car and decal on it) (Maybe for the thumbnail, only show the model when we are hovering the variant name on the card. This to avoid to have too many models to render...). In the dedicated preview page, the user should be able to switch between the variants but also change the color of the car (primary and secondary color) to see how it looks with the decal.
+  - [ ] Create the assets mapping, instead of having to look for the public folder (suggested by copilot) -> great because we can have the list of available models.
+  - [ ] Make the canva size larger (and dynamic / responsive) to better fit the page
+  - [ ] make a button to stop rotation
+  - [ ] Make the colors changeable
 
 ## Medium
 
-- [ ] Refactor Navbar (to have a cleaner way to handle the two display modes of the navbar)
 - [ ] Add wheel texture support
   - For both ball and wheel, we should make add those collections / explorer inside the already existing pages, just make a select to choose between the car, ball or wheel textures. We should also manage how they are stored locally and how they are stored in the public repo. + Do they need variants ? I suppose yes, a ball even if the same object can have different textures for a same logo.
 
@@ -47,3 +50,4 @@
 - [X] Automate the release process for new versions of the tauri app. Using GitHub Actions (maybe triggered on release branch push) -> Still need to check if it works...
 - [X] Install All Variants button
 - [X] when hovering a variant, it should change the preview thumbnail to the one of the variant
+- [X] Refactor Navbar (to have a cleaner way to handle the two display modes of the navbar)

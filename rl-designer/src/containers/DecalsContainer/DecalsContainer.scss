@@ -28,11 +28,11 @@
     }
 
     &__element-select {
-        z-index: var(--z-fixed);
+        z-index: calc(var(--z-sticky) + 10);
     }
 
     &__update-all-button {
-        z-index: var(--z-fixed);
+        z-index: var(--z-sticky);
     }
 }
 

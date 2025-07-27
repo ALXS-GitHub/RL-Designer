@@ -8,12 +8,19 @@ import useSelectedElementStore from '@/stores/selectedElementStore';
 import ElementTypeSelect from '@/components/DropdownMenu/ElementTypeSelect/ElementTypeSelect';
 import UpdateAllButton from '@/components/UpdateAllButton/UpdateAllButton';
 import DecalsContainer from '@/containers/DecalsContainer/DecalsContainer';
+import usePageStore from '@/stores/pageStore'
 
 import './Collection.scss';
 
 const Collection = () => {
-  const { selectedElement, setSelectedElement } = useSelectedElementStore();
+
+  const { setLastPage } = usePageStore();
+
   const { decals, isLoading, isError } = useCollection();
+
+    useEffect(() => {
+      setLastPage('collection');
+    }, []);
 
   if (isLoading) return <Loading />;
   if (isError) return <Error message="Error loading collection" />;

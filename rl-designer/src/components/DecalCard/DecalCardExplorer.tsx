@@ -2,6 +2,7 @@ import React from 'react';
 import type { DecalTextures } from '@/types';
 import Placeholder from '@/assets/placeholder.jpg';
 import { useExplorerActions } from '@/hooks/useExplorer';
+import { useNavigate } from 'react-router-dom'
 
 import DecalCardDesign from "./DecalCardDesign"
 import useCollection from '@/hooks/useCollection';
@@ -15,6 +16,7 @@ const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
 
     const { downloadDecalVariant } = useExplorerActions();
     const { decals: collectionDecals } = useCollection();
+    const navigate = useNavigate();
 
     const isVariantInstalled = (decalName: string, variant: string) => {
         return collectionDecals.some(d => d.name === decalName && d.variants.some(v => v.variant_name === variant));
@@ -30,7 +32,7 @@ const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
         return <img src={Placeholder} alt="Placeholder image" className="decal-image" />;
     }
 
-    const generateGlobalDropdownItems = () => {
+    const generateGlobalDropdownItems = (lastHoveredVariant: string) => {
         const items = [
             {
                 children: (
@@ -40,8 +42,7 @@ const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
                     </div>
                 ),
                 onClick: () => {
-                    // Logic to preview the decal
-                    console.log(`Preview decal ${decal.name}`);
+                    navigate(`/preview/${decal.name}/${lastHoveredVariant || decal.variants[0].variant_name}`);
                 },
             },
             {
@@ -71,8 +72,7 @@ const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
                     </div>
                 ),
                 onClick: () => {
-                    // Logic to preview the decal
-                    console.log(`Preview decal ${decal.name}`);
+                    navigate(`/preview/${decal.name}/${variant}`);
                 },
             },
             {

@@ -134,9 +134,14 @@ const Navbar: React.FC<NavbarProps> = () => {
         navigate(1);
     }
 
-    const navigationItems: DropdownItem[] = [
+    type NavigationItem = DropdownItem & {
+        route: string;
+    };
+
+    const navigationItems: NavigationItem[] = [
         {
             children: <div>Home</div>,
+            route: '/',
             onClick: () => {
                 navigate('/');
                 setIsMobileMenuOpen(false);
@@ -144,6 +149,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         },
         {
             children: <div>About</div>,
+            route: '/about',
             onClick: () => {
                 navigate('/about');
                 setIsMobileMenuOpen(false);
@@ -151,6 +157,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         },
         {
             children: <div>My Collection</div>,
+            route: '/my-collection',
             onClick: () => {
                 navigate('/my-collection');
                 setIsMobileMenuOpen(false);
@@ -158,6 +165,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         },
         {
             children: <div>Explore</div>,
+            route: '/explore',
             onClick: () => {
                 navigate('/explore');
                 setIsMobileMenuOpen(false);
@@ -165,6 +173,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         },
         {
             children: <div>How to</div>,
+            route: '/how-to',
             onClick: () => {
                 navigate('/how-to');
                 setIsMobileMenuOpen(false);
@@ -191,13 +200,14 @@ const Navbar: React.FC<NavbarProps> = () => {
                 {/* Desktop Navigation */}
                 <div className="navbar__links navbar__links--desktop">
                     <ul>
-                        <AnimatedNavItem to="/">Home</AnimatedNavItem>
-                        <AnimatedNavItem to="/about">About</AnimatedNavItem>
-                        <AnimatedNavItem to="/my-collection">
-                            My Collection
-                        </AnimatedNavItem>
-                        <AnimatedNavItem to="/explore">Explore</AnimatedNavItem>
-                        <AnimatedNavItem to="/how-to">How to</AnimatedNavItem>
+                        {navigationItems.map((item) => (
+                            <AnimatedNavItem
+                                key={item.route}
+                                to={item.route}
+                            >
+                                {item.children}
+                            </AnimatedNavItem>
+                        ))}
                     </ul>
                 </div>
 

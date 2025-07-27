@@ -7,9 +7,10 @@ import useSelectedElementStore from '@/stores/selectedElementStore';
 import type { DecalTextures } from '@/types';
 import { useQuery } from '@tanstack/react-query';
 import { getDecalsFromGitHub } from '@/services/explorer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useExplorerStore } from '@/stores/collectionStore';
 
-interface UseExplorerDataReturn {
+export interface UseExplorerDataReturn {
     decals: DecalTextures[];
     isLoading: boolean;
     isError: Error | null;
@@ -17,9 +18,7 @@ interface UseExplorerDataReturn {
 
 export const useExplorerData = (): UseExplorerDataReturn => {
     const { selectedElement } = useSelectedElementStore();
-    // const { useStore } = ElementsMap[selectedElement];
-    // const { decals, setDecals } = useStore();
-    const [decals, setDecals] = useState<DecalTextures[]>([]);
+    const { decals, setDecals } = useExplorerStore();
     const { isLoading, isError, executeAsync } = useAsyncOperations();
 
 

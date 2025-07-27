@@ -8,12 +8,17 @@ import { useExplorerData } from '@/hooks/useExplorer'
 import useCollection from '@/hooks/useCollection';
 import UpdateAllButton from '@/components/UpdateAllButton/UpdateAllButton';
 import DecalsContainer from '@/containers/DecalsContainer/DecalsContainer';
+import usePageStore from '@/stores/pageStore'
 
 const Explore = () => {
 
+  const { setLastPage } = usePageStore();
   useCollection(); // Ensure collection store is initialized
-  const { selectedElement, setSelectedElement } = useSelectedElementStore();
   const { decals, isLoading, isError } = useExplorerData();
+  
+  useEffect(() => {
+    setLastPage('explorer');
+  }, []);
 
   if (isLoading) {
     return <Loading />;

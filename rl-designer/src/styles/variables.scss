@@ -313,7 +313,6 @@
   --z-default: 0;
   
   // Semantic z-index values
-  --z-dropdown: 1000;
   --z-sticky: 1200;
   --z-fixed: 1300;
   --z-modal-backdrop: 1400;
@@ -322,6 +321,7 @@
   --z-tooltip: 1700;
   --z-toast: 1800;
   --z-overlay: 2000;
+  --z-dropdown: 2100;
   --z-notification: 3000;
   --z-navbar: 5000;
   --z-top: 9999;

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.scss'
-import { Home, Collection, Explore, About, HowTo } from '@/pages'
+import { Home, Collection, Explore, About, HowTo, Preview } from '@/pages'
 import Notifications from '@/components/Notifications/Notifications.tsx'
 import Navbar from '@/components/Navbar/Navbar.tsx'
 import ConfirmationDialog from './components/ConfirmationDialog/ConfirmationDialog'
@@ -26,7 +26,8 @@ function App() {
               <Route path="/my-collection" element={<Collection />} />
               <Route path="/explore" element={<Explore />} />
               <Route path="/how-to" element={<HowTo />} />
-              <Route path="*" element={<Home />} /> 
+              <Route path='/preview/:decal/:variant_name' element={<Preview />} />
+              <Route path="*" element={<Home />} />
             </Routes>
           </div>
         </BrowserRouter>

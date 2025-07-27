@@ -1,0 +1,238 @@
+Parent = Material3'Vehicle_Parent_Materials.UberSkin_V1_Mat'
+ScalarParameterValues[21] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = FXColorEmissive
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 16
+        ParameterName = Decal2Sharpness
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1.01
+        ParameterName = Decal2Threshold
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 92
+        ParameterName = DecalBlendRampNoiseSharpness
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.85
+        ParameterName = DecalBlendRampPosition
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = 4
+        ParameterName = DecalBlendRampRotation
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Detail1Strength_AO
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Detail2Strength_AO
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = ENVBrightness
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.875
+        ParameterName = ENVMultiplyWithDiffuse
+    }
+    ScalarParameterValues[10] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = ENVMultiplyWithFX
+    }
+    ScalarParameterValues[11] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = FX*LayerOverBlend
+    }
+    ScalarParameterValues[12] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = FXDistortByDecal
+    }
+    ScalarParameterValues[13] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = FXFadePosition
+    }
+    ScalarParameterValues[14] =
+    {
+        ParameterInfo = 
+        ParameterValue = 4
+        ParameterName = FXFadeSharpness
+    }
+    ScalarParameterValues[15] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.16
+        ParameterName = FXFadeWidth
+    }
+    ScalarParameterValues[16] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = FXTwist
+    }
+    ScalarParameterValues[17] =
+    {
+        ParameterInfo = 
+        ParameterValue = 8
+        ParameterName = Outline*Sharpness
+    }
+    ScalarParameterValues[18] =
+    {
+        ParameterInfo = 
+        ParameterValue = 16
+        ParameterName = Outline*SilhouetteSharpness
+    }
+    ScalarParameterValues[19] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.18
+        ParameterName = Outline*SilhouetteWidth
+    }
+    ScalarParameterValues[20] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.85
+        ParameterName = Outline*Width
+    }
+}
+TextureParameterValues[8] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = None
+        ParameterName = BodyMasks
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Body_Octane_Textures.Body_Octane_Bevel_RGB'
+        ParameterName = FXMasks
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = None
+        ParameterName = Decal1
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Skin_Youken.Skin_Halftone_M'
+        ParameterName = Decal2
+    }
+    TextureParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Skin_ComicBook.Beveled_D_DefaultCompress'
+        ParameterName = DecalBlendNoise
+    }
+    TextureParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Detail_Slime.Slime_N'
+        ParameterName = Detail1
+    }
+    TextureParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Skin_Youken.Skin_Halftone_M'
+        ParameterName = FX*Noise1
+    }
+    TextureParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = None
+        ParameterName = Diffuse
+    }
+}
+VectorParameterValues[7] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=0.395274, B=0.0553397, A=1 }
+        ParameterName = CustomColor
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.0189793, G=0.207991, B=0.845273, A=1 }
+        ParameterName = TeamColor
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=92, G=92, B=0.5, A=0.5 }
+        ParameterName = Decal1Transform
+    }
+    VectorParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=3, G=3, B=0.5, A=0 }
+        ParameterName = Decal2Transform
+    }
+    VectorParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=2, G=0.2, B=0.22, A=-0.56 }
+        ParameterName = DecalBlendNoiseTransform
+    }
+    VectorParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.1, G=0.1, B=1, A=1 }
+        ParameterName = DetailTransform
+    }
+    VectorParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=3, G=3, B=0.1, A=0.1 }
+        ParameterName = FX*Noise1Transform
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+RuntimeVirtualTextureParameterValues[0] = {}
+FontParameterValues[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

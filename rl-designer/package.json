@@ -12,8 +12,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-three/drei": "^10.6.1",
+    "@react-three/fiber": "^9.2.0",
     "@tanstack/react-query": "^5.83.0",
     "@tauri-apps/api": "^2.6.0",
+    "@types/three": "^0.178.1",
     "axios": "^1.10.0",
     "framer-motion": "^12.23.6",
     "react": "^19.1.0",
@@ -26,6 +29,7 @@
     "rehype-highlight": "^7.0.2",
     "remark-gfm": "^4.0.1",
     "sass": "^1.89.2",
+    "three": "^0.178.0",
     "zustand": "^5.0.6"
   },
   "devDependencies": {

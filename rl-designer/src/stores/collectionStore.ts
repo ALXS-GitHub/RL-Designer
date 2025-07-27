@@ -53,3 +53,5 @@ const createCollectionStore = () => {
 
 export const useCarCollectionStore = createCollectionStore();
 export const useBallCollectionStore = createCollectionStore();
+
+export const useExplorerStore = createCollectionStore();

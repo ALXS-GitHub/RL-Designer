@@ -1,5 +1,6 @@
 import React from 'react';
 import type { DecalTextures } from '@/types';
+import { useNavigate } from 'react-router-dom';
 import Placeholder from '@/assets/placeholder.jpg';
 import { convertFileSrc } from '@tauri-apps/api/core';
 import useCollection from '@/hooks/useCollection';
@@ -17,6 +18,8 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
     const { removeDecalVariant } = useCollection();
     const { openConfirmationDialog } = useConfirmationDialogStore();
 
+    const navigate = useNavigate();
+
     // TODO update this to change the image on hover variants
     const renderImage = (variant_name: string) => {
         const variant = decal.variants.find(v => v.variant_name === variant_name);
@@ -27,7 +30,7 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
         return <img src={Placeholder} alt="Placeholder image" className="decal-image" />;
     }
 
-    const generateGlobalDropdownItems = () => {
+    const generateGlobalDropdownItems = (lastHoveredVariant?: string) => {
         const items = [
             {
                 children: (
@@ -37,8 +40,7 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
                     </div>
                 ),
                 onClick: () => {
-                    // Logic to preview the decal
-                    console.log(`Preview decal ${decal.name}`);
+                    navigate(`/preview/${decal.name}/${lastHoveredVariant || decal.variants[0].variant_name}`);
                 },
             },
             {
@@ -77,6 +79,7 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
                 onClick: () => {
                     // Logic to preview the decal
                     console.log(`Preview decal ${decal.name}`);
+                    navigate(`/preview/${decal.name}/${variant}`);
                 },
             },
             {

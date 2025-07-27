@@ -1,0 +1,51 @@
+TwoSided = true
+bDisableDepthTest = false
+bIsMasked = false
+ReferencedTextures[4] =
+{
+    ReferencedTextures[1] = Texture2D'Boost_Propulsion.CloudDistort_T'
+    ReferencedTextures[2] = Texture2D'Boost_Propulsion.DarkClouds_T'
+    ReferencedTextures[3] = Texture2D'FX_Parents_Textures.BoostShape_RGB'
+}
+Expressions[65] =
+{
+    Expressions[0] = MaterialExpressionScalarParameter'FX_Parents.BoostFXMesh_Mat.MaterialExpressionScalarParameter_0'
+    Expressions[1] = MaterialExpressionVectorParameter'FX_Parents.BoostFXMesh_Mat.MaterialExpressionVectorParameter_2'
+    Expressions[3] = MaterialExpressionScalarParameter'FX_Parents.BoostFXMesh_Mat.MaterialExpressionScalarParameter_7'
+    Expressions[19] = MaterialExpressionScalarParameter'FX_Parents.BoostFXMesh_Mat.MaterialExpressionScalarParameter_9'
+    Expressions[28] = MaterialExpressionScalarParameter'FX_Parents.BoostFXMesh_Mat.MaterialExpressionScalarParameter_15'
+    Expressions[29] = MaterialExpressionScalarParameter'FX_Parents.BoostFXMesh_Mat.MaterialExpressionScalarParameter_16'
+    Expressions[30] = MaterialExpressionScalarParameter'FX_Parents.BoostFXMesh_Mat.MaterialExpressionScalarParameter_18'
+    Expressions[61] = MaterialExpressionScalarParameter'FX_Parents.BoostFXMesh_Mat.MaterialExpressionScalarParameter_1'
+}
+CachedExpressionData = 
+BlendMode = BLEND_Translucent (2)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[0] = {}
+CollectedScalarParameters[7] =
+{
+    CollectedScalarParameters[0] = { Value=0, Name=Stretch, Group=None }
+    CollectedScalarParameters[1] = { Value=0.75, Name=UTiling, Group=None }
+    CollectedScalarParameters[2] = { Value=1.25, Name=VTiling, Group=None }
+    CollectedScalarParameters[3] = { Value=1, Name=PanSpeed, Group=None }
+    CollectedScalarParameters[4] = { Value=1, Name=ConeLength, Group=None }
+    CollectedScalarParameters[5] = { Value=1, Name=TileAmount, Group=None }
+    CollectedScalarParameters[6] = { Value=3.5, Name=Brightness, Group=None }
+}
+CollectedVectorParameters[1] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=1, G=1, B=1, A=1 }
+        Name = Color
+        Group = None
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}
