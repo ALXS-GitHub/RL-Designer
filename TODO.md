@@ -5,14 +5,9 @@
 
 ## Important
 
-- [ ] Fix bug : when switching from Collection page (and hovered a car to display the model), and then going to the Explore page, it displays the last model viewed in the Collection page instead of the one from the Explore page.
+- [ ] Refactor the CarModel (and rename Model3D) thing (it's a bit messy right not)
 - [ ] Improve the Material reflection of the car.
 
-- [ ] Make the preview thumbnails (with the car and decal on it) (Maybe for the thumbnail, only show the model when we are hovering the variant name on the card. This to avoid to have too many models to render...). In the dedicated preview page, the user should be able to switch between the variants but also change the color of the car (primary and secondary color) to see how it looks with the decal.
-  - [ ] Create the assets mapping, instead of having to look for the public folder (suggested by copilot) -> great because we can have the list of available models.
-  - [ ] Make the canva size larger (and dynamic / responsive) to better fit the page
-  - [ ] make a button to stop rotation
-  - [ ] Make the colors changeable
 
 ## Medium
 
@@ -54,3 +49,10 @@
 - [X] Install All Variants button
 - [X] when hovering a variant, it should change the preview thumbnail to the one of the variant
 - [X] Refactor Navbar (to have a cleaner way to handle the two display modes of the navbar)
+- [X] Fix bug : when switching from Collection page (and hovered a car to display the model), and then going to the Explore page, it displays the last model viewed in the Collection page instead of the one from the Explore page.
+  -> Goes from MeshPhongMeterial to ShaderMaterial (the one we define when it has a skin)
+- [X] Make the preview thumbnails (with the car and decal on it) (Maybe for the thumbnail, only show the model when we are hovering the variant name on the card. This to avoid to have too many models to render...). In the dedicated preview page, the user should be able to switch between the variants but also change the color of the car (primary and secondary color) to see how it looks with the decal.
+  - [X] Create the assets mapping, instead of having to look for the public folder (suggested by copilot) -> great because we can have the list of available models.
+  - [X] Make the canva size larger (and dynamic / responsive) to better fit the page
+  - [X] make a button to stop rotation
+  - [X] Make the colors changeable

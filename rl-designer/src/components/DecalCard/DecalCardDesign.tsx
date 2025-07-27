@@ -3,7 +3,7 @@ import type { DecalTextures } from '@/types';
 import DropdownMenu from '@/components/DropdownMenu/DropdownMenu';
 import Dropdown from '@/components/DropdownMenu/Dropdown';
 import type { DropdownItem } from '../DropdownMenu/Dropdown';
-import PreviewLoader from '@/pages/Preview/PreviewLoader';
+import PreviewLoader from '@/components/Model3D/Model3DLoader';
 import { FaEllipsisH } from 'react-icons/fa';
 import useModelSettingsStore from '@/stores/modelSettingsStore';
 

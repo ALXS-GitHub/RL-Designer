@@ -1,4 +1,4 @@
-.car-preview {
+.model3D-preview {
   width: 100%;
   height: 100%;
   position: relative;
@@ -68,7 +68,7 @@
 
 // Responsive adjustments
 @media (max-width: 768px) {
-  .car-preview {
+  .model3D-preview {
     &__error {
       max-width: 90%;
       padding: var(--space-4);

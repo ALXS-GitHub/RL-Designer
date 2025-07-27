@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import CarPreview from './CarModel/CarModel';
-import PreviewLoader from './PreviewLoader';
+import PreviewLoader from '../../components/Model3D/Model3DLoader';
 import { useParams } from 'react-router-dom';
-import { Loading, Error } from '@/components';
-import useCollection from '@/hooks/useCollection';
 import useModelSettingsStore from '@/stores/modelSettingsStore';
 import Button from '@/components/Button/Button';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
