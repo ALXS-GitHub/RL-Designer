@@ -113,11 +113,11 @@ pub async fn download_decal_variant_logic(
     );
 
     // Read the body diffuse from the variant
-    let body_diffuse_path = read_body_diffuse_from_variant(element, &decal_dir, &variant_name).ok();
-
+    let preview_files = read_body_diffuse_from_variant(element, &decal_dir, &variant_name).ok();
     Ok(VariantFrontInfo {
         variant_name: variant_name.to_string(),
-        preview_path: body_diffuse_path,
+        preview_path: preview_files.as_ref().and_then(|pf| pf.preview_path.clone()),
+        skin_path: preview_files.as_ref().and_then(|pf| pf.skin_path.clone()),
     })
 }
 

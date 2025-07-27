@@ -5,6 +5,9 @@
 
 ## Important
 
+- [ ] Fix bug : when switching from Collection page (and hovered a car to display the model), and then going to the Explore page, it displays the last model viewed in the Collection page instead of the one from the Explore page.
+- [ ] Improve the Material reflection of the car.
+
 - [ ] Make the preview thumbnails (with the car and decal on it) (Maybe for the thumbnail, only show the model when we are hovering the variant name on the card. This to avoid to have too many models to render...). In the dedicated preview page, the user should be able to switch between the variants but also change the color of the car (primary and secondary color) to see how it looks with the decal.
   - [ ] Create the assets mapping, instead of having to look for the public folder (suggested by copilot) -> great because we can have the list of available models.
   - [ ] Make the canva size larger (and dynamic / responsive) to better fit the page

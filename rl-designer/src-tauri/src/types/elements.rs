@@ -5,9 +5,10 @@ pub enum ElementType {
     // Wheel, // not supported yet
 }
 
-pub struct BodyDiffuseType {
+pub struct BodyJSONType {
     pub body: String,
     pub diffuse: String,
+    pub skin: String,
 }
 
 impl ElementType {
@@ -35,15 +36,17 @@ impl ElementType {
         }
     }
 
-    pub fn get_body_diffuse(&self) -> BodyDiffuseType {
+    pub fn get_body_diffuse(&self) -> BodyJSONType {
         match self {
-            ElementType::Car => BodyDiffuseType {
+            ElementType::Car => BodyJSONType {
                 body: "Body".to_string(),
                 diffuse: "Diffuse".to_string(),
+                skin: "Skin".to_string(),
             },
-            ElementType::Ball => BodyDiffuseType {
+            ElementType::Ball => BodyJSONType {
                 body: "Params".to_string(),
                 diffuse: "Diffuse".to_string(),
+                skin: "Skin".to_string(),
             },
             // ElementType::Wheel => BodyDiffuseType { body: "Wheel".to_string(), diffuse: "Diffuse".to_string() }, // not supported yet
         }

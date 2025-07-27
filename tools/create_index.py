@@ -96,8 +96,8 @@ def create_single_index(config):
             
             # Only add variant if it has files
             if files:
-                # Get preview path for this specific variant
-                preview_path = get_preview_path(texture_item_name, variant_name, files, config["dir"])
+                # Get preview path and skin path for this specific variant
+                preview_path, skin_path = get_preview_path(texture_item_name, variant_name, files, config["dir"])
                 
                 variant_data = {
                     "variant": variant_name,
@@ -107,6 +107,10 @@ def create_single_index(config):
                 # Add preview_path only if it exists
                 if preview_path:
                     variant_data["preview_path"] = preview_path
+                
+                # Add skin_path only if it exists
+                if skin_path:
+                    variant_data["skin_path"] = skin_path
                 
                 variants.append(variant_data)
         
@@ -127,20 +131,23 @@ def create_single_index(config):
     # Print summary
     for texture_item in index_data[texture_name]:
         variants_with_preview = sum(1 for v in texture_item['variants'] if v.get('preview_path'))
+        variants_with_skin = sum(1 for v in texture_item['variants'] if v.get('skin_path'))
         total_variants = len(texture_item['variants'])
-        print(f"  📁 {texture_item['name']}: {total_variants} variants ({variants_with_preview} with preview)")
+        print(f"  📁 {texture_item['name']}: {total_variants} variants ({variants_with_preview} with preview, {variants_with_skin} with skin)")
         
-        # Show preview status for each variant
+        # Show preview and skin status for each variant
         for variant in texture_item['variants']:
             preview_status = "✅" if variant.get("preview_path") else "❌"
-            print(f"    📄 {variant['variant']}: {preview_status}")
+            skin_status = "🎨" if variant.get("skin_path") else "⚪"
+            print(f"    📄 {variant['variant']}: {preview_status} preview {skin_status} skin")
     
     return True
 
 def get_preview_path(texture_name, variant_name, files, base_dir):
     """
-    Extract preview path from a variant by reading JSON files
+    Extract preview path and skin path from a variant by reading JSON files
     and looking for Body.Diffuse field (or Ball.Diffuse, Wheel.Diffuse for other types)
+    and corresponding Skin fields
     
     Args:
         texture_name: Name of the texture folder
@@ -149,14 +156,14 @@ def get_preview_path(texture_name, variant_name, files, base_dir):
         base_dir: Base directory path
     
     Returns:
-        str or None: Preview path if found, None otherwise
+        tuple: (preview_path, skin_path) - skin_path can be None if not found
     """
     
     # Find the first JSON file
     json_files = [f for f in files if f.endswith('.json')]
     if not json_files:
         print(f"    ⚠️  No JSON file found in {texture_name}/{variant_name}")
-        return None
+        return None, None
     
     json_file = json_files[0]
     json_path = Path(base_dir) / texture_name / variant_name / json_file
@@ -165,44 +172,74 @@ def get_preview_path(texture_name, variant_name, files, base_dir):
         with open(json_path, 'r', encoding='utf-8') as f:
             json_data = json.load(f)
         
-        # Look for different diffuse patterns based on texture type
+        # Look for different diffuse and skin patterns based on texture type
         diffuse_patterns = ["Body.Diffuse", "Params.Diffuse", "Wheel.Diffuse", "Diffuse"]
+        skin_patterns = ["Body.Skin", "Params.Skin", "Wheel.Skin", "Skin"]
         
-        # Look for any diffuse field in any top-level key
+        preview_path = None
+        skin_path = None
+        
+        # Look for any diffuse and skin field in any top-level key
         for key, value in json_data.items():
             if isinstance(value, dict):
-                for pattern in diffuse_patterns:
-                    if "." in pattern:
-                        # Nested pattern like "Body.Diffuse"
-                        parent_key, child_key = pattern.split(".", 1)
+                for i, diffuse_pattern in enumerate(diffuse_patterns):
+                    skin_pattern = skin_patterns[i]  # Corresponding skin pattern
+                    
+                    if "." in diffuse_pattern:
+                        # Nested pattern like "Body.Diffuse" and "Body.Skin"
+                        parent_key, child_key = diffuse_pattern.split(".", 1)
+                        skin_parent_key, skin_child_key = skin_pattern.split(".", 1)
+                        
                         if parent_key in value and isinstance(value[parent_key], dict):
+                            # Check for diffuse
                             if child_key in value[parent_key]:
                                 diffuse_filename = value[parent_key][child_key]
                                 if diffuse_filename in files:
                                     preview_path = f"{base_dir}/{texture_name}/{variant_name}/{diffuse_filename}"
                                     print(f"    ✅ Preview found for {variant_name}: {diffuse_filename}")
-                                    return preview_path
+                            
+                            # Check for skin in the same parent
+                            if skin_child_key in value[parent_key]:
+                                skin_filename = value[parent_key][skin_child_key]
+                                if skin_filename in files:
+                                    skin_path = f"{base_dir}/{texture_name}/{variant_name}/{skin_filename}"
+                                    print(f"    ✅ Skin found for {variant_name}: {skin_filename}")
                     else:
-                        # Direct pattern like "Diffuse"
-                        if pattern in value:
-                            diffuse_filename = value[pattern]
+                        # Direct pattern like "Diffuse" and "Skin"
+                        if diffuse_pattern in value:
+                            diffuse_filename = value[diffuse_pattern]
                             if diffuse_filename in files:
                                 preview_path = f"{base_dir}/{texture_name}/{variant_name}/{diffuse_filename}"
                                 print(f"    ✅ Preview found for {variant_name}: {diffuse_filename}")
-                                return preview_path
+                        
+                        if skin_pattern in value:
+                            skin_filename = value[skin_pattern]
+                            if skin_filename in files:
+                                skin_path = f"{base_dir}/{texture_name}/{variant_name}/{skin_filename}"
+                                print(f"    ✅ Skin found for {variant_name}: {skin_filename}")
+                    
+                    # If we found a preview path, we can break (we found the right pattern)
+                    if preview_path:
+                        break
+                
+                # If we found a preview path, break out of outer loop too
+                if preview_path:
+                    break
         
-        print(f"    ⚠️  No diffuse field found in {json_file} for {variant_name}")
-        return None
+        if not preview_path:
+            print(f"    ⚠️  No diffuse field found in {json_file} for {variant_name}")
+        
+        return preview_path, skin_path
         
     except json.JSONDecodeError as e:
         print(f"    ❌ Error parsing JSON {json_file} for {variant_name}: {e}")
-        return None
+        return None, None
     except FileNotFoundError:
         print(f"    ❌ JSON file not found: {json_path}")
-        return None
+        return None, None
     except Exception as e:
         print(f"    ❌ Error reading {json_file} for {variant_name}: {e}")
-        return None
+        return None, None
 
 def preview_structure(texture_type="all"):
     """Preview the directory structure without creating the index"""

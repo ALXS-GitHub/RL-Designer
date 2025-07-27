@@ -20,13 +20,15 @@ interface PreviewLoaderProps {
   variant_name: string;
     className?: string;
   forceRotation?: boolean; // Optional prop to control rotation
+  mainTeamColor?: string;
 }
 
 const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
   decal,
   variant_name,
   className = '',
-  forceRotation = false
+  forceRotation = false,
+  mainTeamColor = '#FFFFFF'
 }, ref) => {
 
   const { lastPage } = usePageStore();
@@ -74,6 +76,7 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
     if (!variantData) return <Error message={`Variant "${variant_name}" not found for decal "${decal}".`} />;
 
     const texturePath = variantData.preview_path;
+    const skinPath = variantData.skin_path || null; // skin is not required
     if (!texturePath) return <Error message={`Texture path not found for variant "${variant_name}" of decal "${decal}".`} />;
 
     // Define paths for the model and texture based on the decal and variant
@@ -91,7 +94,9 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
                 key={variant_name}
                 modelPath={modelPath} 
                 texturePath={texturePath} 
+                skinPath={skinPath}
                 forceRotation={forceRotation}
+                mainTeamColor={mainTeamColor}
             />
         </div>
   );

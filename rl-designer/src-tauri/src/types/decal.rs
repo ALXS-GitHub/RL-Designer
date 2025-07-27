@@ -2,6 +2,7 @@
 pub struct VariantFrontInfo {
     pub variant_name: String,
     pub preview_path: Option<String>,
+    pub skin_path: Option<String>,
 }
 
 #[derive(Debug, serde::Serialize)]

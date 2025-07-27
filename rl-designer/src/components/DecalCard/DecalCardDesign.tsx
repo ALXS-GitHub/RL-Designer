@@ -5,6 +5,7 @@ import Dropdown from '@/components/DropdownMenu/Dropdown';
 import type { DropdownItem } from '../DropdownMenu/Dropdown';
 import PreviewLoader from '@/pages/Preview/PreviewLoader';
 import { FaEllipsisH } from 'react-icons/fa';
+import useModelSettingsStore from '@/stores/modelSettingsStore';
 
 
 import './DecalCard.scss';
@@ -31,6 +32,7 @@ const DecalCard = ({
         throw new Error('DecalCard received an empty decal or no variants');
     }
 
+    const { color } = useModelSettingsStore();
     const [lastHoveredVariant, setLastHoveredVariant] = useState<string>(decal.variants[0].variant_name);
     const [isHovering, setIsHovering] = useState(false);
     const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -89,6 +91,7 @@ const DecalCard = ({
                             variant_name={lastHoveredVariant} 
                             className="decal-card__preview-image"
                             forceRotation={true}
+                            mainTeamColor={color}
                         />
                     ) : (
                         previewImage(lastHoveredVariant)

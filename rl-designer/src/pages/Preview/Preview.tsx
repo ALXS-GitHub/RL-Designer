@@ -7,12 +7,13 @@ import useCollection from '@/hooks/useCollection';
 import useModelSettingsStore from '@/stores/modelSettingsStore';
 import Button from '@/components/Button/Button';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import ColorPicker from '@/components/ColorPicker/ColorPicker';
 
 import './Preview.scss';
 
 const Preview: React.FC = () => {
   const { decal, variant_name } = useParams<{ decal: string; variant_name: string }>();
-  const { isRotating, setIsRotating } = useModelSettingsStore();
+  const { isRotating, setIsRotating, color, setColor } = useModelSettingsStore();
   const [selectedVariantName, setSelectedVariantName] = useState(variant_name);
   const previewLoaderRef = useRef<any>(null);
 
@@ -46,15 +47,26 @@ const Preview: React.FC = () => {
         </div>
       </div>
       <div className="preview__viewport">
-        <PreviewLoader decal={decal} variant_name={selectedVariantName} ref={previewLoaderRef} />
+        <PreviewLoader decal={decal} variant_name={selectedVariantName} ref={previewLoaderRef} mainTeamColor={color} />
       </div>
       <div className="preview__controls">
         <p className="preview__instructions">
           Drag to rotate • Scroll to zoom • Right-click to pan
         </p>
-        <Button className="preview__rotate-toggle" onClick={() => setIsRotating(!isRotating)} size='small'>
-          {isRotating ? 'Stop Rotation' : 'Start Rotation'}
-        </Button>
+        <div className="preview__actions">
+            <ColorPicker
+              selectedColor={color}
+              onColorChange={setColor}
+              className="preview__color-picker"
+            />
+            <Button 
+              className="preview__rotate-toggle" 
+              onClick={() => setIsRotating(!isRotating)} 
+              size='small'
+            >
+              {isRotating ? 'Stop Rotation' : 'Start Rotation'}
+            </Button>
+          </div>
       </div>
     </div>
   );

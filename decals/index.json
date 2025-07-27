@@ -10,7 +10,8 @@
             "body_skin.png",
             "Template.json"
           ],
-          "preview_path": "decals/Born To Be Itzy/Fennec/body_diffuse.png"
+          "preview_path": "decals/Born To Be Itzy/Fennec/body_diffuse.png",
+          "skin_path": "decals/Born To Be Itzy/Fennec/body_skin.png"
         },
         {
           "variant": "Octane",
@@ -20,7 +21,8 @@
             "oct_diffuse.png",
             "Template.json"
           ],
-          "preview_path": "decals/Born To Be Itzy/Octane/oct_diffuse.png"
+          "preview_path": "decals/Born To Be Itzy/Octane/oct_diffuse.png",
+          "skin_path": "decals/Born To Be Itzy/Octane/oct_decal.png"
         },
         {
           "variant": "Venom",
@@ -29,7 +31,8 @@
             "body_skin.png",
             "Template.json"
           ],
-          "preview_path": "decals/Born To Be Itzy/Venom/body_diffuse.png"
+          "preview_path": "decals/Born To Be Itzy/Venom/body_diffuse.png",
+          "skin_path": "decals/Born To Be Itzy/Venom/body_skin.png"
         }
       ]
     },
@@ -44,7 +47,8 @@
             "lesserafim_chassis.png",
             "Template.json"
           ],
-          "preview_path": "decals/Chaewon Heart LeSserafim/Fennec/chaewon_diffuse.png"
+          "preview_path": "decals/Chaewon Heart LeSserafim/Fennec/chaewon_diffuse.png",
+          "skin_path": "decals/Chaewon Heart LeSserafim/Fennec/chaewon_skin.png"
         },
         {
           "variant": "Octane",
@@ -54,7 +58,8 @@
             "lesserafim_chassis.png",
             "Template.json"
           ],
-          "preview_path": "decals/Chaewon Heart LeSserafim/Octane/chaewon_diffuse.png"
+          "preview_path": "decals/Chaewon Heart LeSserafim/Octane/chaewon_diffuse.png",
+          "skin_path": "decals/Chaewon Heart LeSserafim/Octane/chaewon_skin.png"
         }
       ]
     },
@@ -70,7 +75,8 @@
             "lesserafim_chassis.png",
             "Template.json"
           ],
-          "preview_path": "decals/Chaewon LeSserafim/Fennec/chaewon_diffuse.png"
+          "preview_path": "decals/Chaewon LeSserafim/Fennec/chaewon_diffuse.png",
+          "skin_path": "decals/Chaewon LeSserafim/Fennec/chaewon_skin.png"
         },
         {
           "variant": "Octane",
@@ -82,7 +88,8 @@
             "lesserafim_chassis.png",
             "Template.json"
           ],
-          "preview_path": "decals/Chaewon LeSserafim/Octane/chaewon_diffuse.png"
+          "preview_path": "decals/Chaewon LeSserafim/Octane/chaewon_diffuse.png",
+          "skin_path": "decals/Chaewon LeSserafim/Octane/chaewon_skin.png"
         }
       ]
     },
@@ -98,7 +105,8 @@
             "oct_skin.png",
             "Template.json"
           ],
-          "preview_path": "decals/Dirty Work/Octane/oct_diffuse.png"
+          "preview_path": "decals/Dirty Work/Octane/oct_diffuse.png",
+          "skin_path": "decals/Dirty Work/Octane/oct_skin.png"
         }
       ]
     },
@@ -113,7 +121,8 @@
             "esper_skin.png",
             "Template.json"
           ],
-          "preview_path": "decals/Fast And Furious Skyline/Esper/esper_body_diffuse.png"
+          "preview_path": "decals/Fast And Furious Skyline/Esper/esper_body_diffuse.png",
+          "skin_path": "decals/Fast And Furious Skyline/Esper/esper_skin.png"
         }
       ]
     },
@@ -129,7 +138,8 @@
             "HyperBeast_Chassis.png",
             "Template.json"
           ],
-          "preview_path": "decals/Girls Aespa/Octane/Girls_diffuse.png"
+          "preview_path": "decals/Girls Aespa/Octane/Girls_diffuse.png",
+          "skin_path": "decals/Girls Aespa/Octane/girls_skin.png"
         }
       ]
     },
@@ -143,7 +153,8 @@
             "body_skin.png",
             "Template.json"
           ],
-          "preview_path": "decals/Jordan/Fennec/body_diffuse.png"
+          "preview_path": "decals/Jordan/Fennec/body_diffuse.png",
+          "skin_path": "decals/Jordan/Fennec/body_skin.png"
         }
       ]
     },
@@ -158,7 +169,8 @@
             "oct_diffuse.png",
             "Template.json"
           ],
-          "preview_path": "decals/Staboz/Octane/oct_diffuse.png"
+          "preview_path": "decals/Staboz/Octane/oct_diffuse.png",
+          "skin_path": "decals/Staboz/Octane/oct_decal.png"
         }
       ]
     },
@@ -173,7 +185,8 @@
             "supernova_diffuse.png",
             "supernova_skin.png"
           ],
-          "preview_path": "decals/Supernova Aespa/Fennec/supernova_diffuse.png"
+          "preview_path": "decals/Supernova Aespa/Fennec/supernova_diffuse.png",
+          "skin_path": "decals/Supernova Aespa/Fennec/supernova_skin.png"
         }
       ]
     },
@@ -188,7 +201,8 @@
             "Dominus_Chassis.png",
             "Dominus_Diffuse.png"
           ],
-          "preview_path": "decals/Templates/Dominus/Dominus_Diffuse.png"
+          "preview_path": "decals/Templates/Dominus/Dominus_Diffuse.png",
+          "skin_path": "decals/Templates/Dominus/Dom_Skin.png"
         },
         {
           "variant": "Fennec",
@@ -198,7 +212,8 @@
             "Fennec_Chassis.png",
             "Fennec_Diffuse.png"
           ],
-          "preview_path": "decals/Templates/Fennec/Fennec_Diffuse.png"
+          "preview_path": "decals/Templates/Fennec/Fennec_Diffuse.png",
+          "skin_path": "decals/Templates/Fennec/Fen_Skin.png"
         },
         {
           "variant": "Octane",
@@ -208,7 +223,8 @@
             "oct_diffuse.png",
             "Template.json"
           ],
-          "preview_path": "decals/Templates/Octane/oct_diffuse.png"
+          "preview_path": "decals/Templates/Octane/oct_diffuse.png",
+          "skin_path": "decals/Templates/Octane/oct_decal.png"
         }
       ]
     },
@@ -224,7 +240,8 @@
             "Fennec_Diffuse.png",
             "Fennec_Diffuse_nobg.png"
           ],
-          "preview_path": "decals/Winter Aespa/Fennec/Fennec_Diffuse.png"
+          "preview_path": "decals/Winter Aespa/Fennec/Fennec_Diffuse.png",
+          "skin_path": "decals/Winter Aespa/Fennec/Fen_Skin.png"
         },
         {
           "variant": "Octane",
@@ -235,7 +252,8 @@
             "Template.json",
             "winter_skin.png"
           ],
-          "preview_path": "decals/Winter Aespa/Octane/oct_diffuse.png"
+          "preview_path": "decals/Winter Aespa/Octane/oct_diffuse.png",
+          "skin_path": "decals/Winter Aespa/Octane/winter_skin.png"
         }
       ]
     },
@@ -250,7 +268,8 @@
             "fennec_skin.png",
             "fennec_texture.png"
           ],
-          "preview_path": "decals/Yoko/Fennec/fennec_texture.png"
+          "preview_path": "decals/Yoko/Fennec/fennec_texture.png",
+          "skin_path": "decals/Yoko/Fennec/fennec_skin.png"
         }
       ]
     },
@@ -266,7 +285,8 @@
             "yuna_nobg.png",
             "yuna_skin.png"
           ],
-          "preview_path": "decals/Yuna Itzy/Fennec/Fennec_Diffuse.png"
+          "preview_path": "decals/Yuna Itzy/Fennec/Fennec_Diffuse.png",
+          "skin_path": "decals/Yuna Itzy/Fennec/yuna_skin.png"
         },
         {
           "variant": "Octane",
@@ -277,7 +297,8 @@
             "yuna_nobg.png",
             "yuna_skin.png"
           ],
-          "preview_path": "decals/Yuna Itzy/Octane/oct_diffuse.png"
+          "preview_path": "decals/Yuna Itzy/Octane/oct_diffuse.png",
+          "skin_path": "decals/Yuna Itzy/Octane/yuna_skin.png"
         },
         {
           "variant": "Roadhog",
@@ -286,7 +307,8 @@
             "body_skin.png",
             "Template.json"
           ],
-          "preview_path": "decals/Yuna Itzy/Roadhog/body_diffuse.png"
+          "preview_path": "decals/Yuna Itzy/Roadhog/body_diffuse.png",
+          "skin_path": "decals/Yuna Itzy/Roadhog/body_skin.png"
         },
         {
           "variant": "Venom",
@@ -295,7 +317,8 @@
             "body_skin.png",
             "Template.json"
           ],
-          "preview_path": "decals/Yuna Itzy/Venom/body_diffuse.png"
+          "preview_path": "decals/Yuna Itzy/Venom/body_diffuse.png",
+          "skin_path": "decals/Yuna Itzy/Venom/body_skin.png"
         }
       ]
     }

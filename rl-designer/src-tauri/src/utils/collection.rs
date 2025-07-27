@@ -53,13 +53,15 @@ pub fn fetch_decal_folders(element: ElementType) -> Result<Vec<DecalTextures>, S
                 continue;
             }
 
-            let variants_with_preview: Vec<VariantFrontInfo> = variants
-                .iter()
-                .map(|variant_name| VariantFrontInfo {
+            let mut variants_with_preview: Vec<VariantFrontInfo> = Vec::new();
+            for variant_name in variants {
+                let preview_files = read_body_diffuse_from_variant(element, &path, &variant_name).ok();
+                variants_with_preview.push(VariantFrontInfo {
                     variant_name: variant_name.clone(),
-                    preview_path: read_body_diffuse_from_variant(element, &path, variant_name).ok(),
-                })
-                .collect();
+                    preview_path: preview_files.as_ref().and_then(|pf| pf.preview_path.clone()),
+                    skin_path: preview_files.as_ref().and_then(|pf| pf.skin_path.clone()),
+                });
+            }
 
             let decal = DecalTextures {
                 name: name.clone(),
@@ -77,11 +79,16 @@ pub fn fetch_decal_folders(element: ElementType) -> Result<Vec<DecalTextures>, S
     Ok(folders)
 }
 
+pub struct PreviewFiles {
+    pub preview_path: Option<String>,
+    pub skin_path: Option<String>,
+}
+
 pub fn read_body_diffuse_from_variant(
     element: ElementType,
     decal_path: &std::path::Path,
     variant_name: &str,
-) -> Result<String, String> {
+) -> Result<PreviewFiles, String> {
     let variant_path = decal_path.join(variant_name);
 
     // Look for JSON files in the variant directory
@@ -104,18 +111,41 @@ pub fn read_body_diffuse_from_variant(
             if let Some(obj) = json_value.as_object() {
                 for (_, value) in obj {
                     if let Some(body) = value.get(element.get_body_diffuse().body.as_str()) {
-                        if let Some(diffuse) = body.get(element.get_body_diffuse().diffuse.as_str()) {
-                            if let Some(diffuse_filename) = diffuse.as_str() {
-                                // Build the full path to the diffuse image
-                                let diffuse_path = variant_path.join(diffuse_filename);
 
-                                // Check if the file actually exists
-                                if diffuse_path.exists() {
-                                    // Return the full path as string for asset serving
-                                    return Ok(diffuse_path.to_string_lossy().to_string());
-                                }
+                        let diffuse_path = body
+                            .get(element.get_body_diffuse().diffuse.as_str())
+                            .and_then(|d| d.as_str())
+                            .map(|s| variant_path.join(s).to_string_lossy().to_string());
+                        let skin_path = body
+                            .get(element.get_body_diffuse().skin.as_str())
+                            .and_then(|s| s.as_str())
+                            .map(|s| variant_path.join(s).to_string_lossy().to_string());
+
+                        // Check if diffuse_path exists, if not set to None
+                        let diffuse_path = diffuse_path.and_then(|path| {
+                            let path_obj = std::path::Path::new(&path);
+                            if path_obj.exists() {
+                                Some(path)
+                            } else {
+                                None
                             }
-                        }
+                        });
+
+                        // Check if skin_path exists, if not set to None
+                        let skin_path = skin_path.and_then(|path| {
+                            let path_obj = std::path::Path::new(&path);
+                            if path_obj.exists() {
+                                Some(path)
+                            } else {
+                                None
+                            }
+                        });
+
+                        // Return the PreviewFiles with the paths
+                        return Ok(PreviewFiles {
+                            preview_path: diffuse_path,
+                            skin_path,
+                        });
                     }
                 }
             }
