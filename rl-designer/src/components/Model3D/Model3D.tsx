@@ -1,10 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useFrame, useLoader } from '@react-three/fiber';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
-import { TextureLoader, Mesh, Group, Box3, Vector3, DoubleSide, MeshPhongMaterial, ShaderMaterial, Color, Texture, Material, ShaderLib, UniformsUtils, UniformsLib } from 'three';
+import { TextureLoader, Mesh, Group, Box3, Vector3, DoubleSide, MeshPhongMaterial, ShaderMaterial, Color, Texture, Material, ShaderLib, UniformsUtils, UniformsLib, Vector2, MeshPhysicalMaterial } from 'three';
 import useModelSettingsStore from '@/stores/modelSettingsStore';
 import { resolveImagePath } from '@/utils/images';
 import { colorReplacementVertexShader, colorReplacementFragmentShader } from '@/shaders/index';
+import { shaderSkinPatch } from './patches/shaderSkinPatch';
 
 export interface Model3DProps {
     modelPath: string;
@@ -21,28 +22,43 @@ const createColorReplacementShader = (
     skinTexture: Texture,
     mainTeamColor: string = '#FFFFFF'
 ) => {
-  // Clone the Phong shader's uniforms
-  const uniforms = UniformsUtils.clone(ShaderLib.phong.uniforms);
 
-  // Add your custom uniforms
-  uniforms.decalTexture = { value: decalTexture };
-  uniforms.skinTexture = { value: skinTexture };
-  uniforms.mainTeamColor = { value: new Color(mainTeamColor) };
-  uniforms.windowsColor = { value: new Color('#87CEEB') };
+  const material = new MeshPhongMaterial({
+      map: decalTexture,
+      color: new Color(mainTeamColor),
+      side: DoubleSide,
+      transparent: true,
+      alphaTest: 0.1,
+      shininess: 30,           // Controls the size of the specular highlight (0-100+)
+      specular: new Color(0x222222), // Color of the specular reflection (subtle gray)
+      reflectivity: 0.1        // How much the material reflects the environment
+    });
 
-  const newUniforms = UniformsUtils.merge([
-    UniformsLib["lights"],
-    uniforms,
-  ]);
+    // TODO : add setting for switching before predefined materials
+  //   const material = new MeshPhysicalMaterial({
+  //   map: decalTexture,
+  //   color: new Color(mainTeamColor),
+  //   side: DoubleSide,
+  //   transparent: true,
+  //   alphaTest: 0.1,
+  //   metalness: 0.8,      // High metalness for car paint
+  //   roughness: 0.3,      // Lower roughness for shinier surface
+  //   clearcoat: 1.0,      // Full clearcoat for glossy finish
+  //   clearcoatRoughness: 0.1,
+  //   reflectivity: 0.7,   // Strong reflections
+  //   sheen: 1.0,          // Optional: adds a soft fabric-like sheen
+  //   sheenColor: new Color(mainTeamColor)
+  // });
 
-  return new ShaderMaterial({
-    uniforms: newUniforms,
-    vertexShader: colorReplacementVertexShader,
-    fragmentShader: colorReplacementFragmentShader,
-    side: DoubleSide,
-    transparent: true,
-    lights: true,
-  });
+    material.onBeforeCompile = (shader) => {
+      shader.uniforms.skinTexture = { value: skinTexture };
+      shader.uniforms.mainTeamColor = { value: new Color(mainTeamColor) };
+      shader.uniforms.windowsColor = { value: new Color('#87CEEB') };
+
+      // Apply the skin patch to the shader
+      shaderSkinPatch(shader);
+    };
+    return material;
 };
 
 // Helper function to determine if material should be processed

@@ -8,7 +8,7 @@
 - [ ] Improve the Material reflection of the car.
   - [ ] Fix : its seems like the lights from the scene are not useful... (they are not the ones doing the light..., maybe this is only the lights of the shader that does the things... to investigate).
 - [X] Refactor the CarModel (and rename Model3D) thing (it's a bit messy right not)
-
+- [ ] Custom setting to switch between multiple predefined materials (some more metallic, other more plastic, etc...)
 
 ## Medium
 

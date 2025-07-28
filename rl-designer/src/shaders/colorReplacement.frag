@@ -1,3 +1,5 @@
+// Original shader code for color replacement in a 3D model
+// Note : Not used anymore, replace by shader patch
 uniform sampler2D decalTexture;
 uniform sampler2D skinTexture;
 uniform vec3 mainTeamColor;

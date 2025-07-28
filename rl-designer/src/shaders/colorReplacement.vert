@@ -1,3 +1,5 @@
+// Original shader code for color replacement in a 3D model
+// Note : Not used anymore, replace by shader patch
 varying vec2 vUv;
 varying vec3 vNormal;
 varying vec3 vViewPosition;
