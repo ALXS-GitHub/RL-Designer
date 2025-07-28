@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useFrame, useLoader } from '@react-three/fiber';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
-import { TextureLoader, Mesh, Group, Box3, Vector3, DoubleSide, MeshPhongMaterial, ShaderMaterial, Color, Texture, Material } from 'three';
+import { TextureLoader, Mesh, Group, Box3, Vector3, DoubleSide, MeshPhongMaterial, ShaderMaterial, Color, Texture, Material, ShaderLib, UniformsUtils, UniformsLib } from 'three';
 import useModelSettingsStore from '@/stores/modelSettingsStore';
 import { resolveImagePath } from '@/utils/images';
 import { colorReplacementVertexShader, colorReplacementFragmentShader } from '@/shaders/index';
@@ -21,17 +21,27 @@ const createColorReplacementShader = (
     skinTexture: Texture,
     mainTeamColor: string = '#FFFFFF'
 ) => {
+  // Clone the Phong shader's uniforms
+  const uniforms = UniformsUtils.clone(ShaderLib.phong.uniforms);
+
+  // Add your custom uniforms
+  uniforms.decalTexture = { value: decalTexture };
+  uniforms.skinTexture = { value: skinTexture };
+  uniforms.mainTeamColor = { value: new Color(mainTeamColor) };
+  uniforms.windowsColor = { value: new Color('#87CEEB') };
+
+  const newUniforms = UniformsUtils.merge([
+    UniformsLib["lights"],
+    uniforms,
+  ]);
+
   return new ShaderMaterial({
-    uniforms: {
-      decalTexture: { value: decalTexture },
-      skinTexture: { value: skinTexture },
-      mainTeamColor: { value: new Color(mainTeamColor) },
-      windowsColor: { value: new Color('#87CEEB') },
-    },
+    uniforms: newUniforms,
     vertexShader: colorReplacementVertexShader,
     fragmentShader: colorReplacementFragmentShader,
     side: DoubleSide,
     transparent: true,
+    lights: true,
   });
 };
 
