@@ -1,0 +1,54 @@
+bAnimRotationOnly = true
+TrackBoneNames[34] =
+{
+    TrackBoneNames[0] = root_jnt
+    TrackBoneNames[1] = chassis_jnt
+    TrackBoneNames[2] = FL_axleShaft_jnt
+    TrackBoneNames[3] = FR_axleShaft_jnt
+    TrackBoneNames[4] = BL_axleShaft_jnt
+    TrackBoneNames[5] = BR_axleShaft_jnt
+    TrackBoneNames[6] = body_front_jnt
+    TrackBoneNames[7] = body_back_jnt
+    TrackBoneNames[8] = BL_Shock_A_jnt
+    TrackBoneNames[9] = BR_Shock_A_jnt
+    TrackBoneNames[10] = en_panel_left_JNT
+    TrackBoneNames[11] = en_panel_right_JNT
+    TrackBoneNames[12] = inner_Engine_jnt
+    TrackBoneNames[13] = inner_en_mid_jnt
+    TrackBoneNames[14] = inner_en_L_jnt
+    TrackBoneNames[15] = inner_en_R_jnt
+    TrackBoneNames[16] = inner_side_L_jnt
+    TrackBoneNames[17] = inner_side_R_jnt
+    TrackBoneNames[18] = FL_Shock_A_jnt
+    TrackBoneNames[19] = FR_Shock_A_jnt
+    TrackBoneNames[20] = BR_WheelTranslation_jnt
+    TrackBoneNames[21] = BR_Disc_jnt
+    TrackBoneNames[22] = BR_Shock_B_jnt
+    TrackBoneNames[23] = BL_WheelTranslation_jnt
+    TrackBoneNames[24] = BL_Disc_jnt
+    TrackBoneNames[25] = BL_Shock_B_jnt
+    TrackBoneNames[26] = FL_WheelTranslation_jnt
+    TrackBoneNames[27] = FL_Pivot_jnt
+    TrackBoneNames[28] = FL_Disc_jnt
+    TrackBoneNames[29] = FL_Shock_B_jnt
+    TrackBoneNames[30] = FR_WheelTranslation_jnt
+    TrackBoneNames[31] = FR_Pivot_jnt
+    TrackBoneNames[32] = FR_Disc_jnt
+    TrackBoneNames[33] = FR_Shock_B_jnt
+}
+Sequences[5] =
+{
+    Sequences[0] = AnimSequence'Body_NeoBike.Anim.NeoBike_AnimSet.AnimSequence_0'
+    Sequences[1] = AnimSequence'Body_NeoBike.Anim.NeoBike_AnimSet.AnimSequence_1'
+    Sequences[2] = AnimSequence'Body_NeoBike.Anim.NeoBike_AnimSet.AnimSequence_2'
+    Sequences[3] = AnimSequence'Body_NeoBike.Anim.NeoBike_AnimSet.AnimSequence_3'
+    Sequences[4] = AnimSequence'Body_NeoBike.Anim.NeoBike_AnimSet.AnimSequence_4'
+}
+UseTranslationBoneNames[0] = {}
+ForceMeshTranslationBoneNames[0] = {}
+PreviewSkelMeshName = Body_NeoBike.Anim.Body_NeoBike_SK
+BulkDataBlocks[0] = {}
+KeyFrameSize = 0
+RotationChannels = 0
+TranslationChannels = 0
+m_pBioAnimSetData = None

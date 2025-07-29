@@ -1,0 +1,37 @@
+TwoSided = false
+bDisableDepthTest = false
+bIsMasked = false
+ReferencedTextures[2] =
+{
+    ReferencedTextures[0] = Texture2D'SpaceStation_FieldAssets.Tex.Blank_N'
+}
+Expressions[30] =
+{
+    Expressions[2] = MaterialExpressionTextureSampleParameter2D'Vehicle_Parent_Materials.MAT_PlasticLens_VertColor.MaterialExpressionTextureSampleParameter2D_0'
+    Expressions[29] = MaterialExpressionScalarParameter'Vehicle_Parent_Materials.MAT_PlasticLens_VertColor.MaterialExpressionScalarParameter_0'
+}
+CachedExpressionData = 
+BlendMode = BLEND_Translucent (2)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[1] =
+{
+    CollectedTextureParameters[0] =
+    {
+        Texture = Texture2D'SpaceStation_FieldAssets.Tex.Blank_N'
+        Name = Normal
+        Group = None
+    }
+}
+CollectedScalarParameters[1] =
+{
+    CollectedScalarParameters[0] = { Value=0, Name=DesaturateLenses, Group=None }
+}
+CollectedVectorParameters[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}
