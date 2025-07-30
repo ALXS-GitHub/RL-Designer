@@ -10,7 +10,7 @@ import './Preview.scss';
 
 const Preview: React.FC = () => {
   const { decal, variant_name } = useParams<{ decal: string; variant_name: string }>();
-  const { isRotating, setIsRotating, color, setColor } = useModelSettingsStore();
+  const { isRotating, setIsRotating, mainTeamColor, setMainTeamColor } = useModelSettingsStore();
   const [selectedVariantName, setSelectedVariantName] = useState(variant_name);
   const previewLoaderRef = useRef<any>(null);
 
@@ -44,7 +44,7 @@ const Preview: React.FC = () => {
         </div>
       </div>
       <div className="preview__viewport">
-        <PreviewLoader decal={decal} variant_name={selectedVariantName} ref={previewLoaderRef} mainTeamColor={color} />
+        <PreviewLoader decal={decal} variant_name={selectedVariantName} ref={previewLoaderRef} />
       </div>
       <div className="preview__controls">
         <p className="preview__instructions">
@@ -52,8 +52,8 @@ const Preview: React.FC = () => {
         </p>
         <div className="preview__actions">
             <ColorPicker
-              selectedColor={color}
-              onColorChange={setColor}
+              selectedColor={mainTeamColor}
+              onColorChange={setMainTeamColor}
               className="preview__color-picker"
             />
             <Button 

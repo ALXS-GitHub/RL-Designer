@@ -7,7 +7,6 @@
 
 - [ ] Improve the Material reflection of the car.
 - [ ] Custom setting to switch between multiple predefined materials (some more metallic, other more plastic, etc...)
-- [ ] I have tested if we load the entire car model (body + chassis) and indeed it works fine and apply the decal to the body part. So we can have the full car model in the app (with chassis and the chassis texture (if it exists in the Template.json, else use a template (if I can find one for each car))) + Add some wheels to the models (Cristiano wheels)
 
 ## Medium
 
@@ -57,3 +56,8 @@
   - [X] make a button to stop rotation
   - [X] Make the colors changeable
 - [X] Refactor the CarModel (and rename Model3D) thing (it's a bit messy right not)
+- [X] Refactor 3D model so each function takes types (maps/records -> interface for each function) instead of taking the parameters directly. This will allow us to have a more flexible and reusable code.
+- [X] reuse the code for the single material inside the array materials function 
+- [X] To integrate the chassis texture, we have to extend / patch the shader material ?? (I don't know for now, but this is something to investigate : how to integrate the chassis texture in the car model)
+- [X] refactor properly the add of the chassis texture in the functions of the Model3D component (to avoid code duplication), and cleaner approach to handle the materials.
+- [X] I have tested if we load the entire car model (body + chassis) and indeed it works fine and apply the decal to the body part. So we can have the full car model in the app (with chassis and the chassis texture (if it exists in the Template.json, else use a template (if I can find one for each car))) + Add some wheels to the models (Cristiano wheels)

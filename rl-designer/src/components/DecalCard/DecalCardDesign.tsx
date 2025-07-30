@@ -32,7 +32,6 @@ const DecalCard = ({
         throw new Error('DecalCard received an empty decal or no variants');
     }
 
-    const { color } = useModelSettingsStore();
     const [lastHoveredVariant, setLastHoveredVariant] = useState<string>(decal.variants[0].variant_name);
     const [isHovering, setIsHovering] = useState(false);
     const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -90,8 +89,7 @@ const DecalCard = ({
                             decal={decal.name} 
                             variant_name={lastHoveredVariant} 
                             className="decal-card__preview-image"
-                            forceRotation={true}
-                            mainTeamColor={color}
+                            modelDataConfig={{ forceRotation: true }}
                         />
                     ) : (
                         previewImage(lastHoveredVariant)

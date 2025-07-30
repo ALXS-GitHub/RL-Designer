@@ -7,14 +7,13 @@ import Model3D from './Model3D';
 import type { Model3DProps } from './Model3D';
 
 import './Model3DPreview.scss'
+import type { ModelDataConfig, ModelDataPaths } from '@/types/modelData';
+import useModelSettingsStore from '@/stores/modelSettingsStore';
 
 interface Model3DPreviewProps {
-    modelPath: string;
-    texturePath?: string;
-    skinPath?: string;
+    modelDataPaths: ModelDataPaths;
+    modelDataConfig?: ModelDataConfig;
     className?: string;
-    forceRotation?: boolean;
-    mainTeamColor?: string;
 }
 
 // Error Boundary Component for handling useLoader errors
@@ -27,15 +26,13 @@ const Model3DWithErrorBoundary: React.FC<Model3DProps> = (props) => {
 };
 
 const Model3DPreview: React.FC<Model3DPreviewProps> = ({
-  modelPath, 
-  texturePath, 
-  skinPath,
+  modelDataPaths,
+  modelDataConfig,
   className = '',
-  forceRotation = false,
-  mainTeamColor = '#FFFFFF'
 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { mainTeamColor } = useModelSettingsStore();
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
@@ -48,7 +45,7 @@ const Model3DPreview: React.FC<Model3DPreviewProps> = ({
   };
 
   // Create a unique key based on the texture and skin paths to force re-render
-  const componentKey = `${texturePath}-${skinPath}-${mainTeamColor}`;
+  const componentKey = `${modelDataPaths.decalTexturePath}-${modelDataPaths.skinTexturePath}-${mainTeamColor}`;
 
   // Show error outside of Canvas
   if (error) {
@@ -106,12 +103,9 @@ const Model3DPreview: React.FC<Model3DPreviewProps> = ({
           <Environment preset="sunset" />
 
           <Model3DWithErrorBoundary
-            modelPath={modelPath}
-            texturePath={texturePath}
-            skinPath={skinPath}
+            modelDataPaths={modelDataPaths}
+            modelDataConfig={modelDataConfig}
             onError={handleModelError}
-            forceRotation={forceRotation}
-            mainTeamColor={mainTeamColor}
           />
         </Canvas>
       </div>

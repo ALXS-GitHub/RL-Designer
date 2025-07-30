@@ -1,6 +1,6 @@
 export const SUPPORTED_MODELS = {
     OCTANE: 'Octane',
-    // DOMINUS: 'Dominus', // Not supported yet
+    DOMINUS: 'Dominus',
     FENNEC: 'Fennec',
     ROADHOG: 'Roadhog',
     VENOM: 'Venom',

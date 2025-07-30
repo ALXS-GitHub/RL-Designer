@@ -12,6 +12,7 @@ import { resolveImagePath } from "@/utils/images";
 import { forwardRef, useImperativeHandle } from "react";
 import type { ElementType } from "@/constants/elements";
 import useSelectedElementStore from "@/stores/selectedElementStore";
+import type { ModelDataConfig } from "@/types/modelData";
 
 import "./Model3DLoader.scss";
 
@@ -19,16 +20,14 @@ interface PreviewLoaderProps {
     decal: string;
     variant_name: string;
     className?: string;
-    forceRotation?: boolean; // Optional prop to control rotation
-    mainTeamColor?: string;
+    modelDataConfig?: ModelDataConfig;
 }
 
 const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
     decal,
     variant_name,
     className = "",
-    forceRotation = false,
-    mainTeamColor = "#FFFFFF",
+    modelDataConfig,
 },ref) => {
     const { lastPage } = usePageStore();
     const { selectedElement } = useSelectedElementStore();
@@ -101,9 +100,30 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
         );
 
     // Define paths for the model and texture based on the decal and variant
-    let modelPath = `/models/meshes/${variant_name}_Body.obj`;
+    let modelPath = `/models/meshes/${variant_name}.obj`;
     if (selectedElement === "ball") {
         modelPath = `/models/meshes/Ball.obj`;
+    }
+
+    // TODO : check if exists... (but normally yes as we also suppose modelPath exists)
+    let chassisTexturePath = null;
+    let wheelTexturePath = null;
+    let tireTexturePath = null;
+    if (selectedElement === "car") {
+        chassisTexturePath = `/models/textures/chassis/${variant_name}_chassis.png`;
+        // For the moment the wheel on the models are defined to Cristiano
+        wheelTexturePath = `/models/textures/wheels/wheels/Cristiano_wheel.png`;
+        tireTexturePath = `/models/textures/wheels/tires/Cristiano_tire.png`;
+    }
+
+
+    const modelDataPaths = {
+        modelPath: modelPath,
+        decalTexturePath: texturePath,
+        skinTexturePath: skinPath,
+        chassisTexturePath: chassisTexturePath,
+        wheelTexturePath: wheelTexturePath,
+        tireTexturePath: tireTexturePath,
     }
 
     if (isLoading) return <Loading />;
@@ -113,11 +133,8 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
         <div className={`preview-loader ${className}`}>
             <Model3DPreview
                 key={variant_name}
-                modelPath={modelPath}
-                texturePath={texturePath}
-                skinPath={skinPath}
-                forceRotation={forceRotation}
-                mainTeamColor={mainTeamColor}
+                modelDataPaths={modelDataPaths}
+                modelDataConfig={modelDataConfig}
             />
         </div>
     );

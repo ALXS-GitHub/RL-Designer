@@ -7,7 +7,7 @@
     align-items: center;
     gap: var(--space-2);
     padding: var(--space-2) var(--space-3);
-    background: var(--gray-100);
+    background: var(--gray-200);
     border: 1px solid var(--gray-300);
     border-radius: var(--radius-md);
     cursor: pointer;
@@ -163,61 +163,6 @@
       &:focus {
         outline: 2px solid var(--blue-300);
         outline-offset: 2px;
-      }
-    }
-  }
-}
-
-// Dark mode adjustments
-@media (prefers-color-scheme: dark) {
-  .color-picker {
-    &__trigger {
-      background: var(--gray-800);
-      border-color: var(--gray-600);
-      
-      &:hover {
-        background: var(--gray-700);
-        border-color: var(--gray-500);
-      }
-    }
-
-    &__icon {
-      color: var(--gray-300);
-    }
-
-    &__dropdown {
-      background: var(--gray-800);
-      border-color: var(--gray-600);
-    }
-
-    &__label {
-      color: var(--gray-200);
-    }
-
-    &__input {
-      border-color: var(--gray-600);
-
-      &:hover {
-        border-color: var(--gray-500);
-      }
-    }
-
-    &__value {
-      background: var(--gray-700);
-      color: var(--gray-200);
-      border-color: var(--gray-600);
-    }
-
-    &__button {
-      &--cancel {
-        background: var(--gray-700);
-        color: var(--gray-200);
-        border-color: var(--gray-600);
-
-        &:hover {
-          background: var(--gray-600);
-          border-color: var(--gray-500);
-        }
       }
     }
   }
