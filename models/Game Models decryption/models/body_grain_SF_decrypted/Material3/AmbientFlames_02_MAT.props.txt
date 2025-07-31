@@ -3,7 +3,6 @@ bDisableDepthTest = false
 bIsMasked = false
 ReferencedTextures[2] =
 {
-    ReferencedTextures[0] = Texture2D'Boost_Tests.Textures.Flow_03'
     ReferencedTextures[1] = Texture2D'Boost_LiquidMetal.Textures.SmokeMask_T'
 }
 Expressions[30] =

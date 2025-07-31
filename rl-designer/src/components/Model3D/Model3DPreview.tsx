@@ -32,7 +32,7 @@ const Model3DPreview: React.FC<Model3DPreviewProps> = ({
 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const { mainTeamColor } = useModelSettingsStore();
+  const { mainTeamColor, material } = useModelSettingsStore();
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
@@ -45,7 +45,7 @@ const Model3DPreview: React.FC<Model3DPreviewProps> = ({
   };
 
   // Create a unique key based on the texture and skin paths to force re-render
-  const componentKey = `${modelDataPaths.decalTexturePath}-${modelDataPaths.skinTexturePath}-${mainTeamColor}`;
+  const componentKey = `${modelDataPaths.decalTexturePath}-${modelDataPaths.skinTexturePath}-${mainTeamColor}-${material}`;
 
   // Show error outside of Canvas
   if (error) {

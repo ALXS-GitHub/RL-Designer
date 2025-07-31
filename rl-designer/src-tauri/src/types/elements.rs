@@ -11,6 +11,11 @@ pub struct BodyJSONType {
     pub skin: String,
 }
 
+pub struct ChassisJSONType {
+    pub chassis: String,
+    pub diffuse: String,
+}
+
 impl ElementType {
     pub fn get_folder_name(&self) -> &'static str {
         match self {
@@ -49,6 +54,19 @@ impl ElementType {
                 skin: "Skin".to_string(),
             },
             // ElementType::Wheel => BodyDiffuseType { body: "Wheel".to_string(), diffuse: "Diffuse".to_string() }, // not supported yet
+        }
+    }
+
+    pub fn get_chassis_diffuse(&self) -> ChassisJSONType {
+        match self {
+            ElementType::Car => ChassisJSONType {
+                chassis: "Chassis".to_string(),
+                diffuse: "Diffuse".to_string(),
+            },
+            _ => ChassisJSONType { // not applicable for other types
+                chassis: String::new(),
+                diffuse: String::new(),
+            },
         }
     }
 }

@@ -1,3 +1,4 @@
+import type { DefaultMaterialType } from "@/constants/materials";
 import type { Object3DEventMap } from "three/src/core/Object3D.js";
 import type { Group } from "three/src/objects/Group.js";
 import type { Texture } from "three/src/textures/Texture.js";
@@ -10,6 +11,7 @@ export interface ModelData {
     wheelTexture?: Texture,
     tireTexture?: Texture,
     mainTeamColor: string,
+    material: DefaultMaterialType,
 }
 
 export interface ModelDataPaths {

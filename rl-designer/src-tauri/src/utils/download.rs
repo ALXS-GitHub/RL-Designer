@@ -4,7 +4,7 @@ use crate::utils::explorer::fetch_decal_index;
 use std::fs;
 use crate::types::elements::ElementType;
 use crate::types::decal::{DecalTextures, VariantFrontInfo};
-use crate::utils::collection::read_body_diffuse_from_variant;
+use crate::utils::collection::read_preview_files_from_variant;
 
 pub async fn download_decal_variant_logic(
     element: ElementType,
@@ -113,11 +113,12 @@ pub async fn download_decal_variant_logic(
     );
 
     // Read the body diffuse from the variant
-    let preview_files = read_body_diffuse_from_variant(element, &decal_dir, &variant_name).ok();
+    let preview_files = read_preview_files_from_variant(element, &decal_dir, &variant_name).ok();
     Ok(VariantFrontInfo {
         variant_name: variant_name.to_string(),
         preview_path: preview_files.as_ref().and_then(|pf| pf.preview_path.clone()),
         skin_path: preview_files.as_ref().and_then(|pf| pf.skin_path.clone()),
+        chassis_diffuse_path: preview_files.as_ref().and_then(|pf| pf.chassis_diffuse_path.clone()),
     })
 }
 

@@ -3,6 +3,7 @@ import type { ModelData } from "./modelData";
 
 export const MODEL_PARTS = {
     body: 'body',
+    ball: 'ball',
     chassis: 'chassis',
     wheel: 'wheel',
     tire: 'tire',
@@ -18,6 +19,7 @@ type TextureKeys<T> = {
 
 export const MODEL_PART_TEXTURE_MAP: Record<ModelPartType, TextureKeys<ModelData>> = {
   body: "decalTexture",
+  ball: "decalTexture",
   chassis: "chassisTexture",
   wheel: "wheelTexture",
   tire: "tireTexture",

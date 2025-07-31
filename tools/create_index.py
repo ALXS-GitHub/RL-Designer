@@ -97,7 +97,7 @@ def create_single_index(config):
             # Only add variant if it has files
             if files:
                 # Get preview path and skin path for this specific variant
-                preview_path, skin_path = get_preview_path(texture_item_name, variant_name, files, config["dir"])
+                preview_path, skin_path, chassis_diffuse_path = get_preview_path(texture_item_name, variant_name, files, config["dir"])
                 
                 variant_data = {
                     "variant": variant_name,
@@ -111,6 +111,9 @@ def create_single_index(config):
                 # Add skin_path only if it exists
                 if skin_path:
                     variant_data["skin_path"] = skin_path
+                    
+                if chassis_diffuse_path:
+                    variant_data["chassis_diffuse_path"] = chassis_diffuse_path
                 
                 variants.append(variant_data)
         
@@ -132,14 +135,16 @@ def create_single_index(config):
     for texture_item in index_data[texture_name]:
         variants_with_preview = sum(1 for v in texture_item['variants'] if v.get('preview_path'))
         variants_with_skin = sum(1 for v in texture_item['variants'] if v.get('skin_path'))
+        variants_with_chassis_diffuse = sum(1 for v in texture_item['variants'] if v.get('chassis_diffuse_path'))
         total_variants = len(texture_item['variants'])
-        print(f"  📁 {texture_item['name']}: {total_variants} variants ({variants_with_preview} with preview, {variants_with_skin} with skin)")
-        
+        print(f"  📁 {texture_item['name']}: {total_variants} variants ({variants_with_preview} with preview, {variants_with_skin} with skin, {variants_with_chassis_diffuse} with chassis diffuse)")
+
         # Show preview and skin status for each variant
         for variant in texture_item['variants']:
             preview_status = "✅" if variant.get("preview_path") else "❌"
             skin_status = "🎨" if variant.get("skin_path") else "⚪"
-            print(f"    📄 {variant['variant']}: {preview_status} preview {skin_status} skin")
+            chassis_diffuse_status = "🚗" if variant.get("chassis_diffuse_path") else "⚪"
+            print(f"    📄 {variant['variant']}: {preview_status} preview {skin_status} skin {chassis_diffuse_status} chassis diffuse")
     
     return True
 
@@ -173,11 +178,13 @@ def get_preview_path(texture_name, variant_name, files, base_dir):
             json_data = json.load(f)
         
         # Look for different diffuse and skin patterns based on texture type
-        diffuse_patterns = ["Body.Diffuse", "Params.Diffuse", "Wheel.Diffuse", "Diffuse"]
-        skin_patterns = ["Body.Skin", "Params.Skin", "Wheel.Skin", "Skin"]
+        diffuse_patterns = ["Body.Diffuse", "Params.Diffuse", "Wheel.Diffuse"]
+        skin_patterns = ["Body.Skin", "Params.Skin", "Wheel.Skin"]
+        chassis_diffuse_patterns = ["Chassis.Diffuse"]
         
         preview_path = None
         skin_path = None
+        chassis_diffuse_path = None
         
         # Look for any diffuse and skin field in any top-level key
         for key, value in json_data.items():
@@ -204,32 +211,28 @@ def get_preview_path(texture_name, variant_name, files, base_dir):
                                 if skin_filename in files:
                                     skin_path = f"{base_dir}/{texture_name}/{variant_name}/{skin_filename}"
                                     print(f"    ✅ Skin found for {variant_name}: {skin_filename}")
-                    else:
-                        # Direct pattern like "Diffuse" and "Skin"
-                        if diffuse_pattern in value:
-                            diffuse_filename = value[diffuse_pattern]
-                            if diffuse_filename in files:
-                                preview_path = f"{base_dir}/{texture_name}/{variant_name}/{diffuse_filename}"
-                                print(f"    ✅ Preview found for {variant_name}: {diffuse_filename}")
-                        
-                        if skin_pattern in value:
-                            skin_filename = value[skin_pattern]
-                            if skin_filename in files:
-                                skin_path = f"{base_dir}/{texture_name}/{variant_name}/{skin_filename}"
-                                print(f"    ✅ Skin found for {variant_name}: {skin_filename}")
                     
                     # If we found a preview path, we can break (we found the right pattern)
                     if preview_path:
                         break
                 
-                # If we found a preview path, break out of outer loop too
-                if preview_path:
-                    break
+                for i, chassis_diffuse_pattern in enumerate(chassis_diffuse_patterns):
+                    if "." in chassis_diffuse_pattern:
+                        # Nested pattern like "Chassis.Diffuse"
+                        parent_key, child_key = chassis_diffuse_pattern.split(".", 1)
+                        
+                        if parent_key in value and isinstance(value[parent_key], dict):
+                            # Check for chassis diffuse
+                            if child_key in value[parent_key]:
+                                chassis_diffuse_filename = value[parent_key][child_key]
+                                if chassis_diffuse_filename in files:
+                                    chassis_diffuse_path = f"{base_dir}/{texture_name}/{variant_name}/{chassis_diffuse_filename}"
+                                    print(f"    ✅ Chassis diffuse found for {variant_name}: {chassis_diffuse_filename}")
         
         if not preview_path:
             print(f"    ⚠️  No diffuse field found in {json_file} for {variant_name}")
-        
-        return preview_path, skin_path
+
+        return preview_path, skin_path, chassis_diffuse_path
         
     except json.JSONDecodeError as e:
         print(f"    ❌ Error parsing JSON {json_file} for {variant_name}: {e}")

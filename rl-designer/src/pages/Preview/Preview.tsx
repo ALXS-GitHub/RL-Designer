@@ -5,12 +5,13 @@ import useModelSettingsStore from '@/stores/modelSettingsStore';
 import Button from '@/components/Button/Button';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import ColorPicker from '@/components/ColorPicker/ColorPicker';
+import MaterialPicker from '@/components/MaterialPicker/MaterialPicker'
 
 import './Preview.scss';
 
 const Preview: React.FC = () => {
   const { decal, variant_name } = useParams<{ decal: string; variant_name: string }>();
-  const { isRotating, setIsRotating, mainTeamColor, setMainTeamColor } = useModelSettingsStore();
+  const { isRotating, setIsRotating, mainTeamColor, setMainTeamColor, material, setMaterial } = useModelSettingsStore();
   const [selectedVariantName, setSelectedVariantName] = useState(variant_name);
   const previewLoaderRef = useRef<any>(null);
 
@@ -55,6 +56,11 @@ const Preview: React.FC = () => {
               selectedColor={mainTeamColor}
               onColorChange={setMainTeamColor}
               className="preview__color-picker"
+            />
+            <MaterialPicker
+              selectedMaterial={material}
+              onMaterialChange={setMaterial}
+              className="preview__material-picker"
             />
             <Button 
               className="preview__rotate-toggle" 

@@ -3,7 +3,6 @@ bDisableDepthTest = false
 bIsMasked = false
 ReferencedTextures[6] =
 {
-    ReferencedTextures[0] = Texture2D'Boost_Tests.Textures.Flow_03'
     ReferencedTextures[2] = Texture2D'boost_energyburst.Textures.TrailMask_RGB_T'
     ReferencedTextures[4] = Texture2D'GodBall.Textures.Lightning_FB_RGB_11_T'
     ReferencedTextures[5] = Texture2D'GodBall.Textures.Lightning_FB_RGB_T'

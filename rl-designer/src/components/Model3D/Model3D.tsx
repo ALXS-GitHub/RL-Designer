@@ -8,6 +8,7 @@ import { shaderSkinPatch } from './patches/shaderSkinPatch';
 import type { ModelPartType } from '@/types/modelParts';
 import { MODEL_PART_TEXTURE_MAP } from '@/types/modelParts';
 import type { ModelData, ModelDataPaths, ModelDataConfig } from '@/types/modelData';
+import { DefaultMaterialMap } from '@/constants/materials';
 
 export interface Model3DProps {
     modelDataPaths: ModelDataPaths;
@@ -20,33 +21,11 @@ const createColorReplacementShader = (
     materialName: string,
     modelData: ModelData
 ) => {
-  const material = new MeshPhongMaterial({
-      name: materialName,
-      map: modelData.decalTexture,
-      color: new Color(modelData.mainTeamColor),
-      side: DoubleSide,
-      transparent: true,
-      alphaTest: 0.1,
-      shininess: 30,           // Controls the size of the specular highlight (0-100+)
-      specular: new Color(0xffffff), // Color of the specular reflection (subtle gray)
-      reflectivity: 0.1,       // How much the material reflects the environment
-    });
-
-    // TODO : add setting for switching before predefined materials
-  //   const material = new MeshPhysicalMaterial({
-  //   map: decalTexture,
-  //   color: new Color(mainTeamColor),
-  //   side: DoubleSide,
-  //   transparent: true,
-  //   alphaTest: 0.1,
-  //   metalness: 0.8,      // High metalness for car paint
-  //   roughness: 0.3,      // Lower roughness for shinier surface
-  //   clearcoat: 1.0,      // Full clearcoat for glossy finish
-  //   clearcoatRoughness: 0.1,
-  //   reflectivity: 0.7,   // Strong reflections
-  //   sheen: 1.0,          // Optional: adds a soft fabric-like sheen
-  //   sheenColor: new Color(mainTeamColor)
-  // });
+  const material = DefaultMaterialMap[modelData.material].createMaterial({
+    materialName: materialName,
+    textureMap: modelData.decalTexture,
+    color: modelData.mainTeamColor,
+  });
 
     material.onBeforeCompile = (shader) => {
       shader.uniforms.skinTexture = { value: modelData.skinTexture };
@@ -64,7 +43,8 @@ const getMaterialType = (materialName: string): ModelPartType | null => {
   if (!materialName) return null;
 
   const targetNamesMap: Record<ModelPartType, string[]> = {
-    body: ['body', 'decal', 'ball', 'default'],
+    body: ['body', 'decal', 'default'],
+    ball: ['ball'],
     chassis: ['chassis'],
     wheel: ['wheel'],
     tire: ['tire'],
@@ -85,18 +65,17 @@ const createMaterial = (
 ): Material => {
   if (materialType === 'body' && modelData.skinTexture) {
     return createColorReplacementShader(materialName, modelData);
+  } else if (materialType === 'body') {
+      return DefaultMaterialMap[modelData.material].createMaterial({
+      materialName: materialName,
+      textureMap: modelData.decalTexture,
+      color: modelData.mainTeamColor,
+    });
   } else {
-    return new MeshPhongMaterial({
-      name: materialName,
-      map: modelData[MODEL_PART_TEXTURE_MAP[materialType]],
-      // color: new Color(modelData.mainTeamColor),
-      side: DoubleSide,
-      transparent: true,
-      alphaTest: 0.1,
-      // Add shininess properties
-      shininess: 30,           // Controls the size of the specular highlight (0-100+)
-      specular: new Color(0x222222), // Color of the specular reflection (subtle gray)
-      reflectivity: 0.1        // How much the material reflects the environment
+    return DefaultMaterialMap['default'].createMaterial({
+      materialName: materialName,
+      textureMap: modelData[MODEL_PART_TEXTURE_MAP[materialType]],
+      color: null,
     });
   }
 };
@@ -190,7 +169,7 @@ const Model3D: React.FC<Model3DProps> = ({
   const [normalizedScale, setNormalizedScale] = useState(1);
   const [modelCenter, setModelCenter] = useState(new Vector3(0, 0, 0));
   
-  const { mainTeamColor, isRotating } = useModelSettingsStore();
+  const { mainTeamColor, isRotating, material } = useModelSettingsStore();
 
   // Always call hooks unconditionally
   const obj = useLoader(OBJLoader, modelPath, (loader) => {    
@@ -214,7 +193,7 @@ const Model3D: React.FC<Model3DProps> = ({
   const chassisTexture = useLoader(
     TextureLoader,
     // ! as for now the chassis is in the the public we don't use resolveImagePath
-    chassisTexturePath ? chassisTexturePath : '/models/placeholder.png'
+    chassisTexturePath ? resolveImagePath(chassisTexturePath) : '/models/placeholder.png'
   );
 
   const wheelTexture = useLoader(
@@ -250,6 +229,7 @@ const Model3D: React.FC<Model3DProps> = ({
       wheelTexture: wheelTexturePath ? wheelTexture : null,
       tireTexture: tireTexturePath ? tireTexture : null,
       mainTeamColor: mainTeamColor,
+      material: material,
     }
 
     // Apply materials to object
@@ -259,7 +239,7 @@ const Model3D: React.FC<Model3DProps> = ({
     return () => {
       disposeObjectMaterials(obj);
     };
-  }, [obj, decalTexture, skinTexture, decalTexturePath, skinTexturePath, mainTeamColor, chassisTexturePath, chassisTexture, wheelTexturePath, wheelTexture, tireTexturePath, tireTexture]);
+  }, [obj, decalTexture, skinTexture, decalTexturePath, skinTexturePath, mainTeamColor, chassisTexturePath, chassisTexture, wheelTexturePath, wheelTexture, tireTexturePath, tireTexture, material]);
 
   // Check if model loaded successfully
   if (!obj || obj.children.length === 0) {

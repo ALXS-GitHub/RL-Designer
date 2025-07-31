@@ -92,6 +92,7 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
 
     const texturePath = variantData.preview_path;
     const skinPath = variantData.skin_path || null; // skin is not required
+    const chassisDiffusePath = variantData.chassis_diffuse_path || null;
     if (!texturePath)
         return (
             <Error
@@ -110,7 +111,7 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
     let wheelTexturePath = null;
     let tireTexturePath = null;
     if (selectedElement === "car") {
-        chassisTexturePath = `/models/textures/chassis/${variant_name}_chassis.png`;
+        chassisTexturePath = chassisDiffusePath ? chassisDiffusePath : `/models/textures/chassis/${variant_name}_chassis.png`;
         // For the moment the wheel on the models are defined to Cristiano
         wheelTexturePath = `/models/textures/wheels/wheels/Cristiano_wheel.png`;
         tireTexturePath = `/models/textures/wheels/tires/Cristiano_tire.png`;
