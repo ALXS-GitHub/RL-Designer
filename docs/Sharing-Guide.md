@@ -19,7 +19,6 @@ decals/
 │       ├── body_diffuse.png
 │       ├── body_skin.png
 │       ├── chassis_diffuse.png
-│       ├── chassis_skin.png
 │       ├── Template.json
 │       └── ... (other files)
 └── ... (other decals)
@@ -36,8 +35,10 @@ You have to include a `.json` no matter what the name is, but it is recommended 
 Here is an example of a `Template.json` file that you can use as a reference for your own decals. This is the standard `Template.json` file used by Alpha-Console plugin.
 
 ```json
+// Template.json example for a car decal
 {
     "Decal Name (Variant)": {
+		"Group": "My Decal Group", // Optional, can be used to group decals together
 		"BodyID": 25,
 		"SkinID": 0,
         "Chassis": {
@@ -48,6 +49,15 @@ Here is an example of a `Template.json` file that you can use as a reference for
 			"Skin": "body_skin.png"
 		},
     }
+}
+// Template.json example for a ball decal
+{
+	"Decal Name (Variant)": {
+		"Group": "My Ball Decal Group", // Optional, can be used to group decals together
+		"Params": {
+			"Diffuse": "ball_diffuse.png",
+		}
+	}
 }
 ```
 
@@ -60,6 +70,10 @@ The `SkinID` is the ID of the skin you are making the decal for. If you are maki
 The `Chassis` object contains the `Diffuse` key, which is the name of the chassis diffuse texture file. If you don't have a chassis diffuse texture and keep the normal chassis of the car, you can remove this object.
 
 The `Body` object contains the `Diffuse` and `Skin` keys, which are the names of the body diffuse and skin texture files respectively.
+
+For ball decals, the `Params` object contains the `Diffuse` key, which is the name of the ball diffuse texture file. You can add more parameters if needed, but for now, this is the only one required.
+
+You can also add the "Group" key to group decals under the same group together. This is optional, but can be useful to organize your decals in Alpha-Console.
 
 ## Sharing Your Decal
 

@@ -5,11 +5,17 @@
 
 ## Important
 
-- [ ] Improve the Material reflection of the car.
-- [ ] Custom setting to switch between multiple predefined materials (some more metallic, other more plastic, etc...)
+- [ ] Todo : better function to capitalize word with spaces in it (main color for example)
+- [ ] Make a check for images from the public folder (a function that checks if the image exists in the public folder, if not, it should return null or a default image)
+- [ ] Integrate the profile picture plugin into the app
+- [ ] New page "Plugins" to manage recommended plugins (like the profile picture plugin, the custom ball online patch, etc.)
+- [ ] Remove the Cancel and Ok buttons from the pickers. Should set the material on click and for the color should be set when going out of the input color picker.
+- [ ] Add the secondary color.
+- [ ] Update docs
 
 ## Medium
 
+- [ ] Try universal decal support
 - [ ] Add wheel texture support
   - For both ball and wheel, we should make add those collections / explorer inside the already existing pages, just make a select to choose between the car, ball or wheel textures. We should also manage how they are stored locally and how they are stored in the public repo. + Do they need variants ? I suppose yes, a ball even if the same object can have different textures for a same logo.
 
@@ -61,3 +67,7 @@
 - [X] To integrate the chassis texture, we have to extend / patch the shader material ?? (I don't know for now, but this is something to investigate : how to integrate the chassis texture in the car model)
 - [X] refactor properly the add of the chassis texture in the functions of the Model3D component (to avoid code duplication), and cleaner approach to handle the materials.
 - [X] I have tested if we load the entire car model (body + chassis) and indeed it works fine and apply the decal to the body part. So we can have the full car model in the app (with chassis and the chassis texture (if it exists in the Template.json, else use a template (if I can find one for each car))) + Add some wheels to the models (Cristiano wheels)
+- [X] Custom setting to switch between multiple predefined materials (some more metallic, other more plastic, etc...)
+- [X] Create new sets of default materials
+- [X] Handle the colors more properly (in the store and the color picker)
+- [X] Add the Curvature map (in public) in order to make the car color changeable.
