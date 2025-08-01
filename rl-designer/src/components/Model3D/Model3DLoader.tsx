@@ -106,15 +106,18 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
         modelPath = `/models/meshes/Ball.obj`;
     }
 
-    // TODO : check if exists... (but normally yes as we also suppose modelPath exists)
     let chassisTexturePath = null;
     let wheelTexturePath = null;
     let tireTexturePath = null;
+    let curvatureTexturePath = null;
     if (selectedElement === "car") {
+        // TODO : check if exists... using a function that checks if the image exists in the public folder
         chassisTexturePath = chassisDiffusePath ? chassisDiffusePath : `/models/textures/chassis/${variant_name}_chassis.png`;
         // For the moment the wheel on the models are defined to Cristiano
         wheelTexturePath = `/models/textures/wheels/wheels/Cristiano_wheel.png`;
         tireTexturePath = `/models/textures/wheels/tires/Cristiano_tire.png`;
+
+        curvatureTexturePath = `/models/textures/curvature/${variant_name}_curvature.png`;
     }
 
 
@@ -125,6 +128,7 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
         chassisTexturePath: chassisTexturePath,
         wheelTexturePath: wheelTexturePath,
         tireTexturePath: tireTexturePath,
+        curvatureTexturePath: curvatureTexturePath,
     }
 
     if (isLoading) return <Loading />;

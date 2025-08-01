@@ -1,3 +1,4 @@
+import type { ColorType } from "@/constants/colors";
 import type { DefaultMaterialType } from "@/constants/materials";
 import type { Object3DEventMap } from "three/src/core/Object3D.js";
 import type { Group } from "three/src/objects/Group.js";
@@ -10,7 +11,8 @@ export interface ModelData {
     chassisTexture?: Texture,
     wheelTexture?: Texture,
     tireTexture?: Texture,
-    mainTeamColor: string,
+    curvatureTexture?: Texture,
+    colors: Record<ColorType, string>,
     material: DefaultMaterialType,
 }
 
@@ -21,6 +23,7 @@ export interface ModelDataPaths {
     chassisTexturePath?: string;
     wheelTexturePath?: string;
     tireTexturePath?: string;
+    curvatureTexturePath?: string;
 }
 
 export interface ModelDataConfig {

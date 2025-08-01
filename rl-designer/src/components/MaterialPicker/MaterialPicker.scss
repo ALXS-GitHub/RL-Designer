@@ -38,9 +38,40 @@
     }
     &--metal {
       background: linear-gradient(135deg, #b0bec5 60%, #78909c 100%);
+      box-shadow: 0 0 4px 1px #b0bec5 inset;
     }
     &--plastic {
       background: linear-gradient(135deg, #f5f5f5 60%, #e0e0e0 100%);
+    }
+    &--glass {
+      background: linear-gradient(135deg, #e0f7fa 60%, #b2ebf2 100%);
+      box-shadow: 0 0 6px 1px #b2ebf2 inset;
+    }
+    &--carbon {
+      background: repeating-linear-gradient(
+        135deg,
+        #222 0px,
+        #222 4px,
+        #333 4px,
+        #333 8px
+      );
+      box-shadow: 0 0 2px 1px #111 inset;
+    }
+    &--rubber {
+      background: linear-gradient(135deg, #222 60%, #444 100%);
+      box-shadow: 0 0 2px 1px #111 inset;
+    }
+    &--steel {
+      background: linear-gradient(135deg, #b0b0b0 60%, #e0e0e0 100%);
+      box-shadow: 0 0 6px 1px #b0b0b0 inset;
+    }
+    &--chrome {
+      background: linear-gradient(135deg, #e0e0e0 0%, #b0b0b0 40%, #fff 100%);
+      box-shadow: 0 0 8px 2px #e0e0e0 inset;
+    }
+    &--matte {
+      background: linear-gradient(135deg, #888 60%, #bbb 100%);
+      box-shadow: 0 0 1px 0px #888 inset;
     }
   }
 
@@ -89,9 +120,11 @@
   }
 
   &__options {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-2);
     margin-top: var(--space-2);
+    width: 100%;
   }
 
   &__option {

@@ -32,7 +32,7 @@ const Model3DPreview: React.FC<Model3DPreviewProps> = ({
 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const { mainTeamColor, material } = useModelSettingsStore();
+  const { colors, material } = useModelSettingsStore();
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
@@ -45,7 +45,7 @@ const Model3DPreview: React.FC<Model3DPreviewProps> = ({
   };
 
   // Create a unique key based on the texture and skin paths to force re-render
-  const componentKey = `${modelDataPaths.decalTexturePath}-${modelDataPaths.skinTexturePath}-${mainTeamColor}-${material}`;
+  const componentKey = `${modelDataPaths.decalTexturePath}-${modelDataPaths.skinTexturePath}-${JSON.stringify(colors)}-${material}`;
 
   // Show error outside of Canvas
   if (error) {
@@ -83,7 +83,7 @@ const Model3DPreview: React.FC<Model3DPreviewProps> = ({
           />
           
           {/* Lighting */}
-          <ambientLight intensity={0.3} color="#ffffff" />
+          <ambientLight intensity={0.6} color="#ffffff" />
           <directionalLight 
             position={[5, 5, 5]} 
             intensity={0.8}
@@ -100,7 +100,8 @@ const Model3DPreview: React.FC<Model3DPreviewProps> = ({
           <pointLight position={[-5, 5, 5]} intensity={0.2} color="#ffffff" />
           
           {/* Environment for reflections */}
-          <Environment preset="sunset" />
+          {/* <Environment preset="sunset" /> */}
+          <Environment preset='warehouse' />
 
           <Model3DWithErrorBoundary
             modelDataPaths={modelDataPaths}

@@ -24,13 +24,15 @@ const createColorReplacementShader = (
   const material = DefaultMaterialMap[modelData.material].createMaterial({
     materialName: materialName,
     textureMap: modelData.decalTexture,
-    color: modelData.mainTeamColor,
+    color: modelData.colors.mainTeamColor,
   });
 
     material.onBeforeCompile = (shader) => {
       shader.uniforms.skinTexture = { value: modelData.skinTexture };
-      shader.uniforms.mainTeamColor = { value: new Color(modelData.mainTeamColor) };
+      shader.uniforms.mainTeamColor = { value: new Color(modelData.colors.mainTeamColor) };
       shader.uniforms.windowsColor = { value: new Color('#87CEEB') };
+      shader.uniforms.curvatureTexture = { value: modelData.curvatureTexture };
+      shader.uniforms.carColor = { value: new Color(modelData.colors.carColor) };
 
       // Apply the skin patch to the shader
       shaderSkinPatch(shader);
@@ -69,7 +71,7 @@ const createMaterial = (
       return DefaultMaterialMap[modelData.material].createMaterial({
       materialName: materialName,
       textureMap: modelData.decalTexture,
-      color: modelData.mainTeamColor,
+      color: modelData.colors.mainTeamColor,
     });
   } else {
     return DefaultMaterialMap['default'].createMaterial({
@@ -163,13 +165,14 @@ const Model3D: React.FC<Model3DProps> = ({
       chassisTexturePath,
       wheelTexturePath,
       tireTexturePath,
+      curvatureTexturePath
   } = modelDataPaths;
   const { forceRotation = false } = modelDataConfig;
   const meshRef = useRef<Group>(null);
   const [normalizedScale, setNormalizedScale] = useState(1);
   const [modelCenter, setModelCenter] = useState(new Vector3(0, 0, 0));
   
-  const { mainTeamColor, isRotating, material } = useModelSettingsStore();
+  const { colors, isRotating, material } = useModelSettingsStore();
 
   // Always call hooks unconditionally
   const obj = useLoader(OBJLoader, modelPath, (loader) => {    
@@ -205,6 +208,11 @@ const Model3D: React.FC<Model3DProps> = ({
     tireTexturePath ? tireTexturePath : '/models/placeholder.png'
   );
 
+  const curvatureTexture = useLoader(
+    TextureLoader,
+    modelDataPaths.curvatureTexturePath ? resolveImagePath(modelDataPaths.curvatureTexturePath) : '/models/placeholder.png'
+  );
+
   // Auto-rotate the model
   useFrame((state, delta) => {
     if (meshRef.current && (isRotating || forceRotation)) {
@@ -228,7 +236,8 @@ const Model3D: React.FC<Model3DProps> = ({
       chassisTexture: chassisTexturePath ? chassisTexture : null,
       wheelTexture: wheelTexturePath ? wheelTexture : null,
       tireTexture: tireTexturePath ? tireTexture : null,
-      mainTeamColor: mainTeamColor,
+      curvatureTexture: curvatureTexturePath ? curvatureTexture : null,
+      colors: colors,
       material: material,
     }
 
@@ -239,7 +248,7 @@ const Model3D: React.FC<Model3DProps> = ({
     return () => {
       disposeObjectMaterials(obj);
     };
-  }, [obj, decalTexture, skinTexture, decalTexturePath, skinTexturePath, mainTeamColor, chassisTexturePath, chassisTexture, wheelTexturePath, wheelTexture, tireTexturePath, tireTexture, material]);
+  }, [obj, decalTexture, skinTexture, decalTexturePath, skinTexturePath, colors, chassisTexturePath, chassisTexture, wheelTexturePath, wheelTexture, tireTexturePath, tireTexture, curvatureTexturePath, curvatureTexture, material]);
 
   // Check if model loaded successfully
   if (!obj || obj.children.length === 0) {
