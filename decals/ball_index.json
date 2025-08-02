@@ -9,6 +9,7 @@
             "diffuse.png",
             "Template.json"
           ],
+          "signature": "16224fac5a5872c2a54fe132738420fea45121b9acfe7d0573cab11dbedafe75",
           "preview_path": "ball_textures/Aespa/Default/diffuse.png"
         }
       ]
@@ -22,6 +23,7 @@
             "diffuse.png",
             "Template.json"
           ],
+          "signature": "44f5a7aed2cc42b1156bdbd82ee7b2b534f8fb61ebd84f1b784962e6e10784a1",
           "preview_path": "ball_textures/Itzy/Default/diffuse.png"
         },
         {
@@ -30,6 +32,7 @@
             "diffuse.png",
             "Template.json"
           ],
+          "signature": "00c54efdefc3e17fa18f0295f16ea2ecc44f3446eb6781202dfa973179099273",
           "preview_path": "ball_textures/Itzy/Zomahx/diffuse.png"
         }
       ]
@@ -43,6 +46,7 @@
             "diffuse.png",
             "Template.json"
           ],
+          "signature": "7fda5eb72f839c2fb26c9e7732d2c2c65d693ab20e66cae5968bb7c9416e090a",
           "preview_path": "ball_textures/Zomahx/Zomahx/diffuse.png"
         }
       ]
