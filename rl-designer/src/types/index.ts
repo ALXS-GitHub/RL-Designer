@@ -1,5 +1,6 @@
 export interface VariantFrontInfo {
   variant_name: string;
+  signature: string;
   // files: string[]; // not useful in frontend
   preview_path?: string;
   skin_path?: string;

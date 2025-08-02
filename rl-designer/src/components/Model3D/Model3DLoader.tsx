@@ -12,9 +12,94 @@ import { resolveImagePath } from "@/utils/images";
 import { forwardRef, useImperativeHandle } from "react";
 import type { ElementType } from "@/constants/elements";
 import useSelectedElementStore from "@/stores/selectedElementStore";
-import type { ModelDataConfig } from "@/types/modelData";
+import type { ModelDataConfig, ModelDataPaths } from "@/types/modelData";
+import { existsInPublic } from "@/utils/files";
 
 import "./Model3DLoader.scss";
+
+interface PreviewLoaderPublicProps {
+    decal: string;
+    variant_name: string;
+    modelDataConfig?: ModelDataConfig;
+    selectedElement: ElementType;
+    modelDataPaths: ModelDataPaths
+}
+
+const PreviewLoaderPublic = ({
+    decal,
+    variant_name,
+    modelDataConfig,
+    selectedElement,
+    modelDataPaths,
+}: PreviewLoaderPublicProps) => {
+
+    const [isLoadingPublic, setIsLoadingPublic] = useState(true);
+
+    const [modelPath, setModelPath] = useState<string | null>(null);
+    const [chassisTexturePath, setChassisTexturePath] = useState<string | null>(null);
+    const [wheelTexturePath, setWheelTexturePath] = useState<string | null>(null);
+    const [tireTexturePath, setTireTexturePath] = useState<string | null>(null);
+    const [curvatureTexturePath, setCurvatureTexturePath] = useState<string | null>(null);
+
+    const getPublicFiles = async () => {
+        // Define paths for the model and texture based on the decal and variant
+        let modelP = `/models/meshes/${variant_name}.obj`;
+        if (selectedElement === "ball") {
+            modelP = `/models/meshes/Ball.obj`;
+        }
+        const modelExists = await existsInPublic(modelP);
+        setModelPath(modelExists ? modelP : null);
+
+        if (selectedElement === "car") {
+            if (modelDataPaths.chassisTexturePath) {
+                setChassisTexturePath(modelDataPaths.chassisTexturePath);
+            } else {
+                const chassisExists = await existsInPublic(`/models/textures/chassis/${variant_name}_chassis.png`);
+                setChassisTexturePath(chassisExists ? `/models/textures/chassis/${variant_name}_chassis.png` : null);
+            }
+
+            const wheelExists = await existsInPublic(`/models/textures/wheels/wheels/Cristiano_wheel.png`);
+            setWheelTexturePath(wheelExists ? `/models/textures/wheels/wheels/Cristiano_wheel.png` : null);
+            const tireExists = await existsInPublic(`/models/textures/wheels/tires/Cristiano_tire.png`);
+            setTireTexturePath(tireExists ? `/models/textures/wheels/tires/Cristiano_tire.png` : null);
+            const curvatureExists = await existsInPublic(`/models/textures/curvature/${variant_name}_curvature.png`);
+            setCurvatureTexturePath(curvatureExists ? `/models/textures/curvature/${variant_name}_curvature.png` : null);
+        }
+    }
+
+    
+    useEffect(() => {
+        const fetchModelPath = async () => {
+            await getPublicFiles();
+            setIsLoadingPublic(false);
+        };
+        fetchModelPath();
+    }, [decal, variant_name, selectedElement]);
+    
+    if (isLoadingPublic) {
+        return <Loading />;
+    }
+
+    modelDataPaths.modelPath = modelPath;
+    modelDataPaths.chassisTexturePath = chassisTexturePath;
+    modelDataPaths.wheelTexturePath = wheelTexturePath;
+    modelDataPaths.tireTexturePath = tireTexturePath;
+    modelDataPaths.curvatureTexturePath = curvatureTexturePath;
+
+    if (!modelPath) {
+        return <Error message={`Model "${variant_name}" not found.`} />;
+    }
+
+    return (
+        <Model3DPreview
+            key={variant_name}
+            modelDataPaths={modelDataPaths}
+            modelDataConfig={modelDataConfig}
+        />
+    )
+}
+
+
 
 interface PreviewLoaderProps {
     decal: string;
@@ -68,6 +153,8 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
         fetchVariants();
     }, [decal, decals]);
 
+
+
     if (!isValidModel(variant_name)) {
         return (
             <Error message={`Model "${variant_name}" is not supported.`} />
@@ -100,46 +187,25 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
             />
         );
 
-    // Define paths for the model and texture based on the decal and variant
-    let modelPath = `/models/meshes/${variant_name}.obj`;
-    if (selectedElement === "ball") {
-        modelPath = `/models/meshes/Ball.obj`;
-    }
-
-    let chassisTexturePath = null;
-    let wheelTexturePath = null;
-    let tireTexturePath = null;
-    let curvatureTexturePath = null;
-    if (selectedElement === "car") {
-        // TODO : check if exists... using a function that checks if the image exists in the public folder
-        chassisTexturePath = chassisDiffusePath ? chassisDiffusePath : `/models/textures/chassis/${variant_name}_chassis.png`;
-        // For the moment the wheel on the models are defined to Cristiano
-        wheelTexturePath = `/models/textures/wheels/wheels/Cristiano_wheel.png`;
-        tireTexturePath = `/models/textures/wheels/tires/Cristiano_tire.png`;
-
-        curvatureTexturePath = `/models/textures/curvature/${variant_name}_curvature.png`;
-    }
-
-
-    const modelDataPaths = {
-        modelPath: modelPath,
+    const tempDataPaths = {
+        modelPath: null,
         decalTexturePath: texturePath,
         skinTexturePath: skinPath,
-        chassisTexturePath: chassisTexturePath,
-        wheelTexturePath: wheelTexturePath,
-        tireTexturePath: tireTexturePath,
-        curvatureTexturePath: curvatureTexturePath,
+        chassisTexturePath: chassisDiffusePath,
     }
+
 
     if (isLoading) return <Loading />;
     if (isError) return <Error message={isError.message} />;
 
     return (
         <div className={`preview-loader ${className}`}>
-            <Model3DPreview
-                key={variant_name}
-                modelDataPaths={modelDataPaths}
+            <PreviewLoaderPublic
+                decal={decal}
+                variant_name={variant_name}
                 modelDataConfig={modelDataConfig}
+                selectedElement={selectedElement}
+                modelDataPaths={tempDataPaths}
             />
         </div>
     );

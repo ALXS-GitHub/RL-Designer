@@ -1,0 +1,127 @@
+TwoSided = true
+bDisableDepthTest = false
+bIsMasked = true
+ReferencedTextures[11] =
+{
+    ReferencedTextures[0] = Texture2D'Ball_Football.Weave_N'
+    ReferencedTextures[1] = Texture2D'Ball_Football.Hat_Football_NormHeight'
+    ReferencedTextures[2] = Texture2D'Ball_Football.Hat_Football_NormHeight_2'
+    ReferencedTextures[3] = Texture2D'ItemsMode.Car.Textures.Clouds_RGB_T'
+    ReferencedTextures[5] = Texture2D'Ball_Football.Football_Logo_Diff'
+    ReferencedTextures[6] = Texture2D'Ball_Football.Hat_Football_RGBPacked'
+    ReferencedTextures[7] = Texture2D'Ball_Football.Weave_D'
+    ReferencedTextures[8] = Texture2D'Ball_Football.Hat_Football_RGBPacked_1'
+    ReferencedTextures[9] = Texture2D'Ball_Football.Text2'
+    ReferencedTextures[10] = Texture2D'Ball_Football.Text1'
+}
+Expressions[269] =
+{
+    Expressions[38] = MaterialExpressionScalarParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionScalarParameter_2'
+    Expressions[64] = MaterialExpressionScalarParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionScalarParameter_1'
+    Expressions[130] = MaterialExpressionVectorParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionVectorParameter_1'
+    Expressions[132] = MaterialExpressionVectorParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionVectorParameter_4'
+    Expressions[135] = MaterialExpressionStaticSwitchParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionStaticSwitchParameter_7'
+    Expressions[138] = MaterialExpressionStaticSwitchParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionStaticSwitchParameter_10'
+    Expressions[139] = MaterialExpressionStaticSwitchParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionStaticSwitchParameter_11'
+    Expressions[149] = MaterialExpressionScalarParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionScalarParameter_6'
+    Expressions[163] = MaterialExpressionVectorParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionVectorParameter_8'
+    Expressions[164] = MaterialExpressionVectorParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionVectorParameter_9'
+    Expressions[190] = MaterialExpressionVectorParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionVectorParameter_2'
+    Expressions[196] = MaterialExpressionScalarParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionScalarParameter_4'
+    Expressions[201] = MaterialExpressionScalarParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionScalarParameter_5'
+    Expressions[206] = MaterialExpressionScalarParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionScalarParameter_7'
+    Expressions[208] = MaterialExpressionScalarParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionScalarParameter_8'
+    Expressions[223] = MaterialExpressionVectorParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionVectorParameter_5'
+    Expressions[230] = MaterialExpressionScalarParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionScalarParameter_13'
+    Expressions[234] = MaterialExpressionScalarParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionScalarParameter_14'
+    Expressions[236] = MaterialExpressionScalarParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionScalarParameter_15'
+    Expressions[241] = MaterialExpressionScalarParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionScalarParameter_16'
+    Expressions[245] = MaterialExpressionTextureSampleParameter2D'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionTextureSampleParameter2D_0'
+    Expressions[246] = MaterialExpressionTextureSampleParameter2D'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionTextureSampleParameter2D_1'
+    Expressions[255] = MaterialExpressionVectorParameter'Ball_Football.DeprecatedMaterials.Mat_Football_Dissolve.MaterialExpressionVectorParameter_3'
+}
+CachedExpressionData = 
+BlendMode = BLEND_Masked (1)
+OpacityMaskClipValue = 0.1
+CollectedTextureParameters[2] =
+{
+    CollectedTextureParameters[0] =
+    {
+        Texture = Texture2D'Ball_Football.Text2'
+        Name = Sticker_1
+        Group = Sticker_1
+    }
+    CollectedTextureParameters[1] =
+    {
+        Texture = Texture2D'Ball_Football.Text1'
+        Name = Sticker_2
+        Group = Sticker_2
+    }
+}
+CollectedScalarParameters[11] =
+{
+    CollectedScalarParameters[0] = { Value=1, Name=Dissolve, Group=None }
+    CollectedScalarParameters[1] = { Value=1, Name=SpecPower, Group=None }
+    CollectedScalarParameters[2] = { Value=0, Name=GoalProximity, Group=None }
+    CollectedScalarParameters[3] = { Value=1, Name=1_Scale X, Group=Sticker_1 }
+    CollectedScalarParameters[4] = { Value=1, Name=1_Scale Y, Group=Sticker_1 }
+    CollectedScalarParameters[5] = { Value=0, Name=1_Rotation, Group=Sticker_1 }
+    CollectedScalarParameters[6] = { Value=3.5, Name=1_Scale Uniform, Group=Sticker_1 }
+    CollectedScalarParameters[7] = { Value=1, Name=2_Scale X, Group=Sticker_2 }
+    CollectedScalarParameters[8] = { Value=0, Name=2_Rotation, Group=Sticker_2 }
+    CollectedScalarParameters[9] = { Value=1, Name=2_Scale Y, Group=Sticker_2 }
+    CollectedScalarParameters[10] = { Value=3.5, Name=2_Scale Uniform, Group=Sticker_2 }
+}
+CollectedVectorParameters[7] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=0.508269, G=0.508269, B=0.508269, A=20 }
+        Name = DissolveColor
+        Group = None
+    }
+    CollectedVectorParameters[1] =
+    {
+        Value = { R=0.0581872, G=0.254916, B=1, A=1 }
+        Name = Ball Color
+        Group = Color
+    }
+    CollectedVectorParameters[2] =
+    {
+        Value = { R=0, G=0, B=1, A=1 }
+        Name = GoalPlaneNormal
+        Group = None
+    }
+    CollectedVectorParameters[3] =
+    {
+        Value = { R=0, G=0, B=-1024, A=1 }
+        Name = GoalPlaneLocation
+        Group = None
+    }
+    CollectedVectorParameters[4] =
+    {
+        Value = { R=19.5, G=-3, B=0, A=1 }
+        Name = 1_Position
+        Group = Sticker_1
+    }
+    CollectedVectorParameters[5] =
+    {
+        Value = { R=-19.5, G=-3, B=0, A=1 }
+        Name = 2_Position
+        Group = Sticker_2
+    }
+    CollectedVectorParameters[6] =
+    {
+        Value = { R=1.2, G=1.2, B=0, A=5 }
+        Name = LogoTransform
+        Group = Logo
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

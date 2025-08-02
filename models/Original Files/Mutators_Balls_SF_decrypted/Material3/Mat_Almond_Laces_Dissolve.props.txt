@@ -1,0 +1,55 @@
+TwoSided = false
+bDisableDepthTest = false
+bIsMasked = true
+ReferencedTextures[2] =
+{
+    ReferencedTextures[0] = Texture2D'ItemsMode.Car.Textures.Clouds_RGB_T'
+}
+Expressions[86] =
+{
+    Expressions[30] = MaterialExpressionScalarParameter'Ball_Football.Materials.Mat_Almond_Laces_Dissolve.MaterialExpressionScalarParameter_11'
+    Expressions[36] = MaterialExpressionVectorParameter'Ball_Football.Materials.Mat_Almond_Laces_Dissolve.MaterialExpressionVectorParameter_12'
+    Expressions[65] = MaterialExpressionScalarParameter'Ball_Football.Materials.Mat_Almond_Laces_Dissolve.MaterialExpressionScalarParameter_12'
+    Expressions[71] = MaterialExpressionVectorParameter'Ball_Football.Materials.Mat_Almond_Laces_Dissolve.MaterialExpressionVectorParameter_13'
+    Expressions[83] = MaterialExpressionVectorParameter'Ball_Football.Materials.Mat_Almond_Laces_Dissolve.MaterialExpressionVectorParameter_14'
+    Expressions[85] = MaterialExpressionScalarParameter'Ball_Football.Materials.Mat_Almond_Laces_Dissolve.MaterialExpressionScalarParameter_14'
+}
+CachedExpressionData = 
+BlendMode = BLEND_Masked (1)
+OpacityMaskClipValue = 0.1
+CollectedTextureParameters[0] = {}
+CollectedScalarParameters[3] =
+{
+    CollectedScalarParameters[0] = { Value=1, Name=Dissolve, Group=None }
+    CollectedScalarParameters[1] = { Value=0, Name=GoalProximity, Group=None }
+    CollectedScalarParameters[2] = { Value=0.25, Name=SpecPower, Group=None }
+}
+CollectedVectorParameters[3] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=0.508269, G=0.508269, B=0.508269, A=20 }
+        Name = DissolveColor
+        Group = None
+    }
+    CollectedVectorParameters[1] =
+    {
+        Value = { R=0, G=0, B=-1024, A=1 }
+        Name = GoalPlaneLocation
+        Group = None
+    }
+    CollectedVectorParameters[2] =
+    {
+        Value = { R=0, G=0, B=1, A=1 }
+        Name = GoalPlaneNormal
+        Group = None
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

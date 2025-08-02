@@ -1,0 +1,75 @@
+TwoSided = false
+bDisableDepthTest = false
+bIsMasked = false
+ReferencedTextures[4] =
+{
+    ReferencedTextures[0] = Texture2D'WHEEL_OffRoad.Wheel_OffRoad00_N'
+    ReferencedTextures[2] = Texture2D'WHEEL_OffRoad.Wheel_OffRoad00_D'
+}
+Expressions[61] =
+{
+    Expressions[10] = MaterialExpressionTextureSampleParameter2D'WHEEL_OffRoad.MAT_Rim_OffRoad.MaterialExpressionTextureSampleParameter2D_1'
+    Expressions[11] = MaterialExpressionScalarParameter'WHEEL_OffRoad.MAT_Rim_OffRoad.MaterialExpressionScalarParameter_2'
+    Expressions[15] = MaterialExpressionScalarParameter'WHEEL_OffRoad.MAT_Rim_OffRoad.MaterialExpressionScalarParameter_1'
+    Expressions[16] = MaterialExpressionTextureSampleParameter2D'WHEEL_OffRoad.MAT_Rim_OffRoad.MaterialExpressionTextureSampleParameter2D_0'
+    Expressions[17] = MaterialExpressionStaticSwitchParameter'WHEEL_OffRoad.MAT_Rim_OffRoad.MaterialExpressionStaticSwitchParameter_4'
+    Expressions[19] = MaterialExpressionTextureSampleParameter2D'WHEEL_OffRoad.MAT_Rim_OffRoad.MaterialExpressionTextureSampleParameter2D_2'
+    Expressions[20] = MaterialExpressionStaticSwitchParameter'WHEEL_OffRoad.MAT_Rim_OffRoad.MaterialExpressionStaticSwitchParameter_0'
+    Expressions[21] = MaterialExpressionStaticSwitchParameter'WHEEL_OffRoad.MAT_Rim_OffRoad.MaterialExpressionStaticSwitchParameter_1'
+    Expressions[24] = MaterialExpressionScalarParameter'WHEEL_OffRoad.MAT_Rim_OffRoad.MaterialExpressionScalarParameter_0'
+    Expressions[31] = MaterialExpressionStaticSwitchParameter'WHEEL_OffRoad.MAT_Rim_OffRoad.MaterialExpressionStaticSwitchParameter_2'
+    Expressions[38] = MaterialExpressionVectorParameter'WHEEL_OffRoad.MAT_Rim_OffRoad.MaterialExpressionVectorParameter_6'
+    Expressions[40] = MaterialExpressionVectorParameter'WHEEL_OffRoad.MAT_Rim_OffRoad.MaterialExpressionVectorParameter_1'
+    Expressions[43] = MaterialExpressionScalarParameter'WHEEL_OffRoad.MAT_Rim_OffRoad.MaterialExpressionScalarParameter_5'
+    Expressions[46] = MaterialExpressionScalarParameter'WHEEL_OffRoad.MAT_Rim_OffRoad.MaterialExpressionScalarParameter_4'
+}
+CachedExpressionData = 
+BlendMode = BLEND_Opaque (0)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[3] =
+{
+    CollectedTextureParameters[0] =
+    {
+        Texture = Texture2D'WHEEL_OffRoad.Wheel_OffRoad00_N'
+        Name = Texture_Normal
+        Group = None
+    }
+    CollectedTextureParameters[1] =
+    {
+        Texture = Texture2D'WHEEL_OffRoad.Wheel_OffRoad00_D'
+        Name = Texture_Diffuse
+        Group = None
+    }
+    CollectedTextureParameters[2] = { Texture=None, Name=Texture_RGB, Group=None }
+}
+CollectedScalarParameters[5] =
+{
+    CollectedScalarParameters[0] = { Value=40, Name=SpecPower, Group=None }
+    CollectedScalarParameters[1] = { Value=10, Name=SpecIntensity, Group=None }
+    CollectedScalarParameters[2] = { Value=0.2, Name=ReflectionBrightness, Group=None }
+    CollectedScalarParameters[3] = { Value=2, Name=Anodized Scale, Group=None }
+    CollectedScalarParameters[4] = { Value=-0.5, Name=Anodized Bias, Group=None }
+}
+CollectedVectorParameters[2] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=0.364627, G=0.364627, B=0.364627, A=1 }
+        Name = CustomColor
+        Group = None
+    }
+    CollectedVectorParameters[1] =
+    {
+        Value = { R=0.364627, G=0.364627, B=0.364627, A=1 }
+        Name = CustomColor
+        Group = None
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

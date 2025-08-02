@@ -3,19 +3,22 @@ import { FaPalette } from 'react-icons/fa';
 import { COLORS } from '@/constants/colors';
 import type { ColorType } from '@/constants/colors';
 import './ColorPicker.scss';
+import { camelToTitleCase } from '@/utils/strings';
 
 interface ColorPickerProps {
   selectedColors: Record<ColorType, string>;
   onColorChange: (colorType: ColorType, color: string) => void;
   className?: string;
   position?: 'top' | 'bottom';
+  autoConfirm?: boolean; // Optional prop to auto-confirm changes
 }
 
 const ColorPicker: React.FC<ColorPickerProps> = ({
   selectedColors,
   onColorChange,
   className = '',
-  position = 'top'
+  position = 'top',
+  autoConfirm = true
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [tempColors, setTempColors] = useState<Record<ColorType, string>>(selectedColors);
@@ -63,6 +66,9 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
         ...prev,
         [activeColorType]: color
       }));
+    }
+    if (autoConfirm) {
+      onColorChange(activeColorType, color); // Auto-confirm changes
     }
   };
 
@@ -118,8 +124,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
                       className="color-picker__color-preview"
                       style={{ backgroundColor: tempColors[colorType] }}
                     />
-                    {/* TODO : better function to handle spaces in words */}
-                    {colorType.charAt(0).toUpperCase() + colorType.slice(1)} 
+                    {camelToTitleCase(colorType)} 
                   </button>
                 ))}
               </div>
@@ -127,36 +132,38 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
               {activeColorType && (
                 <div className="color-picker__color-input">
                   <label className="color-picker__input-label">
-                    {activeColorType.charAt(0).toUpperCase() + activeColorType.slice(1)} Color:
+                    {camelToTitleCase(activeColorType)}:
                   </label>
                   <input
                     type="color"
                     value={tempColors[activeColorType]}
                     onChange={(e) => handleTempColorChange(e.target.value)}
                     className="color-picker__input"
-                    title={`Select ${activeColorType.charAt(0).toUpperCase() + activeColorType.slice(1)} color`}
+                    title={`Select ${camelToTitleCase(activeColorType)}`}
                   />
                   <div className="color-picker__value">{tempColors[activeColorType]}</div>
                 </div>
               )}
             </div>
             
-            <div className="color-picker__actions">
-              <button
-                type="button"
-                className="color-picker__button color-picker__button--cancel"
-                onClick={handleCancel}
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                className="color-picker__button color-picker__button--confirm"
-                onClick={handleConfirm}
-              >
-                OK
-              </button>
-            </div>
+            {!autoConfirm && (
+              <div className="color-picker__actions">
+                <button
+                  type="button"
+                  className="color-picker__button color-picker__button--cancel"
+                  onClick={handleCancel}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="color-picker__button color-picker__button--confirm"
+                  onClick={handleConfirm}
+                >
+                  OK
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}

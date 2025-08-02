@@ -5,13 +5,11 @@
 
 ## Important
 
-- [ ] Todo : better function to capitalize word with spaces in it (main color for example)
-- [ ] Make a check for images from the public folder (a function that checks if the image exists in the public folder, if not, it should return null or a default image)
-- [ ] Integrate the profile picture plugin into the app
-- [ ] New page "Plugins" to manage recommended plugins (like the profile picture plugin, the custom ball online patch, etc.)
-- [ ] Remove the Cancel and Ok buttons from the pickers. Should set the material on click and for the color should be set when going out of the input color picker.
-- [ ] Add the secondary color.
+- [ ] TODO : continue to implement the update thing (just created the function in the file)
+
+- [ ]  Maybe add a "Last update" field in the index.json. To do this, we may implement a hash function that takes all the file from a variant's folder and generates a hash based on their content. This would be a simple way to check if the version matches. So each time we update the index, we would also compute the hash of all the files in the variant and put it in the index. This way we can compute the hash locally and compare it with the hash online. -> Then on the app, we can display in another color (purple for example) with a "sync" icon to indicate that the variant is not up to date. 
 - [ ] Update docs
+- [ ] Add the secondary color.
 
 ## Medium
 
@@ -21,10 +19,14 @@
 
 ## Low
 
-- [ ] Maybe add a "Last update" field in the index.json (in fact with the scrip get the latest modification of any file from the public repo (just check locally)). We should also add this in some way when downloading so we can compare (maybe the last modification of the local files)
 - [ ] fix internal links not working in the HowTo page.
 - [ ] Decal setup verification script (to make sure no issue will happen / and that no recommended fields (such as Group) are missing)
 
+## Is this needed ?
+
+- [?] Integrate the profile picture plugin into the app ~ going to be harder that just putting a file in the folders, as the plugin apparently sends the file to CDN, so the in game use is preferred.
+
+  
 ## Done
 - [X] Add the Loading and Error components on the pages.
 - [X] Make the download / update functionality.
@@ -71,3 +73,6 @@
 - [X] Create new sets of default materials
 - [X] Handle the colors more properly (in the store and the color picker)
 - [X] Add the Curvature map (in public) in order to make the car color changeable.
+- [X] Todo : better function to capitalize word with spaces in it (main color for example)
+- [X] Remove the Cancel and Ok buttons from the pickers. Should set the material on click and for the color should be set when going out of the input color picker.
+- [X] Make a check for images from the public folder (a function that checks if the image exists in the public folder, if not, it should return null or a default image)

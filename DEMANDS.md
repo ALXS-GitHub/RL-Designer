@@ -1,6 +1,5 @@
 # DEMANDS.md
 
-- [ ] *Zomahx* : Born To Be -> Venom
 
 --- perso ---
 
@@ -8,9 +7,10 @@
 
 ## To Verify
 
-- [ ] *Zomahx* : Yuna Itzy -> Venom
-- [ ] *Zomahx* : Born To Be -> Fennec 
 
 ## Done
 
 - [X] *Zomahx* : Itzy Ball
+- [X] *Zomahx* : Yuna Itzy -> Venom
+- [X] *Zomahx* : Born To Be -> Fennec 
+- [X] *Zomahx* : Born To Be -> Venom

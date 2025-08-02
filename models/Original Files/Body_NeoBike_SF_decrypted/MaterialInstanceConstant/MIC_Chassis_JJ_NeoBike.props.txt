@@ -1,0 +1,82 @@
+Parent = Material3'Body_NeoBike.MAT_NewWorldChassis_vJJ01'
+ScalarParameterValues[3] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 8
+        ParameterName = BoostGlowBrightness
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 3
+        ParameterName = HeadlightBrightness
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 8
+        ParameterName = TailLightBrightness
+    }
+}
+TextureParameterValues[4] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Body_NeoBike.Anim.NeoBike_Car_Chasis_C'
+        ParameterName = AOMap
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Body_NeoBike.Anim.NeoBike_Car_Chasis_C'
+        ParameterName = Diffuse
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Body_NeoBike.Anim.NeoBike_Car_Chasis_RGB'
+        ParameterName = Masks
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Body_NeoBike.Anim.NeoBike_Car_Chasis_OBJECTS_N'
+        ParameterName = Normal
+    }
+}
+VectorParameterValues[3] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=3, G=0.25, B=0.1, A=1 }
+        ParameterName = BoostGlowColor
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=0.90241, B=0.437057, A=0.97234 }
+        ParameterName = HeadlightColor
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.56681, G=0, B=0.0616813, A=1 }
+        ParameterName = TeamColor
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+RuntimeVirtualTextureParameterValues[0] = {}
+FontParameterValues[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

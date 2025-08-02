@@ -45,7 +45,7 @@ const Model3DPreview: React.FC<Model3DPreviewProps> = ({
   };
 
   // Create a unique key based on the texture and skin paths to force re-render
-  const componentKey = `${modelDataPaths.decalTexturePath}-${modelDataPaths.skinTexturePath}-${JSON.stringify(colors)}-${material}`;
+  const componentKey = `${modelDataPaths.decalTexturePath}-${modelDataPaths.skinTexturePath}`;
 
   // Show error outside of Canvas
   if (error) {

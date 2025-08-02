@@ -2,6 +2,7 @@ import os
 import json
 import argparse
 from pathlib import Path
+from utils.hash_utils import calculate_variant_signature
 
 def create_index(texture_type="all"):
     """
@@ -40,13 +41,41 @@ def create_index(texture_type="all"):
         return
     
     total_created = 0
+    global_stats = {
+        'total_decals': 0,
+        'total_variants': 0,
+        'variants_without_preview': 0,
+        'variants_without_signature': 0
+    }
     
     for tex_type in types_to_process:
         config = texture_configs[tex_type]
-        if create_single_index(config):
+        stats = create_single_index(config)
+        if stats:
             total_created += 1
+            # Accumulate global stats
+            global_stats['total_decals'] += stats['total_decals']
+            global_stats['total_variants'] += stats['total_variants']
+            global_stats['variants_without_preview'] += stats['variants_without_preview']
+            global_stats['variants_without_signature'] += stats['variants_without_signature']
     
     print(f"\n🎉 Successfully created {total_created} index file(s)!")
+    
+    # Print global summary
+    print(f"\n📊 GLOBAL SUMMARY:")
+    print(f"  📁 Total decals: {global_stats['total_decals']}")
+    print(f"  📄 Total variants: {global_stats['total_variants']}")
+    
+    # Print warnings in red if there are issues
+    if global_stats['variants_without_preview'] > 0:
+        print(f"\033[91m  ❌ Variants without preview: {global_stats['variants_without_preview']}\033[0m")
+    else:
+        print(f"  ✅ Variants without preview: {global_stats['variants_without_preview']}")
+    
+    if global_stats['variants_without_signature'] > 0:
+        print(f"\033[91m  ❌ Variants without signature: {global_stats['variants_without_signature']}\033[0m")
+    else:
+        print(f"  ✅ Variants without signature: {global_stats['variants_without_signature']}")
 
 def create_single_index(config):
     """
@@ -56,7 +85,7 @@ def create_single_index(config):
         config: Dictionary with 'dir', 'output', and 'name' keys
     
     Returns:
-        bool: True if successful, False otherwise
+        dict: Statistics about processed variants, or None if failed
     """
     
     texture_dir = Path(config["dir"])
@@ -65,12 +94,19 @@ def create_single_index(config):
     
     if not texture_dir.exists():
         print(f"⚠️  {texture_dir} directory not found! Skipping {texture_name}...")
-        return False
+        return None
     
     print(f"\n🔄 Processing {texture_name}...")
     
     index_data = {
         texture_name: []
+    }
+    
+    stats = {
+        'total_decals': 0,
+        'total_variants': 0,
+        'variants_without_preview': 0,
+        'variants_without_signature': 0
     }
     
     # Iterate through each texture folder
@@ -99,14 +135,24 @@ def create_single_index(config):
                 # Get preview path and skin path for this specific variant
                 preview_path, skin_path, chassis_diffuse_path = get_preview_path(texture_item_name, variant_name, files, config["dir"])
                 
+                # Calculate variant signature
+                try:
+                    variant_signature = calculate_variant_signature(variant_folder)
+                except (ValueError, FileNotFoundError) as e:
+                    print(f"\033[91m⚠️  Failed to calculate signature for {variant_name}: {e}\033[0m")
+                    variant_signature = ""
+
                 variant_data = {
                     "variant": variant_name,
-                    "files": files
+                    "files": files,
+                    "signature": variant_signature
                 }
                 
                 # Add preview_path only if it exists
                 if preview_path:
                     variant_data["preview_path"] = preview_path
+                else:
+                    stats['variants_without_preview'] += 1
                 
                 # Add skin_path only if it exists
                 if skin_path:
@@ -115,7 +161,12 @@ def create_single_index(config):
                 if chassis_diffuse_path:
                     variant_data["chassis_diffuse_path"] = chassis_diffuse_path
                 
+                # Track signature stats
+                if not variant_signature:
+                    stats['variants_without_signature'] += 1
+                
                 variants.append(variant_data)
+                stats['total_variants'] += 1
         
         # Only add texture if it has variants
         if variants:
@@ -123,6 +174,7 @@ def create_single_index(config):
                 "name": texture_item_name,
                 "variants": variants
             })
+            stats['total_decals'] += 1
     
     # Write the index file
     with open(output_file, 'w', encoding='utf-8') as f:
@@ -131,22 +183,24 @@ def create_single_index(config):
     print(f"✅ Index created: {output_file}")
     print(f"📊 Found {len(index_data[texture_name])} {texture_name} with {sum(len(d['variants']) for d in index_data[texture_name])} total variants")
     
-    # Print summary
+    # Print summary for this index    
     for texture_item in index_data[texture_name]:
         variants_with_preview = sum(1 for v in texture_item['variants'] if v.get('preview_path'))
         variants_with_skin = sum(1 for v in texture_item['variants'] if v.get('skin_path'))
         variants_with_chassis_diffuse = sum(1 for v in texture_item['variants'] if v.get('chassis_diffuse_path'))
+        variants_with_signature = sum(1 for v in texture_item['variants'] if v.get('signature'))
         total_variants = len(texture_item['variants'])
-        print(f"  📁 {texture_item['name']}: {total_variants} variants ({variants_with_preview} with preview, {variants_with_skin} with skin, {variants_with_chassis_diffuse} with chassis diffuse)")
+        print(f"  📁 {texture_item['name']}: {total_variants} variants ({variants_with_preview} with preview, {variants_with_skin} with skin, {variants_with_chassis_diffuse} with chassis diffuse, {variants_with_signature} with signature)")
 
-        # Show preview and skin status for each variant
         for variant in texture_item['variants']:
             preview_status = "✅" if variant.get("preview_path") else "❌"
             skin_status = "🎨" if variant.get("skin_path") else "⚪"
             chassis_diffuse_status = "🚗" if variant.get("chassis_diffuse_path") else "⚪"
-            print(f"    📄 {variant['variant']}: {preview_status} preview {skin_status} skin {chassis_diffuse_status} chassis diffuse")
+            signature_status = "🔒" if variant.get("signature") else "❌"
+            signature_preview = variant.get("signature", "")[:8] + "..." if variant.get("signature") else "none"
+            print(f"    📄 {variant['variant']}: {preview_status} preview {skin_status} skin {chassis_diffuse_status} chassis diffuse {signature_status} signature ({signature_preview})")
     
-    return True
+    return stats
 
 def get_preview_path(texture_name, variant_name, files, base_dir):
     """
@@ -161,14 +215,13 @@ def get_preview_path(texture_name, variant_name, files, base_dir):
         base_dir: Base directory path
     
     Returns:
-        tuple: (preview_path, skin_path) - skin_path can be None if not found
+        tuple: (preview_path, skin_path, chassis_diffuse_path) - any can be None if not found
     """
     
     # Find the first JSON file
     json_files = [f for f in files if f.endswith('.json')]
     if not json_files:
-        print(f"    ⚠️  No JSON file found in {texture_name}/{variant_name}")
-        return None, None
+        return None, None, None
     
     json_file = json_files[0]
     json_path = Path(base_dir) / texture_name / variant_name / json_file
@@ -203,14 +256,12 @@ def get_preview_path(texture_name, variant_name, files, base_dir):
                                 diffuse_filename = value[parent_key][child_key]
                                 if diffuse_filename in files:
                                     preview_path = f"{base_dir}/{texture_name}/{variant_name}/{diffuse_filename}"
-                                    print(f"    ✅ Preview found for {variant_name}: {diffuse_filename}")
                             
                             # Check for skin in the same parent
                             if skin_child_key in value[parent_key]:
                                 skin_filename = value[parent_key][skin_child_key]
                                 if skin_filename in files:
                                     skin_path = f"{base_dir}/{texture_name}/{variant_name}/{skin_filename}"
-                                    print(f"    ✅ Skin found for {variant_name}: {skin_filename}")
                     
                     # If we found a preview path, we can break (we found the right pattern)
                     if preview_path:
@@ -227,22 +278,18 @@ def get_preview_path(texture_name, variant_name, files, base_dir):
                                 chassis_diffuse_filename = value[parent_key][child_key]
                                 if chassis_diffuse_filename in files:
                                     chassis_diffuse_path = f"{base_dir}/{texture_name}/{variant_name}/{chassis_diffuse_filename}"
-                                    print(f"    ✅ Chassis diffuse found for {variant_name}: {chassis_diffuse_filename}")
-        
-        if not preview_path:
-            print(f"    ⚠️  No diffuse field found in {json_file} for {variant_name}")
 
         return preview_path, skin_path, chassis_diffuse_path
         
     except json.JSONDecodeError as e:
         print(f"    ❌ Error parsing JSON {json_file} for {variant_name}: {e}")
-        return None, None
+        return None, None, None
     except FileNotFoundError:
         print(f"    ❌ JSON file not found: {json_path}")
-        return None, None
+        return None, None, None
     except Exception as e:
         print(f"    ❌ Error reading {json_file} for {variant_name}: {e}")
-        return None, None
+        return None, None, None
 
 def preview_structure(texture_type="all"):
     """Preview the directory structure without creating the index"""

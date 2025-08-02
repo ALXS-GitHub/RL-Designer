@@ -1,0 +1,106 @@
+Parent = Material3'Wheel_SoccerBall.MAT_GoldRim'
+ScalarParameterValues[10] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 25
+        ParameterName = MetallicFinishInteriorFalloff
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = MetallicFinishOuterFalloff
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 3
+        ParameterName = MetallicHighlight
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = -0.6
+        ParameterName = Anodized Bias
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1.5
+        ParameterName = Anodized Scale
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.95
+        ParameterName = AnodizedColorize
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = ReflectionBrightness
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = SpecColorize
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = 20
+        ParameterName = SpecIntensity
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = 
+        ParameterValue = 16
+        ParameterName = SpecPower
+    }
+}
+TextureParameterValues[3] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Wheel_SoccerBall.Rim_SB_D'
+        ParameterName = Texture_Diffuse
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Wheel_SoccerBall.Rim_SB_N'
+        ParameterName = Texture_Normal
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Wheel_SoccerBall.Rim_SB_RGB'
+        ParameterName = Texture_RGB
+    }
+}
+VectorParameterValues[1] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.549505, G=0.380222, B=0.198709, A=1 }
+        ParameterName = CustomColor
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+RuntimeVirtualTextureParameterValues[0] = {}
+FontParameterValues[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

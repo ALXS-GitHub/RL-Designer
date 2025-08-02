@@ -19,6 +19,7 @@ pub struct DecalInfo {
 #[derive(Debug, Deserialize)]
 pub struct VariantInfo {
     pub variant: String,
+    pub signature: String,
     pub files: Vec<String>,
     pub preview_path: Option<String>,
     pub skin_path: Option<String>,
@@ -70,6 +71,7 @@ pub async fn fetch_decals_from_github_raw(element_type: ElementType) -> Result<V
             .into_iter()
             .map(|v| VariantFrontInfo {
                 variant_name: v.variant,
+                signature: v.signature,
                 preview_path: v.preview_path.map(|p| format!("{}/{}", GITHUB_DECALS_RAW_URL, p)),
                 skin_path: v.skin_path.map(|p| format!("{}/{}", GITHUB_DECALS_RAW_URL, p)),
                 chassis_diffuse_path: v.chassis_diffuse_path.map(|p| format!("{}/{}", GITHUB_DECALS_RAW_URL, p)),

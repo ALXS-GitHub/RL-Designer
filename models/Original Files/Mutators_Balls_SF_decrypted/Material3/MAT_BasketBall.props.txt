@@ -1,0 +1,67 @@
+TwoSided = false
+bDisableDepthTest = false
+bIsMasked = false
+ReferencedTextures[4] =
+{
+    ReferencedTextures[0] = Texture2D'Ball_BasketBall.Ball_Basketball_N'
+    ReferencedTextures[1] = Texture2D'Ball_BasketBall.Ball_Basketball_RGB'
+    ReferencedTextures[2] = Texture2D'Ball_BasketBall.Ball_Basketball_D'
+}
+Expressions[151] =
+{
+    Expressions[6] = MaterialExpressionScalarParameter'Ball_BasketBall.MAT_BasketBall.MaterialExpressionScalarParameter_2'
+    Expressions[8] = MaterialExpressionScalarParameter'Ball_BasketBall.MAT_BasketBall.MaterialExpressionScalarParameter_3'
+    Expressions[10] = MaterialExpressionVectorParameter'Ball_BasketBall.MAT_BasketBall.MaterialExpressionVectorParameter_3'
+    Expressions[17] = MaterialExpressionVectorParameter'Ball_BasketBall.MAT_BasketBall.MaterialExpressionVectorParameter_2'
+    Expressions[38] = MaterialExpressionStaticSwitchParameter'Ball_BasketBall.MAT_BasketBall.MaterialExpressionStaticSwitchParameter_2'
+    Expressions[97] = MaterialExpressionStaticSwitchParameter'Ball_BasketBall.MAT_BasketBall.MaterialExpressionStaticSwitchParameter_1'
+    Expressions[98] = MaterialExpressionScalarParameter'Ball_BasketBall.MAT_BasketBall.MaterialExpressionScalarParameter_1'
+    Expressions[106] = MaterialExpressionVectorParameter'Ball_BasketBall.MAT_BasketBall.MaterialExpressionVectorParameter_4'
+    Expressions[113] = MaterialExpressionVectorParameter'Ball_BasketBall.MAT_BasketBall.MaterialExpressionVectorParameter_5'
+    Expressions[124] = MaterialExpressionStaticSwitchParameter'Ball_BasketBall.MAT_BasketBall.MaterialExpressionStaticSwitchParameter_3'
+}
+CachedExpressionData = 
+BlendMode = BLEND_Opaque (0)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[0] = {}
+CollectedScalarParameters[3] =
+{
+    CollectedScalarParameters[0] = { Value=25, Name=Falloff, Group=None }
+    CollectedScalarParameters[1] = { Value=1100, Name=Scale, Group=None }
+    CollectedScalarParameters[2] = { Value=0, Name=GoalProximity, Group=None }
+}
+CollectedVectorParameters[4] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=0, G=3000, B=0, A=1 }
+        Name = PositionRed
+        Group = None
+    }
+    CollectedVectorParameters[1] =
+    {
+        Value = { R=0, G=-3000, B=0, A=1 }
+        Name = PositionBlue
+        Group = None
+    }
+    CollectedVectorParameters[2] =
+    {
+        Value = { R=0, G=0, B=0, A=0 }
+        Name = GoalPlaneLocation
+        Group = None
+    }
+    CollectedVectorParameters[3] =
+    {
+        Value = { R=1, G=0, B=0, A=1 }
+        Name = GoalPlaneNormal
+        Group = None
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

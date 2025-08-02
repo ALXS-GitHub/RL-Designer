@@ -41,6 +41,7 @@ const UpdateAllButton: React.FC<UpdateAllButtonProps> = ({ className }) => {
                 matchingExplorerDecal.variants.forEach(variant => {
                     if (collectionDecal.variants.some(
                         collectionVariant => collectionVariant.variant_name === variant.variant_name
+                        && collectionVariant.signature !== variant.signature
                     )) {
                         newUpdatableDecals.push({
                             name: collectionDecal.name,

@@ -1,0 +1,30 @@
+TwoSided = false
+bDisableDepthTest = false
+bIsMasked = false
+ReferencedTextures[3] = { Texture2D'Boost_Tests.Textures.Flow_04' }
+Expressions[49] =
+{
+    Expressions[31] = MaterialExpressionVectorParameter'HauntedBall.Materials.HauntedBallOuterShell_MAT.MaterialExpressionVectorParameter_1'
+}
+CachedExpressionData = 
+BlendMode = BLEND_Translucent (2)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[0] = {}
+CollectedScalarParameters[0] = {}
+CollectedVectorParameters[1] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=0.464071, G=0.464071, B=0.464071, A=1 }
+        Name = DefaultColor
+        Group = None
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

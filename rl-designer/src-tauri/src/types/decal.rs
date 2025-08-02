@@ -1,6 +1,7 @@
 #[derive(Debug, serde::Serialize, Clone)]
 pub struct VariantFrontInfo {
     pub variant_name: String,
+    pub signature: String,
     pub preview_path: Option<String>,
     pub skin_path: Option<String>,
     pub chassis_diffuse_path: Option<String>,

@@ -1,0 +1,125 @@
+TwoSided = true
+bDisableDepthTest = false
+bIsMasked = true
+ReferencedTextures[6] =
+{
+    ReferencedTextures[0] = Texture2D'Ball_Beachball.Ball_BeachBall_Pack'
+    ReferencedTextures[1] = Texture2D'Ball_Beachball.Ball_Beachball_D'
+    ReferencedTextures[2] = Texture2D'Ball_Beachball.Ball_BeachBall_N'
+    ReferencedTextures[3] = Texture2D'Detail_Citrus.Citrus_N'
+    ReferencedTextures[5] = Texture2D'FX_Textures_02.RGBNoise_01'
+}
+Expressions[277] =
+{
+    Expressions[0] = MaterialExpressionTextureSampleParameter2D'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionTextureSampleParameter2D_0'
+    Expressions[1] = MaterialExpressionScalarParameter'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionScalarParameter_0'
+    Expressions[2] = MaterialExpressionStaticSwitchParameter'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionStaticSwitchParameter_5'
+    Expressions[3] = MaterialExpressionTextureSampleParameter2D'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionTextureSampleParameter2D_4'
+    Expressions[4] = MaterialExpressionStaticSwitchParameter'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionStaticSwitchParameter_3'
+    Expressions[5] = MaterialExpressionTextureSampleParameter2D'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionTextureSampleParameter2D_1'
+    Expressions[7] = MaterialExpressionVectorParameter'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionVectorParameter_0'
+    Expressions[8] = MaterialExpressionStaticSwitchParameter'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionStaticSwitchParameter_0'
+    Expressions[9] = MaterialExpressionStaticSwitchParameter'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionStaticSwitchParameter_1'
+    Expressions[19] = MaterialExpressionTextureSampleParameter2D'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionTextureSampleParameter2D_16'
+    Expressions[59] = MaterialExpressionVectorParameter'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionVectorParameter_2'
+    Expressions[63] = MaterialExpressionVectorParameter'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionVectorParameter_3'
+    Expressions[67] = MaterialExpressionTextureSampleParameter2D'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionTextureSampleParameter2D_18'
+    Expressions[70] = MaterialExpressionStaticSwitchParameter'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionStaticSwitchParameter_8'
+    Expressions[75] = MaterialExpressionTextureSampleParameter2D'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionTextureSampleParameter2D_19'
+    Expressions[80] = MaterialExpressionStaticSwitchParameter'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionStaticSwitchParameter_9'
+    Expressions[116] = MaterialExpressionStaticSwitchParameter'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionStaticSwitchParameter_10'
+    Expressions[206] = MaterialExpressionTextureSampleParameter2D'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionTextureSampleParameter2D_21'
+    Expressions[210] = MaterialExpressionTextureSampleParameter2D'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionTextureSampleParameter2D_23'
+    Expressions[220] = MaterialExpressionTextureSampleParameter2D'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionTextureSampleParameter2D_25'
+    Expressions[222] = MaterialExpressionTextureSampleParameter2D'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionTextureSampleParameter2D_27'
+    Expressions[228] = MaterialExpressionTextureSampleParameter2D'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionTextureSampleParameter2D_29'
+    Expressions[229] = MaterialExpressionTextureSampleParameter2D'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionTextureSampleParameter2D_33'
+    Expressions[238] = MaterialExpressionStaticSwitchParameter'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionStaticSwitchParameter_11'
+    Expressions[241] = MaterialExpressionStaticSwitchParameter'Ball_Beachball.Materials.Ball_BeachBall_Dissolve_MAT.MaterialExpressionStaticSwitchParameter_13'
+}
+CachedExpressionData = 
+BlendMode = BLEND_Masked (1)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[12] =
+{
+    CollectedTextureParameters[0] = { Texture=None, Name=Normal, Group=None }
+    CollectedTextureParameters[1] = { Texture=None, Name=Masks, Group=None }
+    CollectedTextureParameters[2] = { Texture=None, Name=Masks, Group=None }
+    CollectedTextureParameters[3] =
+    {
+        Texture = Texture2D'Ball_Beachball.Ball_BeachBall_Pack'
+        Name = Masks
+        Group = None
+    }
+    CollectedTextureParameters[4] =
+    {
+        Texture = Texture2D'Ball_Beachball.Ball_BeachBall_N'
+        Name = Normal
+        Group = None
+    }
+    CollectedTextureParameters[5] =
+    {
+        Texture = Texture2D'Detail_Citrus.Citrus_N'
+        Name = DetailNormal
+        Group = None
+    }
+    CollectedTextureParameters[6] =
+    {
+        Texture = Texture2D'Ball_Beachball.Ball_BeachBall_Pack'
+        Name = Masks
+        Group = None
+    }
+    CollectedTextureParameters[7] =
+    {
+        Texture = Texture2D'Ball_Beachball.Ball_BeachBall_Pack'
+        Name = Masks
+        Group = None
+    }
+    CollectedTextureParameters[8] =
+    {
+        Texture = Texture2D'Ball_Beachball.Ball_Beachball_D'
+        Name = Diffuse
+        Group = None
+    }
+    CollectedTextureParameters[9] =
+    {
+        Texture = Texture2D'Ball_Beachball.Ball_Beachball_D'
+        Name = Diffuse
+        Group = None
+    }
+    CollectedTextureParameters[10] = { Texture=None, Name=Masks, Group=None }
+    CollectedTextureParameters[11] = { Texture=None, Name=Diffuse, Group=None }
+}
+CollectedScalarParameters[1] =
+{
+    CollectedScalarParameters[0] = { Value=1, Name=Dissolve, Group=None }
+}
+CollectedVectorParameters[3] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=0.151058, G=0.625345, B=0.409826, A=8 }
+        Name = DissolveColor
+        Group = None
+    }
+    CollectedVectorParameters[1] =
+    {
+        Value = { R=0, G=0, B=-1024, A=1 }
+        Name = GoalPlaneLocation
+        Group = None
+    }
+    CollectedVectorParameters[2] =
+    {
+        Value = { R=0, G=0, B=1, A=1 }
+        Name = GoalPlaneNormal
+        Group = None
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

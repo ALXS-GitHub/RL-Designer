@@ -1,0 +1,42 @@
+TwoSided = false
+bDisableDepthTest = false
+bIsMasked = false
+ReferencedTextures[1] =
+{
+    ReferencedTextures[0] = Texture2D'Body_Octane_Textures.T_Octane_BodyTextures'
+}
+Expressions[131] =
+{
+    Expressions[14] = MaterialExpressionVectorParameter'Vehicle_Parent_Materials02.MAT_Vehicle_Trim_Metallic.MaterialExpressionVectorParameter_3'
+    Expressions[19] = MaterialExpressionTextureSampleParameter2D'Vehicle_Parent_Materials02.MAT_Vehicle_Trim_Metallic.MaterialExpressionTextureSampleParameter2D_0'
+}
+CachedExpressionData = 
+BlendMode = BLEND_Opaque (0)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[1] =
+{
+    CollectedTextureParameters[0] =
+    {
+        Texture = Texture2D'Body_Octane_Textures.T_Octane_BodyTextures'
+        Name = BodyTextures_Map
+        Group = Body
+    }
+}
+CollectedScalarParameters[0] = {}
+CollectedVectorParameters[1] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=0.14, G=0.14, B=0.14, A=1 }
+        Name = TrimColor
+        Group = None
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

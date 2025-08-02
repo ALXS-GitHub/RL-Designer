@@ -1,0 +1,4 @@
+Diffuse=MainTrail_D_T
+Other[0]=alpine_infinite_Noise_Heightmap
+Other[1]=PerlinBlur_T
+Other[2]=CellNoise2_T

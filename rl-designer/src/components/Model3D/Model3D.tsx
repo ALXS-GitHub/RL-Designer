@@ -136,7 +136,7 @@ const calculateModelNormalization = (obj: Group) => {
   const center = box.getCenter(new Vector3());
   const maxDimension = Math.max(size.x, size.y, size.z);
   const scale = maxDimension > 0 ? 1 / maxDimension : 1;
-  
+
   return { scale, center };
 };
 
@@ -181,6 +181,7 @@ const Model3D: React.FC<Model3DProps> = ({
       onError(`Failed to load model from path: ${modelPath}`);
     };
   });
+  const default_obj = obj.clone();
 
   // Always call useLoader for texture, but handle null texturePath
   const decalTexture = useLoader(
@@ -225,7 +226,7 @@ const Model3D: React.FC<Model3DProps> = ({
     if (!obj || !decalTexture || !decalTexturePath) return;
 
     // Calculate model normalization
-    const { scale, center } = calculateModelNormalization(obj);
+    const { scale, center } = calculateModelNormalization(default_obj);
     setNormalizedScale(scale);
     setModelCenter(center);
 

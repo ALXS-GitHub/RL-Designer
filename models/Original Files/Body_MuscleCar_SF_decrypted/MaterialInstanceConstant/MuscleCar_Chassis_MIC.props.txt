@@ -1,0 +1,76 @@
+Parent = Material3'Body_MuscleCar.MAT_BANDAID_Chassis_Paintable'
+ScalarParameterValues[4] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = BoostGlowIntensity
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Brake
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 15
+        ParameterName = HeadlightBrightness
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 3
+        ParameterName = TailLightBrightness
+    }
+}
+TextureParameterValues[3] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Body_MuscleCar.MuscleCar_Chassis_D'
+        ParameterName = Diffuse
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Body_MuscleCar.MuscleCar_Chassis_RGB'
+        ParameterName = Masks
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Body_MuscleCar.MuscleCar_Chassis_N'
+        ParameterName = Normal
+    }
+}
+VectorParameterValues[2] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=3, G=0.25, B=0.1, A=1 }
+        ParameterName = BoostGlowColor
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.562615, G=0.733533, B=1, A=1 }
+        ParameterName = HeadlightColor
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+RuntimeVirtualTextureParameterValues[0] = {}
+FontParameterValues[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

@@ -3,6 +3,7 @@ use crate::types::decal::{DecalTextures, VariantFrontInfo};
 use serde_json::Value;
 use std::fs;
 use crate::types::elements::ElementType;
+use crate::utils::hash::calculate_folder_signature;
 
 pub fn fetch_decal_folders(element: ElementType) -> Result<Vec<DecalTextures>, String> {
     // Get the AppData environment variable
@@ -55,9 +56,11 @@ pub fn fetch_decal_folders(element: ElementType) -> Result<Vec<DecalTextures>, S
 
             let mut variants_with_preview: Vec<VariantFrontInfo> = Vec::new();
             for variant_name in variants {
+                let variant_path = path.join(&variant_name);
                 let preview_files = read_preview_files_from_variant(element, &path, &variant_name).ok();
                 variants_with_preview.push(VariantFrontInfo {
                     variant_name: variant_name.clone(),
+                    signature: calculate_folder_signature(&variant_path).unwrap_or_default(),
                     preview_path: preview_files.as_ref().and_then(|pf| pf.preview_path.clone()),
                     skin_path: preview_files.as_ref().and_then(|pf| pf.skin_path.clone()),
                     chassis_diffuse_path: preview_files.as_ref().and_then(|pf| pf.chassis_diffuse_path.clone()),
