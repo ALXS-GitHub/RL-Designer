@@ -191,7 +191,9 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
     }
 
     return (
-        <div className={`preview-loader ${className}`}>
+        <div className={`preview-loader ${className}`}
+            key={`${decal}-${variant_name}`}
+        >
             <PreviewLoaderPublic
                 decal={decal}
                 variant_name={variant_name}

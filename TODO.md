@@ -5,17 +5,16 @@
 
 ## Important
 
-- [ ] Fix public files for production app
-- [ ] Fix  : Fix python and rust xxh3 not giving the same hash
-- [ ] Fix : loading the collection again (in the hook) on hovering something in the collection page... (should make sure the collection is not refetched for nothing) (cause now this causes a weird double loading thing). The goal would be to split the collection hook into 2 -> 1 for data and the other for actions, and every where we need data, we use the store (the collection is just loaded once on app startup, and we use the store for the rest)
-- [ ] Since the placing of the useExplorer hook in the container parent is not working best, we should instead do as before by fetching directly in the button and in the explorer page but setting the "source" prop and put it in the key of useQuery. We will find a final and better solution later.
-- [ ]  Maybe add a "Last update" field in the index.json. To do this, we may implement a hash function that takes all the file from a variant's folder and generates a hash based on their content. This would be a simple way to check if the version matches. So each time we update the index, we would also compute the hash of all the files in the variant and put it in the index. This way we can compute the hash locally and compare it with the hash online. -> Then on the app, we can display in another color (purple for example) with a "sync" icon to indicate that the variant is not up to date. 
+- [ ] I just set back the "source" prop in the useQuery and useExplorer hook, but it is not the best solution. We should find a better way to handle the source prop and the query key. --> I think creating a context should work (so it is a single instance of the hook and the query) so the loading state is shared between the two components. (We just need to make sure the Loading state is well managed to avoid infinite loading...)
+- [~]  Maybe add a "Last update" field in the index.json. To do this, we may implement a hash function that takes all the file from a variant's folder and generates a hash based on their content. This would be a simple way to check if the version matches. So each time we update the index, we would also compute the hash of all the files in the variant and put it in the index. This way we can compute the hash locally and compare it with the hash online. -> Then on the app, we can display in another color (purple for example) with a "sync" icon to indicate that the variant is not up to date. 
+  - Still need to add some update logic in the collection page (for now it is only done on the explorer page). This should work the same as in the explorer page.
 
 - [ ] Update docs
 - [ ] Add the secondary color.
 
 ## Medium
 
+- [ ] Fix public files for production app (the model/obj is converted to text/html). For now the check is very specific. We should find a way to check if the file exists in the public folder more generally...
 - [ ] Try universal decal support
 - [ ] Add wheel texture support
   - For both ball and wheel, we should make add those collections / explorer inside the already existing pages, just make a select to choose between the car, ball or wheel textures. We should also manage how they are stored locally and how they are stored in the public repo. + Do they need variants ? I suppose yes, a ball even if the same object can have different textures for a same logo.
@@ -79,3 +78,4 @@
 - [X] Todo : better function to capitalize word with spaces in it (main color for example)
 - [X] Remove the Cancel and Ok buttons from the pickers. Should set the material on click and for the color should be set when going out of the input color picker.
 - [X] Make a check for images from the public folder (a function that checks if the image exists in the public folder, if not, it should return null or a default image)
+- [X] Fix  : Fix python and rust xxh3 not giving the same hash
