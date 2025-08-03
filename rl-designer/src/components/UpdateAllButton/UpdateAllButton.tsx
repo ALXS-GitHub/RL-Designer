@@ -20,6 +20,7 @@ const UpdateAllButton: React.FC<UpdateAllButtonProps> = ({ className }) => {
     const { downloadDecalVariant } = useExplorerActions();
 
     const [updatableDecals, setUpdatableDecals] = React.useState<{ name: string, variant_name: string }[]>([]);
+    const [allUpdated, setAllUpdated] = React.useState(false);
 
     const handleUpdateAll = async () => {
         for (const { name, variant_name } of updatableDecals) {
@@ -52,6 +53,9 @@ const UpdateAllButton: React.FC<UpdateAllButtonProps> = ({ className }) => {
             }
         });
 
+        if (newUpdatableDecals.length === 0) {
+            setAllUpdated(true);
+        }
         setUpdatableDecals(newUpdatableDecals);
     }, [collectionDecals, explorerDecals]);
 
@@ -63,7 +67,7 @@ const UpdateAllButton: React.FC<UpdateAllButtonProps> = ({ className }) => {
                 className="update-all-button__btn"
                 size="small"
             >
-                {!updatableDecals || updatableDecals.length === 0 ? <LoadingSpinner size={24} /> : (
+                {!updatableDecals || (updatableDecals.length === 0 && !allUpdated) ? <LoadingSpinner size={24} /> : (
                     <div >
                         Update All {
                             selectedElement.charAt(0).toUpperCase() + selectedElement.slice(1)

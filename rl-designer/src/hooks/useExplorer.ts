@@ -23,7 +23,7 @@ export interface UseExplorerDataReturn {
 export const useExplorerData = ({ source = ""} : UseExplorerDataProps = {}): UseExplorerDataReturn => {
     const { selectedElement } = useSelectedElementStore();
     const { decals, setDecals } = useExplorerStore();
-    const { executeAsync } = useAsyncOperations();
+    const { isLoading, isError, executeAsync } = useAsyncOperations({defaultLoadingState: false});
 
 
     const fetchData = async () => {
@@ -39,7 +39,7 @@ export const useExplorerData = ({ source = ""} : UseExplorerDataProps = {}): Use
     });
     };
 
-    const { isLoading, error } = useQuery({
+    useQuery({
         queryKey: ['GitDecals', selectedElement, source],
         queryFn: fetchData,
         refetchOnWindowFocus: false,
@@ -49,7 +49,7 @@ export const useExplorerData = ({ source = ""} : UseExplorerDataProps = {}): Use
     return {
         decals,
         isLoading,
-        isError: error,
+        isError,
     };
 };
 
