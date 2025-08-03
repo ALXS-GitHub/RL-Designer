@@ -9,6 +9,7 @@ use tauri_plugin_updater::UpdaterExt;
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_fs::init())
         .setup(|app| {
             if cfg!(debug_assertions) {
                 //
@@ -30,13 +31,10 @@ pub fn run() {
             crate::commands::collection::get_ball_decal_texture_folder,
             crate::commands::collection::remove_car_decal_variant,
             crate::commands::collection::remove_ball_decal_variant,
-
             crate::commands::explorer::get_car_decals_from_github,
             crate::commands::explorer::get_ball_decals_from_github,
-            
             crate::commands::download::download_car_decal_variant,
             crate::commands::download::download_ball_decal_variant,
-
             crate::commands::online_ball_patch::install_ball_patch,
         ])
         .run(tauri::generate_context!())

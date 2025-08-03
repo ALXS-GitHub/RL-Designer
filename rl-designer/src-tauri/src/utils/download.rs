@@ -1,11 +1,11 @@
 use crate::config::get_install_path;
 use crate::constants::GITHUB_DECALS_RAW_URL;
-use crate::utils::explorer::fetch_decal_index;
-use std::fs;
-use crate::types::elements::ElementType;
 use crate::types::decal::{DecalTextures, VariantFrontInfo};
+use crate::types::elements::ElementType;
 use crate::utils::collection::read_preview_files_from_variant;
+use crate::utils::explorer::fetch_decal_index;
 use crate::utils::hash::calculate_folder_signature;
+use std::fs;
 
 pub async fn download_decal_variant_logic(
     element: ElementType,
@@ -118,14 +118,23 @@ pub async fn download_decal_variant_logic(
     Ok(VariantFrontInfo {
         variant_name: variant_name.to_string(),
         signature: calculate_folder_signature(&variant_dir).unwrap_or_default(),
-        preview_path: preview_files.as_ref().and_then(|pf| pf.preview_path.clone()),
+        preview_path: preview_files
+            .as_ref()
+            .and_then(|pf| pf.preview_path.clone()),
         skin_path: preview_files.as_ref().and_then(|pf| pf.skin_path.clone()),
-        chassis_diffuse_path: preview_files.as_ref().and_then(|pf| pf.chassis_diffuse_path.clone()),
+        chassis_diffuse_path: preview_files
+            .as_ref()
+            .and_then(|pf| pf.chassis_diffuse_path.clone()),
     })
 }
 
 // Helper function for downloading decal files (for future use)
-pub fn get_decal_file_url(element: ElementType,decal_name: &str, variant_name: &str, filename: &str) -> String {
+pub fn get_decal_file_url(
+    element: ElementType,
+    decal_name: &str,
+    variant_name: &str,
+    filename: &str,
+) -> String {
     format!(
         "{}/{}/{}/{}/{}",
         GITHUB_DECALS_RAW_URL,

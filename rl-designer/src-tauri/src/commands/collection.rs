@@ -1,6 +1,6 @@
 use crate::types::decal::DecalTextures;
-use crate::utils::collection::{fetch_decal_folders, remove_decal_variant_logic};
 use crate::types::elements::ElementType;
+use crate::utils::collection::{fetch_decal_folders, remove_decal_variant_logic};
 
 #[derive(Debug, serde::Serialize)]
 pub struct FetchResult {
@@ -34,15 +34,17 @@ pub fn get_ball_decal_texture_folder() -> FetchResult {
     get_decal_texture_element_logic(ElementType::Ball)
 }
 
-
-
 #[derive(Debug, serde::Serialize)]
 pub struct RemoveResult {
     success: bool,
     error: Option<String>,
 }
 
-fn remove_decal_variant_element_logic(element: ElementType, decal_name: &str, variant_name: &str) -> RemoveResult {
+fn remove_decal_variant_element_logic(
+    element: ElementType,
+    decal_name: &str,
+    variant_name: &str,
+) -> RemoveResult {
     match remove_decal_variant_logic(element, decal_name, variant_name) {
         Ok(_) => RemoveResult {
             success: true,

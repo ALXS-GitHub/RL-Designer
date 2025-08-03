@@ -1,7 +1,7 @@
+use crate::types::elements::ElementType;
+use std::collections::HashMap;
 use std::env;
 use std::path::PathBuf;
-use std::collections::HashMap;
-use crate::types::elements::ElementType;
 
 pub fn get_appdata() -> Result<String, String> {
     env::var("AppData").map_err(|_| "Failed to get %AppData% environment variable".to_string())

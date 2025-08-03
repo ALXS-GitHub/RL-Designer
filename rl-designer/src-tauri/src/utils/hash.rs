@@ -1,8 +1,8 @@
 // hash_utils.rs
-use xxhash_rust::xxh3::xxh3_64;
-use std::fs::{File, self};
+use std::fs::{self, File};
 use std::io::{self, Read};
 use std::path::Path;
+use xxhash_rust::xxh3::xxh3_64;
 
 pub fn calculate_file_hash(file_path: &Path) -> io::Result<String> {
     let data = fs::read(file_path)?;
@@ -18,7 +18,7 @@ pub fn calculate_folder_signature(folder_path: &Path) -> io::Result<String> {
     for entry in read_dir {
         let entry = entry?;
         let path = entry.path();
-       if let Some(name) = path.file_name().and_then(|n| n.to_str()) {
+        if let Some(name) = path.file_name().and_then(|n| n.to_str()) {
             if path.is_file() {
                 files.push(name.to_string());
             } else if path.is_dir() {
@@ -30,7 +30,7 @@ pub fn calculate_folder_signature(folder_path: &Path) -> io::Result<String> {
     if files.is_empty() && subfolders.is_empty() {
         return Ok(String::new());
     }
-    
+
     files.sort();
     subfolders.sort();
 
@@ -60,11 +60,11 @@ pub fn calculate_folder_signature(folder_path: &Path) -> io::Result<String> {
             }
         }
     }
-    
+
     if signature_parts.is_empty() {
         return Ok(String::new());
     }
-    
+
     let combined_signature = signature_parts.join("|");
     let hash = xxh3_64(combined_signature.as_bytes());
     Ok(format!("{:016x}", hash))

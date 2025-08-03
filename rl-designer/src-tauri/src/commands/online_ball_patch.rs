@@ -45,11 +45,19 @@ pub async fn download_and_install_ball_patch() -> Result<(), String> {
     let temp_dir = std::env::temp_dir().join("rl-designer-ball-patch");
     if temp_dir.exists() {
         fs::remove_dir_all(&temp_dir).map_err(|e| {
-            format!("Failed to clean temporary directory '{}': {}", temp_dir.display(), e)
+            format!(
+                "Failed to clean temporary directory '{}': {}",
+                temp_dir.display(),
+                e
+            )
         })?;
     }
     fs::create_dir_all(&temp_dir).map_err(|e| {
-        format!("Failed to create temporary directory '{}': {}", temp_dir.display(), e)
+        format!(
+            "Failed to create temporary directory '{}': {}",
+            temp_dir.display(),
+            e
+        )
     })?;
 
     // Download the zip file
@@ -113,19 +121,24 @@ fn extract_zip(zip_path: &Path, extract_dir: &Path) -> Result<(), String> {
 
     // Create extraction directory
     fs::create_dir_all(extract_dir).map_err(|e| {
-        format!("Failed to create extraction directory '{}': {}", extract_dir.display(), e)
+        format!(
+            "Failed to create extraction directory '{}': {}",
+            extract_dir.display(),
+            e
+        )
     })?;
 
     // Open and read the zip file
     let zip_file = File::open(zip_path)
         .map_err(|e| format!("Failed to open zip file '{}': {}", zip_path.display(), e))?;
 
-    let mut archive = ZipArchive::new(zip_file)
-        .map_err(|e| format!("Failed to read zip archive: {}", e))?;
+    let mut archive =
+        ZipArchive::new(zip_file).map_err(|e| format!("Failed to read zip archive: {}", e))?;
 
     // Extract each file
     for i in 0..archive.len() {
-        let mut file = archive.by_index(i)
+        let mut file = archive
+            .by_index(i)
             .map_err(|e| format!("Failed to access file at index {}: {}", i, e))?;
 
         let file_path = extract_dir.join(file.name());
@@ -133,19 +146,21 @@ fn extract_zip(zip_path: &Path, extract_dir: &Path) -> Result<(), String> {
         // Create parent directories if needed
         if let Some(parent) = file_path.parent() {
             fs::create_dir_all(parent).map_err(|e| {
-                format!("Failed to create parent directory '{}': {}", parent.display(), e)
+                format!(
+                    "Failed to create parent directory '{}': {}",
+                    parent.display(),
+                    e
+                )
             })?;
         }
 
         // Extract file
         if file.is_file() {
-            let mut output_file = File::create(&file_path).map_err(|e| {
-                format!("Failed to create file '{}': {}", file_path.display(), e)
-            })?;
+            let mut output_file = File::create(&file_path)
+                .map_err(|e| format!("Failed to create file '{}': {}", file_path.display(), e))?;
 
-            std::io::copy(&mut file, &mut output_file).map_err(|e| {
-                format!("Failed to extract file '{}': {}", file_path.display(), e)
-            })?;
+            std::io::copy(&mut file, &mut output_file)
+                .map_err(|e| format!("Failed to extract file '{}': {}", file_path.display(), e))?;
 
             println!("Extracted: {}", file.name());
         }
@@ -180,7 +195,8 @@ fn run_install_script(install_bat_path: &Path) -> Result<(), String> {
     println!("Running install script: {}", install_bat_path.display());
 
     // Get the directory containing the install.bat file
-    let working_dir = install_bat_path.parent()
+    let working_dir = install_bat_path
+        .parent()
         .ok_or_else(|| "Failed to get install script directory".to_string())?;
 
     // Run the install.bat script
@@ -193,7 +209,7 @@ fn run_install_script(install_bat_path: &Path) -> Result<(), String> {
     // Check if the command was successful
     if output.status.success() {
         println!("Install script executed successfully!");
-        
+
         // Print stdout if available
         if !output.stdout.is_empty() {
             println!("Script output: {}", String::from_utf8_lossy(&output.stdout));
@@ -201,7 +217,7 @@ fn run_install_script(install_bat_path: &Path) -> Result<(), String> {
     } else {
         let stderr = String::from_utf8_lossy(&output.stderr);
         let stdout = String::from_utf8_lossy(&output.stdout);
-        
+
         return Err(format!(
             "Install script failed with exit code: {}\nStdout: {}\nStderr: {}",
             output.status.code().unwrap_or(-1),

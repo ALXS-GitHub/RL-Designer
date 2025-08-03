@@ -9,15 +9,11 @@ import './DecalsContainer.scss';
 
 interface DecalsContainerProps {
   children?: React.ReactNode;
-  showLoading?: boolean;
 }
 
-export const DecalsContainer = ({children, showLoading = false}: DecalsContainerProps) => {
+export const DecalsContainer = ({children }: DecalsContainerProps) => {
 
     const { selectedElement, setSelectedElement } = useSelectedElementStore();
-    const { isLoading } = useExplorerData(); // fetch explorer decals to avoid doing it in child components
-
-    if (showLoading && isLoading) return <Loading />;
 
     return (
         <div className="decals-container">

@@ -1,6 +1,6 @@
-use crate::utils::download::download_decal_variant_logic;
-use crate::types::elements::ElementType;
 use crate::types::decal::VariantFrontInfo;
+use crate::types::elements::ElementType;
+use crate::utils::download::download_decal_variant_logic;
 
 #[derive(Debug, serde::Serialize)]
 pub struct DownloadResponse {
@@ -14,7 +14,7 @@ async fn download_decal_variant_element_logic(
     element: ElementType,
     decal_name: &str,
     variant_name: &str,
-) -> DownloadResponse  {
+) -> DownloadResponse {
     match download_decal_variant_logic(element, &decal_name, &variant_name).await {
         Ok(variant_info) => DownloadResponse {
             success: true,
@@ -38,11 +38,17 @@ async fn download_decal_variant_element_logic(
 }
 
 #[tauri::command]
-pub async fn download_car_decal_variant(decal_name: String, variant_name: String) -> DownloadResponse {
+pub async fn download_car_decal_variant(
+    decal_name: String,
+    variant_name: String,
+) -> DownloadResponse {
     download_decal_variant_element_logic(ElementType::Car, &decal_name, &variant_name).await
 }
 
 #[tauri::command]
-pub async fn download_ball_decal_variant(decal_name: String, variant_name: String) -> DownloadResponse {
+pub async fn download_ball_decal_variant(
+    decal_name: String,
+    variant_name: String,
+) -> DownloadResponse {
     download_decal_variant_element_logic(ElementType::Ball, &decal_name, &variant_name).await
 }

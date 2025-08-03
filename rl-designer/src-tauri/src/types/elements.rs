@@ -63,7 +63,8 @@ impl ElementType {
                 chassis: "Chassis".to_string(),
                 diffuse: "Diffuse".to_string(),
             },
-            _ => ChassisJSONType { // not applicable for other types
+            _ => ChassisJSONType {
+                // not applicable for other types
                 chassis: String::new(),
                 diffuse: String::new(),
             },

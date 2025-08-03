@@ -1,9 +1,9 @@
 use crate::constants::GITHUB_DECALS_RAW_URL;
 use crate::types::decal::{DecalTextures, VariantFrontInfo};
+use crate::types::elements::ElementType;
 use reqwest;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use crate::types::elements::ElementType;
 
 #[derive(Debug, Deserialize)]
 pub struct DecalsIndex {
@@ -27,7 +27,11 @@ pub struct VariantInfo {
 }
 
 pub async fn fetch_decal_index(element_type: ElementType) -> Result<DecalsIndex, String> {
-    let index_url = format!("{}/{}", GITHUB_DECALS_RAW_URL, element_type.get_index_name());
+    let index_url = format!(
+        "{}/{}",
+        GITHUB_DECALS_RAW_URL,
+        element_type.get_index_name()
+    );
 
     let client = reqwest::Client::builder()
         .user_agent("RL-Designer-App/1.0")
@@ -58,7 +62,9 @@ pub async fn fetch_decal_index(element_type: ElementType) -> Result<DecalsIndex,
     Ok(decals_index)
 }
 
-pub async fn fetch_decals_from_github_raw(element_type: ElementType) -> Result<Vec<DecalTextures>, String> {
+pub async fn fetch_decals_from_github_raw(
+    element_type: ElementType,
+) -> Result<Vec<DecalTextures>, String> {
     // Fetch the decals index from GitHub
     let decals_index = fetch_decal_index(element_type).await?;
 
@@ -72,9 +78,15 @@ pub async fn fetch_decals_from_github_raw(element_type: ElementType) -> Result<V
             .map(|v| VariantFrontInfo {
                 variant_name: v.variant,
                 signature: v.signature,
-                preview_path: v.preview_path.map(|p| format!("{}/{}", GITHUB_DECALS_RAW_URL, p)),
-                skin_path: v.skin_path.map(|p| format!("{}/{}", GITHUB_DECALS_RAW_URL, p)),
-                chassis_diffuse_path: v.chassis_diffuse_path.map(|p| format!("{}/{}", GITHUB_DECALS_RAW_URL, p)),
+                preview_path: v
+                    .preview_path
+                    .map(|p| format!("{}/{}", GITHUB_DECALS_RAW_URL, p)),
+                skin_path: v
+                    .skin_path
+                    .map(|p| format!("{}/{}", GITHUB_DECALS_RAW_URL, p)),
+                chassis_diffuse_path: v
+                    .chassis_diffuse_path
+                    .map(|p| format!("{}/{}", GITHUB_DECALS_RAW_URL, p)),
             })
             .collect();
 

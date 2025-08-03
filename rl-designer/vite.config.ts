@@ -30,5 +30,7 @@ export default defineConfig({
         "**/*.gif",
         "**/*.vert",
         "**/*.frag",
+        "**/*.obj",
+        "**/*.mtl",
     ],
 });

@@ -10,13 +10,17 @@ import { getDecalsFromGitHub } from '@/services/explorer';
 import { useEffect, useState } from 'react';
 import { useExplorerStore } from '@/stores/collectionStore';
 
+interface UseExplorerDataProps {
+    source?: string; // temporary - for now just to make sure we can refetch on hook call
+}
+
 export interface UseExplorerDataReturn {
     decals: DecalTextures[];
     isLoading: boolean;
     isError: Error | null;
 }
 
-export const useExplorerData = (): UseExplorerDataReturn => {
+export const useExplorerData = ({ source = ""} : UseExplorerDataProps = {}): UseExplorerDataReturn => {
     const { selectedElement } = useSelectedElementStore();
     const { decals, setDecals } = useExplorerStore();
     const { executeAsync } = useAsyncOperations();
@@ -36,7 +40,7 @@ export const useExplorerData = (): UseExplorerDataReturn => {
     };
 
     const { isLoading, error } = useQuery({
-        queryKey: ['GitDecals', selectedElement],
+        queryKey: ['GitDecals', selectedElement, source],
         queryFn: fetchData,
         refetchOnWindowFocus: false,
         retry: false,
