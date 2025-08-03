@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Model3DPreview from "./Model3DPreview";
-import { useParams } from "react-router-dom";
 import { Loading, Error } from "@/components";
-import useCollection from "@/hooks/useCollection";
 import { SUPPORTED_MODELS } from "@/constants/models";
 import type { ModelType } from "@/constants/models";
 import { PagesMap } from "@/constants/pagesMap";
 import usePageStore from "@/stores/pageStore";
-import { convertFileSrc } from "@tauri-apps/api/core";
-import { resolveImagePath } from "@/utils/images";
 import { forwardRef, useImperativeHandle } from "react";
 import type { ElementType } from "@/constants/elements";
 import useSelectedElementStore from "@/stores/selectedElementStore";
@@ -116,7 +112,7 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
 },ref) => {
     const { lastPage } = usePageStore();
     const { selectedElement } = useSelectedElementStore();
-    const { decals, isLoading, isError } = PagesMap[lastPage].useData();
+    const { decals } = PagesMap[lastPage].useData();
     const [variantList, setVariantList] = useState<string[]>([]);
 
     const isValidModel = (variant_name: string) => {
@@ -193,10 +189,6 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
         skinTexturePath: skinPath,
         chassisTexturePath: chassisDiffusePath,
     }
-
-
-    if (isLoading) return <Loading />;
-    if (isError) return <Error message={isError.message} />;
 
     return (
         <div className={`preview-loader ${className}`}>

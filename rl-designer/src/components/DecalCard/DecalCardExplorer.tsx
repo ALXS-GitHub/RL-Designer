@@ -5,7 +5,7 @@ import { useExplorerActions } from '@/hooks/useExplorer';
 import { useNavigate } from 'react-router-dom'
 
 import DecalCardDesign from "./DecalCardDesign"
-import useCollection from '@/hooks/useCollection';
+import { useCollectionActions } from '@/hooks/useCollection';
 import { FaEye, FaDownload, FaSync } from 'react-icons/fa';
 
 interface DecalCardExplorerProps {
@@ -15,11 +15,20 @@ interface DecalCardExplorerProps {
 const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
 
     const { downloadDecalVariant } = useExplorerActions();
-    const { decals: collectionDecals } = useCollection();
+    const { decals: collectionDecals } = useCollectionActions();
     const navigate = useNavigate();
 
     const isVariantInstalled = (decalName: string, variant: string) => {
         return collectionDecals.some(d => d.name === decalName && d.variants.some(v => v.variant_name === variant));
+    }
+
+    const doesVariantNeedUpdate = (decalName: string, variant: string) => {
+        const variant_infos = decal.variants.find(v => v.variant_name === variant);
+        if (!variant_infos) return false;
+        return collectionDecals.some(d => d.name === decalName && d.variants.some(
+            v => v.variant_name === variant
+            && v.signature !== variant_infos.signature
+        ));
     }
 
     // TODO update this to change the image on hover variants
@@ -98,7 +107,14 @@ const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
     }
 
     const extraVariantClasses = (variant: string) => {
-        return isVariantInstalled(decal.name, variant) ? 'installed' : '';
+        let classes = '';
+        if (isVariantInstalled(decal.name, variant)) {
+            classes += 'installed ';
+        }
+        if (doesVariantNeedUpdate(decal.name, variant)) {
+            classes += 'needs-update ';
+        }
+        return classes;
     }
 
     return (

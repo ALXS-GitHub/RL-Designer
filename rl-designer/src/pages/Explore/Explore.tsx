@@ -4,8 +4,7 @@ import DecalCardExplorer from '@/components/DecalCard/DecalCardExplorer';
 import { Loading, Error } from '@/components';
 import useSelectedElementStore from '@/stores/selectedElementStore';
 import ElementTypeSelect from '@/components/DropdownMenu/ElementTypeSelect/ElementTypeSelect';
-import { useExplorerData } from '@/hooks/useExplorer'
-import useCollection from '@/hooks/useCollection';
+import { useExplorerActions } from '@/hooks/useExplorer'
 import UpdateAllButton from '@/components/UpdateAllButton/UpdateAllButton';
 import DecalsContainer from '@/containers/DecalsContainer/DecalsContainer';
 import usePageStore from '@/stores/pageStore'
@@ -13,23 +12,14 @@ import usePageStore from '@/stores/pageStore'
 const Explore = () => {
 
   const { setLastPage } = usePageStore();
-  useCollection(); // Ensure collection store is initialized
-  const { decals, isLoading, isError } = useExplorerData();
-  
+  const { decals } = useExplorerActions();
+
   useEffect(() => {
     setLastPage('explorer');
   }, []);
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  if (isError) {
-    return <Error message={isError.message} />;
-  }
-
   return (
-    <DecalsContainer>
+    <DecalsContainer showLoading={true}>
       <div className="explore">
         <h1>Explore Page</h1>
         <div className="explore__decals">

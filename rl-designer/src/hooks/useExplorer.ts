@@ -19,7 +19,7 @@ export interface UseExplorerDataReturn {
 export const useExplorerData = (): UseExplorerDataReturn => {
     const { selectedElement } = useSelectedElementStore();
     const { decals, setDecals } = useExplorerStore();
-    const { isLoading, isError, executeAsync } = useAsyncOperations();
+    const { executeAsync } = useAsyncOperations();
 
 
     const fetchData = async () => {
@@ -35,7 +35,7 @@ export const useExplorerData = (): UseExplorerDataReturn => {
     });
     };
 
-    useQuery({
+    const { isLoading, error } = useQuery({
         queryKey: ['GitDecals', selectedElement],
         queryFn: fetchData,
         refetchOnWindowFocus: false,
@@ -45,11 +45,12 @@ export const useExplorerData = (): UseExplorerDataReturn => {
     return {
         decals,
         isLoading,
-        isError,
+        isError: error,
     };
 };
 
 interface UseExplorerActionsReturn {
+    decals: DecalTextures[]; // store decals
     downloadDecalVariant: (decalName: string, variantName: string) => Promise<string | undefined>;
     isLoading: boolean;
     isError: Error | null;
@@ -58,7 +59,8 @@ interface UseExplorerActionsReturn {
 export const useExplorerActions = (): UseExplorerActionsReturn => {
     const { selectedElement } = useSelectedElementStore();
     const { useStore } = ElementsMap[selectedElement];
-    const { addVariant } = useStore();
+    const { updateOrAddVariant } = useStore();
+    const { decals: explorerDecals } = useExplorerStore();
     const { isLoading, isError, executeAsync } = useAsyncOperations();
 
     const downloadDecalVariant = async (decalName: string, variantName: string) => {
@@ -66,7 +68,7 @@ export const useExplorerActions = (): UseExplorerActionsReturn => {
             operation: async () => {
                 const result = await downloadDecalVariantService({ elementType: selectedElement, decalName, variantName });
                 if (!result.success || !result.variant_info) throw new Error(result.error || 'Failed to download decal variant');
-                addVariant(decalName, result.variant_info);
+                updateOrAddVariant(decalName, result.variant_info);
                 return result.message;
             },
             successMessage: `Downloaded variant ${variantName} of decal ${decalName}`,
@@ -75,6 +77,7 @@ export const useExplorerActions = (): UseExplorerActionsReturn => {
     };
 
     return {
+        decals: explorerDecals,
         downloadDecalVariant,
         isLoading,
         isError,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import useCollection from '@/hooks/useCollection';
+import { useCollectionActions } from '@/hooks/useCollection';
 import DecalCardCollection from '@/components/DecalCard/DecalCardCollection';
 import { Loading, Error } from '@/components';
 import type { ElementType } from '@/constants/elements';
@@ -16,14 +16,13 @@ const Collection = () => {
 
   const { setLastPage } = usePageStore();
 
-  const { decals, isLoading, isError } = useCollection();
+  const { decals } = useCollectionActions();
 
     useEffect(() => {
       setLastPage('collection');
     }, []);
 
-  if (isLoading) return <Loading />;
-  if (isError) return <Error message="Error loading collection" />;
+  // if (!decals || decals.length === 0) return <Loading />;
 
   return (
     <DecalsContainer>

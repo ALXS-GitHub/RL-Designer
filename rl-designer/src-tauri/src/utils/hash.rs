@@ -1,20 +1,16 @@
 // hash_utils.rs
 use xxhash_rust::xxh3::xxh3_64;
-use std::fs::File;
+use std::fs::{File, self};
 use std::io::{self, Read};
 use std::path::Path;
 
 pub fn calculate_file_hash(file_path: &Path) -> io::Result<String> {
-    let mut file = File::open(file_path)?;
-    let mut buffer = Vec::new();
-    file.read_to_end(&mut buffer)?;
-    
-    let hash = xxh3_64(&buffer);
-    Ok(format!("{:016x}", hash)) // 16-char hex string
+    let data = fs::read(file_path)?;
+    let hash = xxh3_64(&data);
+    Ok(format!("{:016x}", hash))
 }
 
 pub fn calculate_folder_signature(folder_path: &Path) -> io::Result<String> {
-    println!("Calculating for {:?}", folder_path);
     let mut files: Vec<String> = Vec::new();
     let mut subfolders: Vec<String> = Vec::new();
 
@@ -22,12 +18,10 @@ pub fn calculate_folder_signature(folder_path: &Path) -> io::Result<String> {
     for entry in read_dir {
         let entry = entry?;
         let path = entry.path();
-        if path.is_file() {
-            if let Some(name) = path.file_name().and_then(|n| n.to_str()) {
+       if let Some(name) = path.file_name().and_then(|n| n.to_str()) {
+            if path.is_file() {
                 files.push(name.to_string());
-            }
-        } else if path.is_dir() {
-            if let Some(name) = path.file_name().and_then(|n| n.to_str()) {
+            } else if path.is_dir() {
                 subfolders.push(name.to_string());
             }
         }
@@ -39,12 +33,10 @@ pub fn calculate_folder_signature(folder_path: &Path) -> io::Result<String> {
     
     files.sort();
     subfolders.sort();
-    let sorted_files: Vec<String> = files.into_iter().collect();
-    let sorted_subfolders: Vec<String> = subfolders.into_iter().collect();
 
     let mut signature_parts = Vec::new();
-    
-    for filename in sorted_files {
+
+    for filename in files {
         let file_path = folder_path.join(&filename);
 
         match calculate_file_hash(&file_path) {
@@ -57,7 +49,7 @@ pub fn calculate_folder_signature(folder_path: &Path) -> io::Result<String> {
         }
     }
 
-    for subfolder in sorted_subfolders {
+    for subfolder in subfolders {
         let subfolder_path = folder_path.join(&subfolder);
         match calculate_folder_signature(&subfolder_path) {
             Ok(subfolder_signature) => {

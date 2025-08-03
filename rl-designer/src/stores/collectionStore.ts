@@ -5,6 +5,7 @@ export interface CollectionState {
     decals: DecalTextures[];
     setDecals: (decals: DecalTextures[]) => void;
     addVariant: (decal: string, variant: VariantFrontInfo) => void;
+    updateOrAddVariant: (decal: string, variant: VariantFrontInfo) => void; // same as addVariant but replaces the variant if exists
     removeVariant: (decal: string, variant_name: string) => void;
     addDecal: (decal: DecalTextures) => void;
     removeDecal: (decal: DecalTextures) => void;
@@ -26,6 +27,28 @@ const createCollectionStore = () => {
                                 variants: d.variants.some(v => v.variant_name === variant.variant_name) 
                                     ? d.variants 
                                     : [...d.variants, variant] 
+                            } 
+                            : d
+                    )
+                };
+            } else {
+                return {
+                    decals: [...state.decals, { name: decal, variants: [variant] }]
+                };
+            }
+        }),
+        updateOrAddVariant: (decal, variant) => set((state) => {
+            const decalExists = state.decals.some(d => d.name === decal);
+            
+            if (decalExists) {
+                return {
+                    decals: state.decals.map(d =>
+                        d.name === decal 
+                            ? { 
+                                ...d, 
+                                variants: d.variants.some(v => v.variant_name === variant.variant_name)
+                                    ? d.variants.map(v => v.variant_name === variant.variant_name ? variant : v) // Update existing
+                                    : [...d.variants, variant] // Add new variant
                             } 
                             : d
                     )

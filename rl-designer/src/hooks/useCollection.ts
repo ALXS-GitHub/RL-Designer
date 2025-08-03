@@ -8,52 +8,70 @@ import type { ElementType } from '@/constants/elements';
 import { ElementsMap } from '@/constants/elementsMap';
 import useSelectedElementStore from '@/stores/selectedElementStore';
 
-interface UseCollectionReturn {
-  decals: DecalTextures[];
-  addDecal: (decal: DecalTextures) => void;
-  removeDecalVariant: (decalName: string, variantName: string) => Promise<void>;
-  isLoading: boolean;
-  isError: Error | null;
+export interface UseCollectionDataReturn {
+    decals: DecalTextures[];
+    isLoading:boolean;
+    isError: Error | null;
 }
 
-const useCollection = (): UseCollectionReturn => {
-  const { selectedElement } = useSelectedElementStore();
-  const { useStore } = ElementsMap[selectedElement];
-  const { decals, setDecals, addDecal, removeVariant } = useStore();
-  const { isLoading, isError, executeAsync } = useAsyncOperations();
+export const useCollectionData = (): UseCollectionDataReturn => {
+    const { selectedElement } = useSelectedElementStore();
+    const { useStore } = ElementsMap[selectedElement];
+    const { decals, setDecals } = useStore();
+    const { isLoading, isError, executeAsync } = useAsyncOperations();
 
-  const fetchData = async () => {
-    return executeAsync({
-      operation: async () => {
-        const result = await getDecalFolders(selectedElement);
-        if (!result.success) throw new Error(result.error || 'Failed to fetch decals');
-        setDecals(result.decals);
-        return result.decals;
-      },
-      errorMessage: `Failed to fetch collection decals for ${selectedElement}`,
+    const fetchData = async () => {
+        return executeAsync({
+        operation: async () => {
+            const result = await getDecalFolders(selectedElement);
+            console.log("Fetching collection")
+            if (!result.success) throw new Error(result.error || 'Failed to fetch decals');
+            setDecals(result.decals);
+            return result.decals;
+        },
+        errorMessage: `Failed to fetch collection decals for ${selectedElement}`,
+        });
+    };
+
+    useQuery({
+        queryKey: ['decalFolders', selectedElement],
+        queryFn: fetchData,
+        refetchOnWindowFocus: false,
+        retry: false,
     });
-  };
 
-  const removeDecalVariant = async (decalName: string, variantName: string) => {
-    return executeAsync({
-      operation: async () => {
-        const result = await removeDecalVariantService({ elementType: selectedElement, decalName, variantName });
-        if (!result.success) throw new Error(result.error || 'Failed to remove decal variant');
-        removeVariant(decalName, variantName);
-      },
-      successMessage: `Removed variant ${variantName} from decal ${decalName}`,
-      errorMessage: `Failed to remove variant ${variantName} from decal ${decalName}`
-    });
-  };
+    return { decals, isLoading, isError };
+}
 
-  useQuery({
-    queryKey: ['decalFolders', selectedElement],
-    queryFn: fetchData,
-    refetchOnWindowFocus: false,
-    retry: false,
-  });
+export interface UseCollectionActionsReturn {
+    decals: DecalTextures[]; // store decals
+    removeDecalVariant: (decalName: string, variantName: string) => Promise<void>;
+    isLoading: boolean;
+    isError: Error | null;
+}
 
-  return { decals, addDecal, removeDecalVariant, isLoading, isError };
+export const useCollectionActions = (): UseCollectionActionsReturn => {
+    const { selectedElement } = useSelectedElementStore();
+    const { useStore } = ElementsMap[selectedElement];
+    const { decals, removeVariant } = useStore();
+    const { isLoading, isError, executeAsync } = useAsyncOperations();
+
+    const removeDecalVariant = async (decalName: string, variantName: string) => {
+        return executeAsync({
+            operation: async () => {
+                const result = await removeDecalVariantService({ elementType: selectedElement, decalName, variantName });
+                if (!result.success) throw new Error(result.error || 'Failed to remove decal variant');
+                removeVariant(decalName, variantName);
+            },
+            successMessage: `Removed variant ${variantName} from decal ${decalName}`,
+            errorMessage: `Failed to remove variant ${variantName} from decal ${decalName}`
+        });
+    };
+
+    return {
+        decals,
+        removeDecalVariant,
+        isLoading,
+        isError,
+    };
 };
-
-export default useCollection;

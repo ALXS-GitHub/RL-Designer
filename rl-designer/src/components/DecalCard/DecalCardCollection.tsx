@@ -3,7 +3,7 @@ import type { DecalTextures } from '@/types';
 import { useNavigate } from 'react-router-dom';
 import Placeholder from '@/assets/placeholder.jpg';
 import { convertFileSrc } from '@tauri-apps/api/core';
-import useCollection from '@/hooks/useCollection';
+import { useCollectionActions } from '@/hooks/useCollection';
 
 import DecalCardDesign from "./DecalCardDesign"
 import { FaEye, FaTrash } from 'react-icons/fa';
@@ -15,7 +15,7 @@ interface DecalCardCollectionProps {
 
 const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
 
-    const { removeDecalVariant } = useCollection();
+    const { removeDecalVariant } = useCollectionActions();
     const { openConfirmationDialog } = useConfirmationDialogStore();
 
     const navigate = useNavigate();

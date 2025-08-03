@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 
 import './UpdateAllButton.scss'
-import useCollection from '@/hooks/useCollection';
-import { useExplorerData, useExplorerActions } from '@/hooks/useExplorer';
+import { useCollectionActions } from '@/hooks/useCollection';
+import { useExplorerActions } from '@/hooks/useExplorer';
 import Button from '@/components/Button/Button';
 import useSelectedElementStore from '@/stores/selectedElementStore';
 import LoadingSpinner from '@/components/Loading/LoadingSpinner';
@@ -15,9 +15,8 @@ const UpdateAllButton: React.FC<UpdateAllButtonProps> = ({ className }) => {
 
     const { selectedElement } = useSelectedElementStore();
 
-    const { decals: collectionDecals } = useCollection();
-    const { decals: explorerDecals } = useExplorerData();
-    const { downloadDecalVariant } = useExplorerActions();
+    const { decals: collectionDecals } = useCollectionActions();
+    const { decals: explorerDecals, downloadDecalVariant } = useExplorerActions();
 
     const [updatableDecals, setUpdatableDecals] = React.useState<{ name: string, variant_name: string }[]>([]);
 

@@ -5,9 +5,10 @@
 
 ## Important
 
-- [ ] TODO : continue to implement the update thing (just created the function in the file)
-
+- [ ] Fix  : Fix python and rust xxh3 not giving the same hash
+- [ ] Fix : loading the collection again (in the hook) on hovering something in the collection page... (should make sure the collection is not refetched for nothing) (cause now this causes a weird double loading thing). The goal would be to split the collection hook into 2 -> 1 for data and the other for actions, and every where we need data, we use the store (the collection is just loaded once on app startup, and we use the store for the rest)
 - [ ]  Maybe add a "Last update" field in the index.json. To do this, we may implement a hash function that takes all the file from a variant's folder and generates a hash based on their content. This would be a simple way to check if the version matches. So each time we update the index, we would also compute the hash of all the files in the variant and put it in the index. This way we can compute the hash locally and compare it with the hash online. -> Then on the app, we can display in another color (purple for example) with a "sync" icon to indicate that the variant is not up to date. 
+
 - [ ] Update docs
 - [ ] Add the secondary color.
 

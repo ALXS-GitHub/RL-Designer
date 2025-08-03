@@ -111,6 +111,18 @@
         }
 
       }
+
+      &.needs-update {
+        background-color: var(--purple-300);
+        border-color: var(--purple-400);
+        color: var(--purple-800);
+
+        &:hover {
+          background-color: var(--purple-400);
+          border-color: var(--purple-500);
+          color: var(--purple-900);
+        }
+      }
     }
   }
 }
