@@ -178,6 +178,24 @@
       ]
     },
     {
+      "name": "Rich Man",
+      "variants": [
+        {
+          "variant": "Fennec",
+          "files": [
+            "body_diffuse.png",
+            "body_skin.png",
+            "chassis_diffuse.png",
+            "Template.json"
+          ],
+          "signature": "34c05037b0d870d0",
+          "preview_path": "decals/Rich Man/Fennec/body_diffuse.png",
+          "skin_path": "decals/Rich Man/Fennec/body_skin.png",
+          "chassis_diffuse_path": "decals/Rich Man/Fennec/chassis_diffuse.png"
+        }
+      ]
+    },
+    {
       "name": "Staboz",
       "variants": [
         {

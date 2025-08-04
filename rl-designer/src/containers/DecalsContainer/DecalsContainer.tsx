@@ -20,7 +20,7 @@ export const DecalsContainer = ({children }: DecalsContainerProps) => {
             <div className="decals-container__settings">
                 <ElementTypeSelect
                 selectedElement={selectedElement}
-                onElementChange={setSelectedElement}
+                onElementChange={setSelectedElement} 
                 className="decals-container__element-select"
                 />
                 <UpdateAllButton className="decals-container__update-all-button" />

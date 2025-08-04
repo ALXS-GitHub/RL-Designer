@@ -5,7 +5,6 @@
 
 ## Important
 
-- [ ] I just set back the "source" prop in the useQuery and useExplorer hook, but it is not the best solution. We should find a better way to handle the source prop and the query key. --> I think creating a context should work (so it is a single instance of the hook and the query) so the loading state is shared between the two components. (We just need to make sure the Loading state is well managed to avoid infinite loading...)
 - [~]  Maybe add a "Last update" field in the index.json. To do this, we may implement a hash function that takes all the file from a variant's folder and generates a hash based on their content. This would be a simple way to check if the version matches. So each time we update the index, we would also compute the hash of all the files in the variant and put it in the index. This way we can compute the hash locally and compare it with the hash online. -> Then on the app, we can display in another color (purple for example) with a "sync" icon to indicate that the variant is not up to date. 
   - Still need to add some update logic in the collection page (for now it is only done on the explorer page). This should work the same as in the explorer page.
 
@@ -15,9 +14,11 @@
 ## Medium
 
 - [ ] Fix public files for production app (the model/obj is converted to text/html). For now the check is very specific. We should find a way to check if the file exists in the public folder more generally...
+- [ ] Try premium skin decals
 - [ ] Try universal decal support
 - [ ] Add wheel texture support
   - For both ball and wheel, we should make add those collections / explorer inside the already existing pages, just make a select to choose between the car, ball or wheel textures. We should also manage how they are stored locally and how they are stored in the public repo. + Do they need variants ? I suppose yes, a ball even if the same object can have different textures for a same logo.
+- [ ] I just set back the "source" prop in the useQuery and useExplorer hook, but it is not the best solution. We should find a better way to handle the source prop and the query key. --> I think creating a context should work (so it is a single instance of the hook and the query) so the loading state is shared between the two components. (We just need to make sure the Loading state is well managed to avoid infinite loading...)
 
 ## Low
 

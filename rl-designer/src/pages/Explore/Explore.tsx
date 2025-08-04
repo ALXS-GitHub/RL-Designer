@@ -12,7 +12,7 @@ import usePageStore from '@/stores/pageStore'
 const Explore = () => {
 
   const { setLastPage } = usePageStore();
-  const { decals, isLoading, isError } = useExplorerData({source: "explorer page"});
+  const { decals, isLoading, isError } = useExplorerData();
 
   useEffect(() => {
     setLastPage('explorer');

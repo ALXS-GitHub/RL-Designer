@@ -16,7 +16,7 @@ const UpdateAllButton: React.FC<UpdateAllButtonProps> = ({ className }) => {
     const { selectedElement } = useSelectedElementStore();
 
     const { decals: collectionDecals } = useCollectionActions();
-    const { decals: explorerDecals } = useExplorerData()
+    const { decals: explorerDecals } = useExplorerData();
     const { downloadDecalVariant } = useExplorerActions();
 
     const [updatableDecals, setUpdatableDecals] = React.useState<{ name: string, variant_name: string }[]>([]);

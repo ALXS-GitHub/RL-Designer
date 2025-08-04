@@ -18,13 +18,12 @@ export const useCollectionData = (): UseCollectionDataReturn => {
     const { selectedElement } = useSelectedElementStore();
     const { useStore } = ElementsMap[selectedElement];
     const { decals, setDecals } = useStore();
-    const { isLoading, isError, executeAsync } = useAsyncOperations();
+    const { executeAsync } = useAsyncOperations();
 
     const fetchData = async () => {
         return executeAsync({
         operation: async () => {
             const result = await getDecalFolders(selectedElement);
-            console.log("Fetching collection")
             if (!result.success) throw new Error(result.error || 'Failed to fetch decals');
             setDecals(result.decals);
             return result.decals;
@@ -33,14 +32,14 @@ export const useCollectionData = (): UseCollectionDataReturn => {
         });
     };
 
-    useQuery({
+    const { isLoading, error } = useQuery({
         queryKey: ['decalFolders', selectedElement],
         queryFn: fetchData,
         refetchOnWindowFocus: false,
         retry: false,
     });
 
-    return { decals, isLoading, isError };
+    return { decals, isLoading, isError: error };
 }
 
 export interface UseCollectionActionsReturn {

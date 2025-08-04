@@ -10,37 +10,33 @@ import { getDecalsFromGitHub } from '@/services/explorer';
 import { useEffect, useState } from 'react';
 import { useExplorerStore } from '@/stores/collectionStore';
 
-interface UseExplorerDataProps {
-    source?: string; // temporary - for now just to make sure we can refetch on hook call
-}
-
 export interface UseExplorerDataReturn {
     decals: DecalTextures[];
     isLoading: boolean;
     isError: Error | null;
 }
 
-export const useExplorerData = ({ source = ""} : UseExplorerDataProps = {}): UseExplorerDataReturn => {
+export const useExplorerData = (): UseExplorerDataReturn => {
     const { selectedElement } = useSelectedElementStore();
-    const { decals, setDecals } = useExplorerStore();
-    const { isLoading, isError, executeAsync } = useAsyncOperations({defaultLoadingState: false});
-
-
+    const { decals, setDecals } = useExplorerStore(); 
+    const { executeAsync } = useAsyncOperations();
+    
+    
     const fetchData = async () => {
-    return executeAsync({
+        return executeAsync({
         operation: async () => {
-        const result = await getDecalsFromGitHub(selectedElement);
-        if (!result.success) throw new Error(result.error || 'Failed to fetch decals');
-        console.log('Fetched decals:', result.decals);
-        setDecals(result.decals);
-        return result.decals;
+            const result = await getDecalsFromGitHub(selectedElement);
+            if (!result.success) throw new Error(result.error || 'Failed to fetch decals');
+            console.log('Fetched decals:', result.decals);
+            setDecals(result.decals);
+            return result.decals;
         }, 
         errorMessage: `Failed to fetch explorer decals for ${selectedElement}`,
     });
     };
 
-    useQuery({
-        queryKey: ['GitDecals', selectedElement, source],
+    const { isLoading, error } = useQuery({
+        queryKey: ['GitDecals', selectedElement],
         queryFn: fetchData,
         refetchOnWindowFocus: false,
         retry: false,
@@ -49,7 +45,7 @@ export const useExplorerData = ({ source = ""} : UseExplorerDataProps = {}): Use
     return {
         decals,
         isLoading,
-        isError,
+        isError: error,
     };
 };
 
