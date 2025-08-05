@@ -2,8 +2,6 @@ import React from 'react';
 import useSelectedElementStore from '@/stores/selectedElementStore';
 import ElementTypeSelect from '@/components/DropdownMenu/ElementTypeSelect/ElementTypeSelect';
 import UpdateAllButton from '@/components/UpdateAllButton/UpdateAllButton';
-import { useExplorerData } from '@/hooks/useExplorer';
-import { Loading } from '@/components';
 
 import './DecalsContainer.scss';
 

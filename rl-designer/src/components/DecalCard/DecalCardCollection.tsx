@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import Placeholder from '@/assets/placeholder.jpg';
 import { convertFileSrc } from '@tauri-apps/api/core';
 import { useCollectionActions } from '@/hooks/useCollection';
-
+import { useExplorerActions } from '@/hooks/useExplorer';
 import DecalCardDesign from "./DecalCardDesign"
-import { FaEye, FaTrash } from 'react-icons/fa';
+import { FaEye, FaTrash, FaSync } from 'react-icons/fa';
 import { useConfirmationDialogStore } from '@/stores/confirmationDialogStore';
 
 interface DecalCardCollectionProps {
@@ -16,9 +16,23 @@ interface DecalCardCollectionProps {
 const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
 
     const { removeDecalVariant } = useCollectionActions();
+    const { decals: explorerDecals, downloadDecalVariant } = useExplorerActions();
     const { openConfirmationDialog } = useConfirmationDialogStore();
 
     const navigate = useNavigate();
+
+    const isVariantInExplorer = (decalName: string, variant: string) => {
+        return explorerDecals.some(d => d.name === decalName && d.variants.some(v => v.variant_name === variant));
+    }
+
+    const doesVariantNeedUpdate = (decalName: string, variant: string) => {
+        const variant_infos = decal.variants.find(v => v.variant_name === variant);
+        if (!variant_infos) return false;
+        return explorerDecals.some(d => d.name === decalName && d.variants.some(
+            v => v.variant_name === variant
+            && v.signature !== variant_infos.signature
+        ));
+    }
 
     // TODO update this to change the image on hover variants
     const renderImage = (variant_name: string) => {
@@ -41,6 +55,19 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
                 ),
                 onClick: () => {
                     navigate(`/preview/${decal.name}/${lastHoveredVariant || decal.variants[0].variant_name}`);
+                },
+            },
+            {
+                children: (
+                    <div className="global-dropdown update-decal">
+                        <FaSync className="icon" />
+                        Update All
+                    </div>
+                ),
+                onClick: () => {
+                    for (const variant of decal.variants) {
+                        downloadDecalVariant(decal.name, variant.variant_name);
+                    }
                 },
             },
             {
@@ -100,8 +127,32 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
                 },
             }
         ];
+
+        if (isVariantInExplorer(decal.name, variant)) {
+            items.splice(1, 0, {
+                children: (
+                    <div className="variant-dropdown update-decal">
+                        <FaSync className="icon" />
+                        Update
+                    </div>
+                ),
+                onClick: () => {
+                    downloadDecalVariant(decal.name, variant);
+                },
+            });
+        }
+
         return items;
     }
+
+    const extraVariantClasses = (variant: string) => {
+        let classes = '';
+        if (doesVariantNeedUpdate(decal.name, variant)) {
+            classes += 'needs-update ';
+        }
+        return classes;
+    }
+
     return (
         <>
             <DecalCardDesign 
@@ -109,6 +160,7 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
                 generateGlobalDropdownItems={generateGlobalDropdownItems}
                 generateVariantDropdownItems={generateVariantItems} 
                 previewImage={renderImage} 
+                extraVariantClasses={extraVariantClasses}
             />
         </>
     );

@@ -9,6 +9,7 @@ import ElementTypeSelect from '@/components/DropdownMenu/ElementTypeSelect/Eleme
 import UpdateAllButton from '@/components/UpdateAllButton/UpdateAllButton';
 import DecalsContainer from '@/containers/DecalsContainer/DecalsContainer';
 import usePageStore from '@/stores/pageStore'
+import { useExplorerData } from '@/hooks/useExplorer';
 
 import './Collection.scss';
 
@@ -17,6 +18,7 @@ const Collection = () => {
   const { setLastPage } = usePageStore();
 
   const { decals } = useCollectionActions();
+  useExplorerData(); // load the decals from the explorer
 
     useEffect(() => {
       setLastPage('collection');

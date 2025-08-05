@@ -5,8 +5,15 @@
 
 ## Important
 
-- [~]  Maybe add a "Last update" field in the index.json. To do this, we may implement a hash function that takes all the file from a variant's folder and generates a hash based on their content. This would be a simple way to check if the version matches. So each time we update the index, we would also compute the hash of all the files in the variant and put it in the index. This way we can compute the hash locally and compare it with the hash online. -> Then on the app, we can display in another color (purple for example) with a "sync" icon to indicate that the variant is not up to date. 
-  - Still need to add some update logic in the collection page (for now it is only done on the explorer page). This should work the same as in the explorer page.
+- [ ] Now we should consider adding the "universal" decal support. (use case : new (incoming) version of "Rich Man" sticker).
+    - First thing to do should be to add a "metadata.yaml" file in each variant folder to specify the decal type ("default", "universal", "premium"), and other metadata if needed later. (We choose to have this as a yaml file because, first our current implementation is already searching for the first ".json" file it finds and consider it as the Template.json, so this is to avoid conflicts, and second, it is easier to read and write than a json file, especially for metadata). If this file is not present, we should consider everything as "default".
+    - ! I think this should always be named "metadata.yaml" and be placed at the root of the variant folder so the path is always known and we can easily fetch it (so no need to specify the path in the index.json file)
+    - then we should update the app to handle this metadata file.
+    - Then we should update the app to handle the "universal" decal type and more generally be able to use multiple UV maps when loading the model. (so we should use another format than .obj files, maybe .glb or .gltf ?)
+    - Then depending on the metadata, we should display the decal properly using the right UV map.
+    - Finally create the "universal" decal and check if it works properly. (hope so ^^)
+
+- [ ] Use tanstack devtools to debug the queries for the useExplorer. (because now there is no more loading screen when switching between "car decals" and "ball decals"...)
 
 - [ ] Update docs
 - [ ] Add the secondary color.
@@ -80,3 +87,5 @@
 - [X] Remove the Cancel and Ok buttons from the pickers. Should set the material on click and for the color should be set when going out of the input color picker.
 - [X] Make a check for images from the public folder (a function that checks if the image exists in the public folder, if not, it should return null or a default image)
 - [X] Fix  : Fix python and rust xxh3 not giving the same hash
+- [X]  Maybe add a "Last update" field in the index.json. To do this, we may implement a hash function that takes all the file from a variant's folder and generates a hash based on their content. This would be a simple way to check if the version matches. So each time we update the index, we would also compute the hash of all the files in the variant and put it in the index. This way we can compute the hash locally and compare it with the hash online. -> Then on the app, we can display in another color (purple for example) with a "sync" icon to indicate that the variant is not up to date. 
+  - Still need to add some update logic in the collection page (for now it is only done on the explorer page). This should work the same as in the explorer page.
