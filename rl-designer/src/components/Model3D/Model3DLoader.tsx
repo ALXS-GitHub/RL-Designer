@@ -39,9 +39,9 @@ const PreviewLoaderPublic = ({
 
     const getPublicFiles = async () => {
         // Define paths for the model and texture based on the decal and variant
-        let modelP = `/models/meshes/${variant_name}.obj`;
+        let modelP = `/models/meshes/${variant_name}.glb`;
         if (selectedElement === "ball") {
-            modelP = `/models/meshes/Ball.obj`;
+            modelP = `/models/meshes/Ball.glb`;
         }
         const modelExists = await existsInPublic(modelP);
         setModelPath(modelExists ? modelP : null);

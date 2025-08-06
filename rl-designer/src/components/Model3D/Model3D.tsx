@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useFrame, useLoader } from '@react-three/fiber';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+// import the glb loader if needed
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { TextureLoader, Mesh, Group, Box3, Vector3, DoubleSide, MeshPhongMaterial, ShaderMaterial, Color, Texture, Material, ShaderLib, UniformsUtils, UniformsLib, Vector2, MeshPhysicalMaterial } from 'three';
 import useModelSettingsStore from '@/stores/modelSettingsStore';
 import { resolveImagePath } from '@/utils/images';
@@ -65,21 +67,28 @@ const createMaterial = (
   materialType: ModelPartType,
   modelData: ModelData
 ): Material => {
+  let material: Material;
   if (materialType === 'body' && modelData.skinTexture) {
-    return createColorReplacementShader(materialName, modelData);
+    material = createColorReplacementShader(materialName, modelData);
   } else if (materialType === 'body') {
-      return DefaultMaterialMap[modelData.material].createMaterial({
+      material = DefaultMaterialMap[modelData.material].createMaterial({
       materialName: materialName,
       textureMap: modelData.decalTexture,
       color: modelData.colors.mainTeamColor,
     });
   } else {
-    return DefaultMaterialMap['default'].createMaterial({
+    material = DefaultMaterialMap['default'].createMaterial({
       materialName: materialName,
       textureMap: modelData[MODEL_PART_TEXTURE_MAP[materialType]],
       color: null,
     });
   }
+
+  // TODO : check the metadata.yaml to get the uv map to use
+  // For now we force to either 0 or 1 depending on what we are testing
+  modelData.decalTexture.channel = 1;
+
+  return material;
 };
 
 // Helper function to safely dispose material
@@ -175,12 +184,12 @@ const Model3D: React.FC<Model3DProps> = ({
   const { colors, isRotating, material } = useModelSettingsStore();
 
   // Always call hooks unconditionally
-  const obj = useLoader(OBJLoader, modelPath, (loader) => {    
+  const obj = useLoader(GLTFLoader, modelPath, (loader) => {    
     loader.manager.onError = (url) => {
       console.error('OBJ loader error:', url);
       onError(`Failed to load model from path: ${modelPath}`);
     };
-  });
+  }).scene;
   const default_obj = obj.clone();
 
   // Always call useLoader for texture, but handle null texturePath

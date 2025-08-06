@@ -1,8 +1,8 @@
 {
     "(Fennec)": {
 		"Group": "",
-		"BodyID": 4284,
-		"SkinID": 0,
+		"BodyID": 23,
+		"SkinID": 11609,
 		"Chassis": {
 			"Diffuse": "chassis_diffuse.png"
 		},
