@@ -231,7 +231,7 @@ def get_preview_path(texture_name, variant_name, files, base_dir):
             json_data = json.load(f)
         
         # Look for different diffuse and skin patterns based on texture type
-        diffuse_patterns = ["Body.Diffuse", "Params.Diffuse", "Wheel.Diffuse"]
+        diffuse_patterns = ["Body.Diffuse", "Body.1_Diffuse_Skin", "Params.Diffuse", "Wheel.Diffuse"]
         skin_patterns = ["Body.Skin", "Params.Skin", "Wheel.Skin"]
         chassis_diffuse_patterns = ["Chassis.Diffuse"]
         

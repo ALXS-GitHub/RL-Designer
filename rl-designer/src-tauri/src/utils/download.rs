@@ -125,6 +125,9 @@ pub async fn download_decal_variant_logic(
         chassis_diffuse_path: preview_files
             .as_ref()
             .and_then(|pf| pf.chassis_diffuse_path.clone()),
+        one_diffuse_skin_path: preview_files
+            .as_ref()
+            .and_then(|pf| pf.one_diffuse_skin_path.clone()),
     })
 }
 

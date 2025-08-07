@@ -84,10 +84,6 @@ const createMaterial = (
     });
   }
 
-  // TODO : check the metadata.yaml to get the uv map to use
-  // For now we force to either 0 or 1 depending on what we are testing
-  modelData.decalTexture.channel = 1;
-
   return material;
 };
 
@@ -174,7 +170,8 @@ const Model3D: React.FC<Model3DProps> = ({
       chassisTexturePath,
       wheelTexturePath,
       tireTexturePath,
-      curvatureTexturePath
+      curvatureTexturePath,
+      oneDiffuseSkinPath
   } = modelDataPaths;
   const { forceRotation = false } = modelDataConfig;
   const meshRef = useRef<Group>(null);
@@ -191,37 +188,61 @@ const Model3D: React.FC<Model3DProps> = ({
     };
   }).scene;
   const default_obj = obj.clone();
-
+  
   // Always call useLoader for texture, but handle null texturePath
   const decalTexture = useLoader(
     TextureLoader, 
     resolveImagePath(decalTexturePath)
   );
+  decalTexture.channel = 2
 
   const skinTexture = useLoader(
     TextureLoader,
     skinTexturePath ? resolveImagePath(skinTexturePath) : '/models/skins/default_body_skin.png'
   );
+  skinTexture.channel = 2
 
   const chassisTexture = useLoader(
     TextureLoader,
     // ! as for now the chassis is in the the public we don't use resolveImagePath
     chassisTexturePath ? resolveImagePath(chassisTexturePath) : '/models/placeholder.png'
   );
-
+  chassisTexture.channel = 0
+  
   const wheelTexture = useLoader(
     TextureLoader,
     wheelTexturePath ? wheelTexturePath : '/models/placeholder.png'
   );
+  wheelTexture.channel = 0;
+  
   const tireTexture = useLoader(
     TextureLoader,
     tireTexturePath ? tireTexturePath : '/models/placeholder.png'
   );
-
+  tireTexture.channel = 0;
+  
   const curvatureTexture = useLoader(
     TextureLoader,
-    modelDataPaths.curvatureTexturePath ? resolveImagePath(modelDataPaths.curvatureTexturePath) : '/models/placeholder.png'
+    curvatureTexturePath ? resolveImagePath(curvatureTexturePath) : '/models/placeholder.png'
   );
+  curvatureTexture.channel = 0;
+  
+  const oneDiffuseSkinTexture = useLoader(
+    TextureLoader,
+    oneDiffuseSkinPath ? resolveImagePath(oneDiffuseSkinPath) : '/models/placeholder.png'
+  );
+  oneDiffuseSkinTexture.channel = 1;
+  
+  console.log("Object : ", obj);
+  console.log("Textures : ", {
+    decalTexture,
+    skinTexture,
+    chassisTexture,
+    wheelTexture,
+    tireTexture,
+    curvatureTexture,
+    oneDiffuseSkinTexture
+  });
 
   // Auto-rotate the model
   useFrame((state, delta) => {
@@ -247,6 +268,7 @@ const Model3D: React.FC<Model3DProps> = ({
       wheelTexture: wheelTexturePath ? wheelTexture : null,
       tireTexture: tireTexturePath ? tireTexture : null,
       curvatureTexture: curvatureTexturePath ? curvatureTexture : null,
+      oneDiffuseSkinTexture: oneDiffuseSkinPath ? oneDiffuseSkinTexture : null,
       colors: colors,
       material: material,
     }
@@ -258,7 +280,7 @@ const Model3D: React.FC<Model3DProps> = ({
     return () => {
       disposeObjectMaterials(obj);
     };
-  }, [obj, decalTexture, skinTexture, decalTexturePath, skinTexturePath, colors, chassisTexturePath, chassisTexture, wheelTexturePath, wheelTexture, tireTexturePath, tireTexture, curvatureTexturePath, curvatureTexture, material]);
+  }, [obj, decalTexture, skinTexture, decalTexturePath, skinTexturePath, colors, chassisTexturePath, chassisTexture, wheelTexturePath, wheelTexture, tireTexturePath, tireTexture, curvatureTexturePath, curvatureTexture, oneDiffuseSkinPath, oneDiffuseSkinTexture, material]);
 
   // Check if model loaded successfully
   if (!obj || obj.children.length === 0) {

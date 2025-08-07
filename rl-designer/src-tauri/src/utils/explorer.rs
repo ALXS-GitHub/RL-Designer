@@ -24,6 +24,7 @@ pub struct VariantInfo {
     pub preview_path: Option<String>,
     pub skin_path: Option<String>,
     pub chassis_diffuse_path: Option<String>,
+    pub one_diffuse_skin_path: Option<String>,
 }
 
 pub async fn fetch_decal_index(element_type: ElementType) -> Result<DecalsIndex, String> {
@@ -86,6 +87,9 @@ pub async fn fetch_decals_from_github_raw(
                     .map(|p| format!("{}/{}", GITHUB_DECALS_RAW_URL, p)),
                 chassis_diffuse_path: v
                     .chassis_diffuse_path
+                    .map(|p| format!("{}/{}", GITHUB_DECALS_RAW_URL, p)),
+                one_diffuse_skin_path: v
+                    .one_diffuse_skin_path
                     .map(|p| format!("{}/{}", GITHUB_DECALS_RAW_URL, p)),
             })
             .collect();

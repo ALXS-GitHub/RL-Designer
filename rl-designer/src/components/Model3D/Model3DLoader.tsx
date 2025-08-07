@@ -176,6 +176,8 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
     const texturePath = variantData.preview_path;
     const skinPath = variantData.skin_path || null; // skin is not required
     const chassisDiffusePath = variantData.chassis_diffuse_path || null;
+    const oneDiffuseSkinPath = variantData.one_diffuse_skin_path || null;
+
     if (!texturePath)
         return (
             <Error
@@ -188,6 +190,7 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
         decalTexturePath: texturePath,
         skinTexturePath: skinPath,
         chassisTexturePath: chassisDiffusePath,
+        oneDiffuseSkinPath: oneDiffuseSkinPath,
     }
 
     return (

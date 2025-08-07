@@ -2,7 +2,8 @@
 pub struct VariantFrontInfo {
     pub variant_name: String,
     pub signature: String,
-    pub preview_path: Option<String>,
+    pub preview_path: Option<String>, // diffuse
+    pub one_diffuse_skin_path: Option<String>, // 1_Diffuse_Skin
     pub skin_path: Option<String>,
     pub chassis_diffuse_path: Option<String>,
 }

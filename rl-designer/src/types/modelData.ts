@@ -12,6 +12,7 @@ export interface ModelData {
     wheelTexture?: Texture,
     tireTexture?: Texture,
     curvatureTexture?: Texture,
+    oneDiffuseSkinTexture?: Texture,
     colors: Record<ColorType, string>,
     material: DefaultMaterialType,
 }
@@ -24,6 +25,7 @@ export interface ModelDataPaths {
     wheelTexturePath?: string;
     tireTexturePath?: string;
     curvatureTexturePath?: string;
+    oneDiffuseSkinPath?: string;
 }
 
 export interface ModelDataConfig {

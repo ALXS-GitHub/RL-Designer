@@ -5,13 +5,20 @@
 
 ## Important
 
+- [ ] TODO find a fix for the mapping of textures on uv map
+
 - [ ] Now we should consider adding the "universal" decal support. (use case : new (incoming) version of "Rich Man" sticker).
     - First thing to do should be to add a "metadata.yaml" file in each variant folder to specify the decal type ("default", "universal", "premium"), and other metadata if needed later. (We choose to have this as a yaml file because, first our current implementation is already searching for the first ".json" file it finds and consider it as the Template.json, so this is to avoid conflicts, and second, it is easier to read and write than a json file, especially for metadata). If this file is not present, we should consider everything as "default".
     - ! I think this should always be named "metadata.yaml" and be placed at the root of the variant folder so the path is always known and we can easily fetch it (so no need to specify the path in the index.json file)
     - then we should update the app to handle this metadata file.
+    - The 1_Diffuse_Skin should be considered a different field that "Diffuse" that is used in default decals. (Even if we don't need the metadata.yaml because we can just check if the 1_Diffuse_Skin exists, it is better to have a metadata file that can be used later for other purposes). --> Warning we should handle case where "Diffuse" now becomes an optional field... (as we can either have a "Diffuse" or a "1_Diffuse_Skin" field, but not both at the same time)
+    - <!-- ? --> Or maybe just consider the 1_Diffuse_Skin as a Diffuse and use it inside the diffuse field ? (in this case we need the metadata file). I think this is the best solution since we should not have both fields at the same time, so we can just use the 1_Diffuse_Skin as the Diffuse field.
     - Then we should update the app to handle the "universal" decal type and more generally be able to use multiple UV maps when loading the model. (so we should use another format than .obj files, maybe .glb or .gltf ?)
     - Then depending on the metadata, we should display the decal properly using the right UV map.
     - Finally create the "universal" decal and check if it works properly. (hope so ^^)
+    - <!-- ! --> the type of uv map to use should be still specified in the index.json (to avoid having to read for the explorer (to many fetches)). And at this moment the uv_map is not even necessary, we just need to check if this is "Diffuse" of "1_Diffuse_Skin" to determine the skin
+    - <!-- ! --> Not even needed to have the type in the index.json, just we can have the preview_path (default diffuse) or one_diffuse_skin_path field. This determines the UV map to use.
+    --> So for now the metadata.yaml is not used (^^) 
 
 - [ ] Use tanstack devtools to debug the queries for the useExplorer. (because now there is no more loading screen when switching between "car decals" and "ball decals"...)
 

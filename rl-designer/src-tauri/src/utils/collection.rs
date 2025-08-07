@@ -69,6 +69,7 @@ pub fn fetch_decal_folders(element: ElementType) -> Result<Vec<DecalTextures>, S
                     chassis_diffuse_path: preview_files
                         .as_ref()
                         .and_then(|pf| pf.chassis_diffuse_path.clone()),
+                    one_diffuse_skin_path: preview_files.as_ref().and_then(|pf| pf.one_diffuse_skin_path.clone()),
                 });
             }
 
@@ -92,6 +93,7 @@ pub struct PreviewFiles {
     pub preview_path: Option<String>,
     pub skin_path: Option<String>,
     pub chassis_diffuse_path: Option<String>,
+    pub one_diffuse_skin_path: Option<String>,
 }
 
 pub fn read_preview_files_from_variant(
@@ -104,6 +106,7 @@ pub fn read_preview_files_from_variant(
         preview_path: None,
         skin_path: None,
         chassis_diffuse_path: None,
+        one_diffuse_skin_path: None,
     };
 
     // Look for JSON files in the variant directory
