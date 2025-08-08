@@ -3,6 +3,8 @@ import { useFrame, useLoader } from '@react-three/fiber';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 // import the glb loader if needed
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+// import fbx loader
+import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
 import { TextureLoader, Mesh, Group, Box3, Vector3, DoubleSide, MeshPhongMaterial, ShaderMaterial, Color, Texture, Material, ShaderLib, UniformsUtils, UniformsLib, Vector2, MeshPhysicalMaterial } from 'three';
 import useModelSettingsStore from '@/stores/modelSettingsStore';
 import { resolveImagePath } from '@/utils/images';
@@ -181,12 +183,12 @@ const Model3D: React.FC<Model3DProps> = ({
   const { colors, isRotating, material } = useModelSettingsStore();
 
   // Always call hooks unconditionally
-  const obj = useLoader(GLTFLoader, modelPath, (loader) => {    
+  const obj = useLoader(FBXLoader, modelPath, (loader) => {    
     loader.manager.onError = (url) => {
       console.error('OBJ loader error:', url);
       onError(`Failed to load model from path: ${modelPath}`);
     };
-  }).scene;
+  });
   const default_obj = obj.clone();
   
   // Always call useLoader for texture, but handle null texturePath

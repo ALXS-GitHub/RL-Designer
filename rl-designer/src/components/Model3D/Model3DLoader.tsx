@@ -39,7 +39,7 @@ const PreviewLoaderPublic = ({
 
     const getPublicFiles = async () => {
         // Define paths for the model and texture based on the decal and variant
-        let modelP = `/models/meshes/${variant_name}.glb`;
+        let modelP = `/models/meshes/${variant_name}.fbx`;
         if (selectedElement === "ball") {
             modelP = `/models/meshes/Ball.glb`;
         }
