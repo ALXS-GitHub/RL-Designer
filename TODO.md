@@ -29,14 +29,9 @@
 
 - [?] Integrate the profile picture plugin into the app ~ going to be harder that just putting a file in the folders, as the plugin apparently sends the file to CDN, so the in game use is preferred.
 - [?] Now we should consider adding the "universal" decal support. (use case : new (incoming) version of "Rich Man" sticker).
-    - First thing to do should be to add a "metadata.yaml" file in each variant folder to specify the decal type ("default", "universal", "premium"), and other metadata if needed later. (We choose to have this as a yaml file because, first our current implementation is already searching for the first ".json" file it finds and consider it as the Template.json, so this is to avoid conflicts, and second, it is easier to read and write than a json file, especially for metadata). If this file is not present, we should consider everything as "default".
-    - ! I think this should always be named "metadata.yaml" and be placed at the root of the variant folder so the path is always known and we can easily fetch it (so no need to specify the path in the index.json file)
-    - then we should update the app to handle this metadata file.
-    - Then we should update the app to handle the "universal" decal type and more generally be able to use multiple UV maps when loading the model. (so we should use another format than .obj files, maybe .glb or .gltf ?)
-    - Then depending on the metadata, we should display the decal properly using the right UV map.
-    - Finally create the "universal" decal and check if it works properly. (hope so ^^)
-  --> Note : In fact I don't know if this is really needed, as we can do the decals in the "regular" way and it works fine... (as for now I don't need "real universal" decals...)
-  --> Still there is the branch `glb-model` that is currently used with some work in progress to include glb models that handle multiple uv maps and are thus compatible for "universal" 
+    - We should just consider getting either the "1_diffuse_skin" or "diffuse" (for this merge the proper part of the glb-model where some work is already done). 1 Diffuse or regular diffuse will determine which decal type it is.
+    - Then we should create a premium_Octane.obj file. For this file, the decal part should use the universal uv map.
+    - However to have the proper curvature and skin (at least only windows). We should make some default files to use to display properly. (only in the public, not in the decal folder as they will not be used in game, but this is just for our app to render this different model properly.) So we should bake some curvature and skin especially for this uv map (even if the game handles this differently)
 
   
 ## Done
