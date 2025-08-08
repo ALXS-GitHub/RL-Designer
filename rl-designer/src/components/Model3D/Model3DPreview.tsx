@@ -7,12 +7,13 @@ import Model3D from './Model3D';
 import type { Model3DProps } from './Model3D';
 
 import './Model3DPreview.scss'
-import type { ModelDataConfig, ModelDataPaths } from '@/types/modelData';
+import type { ModelDataConfig, ModelDataPaths, ModelDataSetup } from '@/types/modelData';
 import useModelSettingsStore from '@/stores/modelSettingsStore';
 
 interface Model3DPreviewProps {
     modelDataPaths: ModelDataPaths;
     modelDataConfig?: ModelDataConfig;
+    modelDataSetup: ModelDataSetup;
     className?: string;
 }
 
@@ -28,6 +29,7 @@ const Model3DWithErrorBoundary: React.FC<Model3DProps> = (props) => {
 const Model3DPreview: React.FC<Model3DPreviewProps> = ({
   modelDataPaths,
   modelDataConfig,
+  modelDataSetup,
   className = '',
 }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -45,7 +47,9 @@ const Model3DPreview: React.FC<Model3DPreviewProps> = ({
   };
 
   // Create a unique key based on the texture and skin paths to force re-render
-  const componentKey = `${modelDataPaths.decalTexturePath}-${modelDataPaths.skinTexturePath}`;
+  const componentKey = Object.entries(modelDataPaths)
+    .map(([key, value]) => `${key}:${value}`)
+    .join('-');
 
   // Show error outside of Canvas
   if (error) {
@@ -106,6 +110,7 @@ const Model3DPreview: React.FC<Model3DPreviewProps> = ({
           <Model3DWithErrorBoundary
             modelDataPaths={modelDataPaths}
             modelDataConfig={modelDataConfig}
+            modelDataSetup={modelDataSetup}
             onError={handleModelError}
           />
         </Canvas>

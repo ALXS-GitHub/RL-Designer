@@ -6,6 +6,11 @@
 ## Important
 
 
+- [X] TODO find a fix for the mapping of textures on uv map
+- [ ] Using the fbx models I achieved to use multiple uv maps. The shader is working, we just need to make the rest of the app's logic to handle either the "1_Diffuse_Skin" or the "Diffuse". Yahoo !
+
+- [ ] Now we should consider adding the "universal" decal support. (use case : new (incoming) version of "Rich Man" sticker).
+
 - [ ] Use tanstack devtools to debug the queries for the useExplorer. (because now there is no more loading screen when switching between "car decals" and "ball decals"...)
 
 - [ ] Update docs

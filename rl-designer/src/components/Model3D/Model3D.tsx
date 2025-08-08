@@ -1,18 +1,23 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useFrame, useLoader } from '@react-three/fiber';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+// import the glb loader if needed
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+// import fbx loader
+import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
 import { TextureLoader, Mesh, Group, Box3, Vector3, DoubleSide, MeshPhongMaterial, ShaderMaterial, Color, Texture, Material, ShaderLib, UniformsUtils, UniformsLib, Vector2, MeshPhysicalMaterial } from 'three';
 import useModelSettingsStore from '@/stores/modelSettingsStore';
 import { resolveImagePath } from '@/utils/images';
 import { shaderSkinPatch } from './patches/shaderSkinPatch';
 import type { ModelPartType } from '@/types/modelParts';
 import { MODEL_PART_TEXTURE_MAP } from '@/types/modelParts';
-import type { ModelData, ModelDataPaths, ModelDataConfig } from '@/types/modelData';
+import type { ModelData, ModelDataPaths, ModelDataConfig, ModelDataSetup } from '@/types/modelData';
 import { DefaultMaterialMap } from '@/constants/materials';
 
 export interface Model3DProps {
     modelDataPaths: ModelDataPaths;
     modelDataConfig?: ModelDataConfig;
+    modelDataSetup: ModelDataSetup;
     onError: (error: string) => void;
 }
 
@@ -65,21 +70,24 @@ const createMaterial = (
   materialType: ModelPartType,
   modelData: ModelData
 ): Material => {
+  let material: Material;
   if (materialType === 'body' && modelData.skinTexture) {
-    return createColorReplacementShader(materialName, modelData);
+    material = createColorReplacementShader(materialName, modelData);
   } else if (materialType === 'body') {
-      return DefaultMaterialMap[modelData.material].createMaterial({
+    material = DefaultMaterialMap[modelData.material].createMaterial({
       materialName: materialName,
       textureMap: modelData.decalTexture,
       color: modelData.colors.mainTeamColor,
     });
   } else {
-    return DefaultMaterialMap['default'].createMaterial({
+    material = DefaultMaterialMap['default'].createMaterial({
       materialName: materialName,
       textureMap: modelData[MODEL_PART_TEXTURE_MAP[materialType]],
       color: null,
     });
   }
+
+  return material;
 };
 
 // Helper function to safely dispose material
@@ -156,6 +164,7 @@ const disposeObjectMaterials = (obj: Group): void => {
 const Model3D: React.FC<Model3DProps> = ({ 
   modelDataPaths,
   modelDataConfig = {},
+  modelDataSetup,
   onError
 }) => {
   const {
@@ -165,7 +174,7 @@ const Model3D: React.FC<Model3DProps> = ({
       chassisTexturePath,
       wheelTexturePath,
       tireTexturePath,
-      curvatureTexturePath
+      curvatureTexturePath,
   } = modelDataPaths;
   const { forceRotation = false } = modelDataConfig;
   const meshRef = useRef<Group>(null);
@@ -175,23 +184,24 @@ const Model3D: React.FC<Model3DProps> = ({
   const { colors, isRotating, material } = useModelSettingsStore();
 
   // Always call hooks unconditionally
-  const obj = useLoader(OBJLoader, modelPath, (loader) => {    
+  const obj = useLoader(FBXLoader, modelPath, (loader) => {    
     loader.manager.onError = (url) => {
       console.error('OBJ loader error:', url);
       onError(`Failed to load model from path: ${modelPath}`);
     };
   });
   const default_obj = obj.clone();
-
+  
   // Always call useLoader for texture, but handle null texturePath
   const decalTexture = useLoader(
     TextureLoader, 
-    resolveImagePath(decalTexturePath)
+    decalTexturePath ? resolveImagePath(decalTexturePath) : '/models/placeholder.png'
   );
+  decalTexture.channel = modelDataSetup.decalTextureUV || 0; // Set UV channel for decal texture
 
   const skinTexture = useLoader(
     TextureLoader,
-    skinTexturePath ? resolveImagePath(skinTexturePath) : '/models/skins/default_body_skin.png'
+    skinTexturePath ? resolveImagePath(skinTexturePath) : '/models/textures/skins/default_body_skin.png'
   );
 
   const chassisTexture = useLoader(
@@ -199,19 +209,20 @@ const Model3D: React.FC<Model3DProps> = ({
     // ! as for now the chassis is in the the public we don't use resolveImagePath
     chassisTexturePath ? resolveImagePath(chassisTexturePath) : '/models/placeholder.png'
   );
-
+  
   const wheelTexture = useLoader(
     TextureLoader,
     wheelTexturePath ? wheelTexturePath : '/models/placeholder.png'
   );
+  
   const tireTexture = useLoader(
     TextureLoader,
     tireTexturePath ? tireTexturePath : '/models/placeholder.png'
   );
-
+  
   const curvatureTexture = useLoader(
     TextureLoader,
-    modelDataPaths.curvatureTexturePath ? resolveImagePath(modelDataPaths.curvatureTexturePath) : '/models/placeholder.png'
+    curvatureTexturePath ? resolveImagePath(curvatureTexturePath) : '/models/placeholder.png'
   );
 
   // Auto-rotate the model
@@ -220,6 +231,7 @@ const Model3D: React.FC<Model3DProps> = ({
       meshRef.current.rotation.y += delta * 0.3;
     }
   });
+
 
   // Normalize the model and apply texture
   useEffect(() => {
@@ -232,7 +244,7 @@ const Model3D: React.FC<Model3DProps> = ({
 
     const modelData: ModelData = {
       obj: obj,
-      decalTexture: decalTexture,
+      decalTexture: decalTexture ? decalTexture : null,
       skinTexture: skinTexturePath ? skinTexture : null,
       chassisTexture: chassisTexturePath ? chassisTexture : null,
       wheelTexture: wheelTexturePath ? wheelTexture : null,

@@ -8,6 +8,7 @@ pub enum ElementType {
 pub struct BodyJSONType {
     pub body: String,
     pub diffuse: String,
+    pub one_diffuse_skin: String,
     pub skin: String,
 }
 
@@ -47,11 +48,13 @@ impl ElementType {
                 body: "Body".to_string(),
                 diffuse: "Diffuse".to_string(),
                 skin: "Skin".to_string(),
+                one_diffuse_skin: "1_Diffuse_Skin".to_string(),
             },
             ElementType::Ball => BodyJSONType {
                 body: "Params".to_string(),
                 diffuse: "Diffuse".to_string(),
                 skin: "Skin".to_string(),
+                one_diffuse_skin: "".to_string(), 
             },
             // ElementType::Wheel => BodyDiffuseType { body: "Wheel".to_string(), diffuse: "Diffuse".to_string() }, // not supported yet
         }
