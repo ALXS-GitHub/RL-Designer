@@ -6,8 +6,14 @@ export const shaderSkinPatch = (shader: WebGLProgramParametersWithUniforms) => {
     'void main() {',
     `
       varying vec2 vUv;
+      #ifdef USE_UV1
+        varying vec2 vUv1;
+      #endif
       void main() {
         vUv = uv;
+        #ifdef USE_UV1
+          vUv1 = uv1;
+        #endif
     `
   );
 
@@ -15,6 +21,9 @@ export const shaderSkinPatch = (shader: WebGLProgramParametersWithUniforms) => {
     'void main() {',
     `
       varying vec2 vUv;
+      #ifdef USE_UV1
+        varying vec2 vUv1;
+      #endif
       uniform sampler2D skinTexture;
       uniform sampler2D curvatureTexture;
       uniform vec3 mainTeamColor;
@@ -28,7 +37,11 @@ export const shaderSkinPatch = (shader: WebGLProgramParametersWithUniforms) => {
       '#include <map_fragment>',
       `
         #include <map_fragment>
-        vec4 decalColor = texture2D(map, vUv);
+        #ifdef USE_UV1
+          vec4 decalColor = texture2D(map, vUv1);
+        #else
+          vec4 decalColor = texture2D(map, vUv);
+        #endif
         vec4 skinColor = texture2D(skinTexture, vUv);
         vec4 curvatureColor = texture2D(curvatureTexture, vUv);
         

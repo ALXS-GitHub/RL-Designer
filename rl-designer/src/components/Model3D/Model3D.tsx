@@ -196,38 +196,33 @@ const Model3D: React.FC<Model3DProps> = ({
     TextureLoader, 
     resolveImagePath(decalTexturePath)
   );
-  decalTexture.channel = 2
+  decalTexture.channel = 0;
 
   const skinTexture = useLoader(
     TextureLoader,
     skinTexturePath ? resolveImagePath(skinTexturePath) : '/models/skins/default_body_skin.png'
   );
-  skinTexture.channel = 2
 
   const chassisTexture = useLoader(
     TextureLoader,
     // ! as for now the chassis is in the the public we don't use resolveImagePath
     chassisTexturePath ? resolveImagePath(chassisTexturePath) : '/models/placeholder.png'
   );
-  chassisTexture.channel = 0
   
   const wheelTexture = useLoader(
     TextureLoader,
     wheelTexturePath ? wheelTexturePath : '/models/placeholder.png'
   );
-  wheelTexture.channel = 0;
   
   const tireTexture = useLoader(
     TextureLoader,
     tireTexturePath ? tireTexturePath : '/models/placeholder.png'
   );
-  tireTexture.channel = 0;
   
   const curvatureTexture = useLoader(
     TextureLoader,
     curvatureTexturePath ? resolveImagePath(curvatureTexturePath) : '/models/placeholder.png'
   );
-  curvatureTexture.channel = 0;
   
   const oneDiffuseSkinTexture = useLoader(
     TextureLoader,
