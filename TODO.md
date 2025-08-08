@@ -5,7 +5,8 @@
 
 ## Important
 
-- [ ] TODO find a fix for the mapping of textures on uv map
+- [X] TODO find a fix for the mapping of textures on uv map
+- [ ] Using the fbx models I achieved to use multiple uv maps. The shader is working, we just need to make the rest of the app's logic to handle either the "1_Diffuse_Skin" or the "Diffuse". Yahoo !
 
 - [ ] Now we should consider adding the "universal" decal support. (use case : new (incoming) version of "Rich Man" sticker).
     - First thing to do should be to add a "metadata.yaml" file in each variant folder to specify the decal type ("default", "universal", "premium"), and other metadata if needed later. (We choose to have this as a yaml file because, first our current implementation is already searching for the first ".json" file it finds and consider it as the Template.json, so this is to avoid conflicts, and second, it is easier to read and write than a json file, especially for metadata). If this file is not present, we should consider everything as "default".

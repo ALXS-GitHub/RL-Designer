@@ -137,6 +137,10 @@ pub fn read_preview_files_from_variant(
                             .get(element.get_body_diffuse().skin.as_str())
                             .and_then(|s| s.as_str())
                             .map(|s| variant_path.join(s).to_string_lossy().to_string());
+                        let one_diffuse_skin_path = body
+                            .get(element.get_body_diffuse().one_diffuse_skin.as_str())
+                            .and_then(|s| s.as_str())
+                            .map(|s| variant_path.join(s).to_string_lossy().to_string());
 
                         // Check if diffuse_path exists, if not set to None
                         let diffuse_path = diffuse_path.and_then(|path| {
@@ -159,6 +163,18 @@ pub fn read_preview_files_from_variant(
                             }
                         });
                         preview_files.skin_path = skin_path;
+
+                        // Check if one_diffuse_skin_path exists, if not set to None
+                        let one_diffuse_skin_path = one_diffuse_skin_path.and_then(|path| {
+                            let path_obj = std::path::Path::new(&path);
+                            if path_obj.exists() {
+                                Some(path)
+                            } else {
+                                None
+                            }
+                        });
+                        preview_files.one_diffuse_skin_path = one_diffuse_skin_path;
+
                     }
                     if let Some(chassis) = value.get(element.get_chassis_diffuse().chassis.as_str())
                     {
@@ -179,10 +195,7 @@ pub fn read_preview_files_from_variant(
                         preview_files.chassis_diffuse_path = chassis_diffuse_path;
                     }
                 }
-                // If we found a body diffuse file, return the paths
-                if preview_files.preview_path.is_some() {
-                    return Ok(preview_files);
-                }
+                return Ok(preview_files);
             }
         }
     }

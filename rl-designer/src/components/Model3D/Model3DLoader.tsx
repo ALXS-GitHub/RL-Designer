@@ -8,7 +8,7 @@ import usePageStore from "@/stores/pageStore";
 import { forwardRef, useImperativeHandle } from "react";
 import type { ElementType } from "@/constants/elements";
 import useSelectedElementStore from "@/stores/selectedElementStore";
-import type { ModelDataConfig, ModelDataPaths } from "@/types/modelData";
+import type { ModelDataConfig, ModelDataPaths, ModelDataSetup } from "@/types/modelData";
 import { existsInPublic } from "@/utils/files";
 
 import "./Model3DLoader.scss";
@@ -18,7 +18,8 @@ interface PreviewLoaderPublicProps {
     variant_name: string;
     modelDataConfig?: ModelDataConfig;
     selectedElement: ElementType;
-    modelDataPaths: ModelDataPaths
+    modelDataPaths: ModelDataPaths;
+    modelDataSetup: ModelDataSetup;
 }
 
 const PreviewLoaderPublic = ({
@@ -27,11 +28,13 @@ const PreviewLoaderPublic = ({
     modelDataConfig,
     selectedElement,
     modelDataPaths,
+    modelDataSetup,
 }: PreviewLoaderPublicProps) => {
 
     const [isLoadingPublic, setIsLoadingPublic] = useState(true);
 
     const [modelPath, setModelPath] = useState<string | null>(null);
+    const [defaultSkinTexturePath, setDefaultSkinTexturePath] = useState<string | null>(null);
     const [chassisTexturePath, setChassisTexturePath] = useState<string | null>(null);
     const [wheelTexturePath, setWheelTexturePath] = useState<string | null>(null);
     const [tireTexturePath, setTireTexturePath] = useState<string | null>(null);
@@ -41,7 +44,7 @@ const PreviewLoaderPublic = ({
         // Define paths for the model and texture based on the decal and variant
         let modelP = `/models/meshes/${variant_name}.fbx`;
         if (selectedElement === "ball") {
-            modelP = `/models/meshes/Ball.glb`;
+            modelP = `/models/meshes/Ball.fbx`;
         }
         const modelExists = await existsInPublic(modelP);
         setModelPath(modelExists ? modelP : null);
@@ -53,6 +56,9 @@ const PreviewLoaderPublic = ({
                 const chassisExists = await existsInPublic(`/models/textures/chassis/${variant_name}_chassis.png`);
                 setChassisTexturePath(chassisExists ? `/models/textures/chassis/${variant_name}_chassis.png` : null);
             }
+
+            const defaultSkinExists = await existsInPublic(`/models/textures/skins/default_${variant_name}_skin.png`);
+            setDefaultSkinTexturePath(defaultSkinExists ? `/models/textures/skins/default_${variant_name}_skin.png` : null);
 
             const wheelExists = await existsInPublic(`/models/textures/wheels/wheels/Cristiano_wheel.png`);
             setWheelTexturePath(wheelExists ? `/models/textures/wheels/wheels/Cristiano_wheel.png` : null);
@@ -77,6 +83,7 @@ const PreviewLoaderPublic = ({
     }
 
     modelDataPaths.modelPath = modelPath;
+    if (!modelDataPaths.skinTexturePath) modelDataPaths.skinTexturePath = defaultSkinTexturePath;
     modelDataPaths.chassisTexturePath = chassisTexturePath;
     modelDataPaths.wheelTexturePath = wheelTexturePath;
     modelDataPaths.tireTexturePath = tireTexturePath;
@@ -91,6 +98,7 @@ const PreviewLoaderPublic = ({
             key={variant_name}
             modelDataPaths={modelDataPaths}
             modelDataConfig={modelDataConfig}
+            modelDataSetup={modelDataSetup}
         />
     )
 }
@@ -173,10 +181,22 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
             />
         );
 
-    const texturePath = variantData.preview_path;
+    const diffusePath = variantData.preview_path || null;
     const skinPath = variantData.skin_path || null; // skin is not required
     const chassisDiffusePath = variantData.chassis_diffuse_path || null;
     const oneDiffuseSkinPath = variantData.one_diffuse_skin_path || null;
+
+    let texturePath = null;
+    const modelDataSetup = {
+        decalTextureUV: 0
+    };
+
+    if (diffusePath) {
+        texturePath = diffusePath;
+    } else if (oneDiffuseSkinPath) {
+        texturePath = oneDiffuseSkinPath;
+        modelDataSetup.decalTextureUV = 1;
+    }
 
     if (!texturePath)
         return (
@@ -190,7 +210,6 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
         decalTexturePath: texturePath,
         skinTexturePath: skinPath,
         chassisTexturePath: chassisDiffusePath,
-        oneDiffuseSkinPath: oneDiffuseSkinPath,
     }
 
     return (
@@ -203,6 +222,7 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
                 modelDataConfig={modelDataConfig}
                 selectedElement={selectedElement}
                 modelDataPaths={tempDataPaths}
+                modelDataSetup={modelDataSetup}
             />
         </div>
     );

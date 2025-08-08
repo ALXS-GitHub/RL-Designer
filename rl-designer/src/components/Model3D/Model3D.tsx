@@ -11,12 +11,13 @@ import { resolveImagePath } from '@/utils/images';
 import { shaderSkinPatch } from './patches/shaderSkinPatch';
 import type { ModelPartType } from '@/types/modelParts';
 import { MODEL_PART_TEXTURE_MAP } from '@/types/modelParts';
-import type { ModelData, ModelDataPaths, ModelDataConfig } from '@/types/modelData';
+import type { ModelData, ModelDataPaths, ModelDataConfig, ModelDataSetup } from '@/types/modelData';
 import { DefaultMaterialMap } from '@/constants/materials';
 
 export interface Model3DProps {
     modelDataPaths: ModelDataPaths;
     modelDataConfig?: ModelDataConfig;
+    modelDataSetup: ModelDataSetup;
     onError: (error: string) => void;
 }
 
@@ -73,7 +74,7 @@ const createMaterial = (
   if (materialType === 'body' && modelData.skinTexture) {
     material = createColorReplacementShader(materialName, modelData);
   } else if (materialType === 'body') {
-      material = DefaultMaterialMap[modelData.material].createMaterial({
+    material = DefaultMaterialMap[modelData.material].createMaterial({
       materialName: materialName,
       textureMap: modelData.decalTexture,
       color: modelData.colors.mainTeamColor,
@@ -163,6 +164,7 @@ const disposeObjectMaterials = (obj: Group): void => {
 const Model3D: React.FC<Model3DProps> = ({ 
   modelDataPaths,
   modelDataConfig = {},
+  modelDataSetup,
   onError
 }) => {
   const {
@@ -173,7 +175,6 @@ const Model3D: React.FC<Model3DProps> = ({
       wheelTexturePath,
       tireTexturePath,
       curvatureTexturePath,
-      oneDiffuseSkinPath
   } = modelDataPaths;
   const { forceRotation = false } = modelDataConfig;
   const meshRef = useRef<Group>(null);
@@ -194,13 +195,13 @@ const Model3D: React.FC<Model3DProps> = ({
   // Always call useLoader for texture, but handle null texturePath
   const decalTexture = useLoader(
     TextureLoader, 
-    resolveImagePath(decalTexturePath)
+    decalTexturePath ? resolveImagePath(decalTexturePath) : '/models/placeholder.png'
   );
-  decalTexture.channel = 0;
+  decalTexture.channel = modelDataSetup.decalTextureUV || 0; // Set UV channel for decal texture
 
   const skinTexture = useLoader(
     TextureLoader,
-    skinTexturePath ? resolveImagePath(skinTexturePath) : '/models/skins/default_body_skin.png'
+    skinTexturePath ? resolveImagePath(skinTexturePath) : '/models/textures/skins/default_body_skin.png'
   );
 
   const chassisTexture = useLoader(
@@ -223,23 +224,6 @@ const Model3D: React.FC<Model3DProps> = ({
     TextureLoader,
     curvatureTexturePath ? resolveImagePath(curvatureTexturePath) : '/models/placeholder.png'
   );
-  
-  const oneDiffuseSkinTexture = useLoader(
-    TextureLoader,
-    oneDiffuseSkinPath ? resolveImagePath(oneDiffuseSkinPath) : '/models/placeholder.png'
-  );
-  oneDiffuseSkinTexture.channel = 1;
-  
-  console.log("Object : ", obj);
-  console.log("Textures : ", {
-    decalTexture,
-    skinTexture,
-    chassisTexture,
-    wheelTexture,
-    tireTexture,
-    curvatureTexture,
-    oneDiffuseSkinTexture
-  });
 
   // Auto-rotate the model
   useFrame((state, delta) => {
@@ -247,6 +231,7 @@ const Model3D: React.FC<Model3DProps> = ({
       meshRef.current.rotation.y += delta * 0.3;
     }
   });
+
 
   // Normalize the model and apply texture
   useEffect(() => {
@@ -259,13 +244,12 @@ const Model3D: React.FC<Model3DProps> = ({
 
     const modelData: ModelData = {
       obj: obj,
-      decalTexture: decalTexture,
+      decalTexture: decalTexture ? decalTexture : null,
       skinTexture: skinTexturePath ? skinTexture : null,
       chassisTexture: chassisTexturePath ? chassisTexture : null,
       wheelTexture: wheelTexturePath ? wheelTexture : null,
       tireTexture: tireTexturePath ? tireTexture : null,
       curvatureTexture: curvatureTexturePath ? curvatureTexture : null,
-      oneDiffuseSkinTexture: oneDiffuseSkinPath ? oneDiffuseSkinTexture : null,
       colors: colors,
       material: material,
     }
@@ -277,7 +261,7 @@ const Model3D: React.FC<Model3DProps> = ({
     return () => {
       disposeObjectMaterials(obj);
     };
-  }, [obj, decalTexture, skinTexture, decalTexturePath, skinTexturePath, colors, chassisTexturePath, chassisTexture, wheelTexturePath, wheelTexture, tireTexturePath, tireTexture, curvatureTexturePath, curvatureTexture, oneDiffuseSkinPath, oneDiffuseSkinTexture, material]);
+  }, [obj, decalTexture, skinTexture, decalTexturePath, skinTexturePath, colors, chassisTexturePath, chassisTexture, wheelTexturePath, wheelTexture, tireTexturePath, tireTexture, curvatureTexturePath, curvatureTexture, material]);
 
   // Check if model loaded successfully
   if (!obj || obj.children.length === 0) {

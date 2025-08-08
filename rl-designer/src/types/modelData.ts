@@ -6,13 +6,12 @@ import type { Texture } from "three/src/textures/Texture.js";
 
 export interface ModelData {
     obj: Group<Object3DEventMap>,
-    decalTexture: Texture,
+    decalTexture?: Texture,
     skinTexture?: Texture,
     chassisTexture?: Texture,
     wheelTexture?: Texture,
     tireTexture?: Texture,
     curvatureTexture?: Texture,
-    oneDiffuseSkinTexture?: Texture,
     colors: Record<ColorType, string>,
     material: DefaultMaterialType,
 }
@@ -25,10 +24,13 @@ export interface ModelDataPaths {
     wheelTexturePath?: string;
     tireTexturePath?: string;
     curvatureTexturePath?: string;
-    oneDiffuseSkinPath?: string;
 }
 
 export interface ModelDataConfig {
     forceRotation?: boolean;
     // ! some settings are handled in the settings store
+}
+
+export interface ModelDataSetup {
+    decalTextureUV: number;
 }
