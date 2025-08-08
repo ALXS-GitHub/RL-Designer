@@ -133,7 +133,7 @@ def create_single_index(config):
             # Only add variant if it has files
             if files:
                 # Get preview path and skin path for this specific variant
-                preview_path, skin_path, chassis_diffuse_path = get_preview_path(texture_item_name, variant_name, files, config["dir"])
+                preview_path, skin_path, chassis_diffuse_path, one_diffuse_skin_path = get_preview_path(texture_item_name, variant_name, files, config["dir"])
                 
                 # Calculate variant signature
                 try:
@@ -147,12 +147,14 @@ def create_single_index(config):
                     "files": files,
                     "signature": variant_signature
                 }
-                
+
+                # Track missing preview paths
+                if not preview_path and not one_diffuse_skin_path:
+                    stats['variants_without_preview'] += 1
+                    
                 # Add preview_path only if it exists
                 if preview_path:
                     variant_data["preview_path"] = preview_path
-                else:
-                    stats['variants_without_preview'] += 1
                 
                 # Add skin_path only if it exists
                 if skin_path:
@@ -160,7 +162,11 @@ def create_single_index(config):
                     
                 if chassis_diffuse_path:
                     variant_data["chassis_diffuse_path"] = chassis_diffuse_path
-                
+                    
+                # Add one_diffuse_skin_path if it exists
+                if one_diffuse_skin_path:
+                    variant_data["one_diffuse_skin_path"] = one_diffuse_skin_path
+
                 # Track signature stats
                 if not variant_signature:
                     stats['variants_without_signature'] += 1
@@ -185,7 +191,7 @@ def create_single_index(config):
     
     # Print summary for this index    
     for texture_item in index_data[texture_name]:
-        variants_with_preview = sum(1 for v in texture_item['variants'] if v.get('preview_path'))
+        variants_with_preview = sum(1 for v in texture_item['variants'] if v.get('preview_path')) + sum(1 for v in texture_item['variants'] if v.get('one_diffuse_skin_path'))
         variants_with_skin = sum(1 for v in texture_item['variants'] if v.get('skin_path'))
         variants_with_chassis_diffuse = sum(1 for v in texture_item['variants'] if v.get('chassis_diffuse_path'))
         variants_with_signature = sum(1 for v in texture_item['variants'] if v.get('signature'))
@@ -193,7 +199,7 @@ def create_single_index(config):
         print(f"  📁 {texture_item['name']}: {total_variants} variants ({variants_with_preview} with preview, {variants_with_skin} with skin, {variants_with_chassis_diffuse} with chassis diffuse, {variants_with_signature} with signature)")
 
         for variant in texture_item['variants']:
-            preview_status = "✅" if variant.get("preview_path") else "❌"
+            preview_status = "✅" if variant.get("preview_path") else "☑️" if variant.get("one_diffuse_skin_path") else "❌"
             skin_status = "🎨" if variant.get("skin_path") else "⚪"
             chassis_diffuse_status = "🚗" if variant.get("chassis_diffuse_path") else "⚪"
             signature_status = "🔒" if variant.get("signature") else "❌"
@@ -231,13 +237,15 @@ def get_preview_path(texture_name, variant_name, files, base_dir):
             json_data = json.load(f)
         
         # Look for different diffuse and skin patterns based on texture type
-        diffuse_patterns = ["Body.Diffuse", "Body.1_Diffuse_Skin", "Params.Diffuse", "Wheel.Diffuse"]
+        diffuse_patterns = ["Body.Diffuse", "Params.Diffuse", "Wheel.Diffuse"]
         skin_patterns = ["Body.Skin", "Params.Skin", "Wheel.Skin"]
         chassis_diffuse_patterns = ["Chassis.Diffuse"]
-        
+        one_diffuse_skin_patterns = ["Body.1_Diffuse_Skin", "Params.1_Diffuse_Skin", "Wheel.1_Diffuse_Skin"]
+
         preview_path = None
         skin_path = None
         chassis_diffuse_path = None
+        one_diffuse_skin_path = None
         
         # Look for any diffuse and skin field in any top-level key
         for key, value in json_data.items():
@@ -249,7 +257,8 @@ def get_preview_path(texture_name, variant_name, files, base_dir):
                         # Nested pattern like "Body.Diffuse" and "Body.Skin"
                         parent_key, child_key = diffuse_pattern.split(".", 1)
                         skin_parent_key, skin_child_key = skin_pattern.split(".", 1)
-                        
+                        one_diffuse_skin_parent_key, one_diffuse_skin_child_key = one_diffuse_skin_patterns[i].split(".", 1)
+
                         if parent_key in value and isinstance(value[parent_key], dict):
                             # Check for diffuse
                             if child_key in value[parent_key]:
@@ -262,7 +271,13 @@ def get_preview_path(texture_name, variant_name, files, base_dir):
                                 skin_filename = value[parent_key][skin_child_key]
                                 if skin_filename in files:
                                     skin_path = f"{base_dir}/{texture_name}/{variant_name}/{skin_filename}"
-                    
+
+                            # Check for 1_Diffuse_Skin in the same parent
+                            if one_diffuse_skin_child_key in value[parent_key]:
+                                one_diffuse_skin_filename = value[parent_key][one_diffuse_skin_child_key]
+                                if one_diffuse_skin_filename in files:
+                                    one_diffuse_skin_path = f"{base_dir}/{texture_name}/{variant_name}/{one_diffuse_skin_filename}"
+
                     # If we found a preview path, we can break (we found the right pattern)
                     if preview_path:
                         break
@@ -279,8 +294,8 @@ def get_preview_path(texture_name, variant_name, files, base_dir):
                                 if chassis_diffuse_filename in files:
                                     chassis_diffuse_path = f"{base_dir}/{texture_name}/{variant_name}/{chassis_diffuse_filename}"
 
-        return preview_path, skin_path, chassis_diffuse_path
-        
+        return preview_path, skin_path, chassis_diffuse_path, one_diffuse_skin_path
+
     except json.JSONDecodeError as e:
         print(f"    ❌ Error parsing JSON {json_file} for {variant_name}: {e}")
         return None, None, None
