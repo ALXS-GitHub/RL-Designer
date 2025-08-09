@@ -1,0 +1,36 @@
+.json-renderer {
+    font-family: 'Courier New', monospace;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-background-secondary);
+
+    &--error {
+        padding: 1rem;
+        border-color: var(--color-danger);
+        background-color: rgba(var(--color-danger-rgb), 0.1);
+    }
+
+    &--string {
+        padding: 1rem;
+    }
+
+    &--interactive {
+        padding: 0.5rem;
+        max-height: 400px;
+        overflow: auto;
+    }
+
+    &__error {
+        color: var(--color-danger);
+        font-weight: 500;
+    }
+
+    &__pre {
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: 1.4;
+        color: var(--color-text);
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+}

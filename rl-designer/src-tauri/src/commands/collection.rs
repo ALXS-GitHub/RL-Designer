@@ -1,11 +1,11 @@
-use crate::types::decal::DecalTextures;
+use crate::types::decal::DecalInfo;
 use crate::types::elements::ElementType;
 use crate::utils::collection::{fetch_decal_folders, remove_decal_variant_logic};
 
 #[derive(Debug, serde::Serialize)]
 pub struct FetchResult {
     success: bool,
-    decals: Vec<DecalTextures>,
+    decals: Vec<DecalInfo>,
     error: Option<String>,
 }
 

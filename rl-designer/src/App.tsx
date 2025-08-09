@@ -5,6 +5,7 @@ import { Loading, Error } from '@/components'
 import Notifications from '@/components/Notifications/Notifications.tsx'
 import Navbar from '@/components/Navbar/Navbar.tsx'
 import ConfirmationDialog from './components/ConfirmationDialog/ConfirmationDialog'
+import DecalInformationModal from './components/DecalInformationModal/DecalInformationModal'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useCollectionData } from '@/hooks/useCollection';
 
@@ -36,6 +37,7 @@ function App() {
           <Navbar />
           <Notifications />
           <ConfirmationDialog />
+          <DecalInformationModal />
           <div className="app__content">
             <Routes>
               <Route path="/" element={<Home />} />

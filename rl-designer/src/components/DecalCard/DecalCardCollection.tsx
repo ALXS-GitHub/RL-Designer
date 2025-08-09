@@ -6,8 +6,9 @@ import { convertFileSrc } from '@tauri-apps/api/core';
 import { useCollectionActions } from '@/hooks/useCollection';
 import { useExplorerActions } from '@/hooks/useExplorer';
 import DecalCardDesign from "./DecalCardDesign"
-import { FaEye, FaTrash, FaSync } from 'react-icons/fa';
+import { FaEye, FaTrash, FaSync, FaInfoCircle } from 'react-icons/fa';
 import { useConfirmationDialogStore } from '@/stores/confirmationDialogStore';
+import { useDecalInformationModalStore } from '@/stores/decalInformationModalStore';
 
 interface DecalCardCollectionProps {
   decal: DecalTextures;
@@ -18,6 +19,7 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
     const { removeDecalVariant } = useCollectionActions();
     const { decals: explorerDecals, downloadDecalVariant } = useExplorerActions();
     const { openConfirmationDialog } = useConfirmationDialogStore();
+    const { openModal: openDecalInformationModal } = useDecalInformationModalStore();
 
     const navigate = useNavigate();
 
@@ -46,6 +48,17 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
 
     const generateGlobalDropdownItems = (lastHoveredVariant?: string) => {
         const items = [
+            {
+                children: (
+                    <div className="global-dropdown information-decal">
+                        <FaInfoCircle className="icon" />
+                        Information
+                    </div>
+                ),
+                onClick: () => {
+                    openDecalInformationModal({decal, variant_name: lastHoveredVariant});
+                },
+            },
             {
                 children: (
                     <div className="global-dropdown preview-decal">
@@ -96,6 +109,17 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
 
     const generateVariantItems = (variant: string) => {
         const items = [
+            {
+                children: (
+                    <div className="global-dropdown information-decal">
+                        <FaInfoCircle className="icon" />
+                        Information
+                    </div>
+                ),
+                onClick: () => {
+                    openDecalInformationModal({decal, variant_name: variant});
+                },
+            },
             {
                 children: (
                     <div className="variant-dropdown">

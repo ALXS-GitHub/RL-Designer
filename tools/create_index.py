@@ -143,7 +143,7 @@ def create_single_index(config):
                     variant_signature = ""
 
                 variant_data = {
-                    "variant": variant_name,
+                    "variant_name": variant_name,
                     "files": files,
                     "signature": variant_signature
                 }
@@ -204,7 +204,7 @@ def create_single_index(config):
             chassis_diffuse_status = "🚗" if variant.get("chassis_diffuse_path") else "⚪"
             signature_status = "🔒" if variant.get("signature") else "❌"
             signature_preview = variant.get("signature", "")[:8] + "..." if variant.get("signature") else "none"
-            print(f"    📄 {variant['variant']}: {preview_status} preview {skin_status} skin {chassis_diffuse_status} chassis diffuse {signature_status} signature ({signature_preview})")
+            print(f"    📄 {variant['variant_name']}: {preview_status} preview {skin_status} skin {chassis_diffuse_status} chassis diffuse {signature_status} signature ({signature_preview})")
     
     return stats
 
@@ -264,19 +264,19 @@ def get_preview_path(texture_name, variant_name, files, base_dir):
                             if child_key in value[parent_key]:
                                 diffuse_filename = value[parent_key][child_key]
                                 if diffuse_filename in files:
-                                    preview_path = f"{base_dir}/{texture_name}/{variant_name}/{diffuse_filename}"
+                                    preview_path = f"{diffuse_filename}"
                             
                             # Check for skin in the same parent
                             if skin_child_key in value[parent_key]:
                                 skin_filename = value[parent_key][skin_child_key]
                                 if skin_filename in files:
-                                    skin_path = f"{base_dir}/{texture_name}/{variant_name}/{skin_filename}"
+                                    skin_path = f"{skin_filename}"
 
                             # Check for 1_Diffuse_Skin in the same parent
                             if one_diffuse_skin_child_key in value[parent_key]:
                                 one_diffuse_skin_filename = value[parent_key][one_diffuse_skin_child_key]
                                 if one_diffuse_skin_filename in files:
-                                    one_diffuse_skin_path = f"{base_dir}/{texture_name}/{variant_name}/{one_diffuse_skin_filename}"
+                                    one_diffuse_skin_path = f"{one_diffuse_skin_filename}"
 
                     # If we found a preview path, we can break (we found the right pattern)
                     if preview_path:
@@ -292,7 +292,7 @@ def get_preview_path(texture_name, variant_name, files, base_dir):
                             if child_key in value[parent_key]:
                                 chassis_diffuse_filename = value[parent_key][child_key]
                                 if chassis_diffuse_filename in files:
-                                    chassis_diffuse_path = f"{base_dir}/{texture_name}/{variant_name}/{chassis_diffuse_filename}"
+                                    chassis_diffuse_path = f"{chassis_diffuse_filename}"
 
         return preview_path, skin_path, chassis_diffuse_path, one_diffuse_skin_path
 

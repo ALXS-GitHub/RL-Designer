@@ -27,7 +27,6 @@ export const useExplorerData = (): UseExplorerDataReturn => {
         operation: async () => {
             const result = await getDecalsFromGitHub(selectedElement);
             if (!result.success) throw new Error(result.error || 'Failed to fetch decals');
-            console.log('Fetched decals:', result.decals);
             setDecals(result.decals);
             return result.decals;
         }, 

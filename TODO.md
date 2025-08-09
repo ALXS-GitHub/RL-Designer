@@ -6,11 +6,19 @@
 ## Important
 
 
-- [ ] Update docs
+- [ ] Update docs + Update README
+- [ ] In the index.json, remove the specified long path, just the file name is sufficient (add a source field to get the proper source (full path source (either local C// or git https://)))
+- [ ] Fix DecalInformationModal 
+- [ ] Complete the default_..._skin list in the public/models/textures/skins
+- [ ] Refactor the tauri backend (maybe some function are not at the right place, and more reusable code could be made) (+ change some files from utils to services (especially for the command logic function))
 
 - [ ] Include the metadata.yaml file to give extra infos (like the sticker to use for universal decals, ...). This file should be loaded only when needed (no need to preload it with the decal collection).
+  - I got an Idea for this -> I will add a button in the dropdown menu of each variant named "Information" (or something like this), that will in fact fetch the metadata file and thus show its info + other information like display the template.json file, and show the list of files for this decal. (Clicking this button will show a popup window in front of the screen (with blurred background of the page we are in)). With this method, the fetch of the metadata.yaml (+ additional fetch for the template.json and search back in index.json for the list of files) will we only need the fetch when needed.
+  - (When fetching the index we will have the template.json path + path of all files -> this request can be made at the same time (only one fetch of index.json for those two), metadata.yaml path is supposedly known)
 
 - [ ] Use tanstack devtools to debug the queries for the useExplorer. (because now there is no more loading screen when switching between "car decals" and "ball decals"...)
+- [ ] Add a paging system
+- [ ] Add a stronger filter (search by name, decals available for specific vehicles, ...)
 
 ## Medium
 

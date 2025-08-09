@@ -1,0 +1,178 @@
+.decal-information-modal__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.decal-information-modal__modal {
+    position: relative;
+    max-width: 70vw;
+    max-height: 80vh;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border-radius: var(--radius-xl);
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--gray-200);
+    box-shadow: var(--shadow-2xl);
+    backdrop-filter: blur(16px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.decal-information-modal__modal__content {
+    padding: var(--space-8);
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-6);
+}
+
+.decal-information-modal__close-button {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    width: var(--space-10);
+    height: var(--space-10);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-300);
+    background-color: var(--gray-50);
+    color: var(--gray-700);
+    font-weight: var(--font-semibold);
+    font-size: var(--text-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-colors);
+    z-index: 1;
+    
+    &:hover {
+        background-color: var(--gray-100);
+        border-color: var(--gray-400);
+        color: var(--gray-900);
+    }
+    
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+.decal-information-modal__modal__title {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    color: var(--gray-900);
+    margin: 0;
+    line-height: var(--leading-tight);
+}
+
+.decal-information-modal__modal__subtitle {
+    font-size: var(--text-xl);
+    font-weight: var(--font-medium);
+    color: var(--gray-600);
+    margin: 0;
+    line-height: var(--leading-snug);
+}
+
+.decal-information-modal__modal__section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.decal-information-modal__modal__section__label {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--gray-800);
+    margin: 0;
+}
+
+.decal-information-modal__modal__section__files {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    align-items: flex-start;
+}
+
+.decal-information-modal__modal__section__file {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-2) var(--space-3);
+    background-color: var(--blue-50);
+    color: var(--blue-700);
+    border: 1px solid var(--blue-200);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    line-height: var(--leading-tight);
+    transition: var(--transition-colors);
+    
+    &:hover {
+        background-color: var(--blue-100);
+        border-color: var(--blue-300);
+    }
+}
+
+.decal-information-modal__modal__section__file-display {
+    width: 100%;
+    overflow-y: auto;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    background-color: var(--gray-50);
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .decal-information-modal__modal {
+        max-width: 95vw;
+        max-height: 90vh;
+    }
+    
+    .decal-information-modal__modal__content {
+        padding: var(--space-6);
+        padding-top: var(--space-14);
+        gap: var(--space-4);
+    }
+    
+    .decal-information-modal__modal__title {
+        font-size: var(--text-2xl);
+    }
+    
+    .decal-information-modal__modal__subtitle {
+        font-size: var(--text-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .decal-information-modal__modal {
+        max-width: 98vw;
+        max-height: 95vh;
+    }
+    
+    .decal-information-modal__modal__content {
+        padding: var(--space-4);
+        padding-top: var(--space-12);
+        gap: var(--space-3);
+    }
+    
+    .decal-information-modal__close-button {
+        top: var(--space-2);
+        right: var(--space-2);
+        width: var(--space-8);
+        height: var(--space-8);
+        font-size: var(--text-base);
+    }
+}

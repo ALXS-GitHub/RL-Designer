@@ -1,11 +1,11 @@
-use crate::types::decal::DecalTextures;
+use crate::types::decal::DecalInfo;
 use crate::types::elements::ElementType;
 use crate::utils::explorer::fetch_decals_from_github_raw;
 
 #[derive(Debug, serde::Serialize)]
 pub struct GitHubDecalsResponse {
     success: bool,
-    decals: Vec<DecalTextures>,
+    decals: Vec<DecalInfo>,
     error: Option<String>,
 }
 

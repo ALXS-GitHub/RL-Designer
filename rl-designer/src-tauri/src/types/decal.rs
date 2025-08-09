@@ -1,43 +1,51 @@
-#[derive(Debug, serde::Serialize, Clone)]
-pub struct VariantFrontInfo {
+use serde::{Deserialize, Serialize};
+
+#[derive(Debug, Deserialize)]
+pub struct DecalsIndex {
+    pub decals: Vec<DecalInfo>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DecalInfo {
+    pub name: String,
+    pub variants: Vec<VariantInfo>,
+}
+
+#[derive(Debug, Deserialize, Serialize, Clone)]
+pub struct VariantInfo {
     pub variant_name: String,
     pub signature: String,
+    pub files: Vec<String>,
     pub preview_path: Option<String>, // diffuse
-    pub one_diffuse_skin_path: Option<String>, // 1_Diffuse_Skin
     pub skin_path: Option<String>,
     pub chassis_diffuse_path: Option<String>,
+    pub one_diffuse_skin_path: Option<String>, // 1_Diffuse_Skin
 }
 
-#[derive(Debug, serde::Serialize)]
-pub struct DecalTextures {
-    pub name: String,
-    pub variants: Vec<VariantFrontInfo>,
-}
-
-impl Default for DecalTextures {
+impl Default for DecalInfo {
     fn default() -> Self {
-        DecalTextures {
+        DecalInfo {
             name: String::new(),
             variants: Vec::new(),
         }
     }
 }
 
-impl PartialEq for DecalTextures {
+impl PartialEq for DecalInfo {
     fn eq(&self, other: &Self) -> bool {
         self.name == other.name
     }
 }
 
-impl Eq for DecalTextures {}
+impl Eq for DecalInfo {}
 
-impl Ord for DecalTextures {
+impl Ord for DecalInfo {
     fn cmp(&self, other: &Self) -> std::cmp::Ordering {
         self.name.cmp(&other.name)
     }
 }
 
-impl PartialOrd for DecalTextures {
+impl PartialOrd for DecalInfo {
     fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
         Some(self.cmp(other))
     }

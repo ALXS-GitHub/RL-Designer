@@ -1,11 +1,12 @@
 use crate::config::get_install_path;
-use crate::types::decal::{DecalTextures, VariantFrontInfo};
+use crate::types::decal::{DecalInfo, VariantInfo};
 use crate::types::elements::ElementType;
+use crate::utils::files::{read_files_from_folder, read_folders_from_folder};
 use crate::utils::hash::calculate_folder_signature;
 use serde_json::Value;
 use std::fs;
 
-pub fn fetch_decal_folders(element: ElementType) -> Result<Vec<DecalTextures>, String> {
+pub fn fetch_decal_folders(element: ElementType) -> Result<Vec<DecalInfo>, String> {
     // Get the AppData environment variable
     let install_path =
         get_install_path(element).map_err(|e| format!("Failed to get install path: {}", e))?;
@@ -36,31 +37,25 @@ pub fn fetch_decal_folders(element: ElementType) -> Result<Vec<DecalTextures>, S
             };
             let name = name.unwrap();
 
-            let variants = fs::read_dir(&path)
-                .map_err(|e| format!("Failed to read subdirectory: {}", e))?
-                .filter_map(|v| {
-                    v.ok().and_then(|v_entry| {
-                        v_entry
-                            .path()
-                            .file_name()
-                            .and_then(|n| n.to_str())
-                            .map(|s| s.to_string())
-                    })
-                })
-                .collect::<Vec<String>>();
+            let variants = read_folders_from_folder(&path)
+                .map_err(|e| format!("Failed to read subdirectory: {}", e))?;
 
             // Skip if no variants found
             if variants.is_empty() {
                 continue;
             }
 
-            let mut variants_with_preview: Vec<VariantFrontInfo> = Vec::new();
+            // TODO : do a function that maps this automatically
+            let mut variants_with_preview: Vec<VariantInfo> = Vec::new();
             for variant_name in variants {
                 let variant_path = path.join(&variant_name);
+                let variant_files = read_files_from_folder(&variant_path)?;
+
                 let preview_files =
                     read_preview_files_from_variant(element, &path, &variant_name).ok();
-                variants_with_preview.push(VariantFrontInfo {
+                variants_with_preview.push(VariantInfo {
                     variant_name: variant_name.clone(),
+                    files: variant_files.clone(),
                     signature: calculate_folder_signature(&variant_path).unwrap_or_default(),
                     preview_path: preview_files
                         .as_ref()
@@ -73,10 +68,9 @@ pub fn fetch_decal_folders(element: ElementType) -> Result<Vec<DecalTextures>, S
                 });
             }
 
-            let decal = DecalTextures {
+            let decal = DecalInfo {
                 name: name.clone(),
                 variants: variants_with_preview,
-                ..DecalTextures::default()
             };
 
             folders.push(decal);

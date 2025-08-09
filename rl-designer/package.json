@@ -1,7 +1,7 @@
 {
   "name": "rl-designer",
   "private": true,
-  "version": "0.7.0",
+  "version": "0.8.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -17,9 +17,13 @@
     "@tanstack/react-query": "^5.83.0",
     "@tauri-apps/api": "^2.6.0",
     "@tauri-apps/plugin-fs": "^2.4.1",
+    "@types/js-yaml": "^4.0.9",
     "@types/three": "^0.178.1",
+    "@uiw/react-json-view": "^2.0.0-alpha.34",
     "axios": "^1.11.0",
     "framer-motion": "^12.23.6",
+    "js-yaml": "^4.1.0",
+    "prismjs": "^1.30.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",

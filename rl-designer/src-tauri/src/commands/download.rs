@@ -1,4 +1,4 @@
-use crate::types::decal::VariantFrontInfo;
+use crate::types::decal::VariantInfo;
 use crate::types::elements::ElementType;
 use crate::utils::download::download_decal_variant_logic;
 
@@ -7,7 +7,7 @@ pub struct DownloadResponse {
     success: bool,
     message: String,
     error: Option<String>,
-    variant_info: Option<VariantFrontInfo>,
+    variant_info: Option<VariantInfo>,
 }
 
 async fn download_decal_variant_element_logic(

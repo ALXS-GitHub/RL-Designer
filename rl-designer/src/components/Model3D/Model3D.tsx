@@ -7,7 +7,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
 import { TextureLoader, Mesh, Group, Box3, Vector3, DoubleSide, MeshPhongMaterial, ShaderMaterial, Color, Texture, Material, ShaderLib, UniformsUtils, UniformsLib, Vector2, MeshPhysicalMaterial } from 'three';
 import useModelSettingsStore from '@/stores/modelSettingsStore';
-import { resolveImagePath } from '@/utils/images';
+import { resolvePath } from '@/utils/files';
 import { shaderSkinPatch } from './patches/shaderSkinPatch';
 import type { ModelPartType } from '@/types/modelParts';
 import { MODEL_PART_TEXTURE_MAP } from '@/types/modelParts';
@@ -195,19 +195,19 @@ const Model3D: React.FC<Model3DProps> = ({
   // Always call useLoader for texture, but handle null texturePath
   const decalTexture = useLoader(
     TextureLoader, 
-    decalTexturePath ? resolveImagePath(decalTexturePath) : '/models/placeholder.png'
+    decalTexturePath ? resolvePath(decalTexturePath) : '/models/placeholder.png'
   );
   decalTexture.channel = modelDataSetup.decalTextureUV || 0; // Set UV channel for decal texture
 
   const skinTexture = useLoader(
     TextureLoader,
-    skinTexturePath ? resolveImagePath(skinTexturePath) : '/models/textures/skins/default_body_skin.png'
+    skinTexturePath ? resolvePath(skinTexturePath) : '/models/textures/skins/default_body_skin.png'
   );
 
   const chassisTexture = useLoader(
     TextureLoader,
-    // ! as for now the chassis is in the the public we don't use resolveImagePath
-    chassisTexturePath ? resolveImagePath(chassisTexturePath) : '/models/placeholder.png'
+    // ! as for now the chassis is in the the public we don't use resolvePath
+    chassisTexturePath ? resolvePath(chassisTexturePath) : '/models/placeholder.png'
   );
   
   const wheelTexture = useLoader(
@@ -222,7 +222,7 @@ const Model3D: React.FC<Model3DProps> = ({
   
   const curvatureTexture = useLoader(
     TextureLoader,
-    curvatureTexturePath ? resolveImagePath(curvatureTexturePath) : '/models/placeholder.png'
+    curvatureTexturePath ? resolvePath(curvatureTexturePath) : '/models/placeholder.png'
   );
 
   // Auto-rotate the model

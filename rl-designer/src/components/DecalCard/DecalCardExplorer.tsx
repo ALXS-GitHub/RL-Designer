@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom'
 
 import DecalCardDesign from "./DecalCardDesign"
 import { useCollectionActions } from '@/hooks/useCollection';
-import { FaEye, FaDownload, FaSync } from 'react-icons/fa';
+import { FaEye, FaDownload, FaSync, FaInfoCircle } from 'react-icons/fa';
+import { useDecalInformationModalStore } from '@/stores/decalInformationModalStore';
 
 interface DecalCardExplorerProps {
   decal: DecalTextures;
@@ -16,6 +17,7 @@ const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
 
     const { downloadDecalVariant } = useExplorerActions();
     const { decals: collectionDecals } = useCollectionActions();
+    const { openModal: openDecalInformationModal } = useDecalInformationModalStore();
     const navigate = useNavigate();
 
     const isVariantInstalled = (decalName: string, variant: string) => {
@@ -43,6 +45,17 @@ const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
 
     const generateGlobalDropdownItems = (lastHoveredVariant: string) => {
         const items = [
+            {
+                children: (
+                    <div className="global-dropdown information-decal">
+                        <FaInfoCircle className="icon" />
+                        Information
+                    </div>
+                ),
+                onClick: () => {
+                    openDecalInformationModal({decal, variant_name: lastHoveredVariant});
+                },
+            },
             {
                 children: (
                     <div className="global-dropdown preview-decal">
@@ -73,6 +86,17 @@ const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
 
     const generateVariantItems = (variant: string) => {
         const items = [
+            {
+                children: (
+                    <div className="global-dropdown information-decal">
+                        <FaInfoCircle className="icon" />
+                        Information
+                    </div>
+                ),
+                onClick: () => {
+                    openDecalInformationModal({decal, variant_name: variant});
+                },
+            },
             {
                 children: (
                     <div className="variant-dropdown">

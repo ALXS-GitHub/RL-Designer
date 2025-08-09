@@ -138,6 +138,10 @@
   font-weight: var(--font-medium);
   font-size: var(--text-md);
 
+  &.information-decal {
+      color: var(--cyan-600);
+  }
+
   &.remove-decal {
       color: var(--red-600);
   }

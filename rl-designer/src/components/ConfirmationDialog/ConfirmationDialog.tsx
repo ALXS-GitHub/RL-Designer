@@ -7,7 +7,6 @@ import "./ConfirmationDialog.scss";
 Modal.setAppElement("#root");
 
 const ConfirmationDialog: React.FC = () => {
-    // const [modalIsOpen, setModalIsOpen] = useState(true);
     const { isOpen, message, onConfirm, onCancel, closeConfirmationDialog } = useConfirmationDialogStore();
 
     const handleConfirm = () => {
