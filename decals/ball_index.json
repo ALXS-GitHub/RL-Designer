@@ -4,7 +4,7 @@
       "name": "Aespa",
       "variants": [
         {
-          "variant": "Default",
+          "variant_name": "Default",
           "files": [
             "diffuse.png",
             "Template.json"
@@ -18,7 +18,7 @@
       "name": "Itzy",
       "variants": [
         {
-          "variant": "Default",
+          "variant_name": "Default",
           "files": [
             "diffuse.png",
             "Template.json"
@@ -27,7 +27,7 @@
           "preview_path": "ball_textures/Itzy/Default/diffuse.png"
         },
         {
-          "variant": "Zomahx",
+          "variant_name": "Zomahx",
           "files": [
             "diffuse.png",
             "Template.json"
@@ -41,7 +41,7 @@
       "name": "Zomahx",
       "variants": [
         {
-          "variant": "Zomahx",
+          "variant_name": "Zomahx",
           "files": [
             "diffuse.png",
             "Template.json"

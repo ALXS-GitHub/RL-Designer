@@ -4,7 +4,7 @@
       "name": "Born To Be Itzy",
       "variants": [
         {
-          "variant": "Fennec",
+          "variant_name": "Fennec",
           "files": [
             "body_diffuse.png",
             "body_skin.png",
@@ -15,7 +15,7 @@
           "skin_path": "decals/Born To Be Itzy/Fennec/body_skin.png"
         },
         {
-          "variant": "Octane",
+          "variant_name": "Octane",
           "files": [
             "HyperBeast_Chassis.png",
             "oct_decal.png",
@@ -28,7 +28,7 @@
           "chassis_diffuse_path": "decals/Born To Be Itzy/Octane/HyperBeast_Chassis.png"
         },
         {
-          "variant": "Venom",
+          "variant_name": "Venom",
           "files": [
             "body_diffuse.png",
             "body_skin.png",
@@ -44,7 +44,7 @@
       "name": "Chaewon Heart LeSserafim",
       "variants": [
         {
-          "variant": "Fennec",
+          "variant_name": "Fennec",
           "files": [
             "chaewon_diffuse.png",
             "chaewon_skin.png",
@@ -57,7 +57,7 @@
           "chassis_diffuse_path": "decals/Chaewon Heart LeSserafim/Fennec/lesserafim_chassis.png"
         },
         {
-          "variant": "Octane",
+          "variant_name": "Octane",
           "files": [
             "chaewon_diffuse.png",
             "chaewon_skin.png",
@@ -75,7 +75,7 @@
       "name": "Chaewon LeSserafim",
       "variants": [
         {
-          "variant": "Fennec",
+          "variant_name": "Fennec",
           "files": [
             "chaewon_diffuse.png",
             "chaewon_nobg2.png",
@@ -89,7 +89,7 @@
           "chassis_diffuse_path": "decals/Chaewon LeSserafim/Fennec/lesserafim_chassis.png"
         },
         {
-          "variant": "Octane",
+          "variant_name": "Octane",
           "files": [
             "chaewon_diffuse - Copie.png",
             "chaewon_diffuse.png",
@@ -109,7 +109,7 @@
       "name": "Dirty Work",
       "variants": [
         {
-          "variant": "Octane",
+          "variant_name": "Octane",
           "files": [
             "aespa_chassis.png",
             "nobg.png",
@@ -128,7 +128,7 @@
       "name": "Fast And Furious Skyline",
       "variants": [
         {
-          "variant": "Esper",
+          "variant_name": "Esper",
           "files": [
             "esper_body_diffuse.png",
             "esper_chassis.png",
@@ -146,7 +146,7 @@
       "name": "Girls Aespa",
       "variants": [
         {
-          "variant": "Octane",
+          "variant_name": "Octane",
           "files": [
             "Girls_diffuse.png",
             "girls_nobg.png",
@@ -165,7 +165,7 @@
       "name": "Jordan",
       "variants": [
         {
-          "variant": "Fennec",
+          "variant_name": "Fennec",
           "files": [
             "body_diffuse.png",
             "body_skin.png",
@@ -181,7 +181,7 @@
       "name": "Rich Man",
       "variants": [
         {
-          "variant": "Fennec",
+          "variant_name": "Fennec",
           "files": [
             "body_diffuse.png",
             "body_skin.png",
@@ -194,7 +194,7 @@
           "chassis_diffuse_path": "decals/Rich Man/Fennec/chassis_diffuse.png"
         },
         {
-          "variant": "Octane",
+          "variant_name": "Octane",
           "files": [
             "body_diffuse.png",
             "body_skin.png",
@@ -203,7 +203,7 @@
             "Template.json",
             "TrimSheet.png"
           ],
-          "signature": "eac6a0c0b2bf7934",
+          "signature": "8b0b2e423984e651",
           "chassis_diffuse_path": "decals/Rich Man/Octane/chassis_diffuse.png",
           "one_diffuse_skin_path": "decals/Rich Man/Octane/body_diffuse.png"
         }
@@ -213,7 +213,7 @@
       "name": "Staboz",
       "variants": [
         {
-          "variant": "Octane",
+          "variant_name": "Octane",
           "files": [
             "HyperBeast_Chassis.png",
             "oct_decal.png",
@@ -231,7 +231,7 @@
       "name": "Supernova Aespa",
       "variants": [
         {
-          "variant": "Fennec",
+          "variant_name": "Fennec",
           "files": [
             "Fennec Template.json",
             "Fennec_Chassis.png",
@@ -249,7 +249,7 @@
       "name": "Templates",
       "variants": [
         {
-          "variant": "Dominus",
+          "variant_name": "Dominus",
           "files": [
             "Dom_Skin.png",
             "Dominus Template.json",
@@ -262,7 +262,7 @@
           "chassis_diffuse_path": "decals/Templates/Dominus/Dominus_Chassis.png"
         },
         {
-          "variant": "Fennec",
+          "variant_name": "Fennec",
           "files": [
             "Fen_Skin.png",
             "Fennec Template.json",
@@ -275,7 +275,7 @@
           "chassis_diffuse_path": "decals/Templates/Fennec/Fennec_Chassis.png"
         },
         {
-          "variant": "Octane",
+          "variant_name": "Octane",
           "files": [
             "HyperBeast_Chassis.png",
             "oct_decal.png",
@@ -293,7 +293,7 @@
       "name": "Winter Aespa",
       "variants": [
         {
-          "variant": "Fennec",
+          "variant_name": "Fennec",
           "files": [
             "Fen_Skin.png",
             "Fennec Template.json",
@@ -307,7 +307,7 @@
           "chassis_diffuse_path": "decals/Winter Aespa/Fennec/Fennec_Chassis.png"
         },
         {
-          "variant": "Octane",
+          "variant_name": "Octane",
           "files": [
             "HyperBeast_Chassis.png",
             "oct_diffuse.png",
@@ -326,7 +326,7 @@
       "name": "Yoko",
       "variants": [
         {
-          "variant": "Fennec",
+          "variant_name": "Fennec",
           "files": [
             "Fennec Template.json",
             "Fennec_Chassis.png",
@@ -344,7 +344,7 @@
       "name": "Yuna Itzy",
       "variants": [
         {
-          "variant": "Fennec",
+          "variant_name": "Fennec",
           "files": [
             "Fennec Template.json",
             "Fennec_Chassis.png",
@@ -358,7 +358,7 @@
           "chassis_diffuse_path": "decals/Yuna Itzy/Fennec/Fennec_Chassis.png"
         },
         {
-          "variant": "Octane",
+          "variant_name": "Octane",
           "files": [
             "HyperBeast_Chassis.png",
             "oct_diffuse.png",
@@ -372,7 +372,7 @@
           "chassis_diffuse_path": "decals/Yuna Itzy/Octane/HyperBeast_Chassis.png"
         },
         {
-          "variant": "Roadhog",
+          "variant_name": "Roadhog",
           "files": [
             "body_diffuse.png",
             "body_skin.png",
@@ -383,7 +383,7 @@
           "skin_path": "decals/Yuna Itzy/Roadhog/body_skin.png"
         },
         {
-          "variant": "Venom",
+          "variant_name": "Venom",
           "files": [
             "body_diffuse.png",
             "body_skin.png",
