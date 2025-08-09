@@ -11,8 +11,8 @@
             "Template.json"
           ],
           "signature": "108f0cefc5fcbd61",
-          "preview_path": "decals/Born To Be Itzy/Fennec/body_diffuse.png",
-          "skin_path": "decals/Born To Be Itzy/Fennec/body_skin.png"
+          "preview_path": "body_diffuse.png",
+          "skin_path": "body_skin.png"
         },
         {
           "variant_name": "Octane",
@@ -23,9 +23,9 @@
             "Template.json"
           ],
           "signature": "92f9c3381ec31d24",
-          "preview_path": "decals/Born To Be Itzy/Octane/oct_diffuse.png",
-          "skin_path": "decals/Born To Be Itzy/Octane/oct_decal.png",
-          "chassis_diffuse_path": "decals/Born To Be Itzy/Octane/HyperBeast_Chassis.png"
+          "preview_path": "oct_diffuse.png",
+          "skin_path": "oct_decal.png",
+          "chassis_diffuse_path": "HyperBeast_Chassis.png"
         },
         {
           "variant_name": "Venom",
@@ -35,8 +35,8 @@
             "Template.json"
           ],
           "signature": "54c537f77669affb",
-          "preview_path": "decals/Born To Be Itzy/Venom/body_diffuse.png",
-          "skin_path": "decals/Born To Be Itzy/Venom/body_skin.png"
+          "preview_path": "body_diffuse.png",
+          "skin_path": "body_skin.png"
         }
       ]
     },
@@ -52,9 +52,9 @@
             "Template.json"
           ],
           "signature": "9aaf6fb3cde08fe4",
-          "preview_path": "decals/Chaewon Heart LeSserafim/Fennec/chaewon_diffuse.png",
-          "skin_path": "decals/Chaewon Heart LeSserafim/Fennec/chaewon_skin.png",
-          "chassis_diffuse_path": "decals/Chaewon Heart LeSserafim/Fennec/lesserafim_chassis.png"
+          "preview_path": "chaewon_diffuse.png",
+          "skin_path": "chaewon_skin.png",
+          "chassis_diffuse_path": "lesserafim_chassis.png"
         },
         {
           "variant_name": "Octane",
@@ -65,9 +65,9 @@
             "Template.json"
           ],
           "signature": "ca0a154e3795fd39",
-          "preview_path": "decals/Chaewon Heart LeSserafim/Octane/chaewon_diffuse.png",
-          "skin_path": "decals/Chaewon Heart LeSserafim/Octane/chaewon_skin.png",
-          "chassis_diffuse_path": "decals/Chaewon Heart LeSserafim/Octane/lesserafim_chassis.png"
+          "preview_path": "chaewon_diffuse.png",
+          "skin_path": "chaewon_skin.png",
+          "chassis_diffuse_path": "lesserafim_chassis.png"
         }
       ]
     },
@@ -84,9 +84,9 @@
             "Template.json"
           ],
           "signature": "5f233f1341ab063f",
-          "preview_path": "decals/Chaewon LeSserafim/Fennec/chaewon_diffuse.png",
-          "skin_path": "decals/Chaewon LeSserafim/Fennec/chaewon_skin.png",
-          "chassis_diffuse_path": "decals/Chaewon LeSserafim/Fennec/lesserafim_chassis.png"
+          "preview_path": "chaewon_diffuse.png",
+          "skin_path": "chaewon_skin.png",
+          "chassis_diffuse_path": "lesserafim_chassis.png"
         },
         {
           "variant_name": "Octane",
@@ -99,9 +99,9 @@
             "Template.json"
           ],
           "signature": "32386b183f6dc01c",
-          "preview_path": "decals/Chaewon LeSserafim/Octane/chaewon_diffuse.png",
-          "skin_path": "decals/Chaewon LeSserafim/Octane/chaewon_skin.png",
-          "chassis_diffuse_path": "decals/Chaewon LeSserafim/Octane/lesserafim_chassis.png"
+          "preview_path": "chaewon_diffuse.png",
+          "skin_path": "chaewon_skin.png",
+          "chassis_diffuse_path": "lesserafim_chassis.png"
         }
       ]
     },
@@ -118,9 +118,9 @@
             "Template.json"
           ],
           "signature": "6b827a24c634f16f",
-          "preview_path": "decals/Dirty Work/Octane/oct_diffuse.png",
-          "skin_path": "decals/Dirty Work/Octane/oct_skin.png",
-          "chassis_diffuse_path": "decals/Dirty Work/Octane/aespa_chassis.png"
+          "preview_path": "oct_diffuse.png",
+          "skin_path": "oct_skin.png",
+          "chassis_diffuse_path": "aespa_chassis.png"
         }
       ]
     },
@@ -136,9 +136,9 @@
             "Template.json"
           ],
           "signature": "99c0108cc38d8e9b",
-          "preview_path": "decals/Fast And Furious Skyline/Esper/esper_body_diffuse.png",
-          "skin_path": "decals/Fast And Furious Skyline/Esper/esper_skin.png",
-          "chassis_diffuse_path": "decals/Fast And Furious Skyline/Esper/esper_chassis.png"
+          "preview_path": "esper_body_diffuse.png",
+          "skin_path": "esper_skin.png",
+          "chassis_diffuse_path": "esper_chassis.png"
         }
       ]
     },
@@ -155,9 +155,9 @@
             "Template.json"
           ],
           "signature": "7c42df37a8e8d37b",
-          "preview_path": "decals/Girls Aespa/Octane/Girls_diffuse.png",
-          "skin_path": "decals/Girls Aespa/Octane/girls_skin.png",
-          "chassis_diffuse_path": "decals/Girls Aespa/Octane/HyperBeast_Chassis.png"
+          "preview_path": "Girls_diffuse.png",
+          "skin_path": "girls_skin.png",
+          "chassis_diffuse_path": "HyperBeast_Chassis.png"
         }
       ]
     },
@@ -172,8 +172,8 @@
             "Template.json"
           ],
           "signature": "c602716395f156b5",
-          "preview_path": "decals/Jordan/Fennec/body_diffuse.png",
-          "skin_path": "decals/Jordan/Fennec/body_skin.png"
+          "preview_path": "body_diffuse.png",
+          "skin_path": "body_skin.png"
         }
       ]
     },
@@ -189,9 +189,9 @@
             "Template.json"
           ],
           "signature": "34c05037b0d870d0",
-          "preview_path": "decals/Rich Man/Fennec/body_diffuse.png",
-          "skin_path": "decals/Rich Man/Fennec/body_skin.png",
-          "chassis_diffuse_path": "decals/Rich Man/Fennec/chassis_diffuse.png"
+          "preview_path": "body_diffuse.png",
+          "skin_path": "body_skin.png",
+          "chassis_diffuse_path": "chassis_diffuse.png"
         },
         {
           "variant_name": "Octane",
@@ -204,8 +204,8 @@
             "TrimSheet.png"
           ],
           "signature": "8b0b2e423984e651",
-          "chassis_diffuse_path": "decals/Rich Man/Octane/chassis_diffuse.png",
-          "one_diffuse_skin_path": "decals/Rich Man/Octane/body_diffuse.png"
+          "chassis_diffuse_path": "chassis_diffuse.png",
+          "one_diffuse_skin_path": "body_diffuse.png"
         }
       ]
     },
@@ -221,9 +221,9 @@
             "Template.json"
           ],
           "signature": "06a50e8f4268ce8e",
-          "preview_path": "decals/Staboz/Octane/oct_diffuse.png",
-          "skin_path": "decals/Staboz/Octane/oct_decal.png",
-          "chassis_diffuse_path": "decals/Staboz/Octane/HyperBeast_Chassis.png"
+          "preview_path": "oct_diffuse.png",
+          "skin_path": "oct_decal.png",
+          "chassis_diffuse_path": "HyperBeast_Chassis.png"
         }
       ]
     },
@@ -239,9 +239,9 @@
             "supernova_skin.png"
           ],
           "signature": "fd28578834803a61",
-          "preview_path": "decals/Supernova Aespa/Fennec/supernova_diffuse.png",
-          "skin_path": "decals/Supernova Aespa/Fennec/supernova_skin.png",
-          "chassis_diffuse_path": "decals/Supernova Aespa/Fennec/Fennec_Chassis.png"
+          "preview_path": "supernova_diffuse.png",
+          "skin_path": "supernova_skin.png",
+          "chassis_diffuse_path": "Fennec_Chassis.png"
         }
       ]
     },
@@ -257,9 +257,9 @@
             "Dominus_Diffuse.png"
           ],
           "signature": "ca6b5138771692c9",
-          "preview_path": "decals/Templates/Dominus/Dominus_Diffuse.png",
-          "skin_path": "decals/Templates/Dominus/Dom_Skin.png",
-          "chassis_diffuse_path": "decals/Templates/Dominus/Dominus_Chassis.png"
+          "preview_path": "Dominus_Diffuse.png",
+          "skin_path": "Dom_Skin.png",
+          "chassis_diffuse_path": "Dominus_Chassis.png"
         },
         {
           "variant_name": "Fennec",
@@ -270,9 +270,9 @@
             "Fennec_Diffuse.png"
           ],
           "signature": "b20d255608199f5b",
-          "preview_path": "decals/Templates/Fennec/Fennec_Diffuse.png",
-          "skin_path": "decals/Templates/Fennec/Fen_Skin.png",
-          "chassis_diffuse_path": "decals/Templates/Fennec/Fennec_Chassis.png"
+          "preview_path": "Fennec_Diffuse.png",
+          "skin_path": "Fen_Skin.png",
+          "chassis_diffuse_path": "Fennec_Chassis.png"
         },
         {
           "variant_name": "Octane",
@@ -283,9 +283,9 @@
             "Template.json"
           ],
           "signature": "d9eb673bbc892173",
-          "preview_path": "decals/Templates/Octane/oct_diffuse.png",
-          "skin_path": "decals/Templates/Octane/oct_decal.png",
-          "chassis_diffuse_path": "decals/Templates/Octane/HyperBeast_Chassis.png"
+          "preview_path": "oct_diffuse.png",
+          "skin_path": "oct_decal.png",
+          "chassis_diffuse_path": "HyperBeast_Chassis.png"
         }
       ]
     },
@@ -302,9 +302,9 @@
             "Fennec_Diffuse_nobg.png"
           ],
           "signature": "0d9be940fd00fb71",
-          "preview_path": "decals/Winter Aespa/Fennec/Fennec_Diffuse.png",
-          "skin_path": "decals/Winter Aespa/Fennec/Fen_Skin.png",
-          "chassis_diffuse_path": "decals/Winter Aespa/Fennec/Fennec_Chassis.png"
+          "preview_path": "Fennec_Diffuse.png",
+          "skin_path": "Fen_Skin.png",
+          "chassis_diffuse_path": "Fennec_Chassis.png"
         },
         {
           "variant_name": "Octane",
@@ -316,9 +316,9 @@
             "winter_skin.png"
           ],
           "signature": "c67ae74e4a981469",
-          "preview_path": "decals/Winter Aespa/Octane/oct_diffuse.png",
-          "skin_path": "decals/Winter Aespa/Octane/winter_skin.png",
-          "chassis_diffuse_path": "decals/Winter Aespa/Octane/HyperBeast_Chassis.png"
+          "preview_path": "oct_diffuse.png",
+          "skin_path": "winter_skin.png",
+          "chassis_diffuse_path": "HyperBeast_Chassis.png"
         }
       ]
     },
@@ -334,9 +334,9 @@
             "fennec_texture.png"
           ],
           "signature": "34592474a9144f86",
-          "preview_path": "decals/Yoko/Fennec/fennec_texture.png",
-          "skin_path": "decals/Yoko/Fennec/fennec_skin.png",
-          "chassis_diffuse_path": "decals/Yoko/Fennec/Fennec_Chassis.png"
+          "preview_path": "fennec_texture.png",
+          "skin_path": "fennec_skin.png",
+          "chassis_diffuse_path": "Fennec_Chassis.png"
         }
       ]
     },
@@ -353,9 +353,9 @@
             "yuna_skin.png"
           ],
           "signature": "562bb4b4ce373ace",
-          "preview_path": "decals/Yuna Itzy/Fennec/Fennec_Diffuse.png",
-          "skin_path": "decals/Yuna Itzy/Fennec/yuna_skin.png",
-          "chassis_diffuse_path": "decals/Yuna Itzy/Fennec/Fennec_Chassis.png"
+          "preview_path": "Fennec_Diffuse.png",
+          "skin_path": "yuna_skin.png",
+          "chassis_diffuse_path": "Fennec_Chassis.png"
         },
         {
           "variant_name": "Octane",
@@ -367,9 +367,9 @@
             "yuna_skin.png"
           ],
           "signature": "4976bd41a60ac88c",
-          "preview_path": "decals/Yuna Itzy/Octane/oct_diffuse.png",
-          "skin_path": "decals/Yuna Itzy/Octane/yuna_skin.png",
-          "chassis_diffuse_path": "decals/Yuna Itzy/Octane/HyperBeast_Chassis.png"
+          "preview_path": "oct_diffuse.png",
+          "skin_path": "yuna_skin.png",
+          "chassis_diffuse_path": "HyperBeast_Chassis.png"
         },
         {
           "variant_name": "Roadhog",
@@ -379,8 +379,8 @@
             "Template.json"
           ],
           "signature": "2e9d2fa269627f84",
-          "preview_path": "decals/Yuna Itzy/Roadhog/body_diffuse.png",
-          "skin_path": "decals/Yuna Itzy/Roadhog/body_skin.png"
+          "preview_path": "body_diffuse.png",
+          "skin_path": "body_skin.png"
         },
         {
           "variant_name": "Venom",
@@ -390,8 +390,8 @@
             "Template.json"
           ],
           "signature": "35dc8d2e6d423760",
-          "preview_path": "decals/Yuna Itzy/Venom/body_diffuse.png",
-          "skin_path": "decals/Yuna Itzy/Venom/body_skin.png"
+          "preview_path": "body_diffuse.png",
+          "skin_path": "body_skin.png"
         }
       ]
     }

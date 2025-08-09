@@ -10,7 +10,7 @@
             "Template.json"
           ],
           "signature": "aa1df1d57679f982",
-          "preview_path": "ball_textures/Aespa/Default/diffuse.png"
+          "preview_path": "diffuse.png"
         }
       ]
     },
@@ -24,7 +24,7 @@
             "Template.json"
           ],
           "signature": "0c1c255c07e50f80",
-          "preview_path": "ball_textures/Itzy/Default/diffuse.png"
+          "preview_path": "diffuse.png"
         },
         {
           "variant_name": "Zomahx",
@@ -33,7 +33,7 @@
             "Template.json"
           ],
           "signature": "1f636564a0a55703",
-          "preview_path": "ball_textures/Itzy/Zomahx/diffuse.png"
+          "preview_path": "diffuse.png"
         }
       ]
     },
@@ -47,7 +47,7 @@
             "Template.json"
           ],
           "signature": "6393fba4df8e8db5",
-          "preview_path": "ball_textures/Zomahx/Zomahx/diffuse.png"
+          "preview_path": "diffuse.png"
         }
       ]
     }
