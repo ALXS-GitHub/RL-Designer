@@ -42,6 +42,9 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
         if (variant?.preview_path) {
             return <img src={convertFileSrc(variant.preview_path)} alt={`${decal.name} preview`} className="decal-image" />;
         }
+        if (variant?.one_diffuse_skin_path) {
+            return <img src={convertFileSrc(variant.one_diffuse_skin_path)} alt={`${decal.name} one diffuse skin preview`} className="decal-image" />;
+        }
 
         return <img src={Placeholder} alt="Placeholder image" className="decal-image" />;
     }

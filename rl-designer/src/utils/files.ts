@@ -29,6 +29,10 @@ export const getBaseName = (filePath: string): string => {
     return filePath.replace(/^.*[\\/]/, "");
 };
 
+export const getFileExtension = (filePath: string): string => {
+    return filePath.split('.').pop() || '';
+};
+
 export const decodeFileName = (encodedString: string): string => {
   try {
     return decodeURIComponent(encodedString);
@@ -52,7 +56,7 @@ export const resolvePath = (path: string, defaultMethod: 'convert' | 'copy' = 'c
     return defaultMethod === 'convert' ? convertFileSrc(path) : path;
 };
 
-export const getFileContent = async (path: string): Promise<string | null> => {
+export const getFileContent = async (path: string): Promise<any | null> => {
     if (!path) return null;
 
     try {

@@ -33,11 +33,13 @@ const DecalCardExplorer: React.FC<DecalCardExplorerProps> = ({ decal }) => {
         ));
     }
 
-    // TODO update this to change the image on hover variants
     const renderImage = (variant_name: string) => {
         const variant = decal.variants.find(v => v.variant_name === variant_name);
         if (variant?.preview_path && variant.preview_path.startsWith('http')) {
             return <img src={variant.preview_path} alt={`${decal.name} preview`} className="decal-image" />;
+        }
+        if (variant?.one_diffuse_skin_path && variant.one_diffuse_skin_path.startsWith('http')) {
+            return <img src={variant.one_diffuse_skin_path} alt={`${decal.name} one diffuse skin preview`} className="decal-image" />;
         }
 
         return <img src={Placeholder} alt="Placeholder image" className="decal-image" />;

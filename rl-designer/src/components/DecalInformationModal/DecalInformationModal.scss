@@ -30,7 +30,7 @@
     flex-direction: column;
 }
 
-.decal-information-modal__modal__content {
+.decal-information-modal__modal__container {
     padding: var(--space-8);
     height: 100%;
     overflow-y: auto;
@@ -119,6 +119,7 @@
     font-weight: var(--font-medium);
     line-height: var(--leading-tight);
     transition: var(--transition-colors);
+    cursor: pointer;
     
     &:hover {
         background-color: var(--blue-100);

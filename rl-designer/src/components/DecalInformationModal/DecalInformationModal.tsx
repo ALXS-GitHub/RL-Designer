@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, use } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Modal from "react-modal";
 import { useDecalInformationModalStore } from "@/stores/decalInformationModalStore";
 import Button from "@/components/Button/Button";
 import { JsonRenderer, YamlRenderer } from "@/components/ContentRenderer";
+import { useLocation } from "react-router-dom";
 import { Loading, Error } from '@/components'
+import FileViewerModal from "./FileViewerModal";
+import { FaTimes } from 'react-icons/fa';
 
 import "./DecalInformationModal.scss";
 import { decodeFileName, getBaseName, getFileContent, resolvePath } from "@/utils/files";
@@ -50,6 +53,16 @@ const FileContentSection: React.FC<FileContentSectionProps> = ({ filePath, label
 
 const DecalInformationModal: React.FC = () => {
     const { isOpen, decalVariant, closeModal } = useDecalInformationModalStore();
+    const [selectedFile, setSelectedFile] = useState<string | null>(null);
+    const [fileViewerOpen, setFileViewerOpen] = useState(false);
+    const location = useLocation();
+
+    useEffect(() => {
+        if (isOpen) {
+            closeModal();
+        }
+    }, [location.pathname]);
+    
     if (!decalVariant) return null;
     const variant = decalVariant.decal.variants.find(v => v.variant_name === decalVariant.variant_name);
 
@@ -57,7 +70,23 @@ const DecalInformationModal: React.FC = () => {
         closeModal();
     };
 
-    // TODO : auto close the model if the url path changes
+
+
+    const handleFileClick = (filePath: string) => {
+        setSelectedFile(filePath);
+        setFileViewerOpen(true);
+    };
+
+    const handleFileViewerClose = () => {
+        setFileViewerOpen(false);
+        setSelectedFile(null);
+    };
+
+    const handleBackToDecalInfo = () => {
+        setFileViewerOpen(false);
+        setSelectedFile(null);
+        // Keep the decal info modal open
+    };
 
     const jsonFiles = variant.files.filter(file => file.endsWith(".json"));
     const templateJson = jsonFiles.length > 0 ? jsonFiles[0] : null;
@@ -66,6 +95,14 @@ const DecalInformationModal: React.FC = () => {
     if (!variant) return null;
 
     return (
+        <>
+            <FileViewerModal
+                isOpen={fileViewerOpen}
+                filePath={selectedFile}
+                onClose={handleFileViewerClose}
+                onBack={handleBackToDecalInfo}
+            />
+
             <Modal
                 isOpen={isOpen}
                 onRequestClose={handleClose}
@@ -73,8 +110,10 @@ const DecalInformationModal: React.FC = () => {
                 className="decal-information-modal__modal"
                 overlayClassName="decal-information-modal__overlay"
             >
-                <div className="decal-information-modal__modal__content">
-                <Button className="decal-information-modal__close-button" onClick={handleClose}>X</Button>
+                <div className="decal-information-modal__modal__container">
+                <Button className="decal-information-modal__close-button" onClick={handleClose}>
+                    <FaTimes />
+                </Button>
 
                 <div className="decal-information-modal__modal__title">{decalVariant.decal.name}</div>
                 <div className="decal-information-modal__modal__subtitle">{variant.variant_name}</div>
@@ -83,7 +122,11 @@ const DecalInformationModal: React.FC = () => {
                     <span className="decal-information-modal__modal__section__label">Files:</span>
                     <span className="decal-information-modal__modal__section__files">
                         {variant.files.map((file, index) => (
-                            <span key={index} className="decal-information-modal__modal__section__file">
+                            <span 
+                                key={index} 
+                                className="decal-information-modal__modal__section__file"
+                                onClick={() => handleFileClick(file)}
+                            >
                                 {decodeFileName(getBaseName(file))}
                             </span>
                         ))}
@@ -112,6 +155,7 @@ const DecalInformationModal: React.FC = () => {
 
                 </div>
             </Modal>
+        </>
     );
 };
 
