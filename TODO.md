@@ -6,9 +6,11 @@
 ## Important
 
 
-- [ ] Update docs + Update README
+- [ ] Update README
+- [ ] Add the "Version" constant in the Navbar (under "RL-Designer") (update the script to also update this version constant)
 - [ ] Complete the default_..._skin list in the public/models/textures/skins
 - [ ] Refactor the tauri backend (maybe some function are not at the right place, and more reusable code could be made) (+ change some files from utils to services (especially for the command logic function))
+- [ ] Add default values for colors (for example car color : default (gray like), and presets for blue, red, ...)
 
 - [ ] Use tanstack devtools to debug the queries for the useExplorer. (because now there is no more loading screen when switching between "car decals" and "ball decals"...)
 - [ ] Add a paging system (only display 20 decals per page...). We can load already all the decals in one call, but maybe just for display purposes, limit the number of decals shown on the page.

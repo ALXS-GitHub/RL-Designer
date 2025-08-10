@@ -156,7 +156,7 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
         ];
 
         if (isVariantInExplorer(decal.name, variant)) {
-            items.splice(1, 0, {
+            items.splice(2, 0, {
                 children: (
                     <div className="variant-dropdown update-decal">
                         <FaSync className="icon" />

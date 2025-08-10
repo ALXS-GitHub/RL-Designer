@@ -268,6 +268,16 @@ Now when exporting, don't forget to first select the part of the model you want 
 
 ![](images/2025-07-21-21-36-06.png)
 
+### Using different UV maps
+
+If you want to create a decal using the Universal UV map for example, you will need to use the corresponding UV map. In order to have this UV map available, make sure your model comes from the game files (e.g. extracted as a .psk file).
+
+On the "Data" tab, you can find the UV maps available for your model. Make sure to select the correct UV map before creating your decal.
+
+![](images/2025-08-10-14-38-23.png)
+
+This will allow you to paint using the correct UV map.
+
 ## Issues
 
 Here are the known issues that you might encounter when creating decals, and how to fix them.
