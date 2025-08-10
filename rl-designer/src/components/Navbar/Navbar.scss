@@ -67,10 +67,17 @@
     margin-right: var(--space-2);
   }
 
-  &-text {
+  &-info {
     font-size: var(--text-lg);
     font-weight: var(--font-semibold);
     color: var(--gray-800);
+    display: flex;
+    flex-direction: column;
+    &-version {
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      color: var(--gray-600);
+    }
   }
 }
 
@@ -267,7 +274,7 @@
       margin-right: var(--space-1_5);
     }
     
-    &-text {
+    &-info {
       font-size: var(--text-base);
     }
   }
@@ -275,7 +282,7 @@
 
 @media (max-width: 480px) {
   .navbar__logo {
-    &-text {
+    &-info {
       display: none; // Hide text on very small screens
     }
     

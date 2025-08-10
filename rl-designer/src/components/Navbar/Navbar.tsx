@@ -188,7 +188,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                     <div className="navbar__logo">
                         <Link to="/" className="navbar__logo-link">
                             <img src={Logo} alt="RL Designer" className="navbar__logo-image" />
-                            <span className="navbar__logo-text">RL Designer</span>
+                            <div className="navbar__logo-info">
+                                {/* RL Designer */}
+                                <span className="navbar__logo-info-text">RL Designer</span>
+                                <span className="navbar__logo-info-version">v{__APP_VERSION__}</span>
+                            </div>
                         </Link>
                     </div>
                     <div className="navbar__arrows">

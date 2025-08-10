@@ -8,6 +8,9 @@ export default defineConfig({
     server: {
         port: 9568,
     },
+    define: {
+        __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
+    },
     resolve: {
         alias: {
             "@": "/src",
