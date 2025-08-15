@@ -143,6 +143,10 @@ In order to have the two layers shown at the same time when editing, I recommend
 ![](images/2025-07-19-22-13-06.png)
 ![](images/2025-07-20-11-57-45.png)
 
+If there are some issues with the light not being reflected properly, I recommend turning the Specular IQR level of the material to 0.5 or up to 1.0
+
+![](images/2025-08-15-23-03-24.png)
+
 Please, when you start editing, don't forget to switch to the proper UV map, so you don't edit the background UV map by mistake.
 
 You can then start painting colors with the brush tool any way you want. 

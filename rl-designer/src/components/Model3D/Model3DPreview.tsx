@@ -8,7 +8,6 @@ import type { Model3DProps } from './Model3D';
 
 import './Model3DPreview.scss'
 import type { ModelDataConfig, ModelDataPaths, ModelDataSetup } from '@/types/modelData';
-import useModelSettingsStore from '@/stores/modelSettingsStore';
 
 interface Model3DPreviewProps {
     modelDataPaths: ModelDataPaths;
@@ -34,7 +33,6 @@ const Model3DPreview: React.FC<Model3DPreviewProps> = ({
 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const { colors, material } = useModelSettingsStore();
 
   const handleLoadingComplete = () => {
     setIsLoading(false);

@@ -10,12 +10,13 @@ import type { ElementType } from "@/constants/elements";
 import useSelectedElementStore from "@/stores/selectedElementStore";
 import type { ModelDataConfig, ModelDataPaths, ModelDataSetup } from "@/types/modelData";
 import { existsInPublic } from "@/utils/files";
+import useModelSettingsStore from "@/stores/modelSettingsStore";
 
 import "./Model3DLoader.scss";
 
 interface PreviewLoaderPublicProps {
     decal: string;
-    variant_name: string;
+    model_name: string;
     modelDataConfig?: ModelDataConfig;
     selectedElement: ElementType;
     modelDataPaths: ModelDataPaths;
@@ -24,7 +25,7 @@ interface PreviewLoaderPublicProps {
 
 const PreviewLoaderPublic = ({
     decal,
-    variant_name,
+    model_name,
     modelDataConfig,
     selectedElement,
     modelDataPaths,
@@ -42,7 +43,7 @@ const PreviewLoaderPublic = ({
 
     const getPublicFiles = async () => {
         // Define paths for the model and texture based on the decal and variant
-        let modelP = `/models/meshes/${variant_name}.fbx`;
+        let modelP = `/models/meshes/${model_name}.fbx`;
         if (selectedElement === "ball") {
             modelP = `/models/meshes/Ball.fbx`;
         }
@@ -53,19 +54,19 @@ const PreviewLoaderPublic = ({
             if (modelDataPaths.chassisTexturePath) {
                 setChassisTexturePath(modelDataPaths.chassisTexturePath);
             } else {
-                const chassisExists = await existsInPublic(`/models/textures/chassis/${variant_name}_chassis.png`);
-                setChassisTexturePath(chassisExists ? `/models/textures/chassis/${variant_name}_chassis.png` : null);
+                const chassisExists = await existsInPublic(`/models/textures/chassis/${model_name}_chassis.png`);
+                setChassisTexturePath(chassisExists ? `/models/textures/chassis/${model_name}_chassis.png` : null);
             }
 
-            const defaultSkinExists = await existsInPublic(`/models/textures/skins/default_${variant_name}_skin.png`);
-            setDefaultSkinTexturePath(defaultSkinExists ? `/models/textures/skins/default_${variant_name}_skin.png` : null);
+            const defaultSkinExists = await existsInPublic(`/models/textures/skins/default_${model_name}_skin.png`);
+            setDefaultSkinTexturePath(defaultSkinExists ? `/models/textures/skins/default_${model_name}_skin.png` : null);
 
             const wheelExists = await existsInPublic(`/models/textures/wheels/wheels/Cristiano_wheel.png`);
             setWheelTexturePath(wheelExists ? `/models/textures/wheels/wheels/Cristiano_wheel.png` : null);
             const tireExists = await existsInPublic(`/models/textures/wheels/tires/Cristiano_tire.png`);
             setTireTexturePath(tireExists ? `/models/textures/wheels/tires/Cristiano_tire.png` : null);
-            const curvatureExists = await existsInPublic(`/models/textures/curvature/${variant_name}_curvature.png`);
-            setCurvatureTexturePath(curvatureExists ? `/models/textures/curvature/${variant_name}_curvature.png` : null);
+            const curvatureExists = await existsInPublic(`/models/textures/curvature/${model_name}_curvature.png`);
+            setCurvatureTexturePath(curvatureExists ? `/models/textures/curvature/${model_name}_curvature.png` : null);
         }
     }
 
@@ -76,7 +77,7 @@ const PreviewLoaderPublic = ({
             setIsLoadingPublic(false);
         };
         fetchModelPath();
-    }, [decal, variant_name, selectedElement]);
+    }, [decal, model_name, selectedElement]);
     
     if (isLoadingPublic) {
         return <Loading />;
@@ -90,12 +91,12 @@ const PreviewLoaderPublic = ({
     modelDataPaths.curvatureTexturePath = curvatureTexturePath;
 
     if (!modelPath) {
-        return <Error message={`Model "${variant_name}" not found.`} />;
+        return <Error message={`Model "${model_name}" not found.`} />;
     }
 
     return (
         <Model3DPreview
-            key={variant_name}
+            key={model_name}
             modelDataPaths={modelDataPaths}
             modelDataConfig={modelDataConfig}
             modelDataSetup={modelDataSetup}
@@ -122,12 +123,23 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
     const { selectedElement } = useSelectedElementStore();
     const { decals } = PagesMap[lastPage].useData();
     const [variantList, setVariantList] = useState<string[]>([]);
+    const { universalVariantModel } = useModelSettingsStore();
+    let model_name = variant_name;
 
-    const isValidModel = (variant_name: string) => {
-        if (!variant_name) return false;
+    // * handle special case for "Universal" variant
+    if (variant_name === "Universal") {
+        // If the universal variant model is set, use it
+        if (universalVariantModel) {
+            model_name = universalVariantModel;
+        }
+    }
+
+
+    const isValidModel = (model_name: string) => {
+        if (!model_name) return false;
         if (selectedElement !== "car") return true;
         return Object.values(SUPPORTED_MODELS).includes(
-            variant_name as ModelType
+            model_name as ModelType
         );
     };
 
@@ -159,9 +171,9 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
 
 
 
-    if (!isValidModel(variant_name)) {
+    if (!isValidModel(model_name)) {
         return (
-            <Error message={`Model "${variant_name}" is not supported.`} />
+            <Error message={`Model "${model_name}" is not supported.`} />
         );
     }
 
@@ -214,11 +226,11 @@ const PreviewLoader = forwardRef<any, PreviewLoaderProps>(({
 
     return (
         <div className={`preview-loader ${className}`}
-            key={`${decal}-${variant_name}`}
+            key={`${decal}-${model_name}`}
         >
             <PreviewLoaderPublic
                 decal={decal}
-                variant_name={variant_name}
+                model_name={model_name}
                 modelDataConfig={modelDataConfig}
                 selectedElement={selectedElement}
                 modelDataPaths={tempDataPaths}

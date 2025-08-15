@@ -1,0 +1,11 @@
+{
+    "LightningBolt (Universal)": {
+		"Group": "General/LightningBolt",
+		"BodyID": -1,
+		"SkinID": 11609,
+		"Body": {
+			"1_Diffuse_Skin": "body_diffuse.png",
+			"TrimSheet": "TrimSheet.png"
+		}
+    }
+}

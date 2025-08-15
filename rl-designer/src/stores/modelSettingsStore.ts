@@ -3,18 +3,17 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { ColorType } from '@/constants/colors';
 import { DEFAULT_COLORS } from '@/constants/colors';
+import type { ModelType } from '@/constants/models';
 
 interface ModelSettingsState {
     isRotating: boolean;
     setIsRotating: (isRotating: boolean) => void;
-    // mainTeamColor: string;
-    // setMainTeamColor: (color: string) => void;
-    // carColor: string;
-    // setCarColor: (color: string) => void;
     colors: Record<ColorType, string>;
     setColors: (colorType: ColorType, color: string) => void;
     material: DefaultMaterialType;
     setMaterial: (material: DefaultMaterialType) => void;
+    universalVariantModel: ModelType;
+    setUniversalVariantModel: (model: ModelType) => void;
 }
 
 const useModelSettingsStore = create<ModelSettingsState>()(
@@ -30,7 +29,9 @@ const useModelSettingsStore = create<ModelSettingsState>()(
                 }
             })),
             material: 'default',
-            setMaterial: (material) => set({ material })
+            setMaterial: (material) => set({ material }),
+            universalVariantModel: 'Octane',
+            setUniversalVariantModel: (model) => set({ universalVariantModel: model })
         }),
         {
             name: 'model-settings-store'

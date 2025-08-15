@@ -50,7 +50,7 @@ const getMaterialType = (materialName: string): ModelPartType | null => {
   if (!materialName) return null;
 
   const targetNamesMap: Record<ModelPartType, string[]> = {
-    body: ['body', 'decal', 'default'],
+    body: ['body', 'vehicle', 'decal', 'default'],
     ball: ['ball'],
     chassis: ['chassis'],
     wheel: ['wheel'],

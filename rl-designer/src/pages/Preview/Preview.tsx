@@ -6,12 +6,13 @@ import Button from '@/components/Button/Button';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import ColorPicker from '@/components/ColorPicker/ColorPicker';
 import MaterialPicker from '@/components/MaterialPicker/MaterialPicker'
+import { SUPPORTED_MODELS } from '@/constants/models';
 
 import './Preview.scss';
 
 const Preview: React.FC = () => {
   const { decal, variant_name } = useParams<{ decal: string; variant_name: string }>();
-  const { isRotating, setIsRotating, colors, setColors, material, setMaterial } = useModelSettingsStore();
+  const { isRotating, setIsRotating, colors, setColors, material, setMaterial, universalVariantModel, setUniversalVariantModel } = useModelSettingsStore();
   const [selectedVariantName, setSelectedVariantName] = useState(variant_name);
   const previewLoaderRef = useRef<any>(null);
 
@@ -21,6 +22,15 @@ const Preview: React.FC = () => {
       setSelectedVariantName(newVariant);
     }
   };
+
+  const handleChangeModelUniversal = (dir: -1 | 1) => {
+    const modelList = Object.values(SUPPORTED_MODELS);
+    const currentIndex = modelList.indexOf(universalVariantModel);
+    let newIndex = currentIndex + dir;
+    newIndex = (newIndex + modelList.length) % modelList.length;
+    setUniversalVariantModel(modelList[newIndex]);
+  };
+
   useEffect(() => {
     setSelectedVariantName(variant_name);
   }, [variant_name]);
@@ -29,19 +39,40 @@ const Preview: React.FC = () => {
       <div className="preview__header">
         <h3 className="preview__title">{decal}</h3>
         <div className="preview__variant">
-          <Button
-            className="preview__variant-change"
-            onClick={() => handleChangeVariant(-1)}
-          >
-            <FaArrowLeft />
-          </Button>
-          <span className="preview__variant-name">{selectedVariantName}</span>
-          <Button
-            className="preview__variant-change"
-            onClick={() => handleChangeVariant(1)}
-          >
-            <FaArrowRight />
-          </Button>
+          <div className="preview__variant-variant">
+            <Button
+              className="preview__variant-change"
+              onClick={() => handleChangeVariant(-1)}
+            >
+              <FaArrowLeft />
+            </Button>
+            <span className="preview__variant-name">{selectedVariantName}</span>
+            <Button
+              className="preview__variant-change"
+              onClick={() => handleChangeVariant(1)}
+            >
+              <FaArrowRight />
+            </Button>
+          </div>
+            {variant_name === "Universal" && (
+              <div className="preview__variant-universal">
+                <Button
+                  className="preview__variant-universal-change"
+                  onClick={() => handleChangeModelUniversal(-1)}
+                  size="small"
+                >
+                  <FaArrowLeft />
+                </Button>
+                <span className="preview__variant-universal-name">{universalVariantModel}</span>
+                <Button
+                  className="preview__variant-universal-change"
+                  onClick={() => handleChangeModelUniversal(1)}
+                  size="small"
+                >
+                  <FaArrowRight />
+                </Button>
+              </div>
+            )}
         </div>
       </div>
       <div className="preview__viewport">

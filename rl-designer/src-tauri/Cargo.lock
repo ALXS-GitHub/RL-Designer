@@ -3406,7 +3406,7 @@ dependencies = [
 
 [[package]]
 name = "rl-designer"
-version = "0.8.1"
+version = "0.8.2"
 dependencies = [
  "base64 0.22.1",
  "dotenv",
