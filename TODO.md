@@ -1,17 +1,6 @@
 # TODO
 
-## Main Tasks
-
-
 ## Important
-
-- [X] Integrate the "Universal" Variant (possible to switch between multiple car models) (--> waiting to complete the skin list for full integration)
-- [X] Complete the default_..._skin list in the public/models/textures/skins
-
-- [ ] In the repo decals folder, find a way to have group folders (so the decals are not directly at the root of the decals folder). So organisation will be easier. Just need to update the `create_index` script to know how to properly handle this.
-- [ ] In the `create_index` script, add a log for the changes between the new index and the previous one (e.g. which stickers / variants have been added)
-
-- [ ] Handle dominus special model parts (especially to get the proper curvature parts...)
 
 - [ ] Update README
 - [ ] Refactor the tauri backend (maybe some function are not at the right place, and more reusable code could be made) (+ change some files from utils to services (especially for the command logic function))
@@ -22,9 +11,13 @@
 - [ ] Add a stronger filter (search by name, decals available for specific vehicles, ...)
 
 - [ ] Find a way in game to make universal decals paint finish and color changeable (I suppose it's with the skin...)
+- [ ] Have a script (maybe not in this repo), to upscale some images (especially the universal stickers that were generated in 1024x1024 instead of 2048x2048, so we have a better quality for them). Use any performant upscaling technique or AI method.
 
 ## Medium
 
+- [ ] In the repo decals folder, find a way to have group folders (so the decals are not directly at the root of the decals folder). So organisation will be easier. Just need to update the `create_index` script to know how to properly handle this.
+- [ ] In the `create_index` script, add a log for the changes between the new index and the previous one (e.g. which stickers / variants have been added)
+- [ ] Handle dominus special model parts (especially to get the proper curvature parts...)
 - [ ] Add the update message before updating. (see tauri docs for this)
 - [ ] Try to reduce lag when changing model color in the preview page
 - [ ] Add the secondary color. (Later for decals that need a secondary color)
@@ -106,3 +99,5 @@
 - [X] Include the metadata.yaml file to give extra infos (like the sticker to use for universal decals, ...). This file should be loaded only when needed (no need to preload it with the decal collection).
 - [X] Add the display of files model (in the information modal)
 - [X] Add the "Version" constant in the Navbar (under "RL-Designer") (update the script to also update this version constant)
+- [X] Integrate the "Universal" Variant (possible to switch between multiple car models) (--> waiting to complete the skin list for full integration)
+- [X] Complete the default_..._skin list in the public/models/textures/skins
