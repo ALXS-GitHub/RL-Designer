@@ -199,7 +199,7 @@ def create_single_index(config):
         print(f"  📁 {texture_item['name']}: {total_variants} variants ({variants_with_preview} with preview, {variants_with_skin} with skin, {variants_with_chassis_diffuse} with chassis diffuse, {variants_with_signature} with signature)")
 
         for variant in texture_item['variants']:
-            preview_status = "✅" if variant.get("preview_path") else "☑️" if variant.get("one_diffuse_skin_path") else "❌"
+            preview_status = "✅" if variant.get("preview_path") else "☑️ " if variant.get("one_diffuse_skin_path") else "❌"
             skin_status = "🎨" if variant.get("skin_path") else "⚪"
             chassis_diffuse_status = "🚗" if variant.get("chassis_diffuse_path") else "⚪"
             signature_status = "🔒" if variant.get("signature") else "❌"

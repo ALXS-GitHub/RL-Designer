@@ -7,7 +7,6 @@
 
 
 - [ ] Update README
-- [ ] Add the "Version" constant in the Navbar (under "RL-Designer") (update the script to also update this version constant)
 - [ ] Complete the default_..._skin list in the public/models/textures/skins
 - [ ] Refactor the tauri backend (maybe some function are not at the right place, and more reusable code could be made) (+ change some files from utils to services (especially for the command logic function))
 - [ ] Add default values for colors (for example car color : default (gray like), and presets for blue, red, ...)
@@ -18,6 +17,8 @@
 
 ## Medium
 
+- [ ] Add the update message before updating. (see tauri docs for this)
+- [ ] Try to reduce lag when changing model color in the preview page
 - [ ] Add the secondary color. (Later for decals that need a secondary color)
 - [ ] Fix public files for production app (the model/obj is converted to text/html). For now the check is very specific. We should find a way to check if the file exists in the public folder more generally...
 - [ ] Add wheel texture support
@@ -96,3 +97,4 @@
 - [X] Fix DecalInformationModal 
 - [X] Include the metadata.yaml file to give extra infos (like the sticker to use for universal decals, ...). This file should be loaded only when needed (no need to preload it with the decal collection).
 - [X] Add the display of files model (in the information modal)
+- [X] Add the "Version" constant in the Navbar (under "RL-Designer") (update the script to also update this version constant)

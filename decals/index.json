@@ -210,6 +210,22 @@
       ]
     },
     {
+      "name": "Sandstorm",
+      "variants": [
+        {
+          "variant_name": "Universal",
+          "files": [
+            "body_diffuse.png",
+            "metadata.yaml",
+            "Template.json",
+            "TrimSheet.png"
+          ],
+          "signature": "691ef066a0ce1578",
+          "one_diffuse_skin_path": "body_diffuse.png"
+        }
+      ]
+    },
+    {
       "name": "Staboz",
       "variants": [
         {
