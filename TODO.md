@@ -9,6 +9,7 @@
 - [X] Complete the default_..._skin list in the public/models/textures/skins
 
 - [ ] In the repo decals folder, find a way to have group folders (so the decals are not directly at the root of the decals folder). So organisation will be easier. Just need to update the `create_index` script to know how to properly handle this.
+- [ ] In the `create_index` script, add a log for the changes between the new index and the previous one (e.g. which stickers / variants have been added)
 
 - [ ] Handle dominus special model parts (especially to get the proper curvature parts...)
 

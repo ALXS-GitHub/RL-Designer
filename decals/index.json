@@ -162,6 +162,22 @@
       ]
     },
     {
+      "name": "HeatFire",
+      "variants": [
+        {
+          "variant_name": "Universal",
+          "files": [
+            "body_diffuse.png",
+            "metadata.yaml",
+            "Template.json",
+            "TrimSheet.png"
+          ],
+          "signature": "fbe39c04983395e3",
+          "one_diffuse_skin_path": "body_diffuse.png"
+        }
+      ]
+    },
+    {
       "name": "Jordan",
       "variants": [
         {
@@ -174,6 +190,22 @@
           "signature": "c602716395f156b5",
           "preview_path": "body_diffuse.png",
           "skin_path": "body_skin.png"
+        }
+      ]
+    },
+    {
+      "name": "LightningBolt",
+      "variants": [
+        {
+          "variant_name": "Universal",
+          "files": [
+            "body_diffuse.png",
+            "metadata.yaml",
+            "Template.json",
+            "TrimSheet.png"
+          ],
+          "signature": "67d75ff4a35081e2",
+          "one_diffuse_skin_path": "body_diffuse.png"
         }
       ]
     },
