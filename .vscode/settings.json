@@ -6,5 +6,6 @@
     ],
     "rust-analyzer.linkedProjects": [
         "rl-designer/src-tauri/Cargo.toml",
-    ]
+    ],
+    "python.analysis.typeCheckingMode": "standard"
 }

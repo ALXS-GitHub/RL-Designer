@@ -15,7 +15,7 @@ pub async fn download_decal_variant_logic(
     decal_name: &str,
     variant_name: &str,
 ) -> Result<VariantInfo, String> {
-    let variant_info = get_variant_from_index(element, decal_name, variant_name).await?;
+    let (variant_info, decal_relative_path) = get_variant_from_index(element, decal_name, variant_name).await?;
 
     // Download each file
     let client = reqwest::Client::builder()
@@ -62,7 +62,7 @@ pub async fn download_decal_variant_logic(
 
     // Download each file
     for filename in &variant_info.files {
-        let file_url = get_decal_file_url(element, decal_name, variant_name, filename);
+        let file_url = get_decal_file_url(element, decal_relative_path.as_ref(), decal_name, variant_name, filename);
         let file_path = variant_dir.join(filename);
 
         // Download the file
@@ -122,25 +122,37 @@ pub async fn download_decal_variant_logic(
 // Helper function for downloading decal files (for future use)
 pub fn get_decal_file_url(
     element: ElementType,
+    relative_path: Option<&String>,
     decal_name: &str,
     variant_name: &str,
     filename: &str,
 ) -> String {
-    format!(
-        "{}/{}/{}/{}/{}",
-        GITHUB_DECALS_RAW_URL,
-        element.get_git_folder_name(),
-        urlencoding::encode(decal_name),
-        urlencoding::encode(variant_name),
-        urlencoding::encode(filename)
-    )
+    match relative_path {
+        Some(rel_path) => format!(
+            "{}/{}/{}/{}/{}/{}",
+            GITHUB_DECALS_RAW_URL,
+            element.get_git_folder_name(),
+            urlencoding::encode(&rel_path),
+            urlencoding::encode(decal_name),
+            urlencoding::encode(variant_name),
+            urlencoding::encode(filename)
+        ),
+        None => format!(
+            "{}/{}/{}/{}/{}",
+            GITHUB_DECALS_RAW_URL,
+            element.get_git_folder_name(),
+            urlencoding::encode(decal_name),
+            urlencoding::encode(variant_name),
+            urlencoding::encode(filename)
+        ),
+    }
 }
 
 pub async fn get_variant_from_index(
     element_type: ElementType, 
     decal_name: &str,
     variant_name: &str,
-) -> Result<VariantInfo, String> {
+) -> Result<(VariantInfo, Option<String>), String> {
     // Fetch the decals index
     let decals_index = fetch_decal_index(element_type).await?;
 
@@ -164,5 +176,5 @@ pub async fn get_variant_from_index(
             )
         })?;
 
-    Ok(variant_info)
+    Ok((variant_info, decal_info.relative_path.clone()))
 }

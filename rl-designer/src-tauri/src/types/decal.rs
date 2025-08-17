@@ -9,6 +9,7 @@ pub struct DecalsIndex {
 pub struct DecalInfo {
     pub name: String,
     pub variants: Vec<VariantInfo>,
+    pub relative_path: Option<String>,
 }
 
 #[derive(Debug, Deserialize, Serialize, Clone)]
@@ -27,6 +28,7 @@ impl Default for DecalInfo {
         DecalInfo {
             name: String::new(),
             variants: Vec::new(),
+            relative_path: None,
         }
     }
 }

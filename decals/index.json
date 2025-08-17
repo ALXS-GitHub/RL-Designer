@@ -154,6 +154,7 @@
             "TrimSheet.png"
           ],
           "signature": "e0ffb46d07dcd00f",
+          "relative_path": "General",
           "one_diffuse_skin_path": "body_diffuse.png"
         }
       ]
@@ -170,6 +171,109 @@
             "TrimSheet.png"
           ],
           "signature": "f90f2e3538e535c7",
+          "relative_path": "General",
+          "one_diffuse_skin_path": "body_diffuse.png"
+        }
+      ]
+    },
+    {
+      "name": "HeatFire",
+      "variants": [
+        {
+          "variant_name": "Universal",
+          "files": [
+            "body_diffuse.png",
+            "metadata.yaml",
+            "Template.json",
+            "TrimSheet.png"
+          ],
+          "signature": "9de64550c217d2d4",
+          "relative_path": "General",
+          "one_diffuse_skin_path": "body_diffuse.png"
+        }
+      ]
+    },
+    {
+      "name": "LightningBolt",
+      "variants": [
+        {
+          "variant_name": "Universal",
+          "files": [
+            "body_diffuse.png",
+            "metadata.yaml",
+            "Template.json",
+            "TrimSheet.png"
+          ],
+          "signature": "6394c361dc465be2",
+          "relative_path": "General",
+          "one_diffuse_skin_path": "body_diffuse.png"
+        }
+      ]
+    },
+    {
+      "name": "Magma Flow",
+      "variants": [
+        {
+          "variant_name": "Universal",
+          "files": [
+            "body_diffuse.png",
+            "metadata.yaml",
+            "Template.json",
+            "TrimSheet.png"
+          ],
+          "signature": "eba90d538137e87c",
+          "relative_path": "General",
+          "one_diffuse_skin_path": "body_diffuse.png"
+        }
+      ]
+    },
+    {
+      "name": "Sandstorm",
+      "variants": [
+        {
+          "variant_name": "Universal",
+          "files": [
+            "body_diffuse.png",
+            "metadata.yaml",
+            "Template.json",
+            "TrimSheet.png"
+          ],
+          "signature": "f371c944db293ec5",
+          "relative_path": "General",
+          "one_diffuse_skin_path": "body_diffuse.png"
+        }
+      ]
+    },
+    {
+      "name": "Water Caustics",
+      "variants": [
+        {
+          "variant_name": "Universal",
+          "files": [
+            "body_diffuse.png",
+            "metadata.yaml",
+            "Template.json",
+            "TrimSheet.png"
+          ],
+          "signature": "7b0194583d0cabb6",
+          "relative_path": "General",
+          "one_diffuse_skin_path": "body_diffuse.png"
+        }
+      ]
+    },
+    {
+      "name": "Water Waves",
+      "variants": [
+        {
+          "variant_name": "Universal",
+          "files": [
+            "body_diffuse.png",
+            "metadata.yaml",
+            "Template.json",
+            "TrimSheet.png"
+          ],
+          "signature": "440b4bfe9778e5ca",
+          "relative_path": "General",
           "one_diffuse_skin_path": "body_diffuse.png"
         }
       ]
@@ -194,22 +298,6 @@
       ]
     },
     {
-      "name": "HeatFire",
-      "variants": [
-        {
-          "variant_name": "Universal",
-          "files": [
-            "body_diffuse.png",
-            "metadata.yaml",
-            "Template.json",
-            "TrimSheet.png"
-          ],
-          "signature": "9de64550c217d2d4",
-          "one_diffuse_skin_path": "body_diffuse.png"
-        }
-      ]
-    },
-    {
       "name": "Jordan",
       "variants": [
         {
@@ -222,38 +310,6 @@
           "signature": "c602716395f156b5",
           "preview_path": "body_diffuse.png",
           "skin_path": "body_skin.png"
-        }
-      ]
-    },
-    {
-      "name": "LightningBolt",
-      "variants": [
-        {
-          "variant_name": "Universal",
-          "files": [
-            "body_diffuse.png",
-            "metadata.yaml",
-            "Template.json",
-            "TrimSheet.png"
-          ],
-          "signature": "6394c361dc465be2",
-          "one_diffuse_skin_path": "body_diffuse.png"
-        }
-      ]
-    },
-    {
-      "name": "Magma Flow",
-      "variants": [
-        {
-          "variant_name": "Universal",
-          "files": [
-            "body_diffuse.png",
-            "metadata.yaml",
-            "Template.json",
-            "TrimSheet.png"
-          ],
-          "signature": "eba90d538137e87c",
-          "one_diffuse_skin_path": "body_diffuse.png"
         }
       ]
     },
@@ -285,22 +341,6 @@
           ],
           "signature": "8b0b2e423984e651",
           "chassis_diffuse_path": "chassis_diffuse.png",
-          "one_diffuse_skin_path": "body_diffuse.png"
-        }
-      ]
-    },
-    {
-      "name": "Sandstorm",
-      "variants": [
-        {
-          "variant_name": "Universal",
-          "files": [
-            "body_diffuse.png",
-            "metadata.yaml",
-            "Template.json",
-            "TrimSheet.png"
-          ],
-          "signature": "f371c944db293ec5",
           "one_diffuse_skin_path": "body_diffuse.png"
         }
       ]
@@ -382,38 +422,6 @@
           "preview_path": "oct_diffuse.png",
           "skin_path": "oct_decal.png",
           "chassis_diffuse_path": "HyperBeast_Chassis.png"
-        }
-      ]
-    },
-    {
-      "name": "Water Caustics",
-      "variants": [
-        {
-          "variant_name": "Universal",
-          "files": [
-            "body_diffuse.png",
-            "metadata.yaml",
-            "Template.json",
-            "TrimSheet.png"
-          ],
-          "signature": "7b0194583d0cabb6",
-          "one_diffuse_skin_path": "body_diffuse.png"
-        }
-      ]
-    },
-    {
-      "name": "Water Waves",
-      "variants": [
-        {
-          "variant_name": "Universal",
-          "files": [
-            "body_diffuse.png",
-            "metadata.yaml",
-            "Template.json",
-            "TrimSheet.png"
-          ],
-          "signature": "440b4bfe9778e5ca",
-          "one_diffuse_skin_path": "body_diffuse.png"
         }
       ]
     },

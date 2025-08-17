@@ -51,27 +51,28 @@ pub async fn fetch_decals_from_github_raw(
     // TODO do a function that processes all needed files here
     // Process each decal from the index
     for decal_info in decals_index.decals {
+        let relative_path = decal_info.relative_path.clone();
         let variants: Vec<VariantInfo> = decal_info
             .variants
             .into_iter()
             .map(|v| VariantInfo {
                 variant_name: v.variant_name.clone(),
                 files: v.files.into_iter().map(|f| {
-                    get_decal_file_url(element_type, &decal_info.name, &v.variant_name, &f)
+                    get_decal_file_url(element_type, relative_path.as_ref(), &decal_info.name, &v.variant_name, &f)
                 }).collect(),
                 signature: v.signature,
                 preview_path: v
                     .preview_path
-                    .map(|p| get_decal_file_url(element_type, &decal_info.name, &v.variant_name, &p)),
+                    .map(|p| get_decal_file_url(element_type, relative_path.as_ref(), &decal_info.name, &v.variant_name, &p)),
                 skin_path: v
                     .skin_path
-                    .map(|p| get_decal_file_url(element_type, &decal_info.name, &v.variant_name, &p)),
+                    .map(|p| get_decal_file_url(element_type, relative_path.as_ref(), &decal_info.name, &v.variant_name, &p)),
                 chassis_diffuse_path: v
                     .chassis_diffuse_path
-                    .map(|p| get_decal_file_url(element_type, &decal_info.name, &v.variant_name, &p)),
+                    .map(|p| get_decal_file_url(element_type, relative_path.as_ref(), &decal_info.name, &v.variant_name, &p)),
                 one_diffuse_skin_path: v
                     .one_diffuse_skin_path
-                    .map(|p| get_decal_file_url(element_type, &decal_info.name, &v.variant_name, &p)),
+                    .map(|p| get_decal_file_url(element_type, relative_path.as_ref(), &decal_info.name, &v.variant_name, &p)),
             })
             .collect();
 
@@ -82,6 +83,7 @@ pub async fn fetch_decals_from_github_raw(
         let decal = DecalInfo {
             name: decal_info.name.clone(),
             variants: variants.clone(),
+            relative_path: relative_path,
         };
 
         decals.push(decal);

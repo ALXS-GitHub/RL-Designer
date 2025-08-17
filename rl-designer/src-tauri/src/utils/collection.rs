@@ -71,6 +71,7 @@ pub fn fetch_decal_folders(element: ElementType) -> Result<Vec<DecalInfo>, Strin
             let decal = DecalInfo {
                 name: name.clone(),
                 variants: variants_with_preview,
+                relative_path: None, // No relative path for the collection at the moment
             };
 
             folders.push(decal);

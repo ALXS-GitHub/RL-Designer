@@ -1,4 +1,4 @@
-import xxhash
+import xxhash # type: ignore
 import os
 from pathlib import Path
 from typing import List, Optional
@@ -96,18 +96,3 @@ def calculate_variant_signature(variant_path: Path) -> str:
     # Create final signature by hashing all file signatures
     combined_signature = "|".join(signature_parts)
     return f"{xxhash.xxh3_64(combined_signature.encode('utf-8')).intdigest():016x}"
-
-if __name__ == "__main__":
-    # Example usage
-    folder_path = Path("../decals/decals/Born To Be Itzy/Octane")
-    try:
-        signature = calculate_variant_signature(folder_path)
-        print(f"Variant signature: {signature}")
-    except Exception as e:
-        print(f"Error calculating variant signature: {e}")
-    folder_path = Path("C:\\Users\\alxsm\\AppData\\Roaming\\bakkesmod\\bakkesmod\\data\\acplugin\\DecalTextures\\Born To Be Itzy\\Octane")
-    try:
-        signature = calculate_variant_signature(folder_path)
-        print(f"Variant signature: {signature}")
-    except Exception as e:
-        print(f"Error calculating variant signature: {e}")

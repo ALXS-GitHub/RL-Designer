@@ -2,32 +2,35 @@
 
 ## Important
 
-- [ ] Update README
-- [ ] Refactor the tauri backend (maybe some function are not at the right place, and more reusable code could be made) (+ change some files from utils to services (especially for the command logic function))
-- [ ] Add default values for colors (for example car color : default (gray like), and presets for blue, red, ...)
+- [ ] Refactor the create_index script to be more modular and easier to maintain.
 
-- [ ] Use tanstack devtools to debug the queries for the useExplorer. (because now there is no more loading screen when switching between "car decals" and "ball decals"...)
+- [ ] Update README
+- [ ] Add default values for colors (for example car color : default (gray like), and presets for blue, red, ...)
+- [ ] In the repo decals folder, find a way to have group folders (so the decals are not directly at the root of the decals folder). So organisation will be easier. Just need to update the `create_index` script to know how to properly handle this.
+
 - [ ] Add a paging system (only display 20 decals per page...). We can load already all the decals in one call, but maybe just for display purposes, limit the number of decals shown on the page.
 - [ ] Add a stronger filter (search by name, decals available for specific vehicles, ...)
-
-- [ ] Find a way in game to make universal decals paint finish and color changeable (I suppose it's with the skin or something...) (in fact even decal with full 2B0000 can't change the paint finish...), (maybe should do something with FF0000)
-- [ ] Have a script (maybe not in this repo), to upscale some images (especially the universal stickers that were generated in 1024x1024 instead of 2048x2048, so we have a better quality for them). Use any performant upscaling technique or AI method.
+- [ ] Add something to remember the size and window location on the next startup
+- [ ] On the preview page, in addition to the arrows to change the variant (and model in case of universal), make the name a dropdown menu where we can directly select the variant (/ model)
 
 ## Medium
 
-- [ ] In the repo decals folder, find a way to have group folders (so the decals are not directly at the root of the decals folder). So organisation will be easier. Just need to update the `create_index` script to know how to properly handle this.
+- [ ] Add wheel texture support
+- [ ] Add boost meter texture support
+
+- [ ] Use tanstack devtools to debug the queries for the useExplorer. (because now there is no more loading screen when switching between "car decals" and "ball decals"...)
+- [ ] Refactor the tauri backend (maybe some function are not at the right place, and more reusable code could be made) (+ change some files from utils to services (especially for the command logic function))
+- [ ] Find a way in game to make universal decals paint finish and color changeable (I suppose it's with the skin or something...) (in fact even decal with full 2B0000 can't change the paint finish...), (maybe should do something with FF0000)
 - [ ] In the `create_index` script, add a log for the changes between the new index and the previous one (e.g. which stickers / variants have been added)
 - [ ] Handle dominus special model parts (especially to get the proper curvature parts...)
 - [ ] Add the update message before updating. (see tauri docs for this)
 - [ ] Try to reduce lag when changing model color in the preview page
 - [ ] Add the secondary color. (Later for decals that need a secondary color)
 - [ ] Fix public files for production app (the model/obj is converted to text/html). For now the check is very specific. We should find a way to check if the file exists in the public folder more generally...
-- [ ] Add wheel texture support
   - For both ball and wheel, we should make add those collections / explorer inside the already existing pages, just make a select to choose between the car, ball or wheel textures. We should also manage how they are stored locally and how they are stored in the public repo. + Do they need variants ? I suppose yes, a ball even if the same object can have different textures for a same logo.
 
 ## Low
 
-- [ ] Refactor the create_index script to be more modular and easier to maintain.
 - [ ] fix internal links not working in the HowTo page.
 - [ ] Decal setup verification script (to make sure no issue will happen / and that no recommended fields (such as Group) are missing)
 
