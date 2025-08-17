@@ -143,6 +143,38 @@
       ]
     },
     {
+      "name": "Frozen Crystals",
+      "variants": [
+        {
+          "variant_name": "Universal",
+          "files": [
+            "body_diffuse.png",
+            "metadata.yaml",
+            "Template.json",
+            "TrimSheet.png"
+          ],
+          "signature": "e0ffb46d07dcd00f",
+          "one_diffuse_skin_path": "body_diffuse.png"
+        }
+      ]
+    },
+    {
+      "name": "Galaxy Storm",
+      "variants": [
+        {
+          "variant_name": "Universal",
+          "files": [
+            "body_diffuse.png",
+            "metadata.yaml",
+            "Template.json",
+            "TrimSheet.png"
+          ],
+          "signature": "f90f2e3538e535c7",
+          "one_diffuse_skin_path": "body_diffuse.png"
+        }
+      ]
+    },
+    {
       "name": "Girls Aespa",
       "variants": [
         {
@@ -172,7 +204,7 @@
             "Template.json",
             "TrimSheet.png"
           ],
-          "signature": "fbe39c04983395e3",
+          "signature": "9de64550c217d2d4",
           "one_diffuse_skin_path": "body_diffuse.png"
         }
       ]
@@ -204,7 +236,23 @@
             "Template.json",
             "TrimSheet.png"
           ],
-          "signature": "67d75ff4a35081e2",
+          "signature": "6394c361dc465be2",
+          "one_diffuse_skin_path": "body_diffuse.png"
+        }
+      ]
+    },
+    {
+      "name": "Magma Flow",
+      "variants": [
+        {
+          "variant_name": "Universal",
+          "files": [
+            "body_diffuse.png",
+            "metadata.yaml",
+            "Template.json",
+            "TrimSheet.png"
+          ],
+          "signature": "eba90d538137e87c",
           "one_diffuse_skin_path": "body_diffuse.png"
         }
       ]
@@ -252,7 +300,7 @@
             "Template.json",
             "TrimSheet.png"
           ],
-          "signature": "691ef066a0ce1578",
+          "signature": "f371c944db293ec5",
           "one_diffuse_skin_path": "body_diffuse.png"
         }
       ]
@@ -334,6 +382,38 @@
           "preview_path": "oct_diffuse.png",
           "skin_path": "oct_decal.png",
           "chassis_diffuse_path": "HyperBeast_Chassis.png"
+        }
+      ]
+    },
+    {
+      "name": "Water Caustics",
+      "variants": [
+        {
+          "variant_name": "Universal",
+          "files": [
+            "body_diffuse.png",
+            "metadata.yaml",
+            "Template.json",
+            "TrimSheet.png"
+          ],
+          "signature": "7b0194583d0cabb6",
+          "one_diffuse_skin_path": "body_diffuse.png"
+        }
+      ]
+    },
+    {
+      "name": "Water Waves",
+      "variants": [
+        {
+          "variant_name": "Universal",
+          "files": [
+            "body_diffuse.png",
+            "metadata.yaml",
+            "Template.json",
+            "TrimSheet.png"
+          ],
+          "signature": "440b4bfe9778e5ca",
+          "one_diffuse_skin_path": "body_diffuse.png"
         }
       ]
     },

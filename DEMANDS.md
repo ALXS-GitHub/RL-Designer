@@ -4,6 +4,7 @@
 --- perso ---
 
 - [ ] *ALXS* : hyperbeast decal -> Octane
+- [ ] *ALXS* : redo Fennec Rich Man as universal UV
 
 ## To Verify
 

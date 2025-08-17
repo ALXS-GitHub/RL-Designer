@@ -10,7 +10,7 @@
 - [ ] Add a paging system (only display 20 decals per page...). We can load already all the decals in one call, but maybe just for display purposes, limit the number of decals shown on the page.
 - [ ] Add a stronger filter (search by name, decals available for specific vehicles, ...)
 
-- [ ] Find a way in game to make universal decals paint finish and color changeable (I suppose it's with the skin...)
+- [ ] Find a way in game to make universal decals paint finish and color changeable (I suppose it's with the skin or something...) (in fact even decal with full 2B0000 can't change the paint finish...), (maybe should do something with FF0000)
 - [ ] Have a script (maybe not in this repo), to upscale some images (especially the universal stickers that were generated in 1024x1024 instead of 2048x2048, so we have a better quality for them). Use any performant upscaling technique or AI method.
 
 ## Medium
