@@ -81,7 +81,6 @@ def create_json(config):
                     "files": files,
                     "signature": variant_signature,
                 }
-                if relative_path: variant_data["relative_path"] = relative_path
 
                 # Track missing preview paths
                 if not assets_paths.preview_path and not assets_paths.one_diffuse_skin_path:
@@ -111,10 +110,12 @@ def create_json(config):
         
         # Only add texture if it has variants
         if variants:
-            index_data[texture_name].append({
+            decal_data = {
                 "name": texture_folder.name,
                 "variants": variants
-            })
+            }
+            if relative_path: decal_data["relative_path"] = relative_path
+            index_data[texture_name].append(decal_data)
             stats['total_decals'] += 1
     
     # Write the index file

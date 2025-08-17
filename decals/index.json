@@ -154,10 +154,10 @@
             "TrimSheet.png"
           ],
           "signature": "e0ffb46d07dcd00f",
-          "relative_path": "General",
           "one_diffuse_skin_path": "body_diffuse.png"
         }
-      ]
+      ],
+      "relative_path": "General"
     },
     {
       "name": "Galaxy Storm",
@@ -171,10 +171,10 @@
             "TrimSheet.png"
           ],
           "signature": "f90f2e3538e535c7",
-          "relative_path": "General",
           "one_diffuse_skin_path": "body_diffuse.png"
         }
-      ]
+      ],
+      "relative_path": "General"
     },
     {
       "name": "HeatFire",
@@ -188,10 +188,10 @@
             "TrimSheet.png"
           ],
           "signature": "9de64550c217d2d4",
-          "relative_path": "General",
           "one_diffuse_skin_path": "body_diffuse.png"
         }
-      ]
+      ],
+      "relative_path": "General"
     },
     {
       "name": "LightningBolt",
@@ -205,10 +205,10 @@
             "TrimSheet.png"
           ],
           "signature": "6394c361dc465be2",
-          "relative_path": "General",
           "one_diffuse_skin_path": "body_diffuse.png"
         }
-      ]
+      ],
+      "relative_path": "General"
     },
     {
       "name": "Magma Flow",
@@ -222,10 +222,10 @@
             "TrimSheet.png"
           ],
           "signature": "eba90d538137e87c",
-          "relative_path": "General",
           "one_diffuse_skin_path": "body_diffuse.png"
         }
-      ]
+      ],
+      "relative_path": "General"
     },
     {
       "name": "Sandstorm",
@@ -239,10 +239,10 @@
             "TrimSheet.png"
           ],
           "signature": "f371c944db293ec5",
-          "relative_path": "General",
           "one_diffuse_skin_path": "body_diffuse.png"
         }
-      ]
+      ],
+      "relative_path": "General"
     },
     {
       "name": "Water Caustics",
@@ -256,10 +256,10 @@
             "TrimSheet.png"
           ],
           "signature": "7b0194583d0cabb6",
-          "relative_path": "General",
           "one_diffuse_skin_path": "body_diffuse.png"
         }
-      ]
+      ],
+      "relative_path": "General"
     },
     {
       "name": "Water Waves",
@@ -273,10 +273,10 @@
             "TrimSheet.png"
           ],
           "signature": "440b4bfe9778e5ca",
-          "relative_path": "General",
           "one_diffuse_skin_path": "body_diffuse.png"
         }
-      ]
+      ],
+      "relative_path": "General"
     },
     {
       "name": "Girls Aespa",
