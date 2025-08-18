@@ -2,7 +2,7 @@
     "RLCS": {
         "Group": "",
         "Params": {
-            "Diffuse": "RLCS_Diffuse.png"
+            "Diffuse": "diffuse.png"
         }
     }
 }

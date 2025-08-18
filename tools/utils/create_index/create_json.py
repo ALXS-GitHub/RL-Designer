@@ -17,16 +17,16 @@ def create_json(config):
     
     texture_dir = Path(config["dir"])
     output_file = config["output"]
-    texture_name = config["name"]
+    display_name = config["display_name"]
     
     if not texture_dir.exists():
-        print(f"⚠️  {texture_dir} directory not found! Skipping {texture_name}...")
+        print(f"⚠️  {texture_dir} directory not found! Skipping {display_name}...")
         return None
-    
-    print(f"\n🔄 Processing {texture_name}...")
-    
+
+    print(f"\n🔄 Processing {display_name}...")
+
     index_data = {
-        texture_name: []
+        "decals": []
     }
     
     stats = {
@@ -67,7 +67,7 @@ def create_json(config):
             # Only add variant if it has files
             if files:
                 # Get preview path and skin path for this specific variant
-                assets_paths = get_assets_paths(texture_folder, variant_name, files)
+                assets_paths = get_assets_paths(config, texture_folder, variant_name, files)
 
                 # Calculate variant signature
                 try:
@@ -115,7 +115,7 @@ def create_json(config):
                 "variants": variants
             }
             if relative_path: decal_data["relative_path"] = relative_path
-            index_data[texture_name].append(decal_data)
+            index_data["decals"].append(decal_data)
             stats['total_decals'] += 1
     
     # Write the index file
@@ -123,10 +123,10 @@ def create_json(config):
         json.dump(index_data, f, indent=2, ensure_ascii=False)
     
     print(f"✅ Index created: {output_file}")
-    print(f"📊 Found {len(index_data[texture_name])} {texture_name} with {sum(len(d['variants']) for d in index_data[texture_name])} total variants")
-    
-    # Print summary for this index    
-    for texture_item in index_data[texture_name]:
+    print(f"📊 Found {len(index_data['decals'])} decals with {sum(len(d['variants']) for d in index_data['decals'])} total variants")
+
+    # Print summary for this index
+    for texture_item in index_data['decals']:
         variants_with_preview = sum(1 for v in texture_item['variants'] if v.get('preview_path')) + sum(1 for v in texture_item['variants'] if v.get('one_diffuse_skin_path'))
         variants_with_skin = sum(1 for v in texture_item['variants'] if v.get('skin_path'))
         variants_with_chassis_diffuse = sum(1 for v in texture_item['variants'] if v.get('chassis_diffuse_path'))

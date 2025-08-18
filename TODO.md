@@ -2,11 +2,12 @@
 
 ## Important
 
-- [ ] Refactor the create_index script to be more modular and easier to maintain.
+- [ ] Add wheel texture support
+- [ ] Add boost meter texture support
 
 - [ ] Update README
+
 - [ ] Add default values for colors (for example car color : default (gray like), and presets for blue, red, ...)
-- [ ] In the repo decals folder, find a way to have group folders (so the decals are not directly at the root of the decals folder). So organisation will be easier. Just need to update the `create_index` script to know how to properly handle this.
 
 - [ ] Add a paging system (only display 20 decals per page...). We can load already all the decals in one call, but maybe just for display purposes, limit the number of decals shown on the page.
 - [ ] Add a stronger filter (search by name, decals available for specific vehicles, ...)
@@ -14,9 +15,6 @@
 - [ ] On the preview page, in addition to the arrows to change the variant (and model in case of universal), make the name a dropdown menu where we can directly select the variant (/ model)
 
 ## Medium
-
-- [ ] Add wheel texture support
-- [ ] Add boost meter texture support
 
 - [ ] Use tanstack devtools to debug the queries for the useExplorer. (because now there is no more loading screen when switching between "car decals" and "ball decals"...)
 - [ ] Refactor the tauri backend (maybe some function are not at the right place, and more reusable code could be made) (+ change some files from utils to services (especially for the command logic function))
@@ -104,3 +102,5 @@
 - [X] Add the "Version" constant in the Navbar (under "RL-Designer") (update the script to also update this version constant)
 - [X] Integrate the "Universal" Variant (possible to switch between multiple car models) (--> waiting to complete the skin list for full integration)
 - [X] Complete the default_..._skin list in the public/models/textures/skins
+- [X] Refactor the create_index script to be more modular and easier to maintain.
+- [X] In the repo decals folder, find a way to have group folders (so the decals are not directly at the root of the decals folder). So organisation will be easier. Just need to update the `create_index` script to know how to properly handle this.

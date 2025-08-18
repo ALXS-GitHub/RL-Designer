@@ -3,7 +3,24 @@ import json
 from models.create_index.assets import AssetsPaths
 from typing import List
 
-def get_assets_paths(texture_folder: Path, variant_name: str, files: List[str]) -> AssetsPaths:
+def get_file_from_pattern(json_object, pattern: str | None) -> str | None:
+    """
+    Extracts a file path from a JSON object based on a given pattern, by recursively splitting the pattern on "."
+    """
+    if pattern is None:
+        return None
+
+    keys = pattern.split(".")
+    current = json_object
+    for key in keys:
+        if isinstance(current, dict) and key in current:
+            current = current[key]
+        else:
+            return None
+    return current if isinstance(current, str) else None
+
+
+def get_assets_paths(config, texture_folder: Path, variant_name: str, files: List[str]) -> AssetsPaths:
     """
     Extract preview path and skin path from a variant by reading JSON files
     and looking for Body.Diffuse field (or Ball.Diffuse, Wheel.Diffuse for other types)
@@ -30,60 +47,25 @@ def get_assets_paths(texture_folder: Path, variant_name: str, files: List[str]) 
         with open(json_path, 'r', encoding='utf-8') as f:
             json_data = json.load(f)
         
-        # Look for different diffuse and skin patterns based on texture type
-        diffuse_patterns = ["Body.Diffuse", "Params.Diffuse", "Wheel.Diffuse"]
-        skin_patterns = ["Body.Skin", "Params.Skin", "Wheel.Skin"]
-        chassis_diffuse_patterns = ["Chassis.Diffuse"]
-        one_diffuse_skin_patterns = ["Body.1_Diffuse_Skin", "Params.1_Diffuse_Skin", "Wheel.1_Diffuse_Skin"]
-
         assets_paths = AssetsPaths()
         
-        # Look for any diffuse and skin field in any top-level key
-        for key, value in json_data.items():
+        for value in json_data.values():
             if isinstance(value, dict):
-                for i, diffuse_pattern in enumerate(diffuse_patterns):
-                    skin_pattern = skin_patterns[i]  # Corresponding skin pattern
-                    
-                    if "." in diffuse_pattern:
-                        # Nested pattern like "Body.Diffuse" and "Body.Skin"
-                        parent_key, child_key = diffuse_pattern.split(".", 1)
-                        _, skin_child_key = skin_pattern.split(".", 1)
-                        _, one_diffuse_skin_child_key = one_diffuse_skin_patterns[i].split(".", 1)
+                json_data = value
+                break
 
-                        if parent_key in value and isinstance(value[parent_key], dict):
-                            # Check for diffuse
-                            if child_key in value[parent_key]:
-                                diffuse_filename = value[parent_key][child_key]
-                                if diffuse_filename in files:
-                                    assets_paths.preview_path = f"{diffuse_filename}"
-
-                            # Check for skin in the same parent
-                            if skin_child_key in value[parent_key]:
-                                skin_filename = value[parent_key][skin_child_key]
-                                if skin_filename in files:
-                                    assets_paths.skin_path = f"{skin_filename}"
-
-                            # Check for 1_Diffuse_Skin in the same parent
-                            if one_diffuse_skin_child_key in value[parent_key]:
-                                one_diffuse_skin_filename = value[parent_key][one_diffuse_skin_child_key]
-                                if one_diffuse_skin_filename in files:
-                                    assets_paths.one_diffuse_skin_path = f"{one_diffuse_skin_filename}"
-
-                    # If we found a preview path, we can break (we found the right pattern)
-                    if assets_paths.preview_path:
-                        break
-                
-                for i, chassis_diffuse_pattern in enumerate(chassis_diffuse_patterns):
-                    if "." in chassis_diffuse_pattern:
-                        # Nested pattern like "Chassis.Diffuse"
-                        parent_key, child_key = chassis_diffuse_pattern.split(".", 1)
-                        
-                        if parent_key in value and isinstance(value[parent_key], dict):
-                            # Check for chassis diffuse
-                            if child_key in value[parent_key]:
-                                chassis_diffuse_filename = value[parent_key][child_key]
-                                if chassis_diffuse_filename in files:
-                                    assets_paths.chassis_diffuse_path = f"{chassis_diffuse_filename}"
+        for pattern_key, pattern_value in config['patterns'].items():
+            
+            file_path = get_file_from_pattern(json_data, pattern_value)
+            if file_path and file_path in files:
+                if pattern_key == "diffuse_pattern":
+                    assets_paths.preview_path = file_path
+                elif pattern_key == "skin_pattern":
+                    assets_paths.skin_path = file_path
+                elif pattern_key == "chassis_diffuse_pattern":
+                    assets_paths.chassis_diffuse_path = file_path
+                elif pattern_key == "one_diffuse_skin_pattern":
+                    assets_paths.one_diffuse_skin_path = file_path
 
         return assets_paths
 

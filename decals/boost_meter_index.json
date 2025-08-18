@@ -1,0 +1,18 @@
+{
+  "decals": [
+    {
+      "name": "Sakura",
+      "variants": [
+        {
+          "variant_name": "Sakura",
+          "files": [
+            "fill.png",
+            "Texture.json"
+          ],
+          "signature": "22fa50f8189db0c9",
+          "preview_path": "fill.png"
+        }
+      ]
+    }
+  ]
+}
