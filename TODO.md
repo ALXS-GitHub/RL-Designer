@@ -20,6 +20,8 @@
 
 - [ ] Make a better styling for the settings sidebar + add more options + retractable.
 
+- [ ] Make sure that the remove button actually remove properly the decal folder when no variants are in (but the .decal.yaml is still there and maybe blocking the deletion of the parent folder...)
+
 ## Medium
 
 - [ ] Use tanstack devtools to debug the queries for the useExplorer. (because now there is no more loading screen when switching between "car decals" and "ball decals"...)

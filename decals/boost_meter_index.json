@@ -1,6 +1,21 @@
 {
   "decals": [
     {
+      "name": "Flames",
+      "variants": [
+        {
+          "variant_name": "Flames",
+          "files": [
+            "fill.png",
+            "Texture.json",
+            "transparent.png"
+          ],
+          "signature": "a2e940a650bf69fa",
+          "preview_path": "fill.png"
+        }
+      ]
+    },
+    {
       "name": "Sakura",
       "variants": [
         {

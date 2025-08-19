@@ -1,0 +1,9 @@
+{
+	"Flames": {
+        "Group": "General/Flames",
+        "Background": "",
+        "Fill": "fill.png",
+        "Tint": "transparent.png",
+        "Glow": ""
+    }
+}
