@@ -4,7 +4,6 @@ import { useQuery } from '@tanstack/react-query';
 import { getDecalFolders } from '@/services/collection';
 import type { DecalTextures } from '@/types';
 import { removeDecalVariant as removeDecalVariantService } from '@/services';
-import type { ElementType } from '@/constants/elements';
 import { ElementsMap } from '@/constants/elementsMap';
 import useSelectedElementStore from '@/stores/selectedElementStore';
 
@@ -58,7 +57,7 @@ export const useCollectionActions = (): UseCollectionActionsReturn => {
     const removeDecalVariant = async (decalName: string, variantName: string) => {
         return executeAsync({
             operation: async () => {
-                const result = await removeDecalVariantService({ elementType: selectedElement, decalName, variantName });
+                const result = await removeDecalVariantService({ element: selectedElement, decalName, variantName });
                 if (!result.success) throw new Error(result.error || 'Failed to remove decal variant');
                 removeVariant(decalName, variantName);
             },

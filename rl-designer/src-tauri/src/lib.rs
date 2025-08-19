@@ -27,14 +27,10 @@ pub fn run() {
         })
         .plugin(tauri_plugin_updater::Builder::new().build())
         .invoke_handler(tauri::generate_handler![
-            crate::commands::collection::get_car_decal_texture_folder,
-            crate::commands::collection::get_ball_decal_texture_folder,
-            crate::commands::collection::remove_car_decal_variant,
-            crate::commands::collection::remove_ball_decal_variant,
-            crate::commands::explorer::get_car_decals_from_github,
-            crate::commands::explorer::get_ball_decals_from_github,
-            crate::commands::download::download_car_decal_variant,
-            crate::commands::download::download_ball_decal_variant,
+            crate::commands::explorer::get_element_decals_from_github,
+            crate::commands::collection::get_element_decal_texture_folder,
+            crate::commands::collection::remove_element_decal_variant,
+            crate::commands::download::download_element_decal_variant,
             crate::commands::online_ball_patch::install_ball_patch,
         ])
         .run(tauri::generate_context!())

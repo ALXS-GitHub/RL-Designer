@@ -1,7 +1,7 @@
 use crate::config::get_install_path;
 use crate::types::decal::{DecalInfo, VariantInfo};
 use crate::types::elements::ElementType;
-use crate::utils::files::{read_files_from_folder, read_folders_from_folder};
+use crate::utils::files::{read_files_from_folder, read_folders_from_folder, get_file_from_pattern};
 use crate::utils::hash::calculate_folder_signature;
 use serde_json::Value;
 use std::fs;
@@ -122,72 +122,32 @@ pub fn read_preview_files_from_variant(
 
             // Extract body diffuse from any top-level key
             if let Some(obj) = json_value.as_object() {
-                for (_, value) in obj {
-                    if let Some(body) = value.get(element.get_body_diffuse().body.as_str()) {
-                        let diffuse_path = body
-                            .get(element.get_body_diffuse().diffuse.as_str())
-                            .and_then(|d| d.as_str())
-                            .map(|s| variant_path.join(s).to_string_lossy().to_string());
-                        let skin_path = body
-                            .get(element.get_body_diffuse().skin.as_str())
-                            .and_then(|s| s.as_str())
-                            .map(|s| variant_path.join(s).to_string_lossy().to_string());
-                        let one_diffuse_skin_path = body
-                            .get(element.get_body_diffuse().one_diffuse_skin.as_str())
-                            .and_then(|s| s.as_str())
-                            .map(|s| variant_path.join(s).to_string_lossy().to_string());
+                for (_, value) in obj { // TODO better way to find the first map instead of looping in all the json
 
-                        // Check if diffuse_path exists, if not set to None
-                        let diffuse_path = diffuse_path.and_then(|path| {
-                            let path_obj = std::path::Path::new(&path);
-                            if path_obj.exists() {
-                                Some(path)
-                            } else {
-                                None
-                            }
-                        });
-                        preview_files.preview_path = diffuse_path;
-
-                        // Check if skin_path exists, if not set to None
-                        let skin_path = skin_path.and_then(|path| {
-                            let path_obj = std::path::Path::new(&path);
-                            if path_obj.exists() {
-                                Some(path)
-                            } else {
-                                None
-                            }
-                        });
-                        preview_files.skin_path = skin_path;
-
-                        // Check if one_diffuse_skin_path exists, if not set to None
-                        let one_diffuse_skin_path = one_diffuse_skin_path.and_then(|path| {
-                            let path_obj = std::path::Path::new(&path);
-                            if path_obj.exists() {
-                                Some(path)
-                            } else {
-                                None
-                            }
-                        });
-                        preview_files.one_diffuse_skin_path = one_diffuse_skin_path;
-
+                    // check value is a map, else continue
+                    if !value.is_object() {
+                        continue;
                     }
-                    if let Some(chassis) = value.get(element.get_chassis_diffuse().chassis.as_str())
-                    {
-                        let chassis_diffuse_path = chassis
-                            .get(element.get_chassis_diffuse().diffuse.as_str())
-                            .and_then(|d| d.as_str())
-                            .map(|s| variant_path.join(s).to_string_lossy().to_string());
 
-                        // Check if chassis_diffuse_path exists, if not set to None
-                        let chassis_diffuse_path = chassis_diffuse_path.and_then(|path| {
-                            let path_obj = std::path::Path::new(&path);
-                            if path_obj.exists() {
-                                Some(path)
-                            } else {
-                                None
+                    let pattern = element.get_pattern();
+                    for (pattern_key, pattern_value) in pattern.iterate() {
+                        if let Some(file) = get_file_from_pattern(value.as_object().unwrap(), pattern_value) {
+                            match pattern_key.as_str() {
+                                "preview_path" => {
+                                    preview_files.preview_path = Some(variant_path.join(file).to_string_lossy().to_string());
+                                }
+                                "skin_path" => {
+                                    preview_files.skin_path = Some(variant_path.join(file).to_string_lossy().to_string());
+                                }
+                                "chassis_diffuse_path" => {
+                                    preview_files.chassis_diffuse_path = Some(variant_path.join(file).to_string_lossy().to_string());
+                                }
+                                "one_diffuse_skin_path" => {
+                                    preview_files.one_diffuse_skin_path = Some(variant_path.join(file).to_string_lossy().to_string());
+                                }
+                                _ => { /* Ignore other patterns */ }
                             }
-                        });
-                        preview_files.chassis_diffuse_path = chassis_diffuse_path;
+                        }
                     }
                 }
                 return Ok(preview_files);

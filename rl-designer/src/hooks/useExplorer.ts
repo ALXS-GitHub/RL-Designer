@@ -28,7 +28,6 @@ export const useExplorerData = (): UseExplorerDataReturn => {
             const result = await getDecalsFromGitHub(selectedElement);
             if (!result.success) throw new Error(result.error || 'Failed to fetch decals');
             setDecals(result.decals);
-            console.log("results", result);
             return result.decals;
         }, 
         errorMessage: `Failed to fetch explorer decals for ${selectedElement}`,
@@ -66,7 +65,7 @@ export const useExplorerActions = (): UseExplorerActionsReturn => {
     const downloadDecalVariant = async (decalName: string, variantName: string) => {
         return executeAsync({
             operation: async () => {
-                const result = await downloadDecalVariantService({ elementType: selectedElement, decalName, variantName });
+                const result = await downloadDecalVariantService({ element: selectedElement, decalName, variantName });
                 if (!result.success || !result.variant_info) throw new Error(result.error || 'Failed to download decal variant');
                 updateOrAddVariant(decalName, result.variant_info);
                 return result.message;

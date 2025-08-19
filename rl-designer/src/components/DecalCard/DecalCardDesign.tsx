@@ -6,6 +6,8 @@ import type { DropdownItem } from '../DropdownMenu/Dropdown';
 import PreviewLoader from '@/components/Model3D/Model3DLoader';
 import { FaEllipsisH } from 'react-icons/fa';
 import useModelSettingsStore from '@/stores/modelSettingsStore';
+import useSelectedElementStore from '@/stores/selectedElementStore'
+import { ElementsMap } from '@/constants/elementsMap'
 
 
 import './DecalCard.scss';
@@ -35,6 +37,9 @@ const DecalCard = ({
     const [lastHoveredVariant, setLastHoveredVariant] = useState<string>(decal.variants[0].variant_name);
     const [isHovering, setIsHovering] = useState(false);
     const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const { selectedElement } = useSelectedElementStore();
+
+    const hasModel3D = ElementsMap[selectedElement].hasModel3D;
 
     const stopPropagation = (e: React.MouseEvent) => {
         e.stopPropagation(); // Prevent the click from bubbling up
@@ -83,7 +88,7 @@ const DecalCard = ({
                 onMouseLeave={handleCardHoverEnd}
             >
                 <div className="decal-card__preview">
-                    {isHovering ? (
+                    {isHovering && hasModel3D ? (
                         <PreviewLoader 
                             key={lastHoveredVariant}
                             decal={decal.name} 

@@ -9,7 +9,8 @@ pub struct FetchResult {
     error: Option<String>,
 }
 
-fn get_decal_texture_element_logic(element: ElementType) -> FetchResult {
+#[tauri::command]
+pub fn get_element_decal_texture_folder(element: ElementType) -> FetchResult {
     match fetch_decal_folders(element) {
         Ok(decals) => FetchResult {
             success: true,
@@ -24,28 +25,19 @@ fn get_decal_texture_element_logic(element: ElementType) -> FetchResult {
     }
 }
 
-#[tauri::command]
-pub fn get_car_decal_texture_folder() -> FetchResult {
-    get_decal_texture_element_logic(ElementType::Car)
-}
-
-#[tauri::command]
-pub fn get_ball_decal_texture_folder() -> FetchResult {
-    get_decal_texture_element_logic(ElementType::Ball)
-}
-
 #[derive(Debug, serde::Serialize)]
 pub struct RemoveResult {
     success: bool,
     error: Option<String>,
 }
 
-fn remove_decal_variant_element_logic(
+#[tauri::command]
+pub fn remove_element_decal_variant(
     element: ElementType,
-    decal_name: &str,
-    variant_name: &str,
+    decal_name: String,
+    variant_name: String,
 ) -> RemoveResult {
-    match remove_decal_variant_logic(element, decal_name, variant_name) {
+    match remove_decal_variant_logic(element, &decal_name, &variant_name) {
         Ok(_) => RemoveResult {
             success: true,
             error: None,
@@ -55,14 +47,4 @@ fn remove_decal_variant_element_logic(
             error: Some(error),
         },
     }
-}
-
-#[tauri::command]
-pub fn remove_car_decal_variant(decal_name: String, variant_name: String) -> RemoveResult {
-    remove_decal_variant_element_logic(ElementType::Car, &decal_name, &variant_name)
-}
-
-#[tauri::command]
-pub fn remove_ball_decal_variant(decal_name: String, variant_name: String) -> RemoveResult {
-    remove_decal_variant_element_logic(ElementType::Ball, &decal_name, &variant_name)
 }

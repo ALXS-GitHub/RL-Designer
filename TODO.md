@@ -2,6 +2,8 @@
 
 ## Important
 
+- [ ] Handle boost meter support in the tauri backend and in frontent. Take this opportunity to refactor a bit the tauri backend -> With patterns instead of separated Json body / chassis types. Unified commands (provide the element type in the query) instead of separate by element, and others ...
+
 - [ ] Add wheel texture support
 - [ ] Add boost meter texture support
 
@@ -9,10 +11,14 @@
 
 - [ ] Add default values for colors (for example car color : default (gray like), and presets for blue, red, ...)
 
+- [ ] When downloading a new decal, make sure that the collection is sorted alphabetically + sort alphabetically by default.
+- [ ] Add an option to sort by `something` (any ideas for sorting)
 - [ ] Add a paging system (only display 20 decals per page...). We can load already all the decals in one call, but maybe just for display purposes, limit the number of decals shown on the page.
 - [ ] Add a stronger filter (search by name, decals available for specific vehicles, ...)
 - [ ] Add something to remember the size and window location on the next startup
 - [ ] On the preview page, in addition to the arrows to change the variant (and model in case of universal), make the name a dropdown menu where we can directly select the variant (/ model)
+
+- [ ] Make a better styling for the settings sidebar + add more options + retractable.
 
 ## Medium
 

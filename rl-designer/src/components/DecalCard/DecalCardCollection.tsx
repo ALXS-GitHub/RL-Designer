@@ -9,6 +9,8 @@ import DecalCardDesign from "./DecalCardDesign"
 import { FaEye, FaTrash, FaSync, FaInfoCircle } from 'react-icons/fa';
 import { useConfirmationDialogStore } from '@/stores/confirmationDialogStore';
 import { useDecalInformationModalStore } from '@/stores/decalInformationModalStore';
+import useSelectedElementStore from '@/stores/selectedElementStore';
+import { ElementsMap } from '@/constants/elementsMap';
 
 interface DecalCardCollectionProps {
   decal: DecalTextures;
@@ -20,6 +22,8 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
     const { decals: explorerDecals, downloadDecalVariant } = useExplorerActions();
     const { openConfirmationDialog } = useConfirmationDialogStore();
     const { openModal: openDecalInformationModal } = useDecalInformationModalStore();
+    const { selectedElement } = useSelectedElementStore();
+    const hasModel3D = ElementsMap[selectedElement].hasModel3D;
 
     const navigate = useNavigate();
 
@@ -50,8 +54,8 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
     }
 
     const generateGlobalDropdownItems = (lastHoveredVariant?: string) => {
-        const items = [
-            {
+        const items = [];
+        items.push({
                 children: (
                     <div className="global-dropdown information-decal">
                         <FaInfoCircle className="icon" />
@@ -61,8 +65,9 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
                 onClick: () => {
                     openDecalInformationModal({decal, variant_name: lastHoveredVariant});
                 },
-            },
-            {
+            })
+        if (hasModel3D) {
+            items.push({
                 children: (
                     <div className="global-dropdown preview-decal">
                         <FaEye className="icon" />
@@ -72,58 +77,59 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
                 onClick: () => {
                     navigate(`/preview/${decal.name}/${lastHoveredVariant || decal.variants[0].variant_name}`);
                 },
+            })
+        }
+        items.push({
+            children: (
+                <div className="global-dropdown update-decal">
+                    <FaSync className="icon" />
+                    Update All
+                </div>
+            ),
+            onClick: () => {
+                for (const variant of decal.variants) {
+                    downloadDecalVariant(decal.name, variant.variant_name);
+                }
             },
-            {
-                children: (
-                    <div className="global-dropdown update-decal">
-                        <FaSync className="icon" />
-                        Update All
-                    </div>
-                ),
-                onClick: () => {
-                    for (const variant of decal.variants) {
-                        downloadDecalVariant(decal.name, variant.variant_name);
-                    }
-                },
+        })
+        items.push({
+            children: (
+                <div className="global-dropdown remove-decal">
+                    <FaTrash className="icon" />
+                    Remove All
+                </div>
+            ),
+            onClick: () => {
+                // Logic to remove the decal
+                openConfirmationDialog(
+                    `Are you sure you want to remove all variants for decal ${decal.name}?`,
+                    () => {
+                        for (const variant of decal.variants) {
+                            removeDecalVariant(decal.name, variant.variant_name);
+                        }
+                    },
+                    () => {}
+                );
             },
-            {
-                children: (
-                    <div className="global-dropdown remove-decal">
-                        <FaTrash className="icon" />
-                        Remove All
-                    </div>
-                ),
-                onClick: () => {
-                    // Logic to remove the decal
-                    openConfirmationDialog(
-                        `Are you sure you want to remove all variants for decal ${decal.name}?`,
-                        () => {
-                            for (const variant of decal.variants) {
-                                removeDecalVariant(decal.name, variant.variant_name);
-                            }
-                        },
-                        () => {}
-                    );
-                },
-            }
-        ];
+        });
         return items;
     }
 
     const generateVariantItems = (variant: string) => {
-        const items = [
-            {
-                children: (
-                    <div className="global-dropdown information-decal">
-                        <FaInfoCircle className="icon" />
-                        Information
+        const items = [];
+        items.push({
+            children: (
+                <div className="global-dropdown information-decal">
+                    <FaInfoCircle className="icon" />
+                    Information
                     </div>
                 ),
                 onClick: () => {
                     openDecalInformationModal({decal, variant_name: variant});
                 },
-            },
-            {
+            });
+        if (hasModel3D) {
+            items.push({
                 children: (
                     <div className="variant-dropdown">
                         <FaEye className="icon" />
@@ -135,28 +141,10 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
                     console.log(`Preview decal ${decal.name}`);
                     navigate(`/preview/${decal.name}/${variant}`);
                 },
-            },
-            {
-                children: (
-                    <div className="variant-dropdown remove-decal">
-                        <FaTrash className="icon" />
-                        Remove
-                    </div>
-                ),
-                onClick: () => {
-                    openConfirmationDialog(
-                        `Are you sure you want to remove the decal ${decal.name} (${variant})?`,
-                        () => {
-                            removeDecalVariant(decal.name, variant);
-                        },
-                        () => {}
-                    );
-                },
-            }
-        ];
-
+            });
+        }
         if (isVariantInExplorer(decal.name, variant)) {
-            items.splice(2, 0, {
+            items.push({
                 children: (
                     <div className="variant-dropdown update-decal">
                         <FaSync className="icon" />
@@ -166,9 +154,25 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
                 onClick: () => {
                     downloadDecalVariant(decal.name, variant);
                 },
-            });
+            })
         }
-
+        items.push({
+            children: (
+                <div className="variant-dropdown remove-decal">
+                    <FaTrash className="icon" />
+                    Remove
+                </div>
+            ),
+            onClick: () => {
+                openConfirmationDialog(
+                    `Are you sure you want to remove the decal ${decal.name} (${variant})?`,
+                    () => {
+                        removeDecalVariant(decal.name, variant);
+                    },
+                    () => {}
+                );
+            },
+        })
         return items;
     }
 

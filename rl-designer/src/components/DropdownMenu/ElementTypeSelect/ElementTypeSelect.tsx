@@ -4,6 +4,7 @@ import type { DropdownItem } from '@/components/DropdownMenu/Dropdown';
 import type { ElementType } from '@/constants/elements';
 import { ELEMENTS } from '@/constants/elements';
 import './ElementTypeSelect.scss';
+import { ElementsMap } from '@/constants/elementsMap';
 
 interface ElementTypeSelectProps {
   selectedElement: ElementType;
@@ -24,10 +25,7 @@ const ElementTypeSelect: React.FC<ElementTypeSelectProps> = ({
 }) => {
   
   const getElementLabel = (element: ElementType): string => {
-    if (customLabels[element]) {
-      return customLabels[element]!;
-    }
-    return `${element.charAt(0).toUpperCase() + element.slice(1)} Decals`;
+    return ElementsMap[element].decalsDisplayName;
   };
 
   const getCurrentLabel = (): string => {

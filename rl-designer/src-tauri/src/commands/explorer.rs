@@ -9,7 +9,8 @@ pub struct GitHubDecalsResponse {
     error: Option<String>,
 }
 
-async fn fetch_decal_from_github_element_logic(element: ElementType) -> GitHubDecalsResponse {
+#[tauri::command]
+pub async fn get_element_decals_from_github(element: ElementType) -> GitHubDecalsResponse {
     match fetch_decals_from_github_raw(element).await {
         Ok(decals) => GitHubDecalsResponse {
             success: true,
@@ -24,12 +25,4 @@ async fn fetch_decal_from_github_element_logic(element: ElementType) -> GitHubDe
     }
 }
 
-#[tauri::command]
-pub async fn get_car_decals_from_github() -> GitHubDecalsResponse {
-    fetch_decal_from_github_element_logic(ElementType::Car).await
-}
 
-#[tauri::command]
-pub async fn get_ball_decals_from_github() -> GitHubDecalsResponse {
-    fetch_decal_from_github_element_logic(ElementType::Ball).await
-}

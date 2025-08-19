@@ -10,10 +10,11 @@ pub struct DownloadResponse {
     variant_info: Option<VariantInfo>,
 }
 
-async fn download_decal_variant_element_logic(
+#[tauri::command]
+pub async fn download_element_decal_variant(
     element: ElementType,
-    decal_name: &str,
-    variant_name: &str,
+    decal_name: String,
+    variant_name: String,
 ) -> DownloadResponse {
     match download_decal_variant_logic(element, &decal_name, &variant_name).await {
         Ok(variant_info) => DownloadResponse {
@@ -35,20 +36,4 @@ async fn download_decal_variant_element_logic(
             error: Some(e),
         },
     }
-}
-
-#[tauri::command]
-pub async fn download_car_decal_variant(
-    decal_name: String,
-    variant_name: String,
-) -> DownloadResponse {
-    download_decal_variant_element_logic(ElementType::Car, &decal_name, &variant_name).await
-}
-
-#[tauri::command]
-pub async fn download_ball_decal_variant(
-    decal_name: String,
-    variant_name: String,
-) -> DownloadResponse {
-    download_decal_variant_element_logic(ElementType::Ball, &decal_name, &variant_name).await
 }

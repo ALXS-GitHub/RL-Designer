@@ -1,4 +1,5 @@
 use std::{fs, path::PathBuf};
+use serde_json::{Value, Map};
 
 pub fn read_files_from_folder(folder_path: &PathBuf) -> Result<Vec<String>, String> {
     let mut files = Vec::new();
@@ -40,3 +41,40 @@ pub fn read_folders_from_folder(
 }
 
 // TODO : maybe do a function that get folders and files (as json map of folders and files)
+
+pub fn get_file_from_pattern(json_object: &Map<String, Value>, pattern: Value) -> Option<String> {
+
+    // make sure pattern is String or Option<String>
+    let pattern = match pattern {
+        Value::String(s) => Some(s),
+        Value::Null => None,
+        _ => None,
+    };
+
+    if pattern.is_none() {
+        return None;
+    }
+
+    if let Some(pattern) = pattern {
+
+        let mut keys = pattern.split(".").collect::<Vec<&str>>();
+        if keys.is_empty() {
+            return None;
+        }
+        let last_key = keys.pop().unwrap();
+        let mut current = json_object;
+
+        for key in keys {
+            // if current is object and that key is in current
+            if let Some(next) = current.get(key).and_then(|v| v.as_object()) {
+                current = next;
+            } else {
+                return None;
+            }
+        }
+
+        return current.get(last_key).and_then(|v| v.as_str()).map(|s| s.to_string());
+
+    }
+    None
+}
