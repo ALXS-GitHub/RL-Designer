@@ -1,0 +1,23 @@
+LODInfo[1] =
+{
+    LODInfo[0] =
+    {
+        DisplayFactor = 0
+        LODHysteresis = 0.02
+        LODMaterialMap[0] = {}
+        bEnableShadowCasting[2] = { true, true }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+}
+Sockets[0] = {}
+bHasVertexColors = true
+EnableTwistBoneFixers = true
+EnableClavicleFixer = true
+Skeleton = None
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'Wheel_InfinityMirror.Materials.WHEEL_Infinity_Tread_MIC'
+    Materials[1] = MaterialInstanceConstant'Wheel_InfinityMirror.Materials.InfinityMirror_01_INST'
+}

@@ -23,7 +23,8 @@ TEXTURE_CONFIGS = {
         "output": "wheel_index.json",
         "display_name": "Wheels",
         "patterns": {
-            "diffuse_pattern": "Wheel.Diffuse"
+            "diffuse_pattern": "Params.Texture_Diffuse",
+            "imageseq_subuv_pattern": "Params.ImageSeq_SubUV"
         }
     },
     "boost_meters": {

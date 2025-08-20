@@ -1,0 +1,9 @@
+{
+	"Decal (Variant)": {
+		"ItemID": 820,
+        "Params": {
+			"ImageSeq_SubUV": "image_seq_subuv.png",
+			"ImageSeq": "image_seq.png"
+		}
+    }
+}

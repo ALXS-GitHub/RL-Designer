@@ -1,0 +1,9 @@
+{
+	"Itzy (Default)": {
+		"ItemID": 820,
+        "Params": {
+			"ImageSeq_SubUV": "image_seq.png",
+			"ImageSeq": ""
+		}
+    }
+}

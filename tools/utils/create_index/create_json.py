@@ -83,7 +83,7 @@ def create_json(config):
                 }
 
                 # Track missing preview paths
-                if not assets_paths.preview_path and not assets_paths.one_diffuse_skin_path:
+                if not assets_paths.preview_path and not assets_paths.one_diffuse_skin_path and not assets_paths.imageseq_subuv_path:
                     stats['variants_without_preview'] += 1
                     
                 # Add preview_path only if it exists
@@ -100,6 +100,9 @@ def create_json(config):
                 # Add one_diffuse_skin_path if it exists
                 if assets_paths.one_diffuse_skin_path:
                     variant_data["one_diffuse_skin_path"] = assets_paths.one_diffuse_skin_path
+
+                if assets_paths.imageseq_subuv_path:
+                    variant_data["imageseq_subuv_path"] = assets_paths.imageseq_subuv_path
 
                 # Track signature stats
                 if not variant_signature:
@@ -127,7 +130,7 @@ def create_json(config):
 
     # Print summary for this index
     for texture_item in index_data['decals']:
-        variants_with_preview = sum(1 for v in texture_item['variants'] if v.get('preview_path')) + sum(1 for v in texture_item['variants'] if v.get('one_diffuse_skin_path'))
+        variants_with_preview = sum(1 for v in texture_item['variants'] if v.get('preview_path') or v.get('one_diffuse_skin_path') or v.get('imageseq_subuv_path'))
         variants_with_skin = sum(1 for v in texture_item['variants'] if v.get('skin_path'))
         variants_with_chassis_diffuse = sum(1 for v in texture_item['variants'] if v.get('chassis_diffuse_path'))
         variants_with_signature = sum(1 for v in texture_item['variants'] if v.get('signature'))
@@ -135,11 +138,14 @@ def create_json(config):
         print(f"  📁 {texture_item['name']}: {total_variants} variants ({variants_with_preview} with preview, {variants_with_skin} with skin, {variants_with_chassis_diffuse} with chassis diffuse, {variants_with_signature} with signature)")
 
         for variant in texture_item['variants']:
-            preview_status = "✅" if variant.get("preview_path") else "☑️ " if variant.get("one_diffuse_skin_path") else "❌"
+            preview_status = "✅" if variant.get("preview_path") else "☑️ " if variant.get("one_diffuse_skin_path") or variant.get("imageseq_subuv_path") else "❌"
             skin_status = "🎨" if variant.get("skin_path") else "⚪"
             chassis_diffuse_status = "🚗" if variant.get("chassis_diffuse_path") else "⚪"
             signature_status = "🔒" if variant.get("signature") else "❌"
             signature_preview = variant.get("signature", "")[:8] + "..." if variant.get("signature") else "none"
-            print(f"    📄 {variant['variant_name']}: {preview_status} preview {skin_status} skin {chassis_diffuse_status} chassis diffuse {signature_status} signature ({signature_preview})")
-    
+            extra_status = ""
+            extra_status += "one_diffuse_skin 🖼️ " if variant.get("one_diffuse_skin_path") else ""
+            extra_status += "imageseq_subuv 🖼️" if variant.get("imageseq_subuv_path") else ""
+            print(f"    📄 {variant['variant_name']}: {preview_status} preview {skin_status} skin {chassis_diffuse_status} chassis diffuse {signature_status} signature ({signature_preview}) {extra_status}")
+
     return stats

@@ -1,0 +1,29 @@
+TwoSided = false
+bDisableDepthTest = false
+bIsMasked = false
+ReferencedTextures[2] = { Texture2D'WHEEL_Proto09.Textures.Twirl_RGB_T' }
+Expressions[78] =
+{
+    Expressions[31] = MaterialExpressionScalarParameter'WHEEL_Proto09.Proto_09_Mat.MaterialExpressionScalarParameter_2'
+    Expressions[43] = MaterialExpressionScalarParameter'WHEEL_Proto09.Proto_09_Mat.MaterialExpressionScalarParameter_3'
+    Expressions[45] = MaterialExpressionScalarParameter'WHEEL_Proto09.Proto_09_Mat.MaterialExpressionScalarParameter_4'
+}
+CachedExpressionData = 
+BlendMode = BLEND_Translucent (2)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[0] = {}
+CollectedScalarParameters[3] =
+{
+    CollectedScalarParameters[0] = { Value=15, Name=OpacityHardness, Group=None }
+    CollectedScalarParameters[1] = { Value=1, Name=HueShift_Sharpness, Group=Color }
+    CollectedScalarParameters[2] = { Value=0, Name=HueShift_Amount, Group=Color }
+}
+CollectedVectorParameters[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

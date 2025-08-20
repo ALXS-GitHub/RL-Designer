@@ -1,0 +1,137 @@
+TwoSided = true
+bDisableDepthTest = false
+bIsMasked = false
+ReferencedTextures[3] = { Texture2D'WHEEL_Proto.Textures.Radial_M' }
+Expressions[205] =
+{
+    Expressions[1] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_3'
+    Expressions[4] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_9'
+    Expressions[10] = MaterialExpressionScalarParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionScalarParameter_3'
+    Expressions[12] = MaterialExpressionScalarParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionScalarParameter_2'
+    Expressions[17] = MaterialExpressionScalarParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionScalarParameter_1'
+    Expressions[45] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_8'
+    Expressions[46] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_13'
+    Expressions[47] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_5'
+    Expressions[51] = MaterialExpressionTextureSampleParameter2D'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionTextureSampleParameter2D_2'
+    Expressions[66] = MaterialExpressionTextureSampleParameter2D'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionTextureSampleParameter2D_0'
+    Expressions[82] = MaterialExpressionScalarParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionScalarParameter_8'
+    Expressions[84] = MaterialExpressionScalarParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionScalarParameter_6'
+    Expressions[104] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_2'
+    Expressions[105] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_4'
+    Expressions[107] = MaterialExpressionScalarParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionScalarParameter_5'
+    Expressions[108] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_0'
+    Expressions[111] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_16'
+    Expressions[116] = MaterialExpressionScalarParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionScalarParameter_20'
+    Expressions[121] = MaterialExpressionTextureSampleParameter2D'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionTextureSampleParameter2D_1'
+    Expressions[125] = MaterialExpressionScalarParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionScalarParameter_21'
+    Expressions[128] = MaterialExpressionScalarParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionScalarParameter_22'
+    Expressions[129] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_17'
+    Expressions[131] = MaterialExpressionScalarParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionScalarParameter_24'
+    Expressions[139] = MaterialExpressionScalarParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionScalarParameter_23'
+    Expressions[151] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_14'
+    Expressions[152] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_1'
+    Expressions[153] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_7'
+    Expressions[155] = MaterialExpressionVectorParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionVectorParameter_2'
+    Expressions[157] = MaterialExpressionScalarParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionScalarParameter_0'
+    Expressions[158] = MaterialExpressionTextureSampleParameter2D'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionTextureSampleParameter2D_3'
+    Expressions[160] = MaterialExpressionScalarParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionScalarParameter_4'
+    Expressions[168] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_6'
+    Expressions[169] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_11'
+    Expressions[171] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_21'
+    Expressions[173] = MaterialExpressionScalarParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionScalarParameter_9'
+    Expressions[175] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_10'
+    Expressions[182] = MaterialExpressionScalarParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionScalarParameter_7'
+    Expressions[185] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_12'
+    Expressions[196] = MaterialExpressionVectorParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionVectorParameter_4'
+    Expressions[200] = MaterialExpressionStaticSwitchParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionStaticSwitchParameter_15'
+    Expressions[202] = MaterialExpressionScalarParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionScalarParameter_10'
+    Expressions[203] = MaterialExpressionScalarParameter'WHEEL_Proto.Materials.Wheel_Anim_Master.MaterialExpressionScalarParameter_11'
+}
+CachedExpressionData = 
+BlendMode = BLEND_Translucent (2)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[4] =
+{
+    CollectedTextureParameters[0] =
+    {
+        Texture = Texture2D'WHEEL_Proto.Textures.heart'
+        Name = Gradient_Preset_Mask
+        Group = GradientFX
+    }
+    CollectedTextureParameters[1] =
+    {
+        Texture = None
+        Name = PanningGradient
+        Group = GradientFX
+    }
+    CollectedTextureParameters[2] =
+    {
+        Texture = Texture2D'WHEEL_Proto.Textures.Tech_03'
+        Name = ImageSeq
+        Group = FlipBook_Texture
+    }
+    CollectedTextureParameters[3] = { Texture=None, Name=Color_Gradient, Group=Color }
+}
+CollectedScalarParameters[17] =
+{
+    CollectedScalarParameters[0] =
+    {
+        Value = 255
+        Name = Mask_Square_Sharpness
+        Group = Mask
+    }
+    CollectedScalarParameters[1] = { Value=0.1, Name=Mask_Square_Size, Group=Mask }
+    CollectedScalarParameters[2] = { Value=1, Name=Mask_Tile, Group=Mask }
+    CollectedScalarParameters[3] =
+    {
+        Value = 1
+        Name = Gradient_Hardness
+        Group = GradientFX
+    }
+    CollectedScalarParameters[4] = { Value=0, Name=Gradient_Amount, Group=GradientFX }
+    CollectedScalarParameters[5] = { Value=1, Name=Opacity, Group=FlipBook_Texture }
+    CollectedScalarParameters[6] = { Value=1, Name=Scale, Group=FlipBook_Texture }
+    CollectedScalarParameters[7] = { Value=4, Name=Anim_Rows, Group=FlipBook_Texture }
+    CollectedScalarParameters[8] =
+    {
+        Value = 4
+        Name = Anim_Colums
+        Group = FlipBook_Texture
+    }
+    CollectedScalarParameters[9] =
+    {
+        Value = 16
+        Name = Anim_Speed
+        Group = FlipBook_Texture
+    }
+    CollectedScalarParameters[10] = { Value=1, Name=frame, Group=FlipBook_Texture }
+    CollectedScalarParameters[11] = { Value=1, Name=Color_Gradient_Int, Group=Color }
+    CollectedScalarParameters[12] = { Value=0, Name=ColorPush, Group=Color }
+    CollectedScalarParameters[13] = { Value=3, Name=CustomColor_Int, Group=None }
+    CollectedScalarParameters[14] = { Value=3, Name=Outline_Int, Group=None }
+    CollectedScalarParameters[15] = { Value=1, Name=HueShift_Sharpness, Group=Color }
+    CollectedScalarParameters[16] = { Value=0, Name=HueShift_Amount, Group=Color }
+}
+CollectedVectorParameters[2] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=2, G=0.2, B=1, A=1 }
+        Name = Color_Vector
+        Group = Color
+    }
+    CollectedVectorParameters[1] =
+    {
+        Value = { R=2, G=0.2, B=1, A=1 }
+        Name = Tip_Color
+        Group = Color
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

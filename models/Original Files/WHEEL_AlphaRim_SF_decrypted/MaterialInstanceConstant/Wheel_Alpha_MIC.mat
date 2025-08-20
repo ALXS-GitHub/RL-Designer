@@ -1,0 +1,5 @@
+Diffuse=Alpha_D
+Normal=Alpha_N
+Other[0]=Alpha_RGB
+Other[1]=Tire_Falcon_T2_Diffuse
+Other[2]=Tire_Falcon_T2_Normal

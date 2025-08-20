@@ -1,3 +1,19 @@
 {
-  "decals": []
+  "decals": [
+    {
+      "name": "Itzy",
+      "variants": [
+        {
+          "variant_name": "Default",
+          "files": [
+            "image_seq.png",
+            "image_seq_baseline.png",
+            "Template.json"
+          ],
+          "signature": "9419c3f3a7d537a5",
+          "imageseq_subuv_path": "image_seq.png"
+        }
+      ]
+    }
+  ]
 }

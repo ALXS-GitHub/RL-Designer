@@ -1,0 +1,58 @@
+Parent = Material3'WHEEL_Lightning.Materials.MAT_Wheel_FXlMaster'
+ScalarParameterValues[1] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 96
+        ParameterName = SpecPower
+    }
+}
+TextureParameterValues[4] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'WHEEL_Lightning.Textures.Rim_Lightning_01_D'
+        ParameterName = RimDiffuse
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'WHEEL_Lightning.Textures.Rim_Lightning_01_N'
+        ParameterName = RimNormal
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'WHEEL_Lightning.Textures.Tire_Lighting_01_D'
+        ParameterName = TireDiffuse
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'WHEEL_Lightning.Textures.Tire_Lighting_01_N'
+        ParameterName = TireNormal
+    }
+}
+VectorParameterValues[1] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.209023, G=1, B=0.612575, A=3 }
+        ParameterName = CustomColor
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+RuntimeVirtualTextureParameterValues[0] = {}
+FontParameterValues[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

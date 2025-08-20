@@ -1,0 +1,47 @@
+TwoSided = false
+bDisableDepthTest = false
+bIsMasked = true
+ReferencedTextures[1] =
+{
+    ReferencedTextures[0] = Texture2D'Wheel_InfinityMirror.Textures.DotMask_02'
+}
+Expressions[29] =
+{
+    Expressions[11] = MaterialExpressionScalarParameter'Wheel_InfinityMirror.Materials.InfinityMirror_Master_MAT.MaterialExpressionScalarParameter_1'
+    Expressions[14] = MaterialExpressionScalarParameter'Wheel_InfinityMirror.Materials.InfinityMirror_Master_MAT.MaterialExpressionScalarParameter_3'
+    Expressions[16] = MaterialExpressionScalarParameter'Wheel_InfinityMirror.Materials.InfinityMirror_Master_MAT.MaterialExpressionScalarParameter_2'
+    Expressions[18] = MaterialExpressionScalarParameter'Wheel_InfinityMirror.Materials.InfinityMirror_Master_MAT.MaterialExpressionScalarParameter_0'
+    Expressions[22] = MaterialExpressionVectorParameter'Wheel_InfinityMirror.Materials.InfinityMirror_Master_MAT.MaterialExpressionVectorParameter_0'
+    Expressions[25] = MaterialExpressionScalarParameter'Wheel_InfinityMirror.Materials.InfinityMirror_Master_MAT.MaterialExpressionScalarParameter_4'
+    Expressions[28] = MaterialExpressionScalarParameter'Wheel_InfinityMirror.Materials.InfinityMirror_Master_MAT.MaterialExpressionScalarParameter_5'
+}
+CachedExpressionData = 
+BlendMode = BLEND_Masked (1)
+OpacityMaskClipValue = 0.75
+CollectedTextureParameters[0] = {}
+CollectedScalarParameters[6] =
+{
+    CollectedScalarParameters[0] = { Value=0.01, Name=GradientDarkness, Group=None }
+    CollectedScalarParameters[1] = { Value=0, Name=Shift, Group=None }
+    CollectedScalarParameters[2] = { Value=1, Name=tile, Group=None }
+    CollectedScalarParameters[3] = { Value=-1.5, Name=Offset, Group=None }
+    CollectedScalarParameters[4] = { Value=0.5, Name=Angle, Group=None }
+    CollectedScalarParameters[5] = { Value=0.25, Name=DesaturateColor, Group=None }
+}
+CollectedVectorParameters[1] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=1, G=0.1, B=0.2, A=1 }
+        Name = CustomColor
+        Group = None
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

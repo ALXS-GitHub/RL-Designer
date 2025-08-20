@@ -2,10 +2,12 @@
 
 ## Important
 
-- [ ] Handle boost meter support in the tauri backend and in frontent. Take this opportunity to refactor a bit the tauri backend -> With patterns instead of separated Json body / chassis types. Unified commands (provide the element type in the query) instead of separate by element, and others ...
+- [ ] Wheel models to extract from game files: Cristiano (already done), Dieci, Zomba, Reaper, Alpha Wheels, Infinium, Photon
 
 - [ ] Add wheel texture support
 - [ ] Add boost meter texture support
+
+- [ ] Find a way to integrate the infinium 3D model (because it is harder than other car models..., there is a single material but we have to apply both the tire and rim textures on it... + the special animated face for the rim doesn't seem to be integrated in the model...)
 
 - [ ] Update README
 
@@ -20,7 +22,7 @@
 
 - [ ] Make a better styling for the settings sidebar + add more options + retractable.
 
-- [ ] Make sure that the remove button actually remove properly the decal folder when no variants are in (but the .decal.yaml is still there and maybe blocking the deletion of the parent folder...)
+- [ ] Make sure that the remove button actually remove properly the decal folder when no variants are in (but the .decal.yaml is still there and maybe blocking the deletion of the parent folde)
 
 ## Medium
 
@@ -112,3 +114,4 @@
 - [X] Complete the default_..._skin list in the public/models/textures/skins
 - [X] Refactor the create_index script to be more modular and easier to maintain.
 - [X] In the repo decals folder, find a way to have group folders (so the decals are not directly at the root of the decals folder). So organisation will be easier. Just need to update the `create_index` script to know how to properly handle this.
+- [X] Handle boost meter support in the tauri backend and in frontent. Take this opportunity to refactor a bit the tauri backend -> With patterns instead of separated Json body / chassis types. Unified commands (provide the element type in the query) instead of separate by element, and others ...

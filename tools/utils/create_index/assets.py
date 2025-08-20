@@ -66,6 +66,8 @@ def get_assets_paths(config, texture_folder: Path, variant_name: str, files: Lis
                     assets_paths.chassis_diffuse_path = file_path
                 elif pattern_key == "one_diffuse_skin_pattern":
                     assets_paths.one_diffuse_skin_path = file_path
+                elif pattern_key == "imageseq_subuv_pattern":
+                    assets_paths.imageseq_subuv_path = file_path
 
         return assets_paths
 

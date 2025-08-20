@@ -1,0 +1,82 @@
+Parent = Material3'WHEEL_Lightning.Materials.MAT_Wheel_FXlMaster'
+ScalarParameterValues[3] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = RimEmissiveGlow
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = TireEmissiveGlow
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 96
+        ParameterName = SpecPower
+    }
+}
+TextureParameterValues[5] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Wheel_InfinityMirror.Textures.Tire_Infinity_01_E'
+        ParameterName = TireEmmisive
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'WHEEL_Lightning.Textures.Rim_Lightning_01_D'
+        ParameterName = RimDiffuse
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'WHEEL_Lightning.Textures.Rim_Lightning_01_N'
+        ParameterName = RimNormal
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'WHEEL_Lightning.Textures.Tire_Lighting_01_D'
+        ParameterName = TireDiffuse
+    }
+    TextureParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'WHEEL_Lightning.Textures.Tire_Lighting_01_N'
+        ParameterName = TireNormal
+    }
+}
+VectorParameterValues[2] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=0.1, B=0.05, A=1 }
+        ParameterName = CustomColor
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0, G=0.508597, B=0.878421, A=1 }
+        ParameterName = TireColor
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+RuntimeVirtualTextureParameterValues[0] = {}
+FontParameterValues[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

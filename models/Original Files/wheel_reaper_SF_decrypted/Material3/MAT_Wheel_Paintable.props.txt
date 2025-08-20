@@ -1,0 +1,120 @@
+TwoSided = false
+bDisableDepthTest = false
+bIsMasked = false
+ReferencedTextures[8] =
+{
+    ReferencedTextures[2] = Texture2D'WHEEL_Lightning.Textures.Tire_Lighting_01_N'
+    ReferencedTextures[4] = Texture2D'WHEEL_Lightning.Textures.Rim_Lightning_01_E'
+    ReferencedTextures[7] = Texture2D'WHEEL_Lightning.Textures.Tire_Lighting_01_D'
+}
+Expressions[116] =
+{
+    Expressions[2] = MaterialExpressionTextureSampleParameter2D'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionTextureSampleParameter2D_1'
+    Expressions[4] = MaterialExpressionScalarParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionScalarParameter_2'
+    Expressions[6] = MaterialExpressionScalarParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionScalarParameter_1'
+    Expressions[7] = MaterialExpressionTextureSampleParameter2D'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionTextureSampleParameter2D_0'
+    Expressions[11] = MaterialExpressionScalarParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionScalarParameter_0'
+    Expressions[19] = MaterialExpressionVectorParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionVectorParameter_2'
+    Expressions[21] = MaterialExpressionStaticSwitchParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionStaticSwitchParameter_1'
+    Expressions[23] = MaterialExpressionVectorParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionVectorParameter_6'
+    Expressions[24] = MaterialExpressionTextureSampleParameter2D'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionTextureSampleParameter2D_5'
+    Expressions[33] = MaterialExpressionTextureSampleParameter2D'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionTextureSampleParameter2D_7'
+    Expressions[52] = MaterialExpressionVectorParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionVectorParameter_7'
+    Expressions[55] = MaterialExpressionStaticSwitchParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionStaticSwitchParameter_0'
+    Expressions[57] = MaterialExpressionTextureSampleParameter2D'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionTextureSampleParameter2D_2'
+    Expressions[58] = MaterialExpressionTextureSampleParameter2D'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionTextureSampleParameter2D_3'
+    Expressions[59] = MaterialExpressionStaticSwitchParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionStaticSwitchParameter_2'
+    Expressions[61] = MaterialExpressionStaticSwitchParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionStaticSwitchParameter_3'
+    Expressions[63] = MaterialExpressionScalarParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionScalarParameter_3'
+    Expressions[76] = MaterialExpressionVectorParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionVectorParameter_1'
+    Expressions[89] = MaterialExpressionScalarParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionScalarParameter_4'
+    Expressions[90] = MaterialExpressionStaticSwitchParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionStaticSwitchParameter_6'
+    Expressions[92] = MaterialExpressionStaticSwitchParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionStaticSwitchParameter_7'
+    Expressions[94] = MaterialExpressionTextureSampleParameter2D'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionTextureSampleParameter2D_4'
+    Expressions[95] = MaterialExpressionStaticSwitchParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionStaticSwitchParameter_8'
+    Expressions[97] = MaterialExpressionStaticSwitchParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionStaticSwitchParameter_9'
+    Expressions[98] = MaterialExpressionTextureSampleParameter2D'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionTextureSampleParameter2D_6'
+    Expressions[99] = MaterialExpressionStaticSwitchParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionStaticSwitchParameter_10'
+    Expressions[103] = MaterialExpressionStaticSwitchParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionStaticSwitchParameter_11'
+    Expressions[106] = MaterialExpressionTextureSampleParameter2D'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionTextureSampleParameter2D_8'
+    Expressions[107] = MaterialExpressionScalarParameter'wheel_exotic.Materials.MAT_Wheel_Paintable.MaterialExpressionScalarParameter_5'
+}
+CachedExpressionData = 
+BlendMode = BLEND_Opaque (0)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[9] =
+{
+    CollectedTextureParameters[0] = { Texture=None, Name=RimNormal, Group=None }
+    CollectedTextureParameters[1] = { Texture=None, Name=RimDiffuse, Group=None }
+    CollectedTextureParameters[2] =
+    {
+        Texture = Texture2D'WHEEL_Lightning.Textures.Tire_Lighting_01_D'
+        Name = TireDiffuse
+        Group = None
+    }
+    CollectedTextureParameters[3] =
+    {
+        Texture = Texture2D'WHEEL_Lightning.Textures.Tire_Lighting_01_N'
+        Name = TireNormal
+        Group = None
+    }
+    CollectedTextureParameters[4] =
+    {
+        Texture = Texture2D'WHEEL_Lightning.Textures.Rim_Lightning_01_E'
+        Name = RimEmmisive
+        Group = Emmisive
+    }
+    CollectedTextureParameters[5] = { Texture=None, Name=TireEmmisive, Group=Emmisive }
+    CollectedTextureParameters[6] = { Texture=None, Name=RimDiffuse, Group=None }
+    CollectedTextureParameters[7] = { Texture=None, Name=RimRGB, Group=None }
+    CollectedTextureParameters[8] = { Texture=None, Name=RimNormal, Group=None }
+}
+CollectedScalarParameters[6] =
+{
+    CollectedScalarParameters[0] = { Value=40, Name=SpecPower, Group=None }
+    CollectedScalarParameters[1] = { Value=10, Name=SpecIntensity, Group=None }
+    CollectedScalarParameters[2] = { Value=0.5, Name=ReflectionBrightness, Group=None }
+    CollectedScalarParameters[3] = { Value=3, Name=GlowBrightness, Group=None }
+    CollectedScalarParameters[4] =
+    {
+        Value = 0.36
+        Name = ReflectionBrightness
+        Group = None
+    }
+    CollectedScalarParameters[5] = { Value=10, Name=SpecIntensity, Group=None }
+}
+CollectedVectorParameters[4] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=0.015625, G=0.015625, B=0.015625, A=1 }
+        Name = TireColor
+        Group = None
+    }
+    CollectedVectorParameters[1] =
+    {
+        Value = { R=0.75, G=0.75, B=0.75, A=1 }
+        Name = RimColor
+        Group = None
+    }
+    CollectedVectorParameters[2] =
+    {
+        Value = { R=0.0986892, G=0.399293, B=1, A=1 }
+        Name = CustomColor
+        Group = Emmisive
+    }
+    CollectedVectorParameters[3] =
+    {
+        Value = { R=0.0986892, G=0.399293, B=1, A=1 }
+        Name = CustomColor
+        Group = None
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}
