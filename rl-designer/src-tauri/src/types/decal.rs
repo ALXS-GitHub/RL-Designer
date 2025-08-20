@@ -21,6 +21,7 @@ pub struct VariantInfo {
     pub skin_path: Option<String>,
     pub chassis_diffuse_path: Option<String>,
     pub one_diffuse_skin_path: Option<String>, // 1_Diffuse_Skin
+    pub imageseq_subuv_path: Option<String>, // for looper wheel textures
 }
 
 impl Default for DecalInfo {

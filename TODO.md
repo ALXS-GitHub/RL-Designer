@@ -2,14 +2,11 @@
 
 ## Important
 
-- [ ] Wheel models to extract from game files: Cristiano (already done), Dieci, Zomba, Reaper, Alpha Wheels, Infinium, Photon
-
-- [ ] Add wheel texture support
-- [ ] Add boost meter texture support
-
-- [ ] Find a way to integrate the infinium 3D model (because it is harder than other car models..., there is a single material but we have to apply both the tire and rim textures on it... + the special animated face for the rim doesn't seem to be integrated in the model...)
+- [ ] Improve wheel support. Find a way to integrate the infinium 3D model (because it is harder than other car models..., there is a single material but we have to apply both the tire and rim textures on it... + the special animated face for the rim doesn't seem to be integrated in the model...)
 
 - [ ] Update README
+
+- [ ] Make a better styling for the settings sidebar + add more options (e.g. filters, sort, search + model settings) + retractable.
 
 - [ ] Add default values for colors (for example car color : default (gray like), and presets for blue, red, ...)
 
@@ -20,14 +17,12 @@
 - [ ] Add something to remember the size and window location on the next startup
 - [ ] On the preview page, in addition to the arrows to change the variant (and model in case of universal), make the name a dropdown menu where we can directly select the variant (/ model)
 
-- [ ] Make a better styling for the settings sidebar + add more options + retractable.
-
 - [ ] Make sure that the remove button actually remove properly the decal folder when no variants are in (but the .decal.yaml is still there and maybe blocking the deletion of the parent folde)
 
 ## Medium
 
 - [ ] Use tanstack devtools to debug the queries for the useExplorer. (because now there is no more loading screen when switching between "car decals" and "ball decals"...)
-- [ ] Refactor the tauri backend (maybe some function are not at the right place, and more reusable code could be made) (+ change some files from utils to services (especially for the command logic function))
+- [ ] Refactor the tauri backend (maybe some function are not at the right place, and more reusable code could be made) (+ change some files from utils to services (especially for the command logic function)). Also a lot of parts are constantly doing if else, or looking for every file pattern of the preview individually, it would be better to have a more general approach where we could do all this in one single pass. Just having a map, so it knows what important preview files to fetch and how to fetch them...
 - [ ] Find a way in game to make universal decals paint finish and color changeable (I suppose it's with the skin or something...) (in fact even decal with full 2B0000 can't change the paint finish...), (maybe should do something with FF0000)
 - [ ] In the `create_index` script, add a log for the changes between the new index and the previous one (e.g. which stickers / variants have been added)
 - [ ] Handle dominus special model parts (especially to get the proper curvature parts...)
@@ -115,3 +110,5 @@
 - [X] Refactor the create_index script to be more modular and easier to maintain.
 - [X] In the repo decals folder, find a way to have group folders (so the decals are not directly at the root of the decals folder). So organisation will be easier. Just need to update the `create_index` script to know how to properly handle this.
 - [X] Handle boost meter support in the tauri backend and in frontent. Take this opportunity to refactor a bit the tauri backend -> With patterns instead of separated Json body / chassis types. Unified commands (provide the element type in the query) instead of separate by element, and others ...
+- [X] Add boost meter texture support
+- [X] Add wheel texture support

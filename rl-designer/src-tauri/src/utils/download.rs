@@ -116,6 +116,9 @@ pub async fn download_decal_variant_logic(
         one_diffuse_skin_path: preview_files
             .as_ref()
             .and_then(|pf| pf.one_diffuse_skin_path.clone()),
+        imageseq_subuv_path: preview_files
+            .as_ref()
+            .and_then(|pf| pf.imageseq_subuv_path.clone()),
     })
 }
 

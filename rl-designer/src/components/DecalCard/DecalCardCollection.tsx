@@ -11,6 +11,7 @@ import { useConfirmationDialogStore } from '@/stores/confirmationDialogStore';
 import { useDecalInformationModalStore } from '@/stores/decalInformationModalStore';
 import useSelectedElementStore from '@/stores/selectedElementStore';
 import { ElementsMap } from '@/constants/elementsMap';
+import { getAvailablePreview } from '@/utils/previews';
 
 interface DecalCardCollectionProps {
   decal: DecalTextures;
@@ -40,14 +41,11 @@ const DecalCardCollection: React.FC<DecalCardCollectionProps> = ({ decal }) => {
         ));
     }
 
-    // TODO update this to change the image on hover variants
     const renderImage = (variant_name: string) => {
         const variant = decal.variants.find(v => v.variant_name === variant_name);
-        if (variant?.preview_path) {
-            return <img src={convertFileSrc(variant.preview_path)} alt={`${decal.name} preview`} className="decal-image" />;
-        }
-        if (variant?.one_diffuse_skin_path) {
-            return <img src={convertFileSrc(variant.one_diffuse_skin_path)} alt={`${decal.name} one diffuse skin preview`} className="decal-image" />;
+        const preview = getAvailablePreview(variant);
+        if (preview) {
+            return <img src={convertFileSrc(preview)} alt={`${decal.name} preview`} className="decal-image" />;
         }
 
         return <img src={Placeholder} alt="Placeholder image" className="decal-image" />;

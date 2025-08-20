@@ -65,6 +65,7 @@ pub fn fetch_decal_folders(element: ElementType) -> Result<Vec<DecalInfo>, Strin
                         .as_ref()
                         .and_then(|pf| pf.chassis_diffuse_path.clone()),
                     one_diffuse_skin_path: preview_files.as_ref().and_then(|pf| pf.one_diffuse_skin_path.clone()),
+                    imageseq_subuv_path: preview_files.as_ref().and_then(|pf| pf.imageseq_subuv_path.clone()),
                 });
             }
 
@@ -89,6 +90,7 @@ pub struct PreviewFiles {
     pub skin_path: Option<String>,
     pub chassis_diffuse_path: Option<String>,
     pub one_diffuse_skin_path: Option<String>,
+    pub imageseq_subuv_path: Option<String>,
 }
 
 pub fn read_preview_files_from_variant(
@@ -102,6 +104,7 @@ pub fn read_preview_files_from_variant(
         skin_path: None,
         chassis_diffuse_path: None,
         one_diffuse_skin_path: None,
+        imageseq_subuv_path: None,
     };
 
     // Look for JSON files in the variant directory
@@ -144,6 +147,9 @@ pub fn read_preview_files_from_variant(
                                 }
                                 "one_diffuse_skin_path" => {
                                     preview_files.one_diffuse_skin_path = Some(variant_path.join(file).to_string_lossy().to_string());
+                                }
+                                "imageseq_subuv_path" => {
+                                    preview_files.imageseq_subuv_path = Some(variant_path.join(file).to_string_lossy().to_string());
                                 }
                                 _ => { /* Ignore other patterns */ }
                             }

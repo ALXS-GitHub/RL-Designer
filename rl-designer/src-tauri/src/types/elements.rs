@@ -7,8 +7,8 @@ pub enum ElementType {
     Car,
     #[serde(alias = "ball")]
     Ball,
-    // #[serde(alias = "wheel")]
-    // Wheel, // not supported yet
+    #[serde(alias = "wheel")]
+    Wheel,
     #[serde(alias = "boost_meter")]
     BoostMeter,
 }
@@ -19,6 +19,7 @@ pub struct Pattern {
     pub skin_path: Option<String>,
     pub chassis_diffuse_path: Option<String>,
     pub one_diffuse_skin_path: Option<String>,
+    pub imageseq_subuv_path: Option<String>, // for looper wheel textures
 }
 
 impl ElementType {
@@ -26,7 +27,7 @@ impl ElementType {
         match self {
             ElementType::Car => "DecalTextures",
             ElementType::Ball => "BallTextures",
-            // ElementType::Wheel => "WheelTextures", // not supported yet
+            ElementType::Wheel => "WheelTextures", // not supported yet
             ElementType::BoostMeter => "BoostMeterTextures",
         }
     }
@@ -35,7 +36,7 @@ impl ElementType {
         match self {
             ElementType::Car => "decals",
             ElementType::Ball => "ball_textures",
-            // ElementType::Wheel => "wheel_textures", // not supported yet
+            ElementType::Wheel => "wheel_textures", // not supported yet
             ElementType::BoostMeter => "boost_meter_textures",
         }
     }
@@ -44,7 +45,7 @@ impl ElementType {
         match self {
             ElementType::Car => "index.json",
             ElementType::Ball => "ball_index.json",
-            // ElementType::Wheel => "wheel_index.json", // not supported yet
+            ElementType::Wheel => "wheel_index.json", // not supported yet
             ElementType::BoostMeter => "boost_meter_index.json",
         }
     }
@@ -56,18 +57,20 @@ impl ElementType {
                 skin_path: Some("Body.Skin".to_string()),
                 chassis_diffuse_path: Some("Chassis.Diffuse".to_string()),
                 one_diffuse_skin_path: Some("Body.1_Diffuse_Skin".to_string()),
+                ..Pattern::default()
             },
             ElementType::Ball => Pattern {
                 preview_path: "Params.Diffuse".to_string(),
-                skin_path: None,
-                chassis_diffuse_path: None,
-                one_diffuse_skin_path: None,
+                ..Pattern::default()
+            },
+            ElementType::Wheel => Pattern {
+                preview_path: "Params.Texture_Diffuse".to_string(),
+                imageseq_subuv_path: Some("Params.ImageSeq_SubUV".to_string()),
+                ..Pattern::default()
             },
             ElementType::BoostMeter => Pattern {
                 preview_path: "Fill".to_string(),
-                skin_path: None,
-                chassis_diffuse_path: None,
-                one_diffuse_skin_path: None,
+                ..Pattern::default()
             },
         }
     }
@@ -79,6 +82,18 @@ impl Pattern {
         let v = serde_json::to_value(self).expect("serialize");
         let x= v.as_object().expect("object").clone();
         x
+    }
+}
+
+impl Default for Pattern {
+    fn default() -> Self {
+        Pattern {
+            preview_path: "Body.Diffuse".to_string(),
+            skin_path: None,
+            chassis_diffuse_path: None,
+            one_diffuse_skin_path: None,
+            imageseq_subuv_path: None,
+        }
     }
 }
 

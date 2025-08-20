@@ -1,7 +1,7 @@
 export const ELEMENTS = {
   CAR: 'car',
   BALL: 'ball',
-//   WHEEL: 'wheel', // not supported yet
+  WHEEL: 'wheel',
   BOOST_METER: 'boost_meter',
 } as const;
 

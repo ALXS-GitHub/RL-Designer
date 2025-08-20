@@ -73,6 +73,9 @@ pub async fn fetch_decals_from_github_raw(
                 one_diffuse_skin_path: v
                     .one_diffuse_skin_path
                     .map(|p| get_decal_file_url(element_type, relative_path.as_ref(), &decal_info.name, &v.variant_name, &p)),
+                imageseq_subuv_path: v
+                    .imageseq_subuv_path
+                    .map(|p| get_decal_file_url(element_type, relative_path.as_ref(), &decal_info.name, &v.variant_name, &p)),
             })
             .collect();
 
