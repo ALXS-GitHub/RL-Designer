@@ -2,6 +2,15 @@
 
 ## Important
 
+- [ ] On the new version of Alpha Console, they introduced a website https://alphaconsole.io/ where you can share decals. We should find a way to fetch the decals from there (maybe they have an api ?). This would be better than using a github repo as it would allow anyone to share their decals easily. (We could still use a github repo for the app to fetch the decals, but we could also add a way to fetch decals from the alphaconsole website). -> Maybe we could make a script that fetches all the decals from the alphaconsole website and adds them to our github repo. This way we could have the best of both worlds. 
+    - If there is no API, maybe just integrate the page inside the app and tweak it so when downloading a decal it actually uses the app logic to install the decal.
+    - I suppose this website doesn't use our Variant management system, so we should find a way (maybe store in a separate folder `__AlphaConsole__` the decals fetched from there, and then we could still use our variant system to manage them. But this would require some extra work to integrate the decals properly.)
+    - ! In fact no need to do the downloading system, since it is already done in the website and also in the alpha console plugin.
+    - Also for my personal decals, It will great to have a script to automatically upload them to the alphaconsole website (if they have an API for this). This way I could easily share my decals with the community. (For now I have to do it manually, which is a bit tedious)
+    - Also if we can have a script in the app to create the previews thumbnails automatically (just an image of the car on the preview page of the app). This way we could easily create the thumbnails for the decals we want to share on the alphaconsole website. -> This would maybe require an Dev section for the app (but giving access to anyone, just say it is for advanced users)
+    - Also check how Alpha console is currently downloading the models from their website (how they are storing them, to check for any conflict or what). Maybe we should then put the decals from this app in a separate folder to avoid any conflict (e.g. `__RL-Designer__`)
+    - if we make the script to create the zip files, make sure that the zip file content is structured properly according to my current implementation : Zip root / Decal Name / Variant Name / files...
+
 - [ ] Improve wheel support. Find a way to integrate the infinium 3D model (because it is harder than other car models..., there is a single material but we have to apply both the tire and rim textures on it... + the special animated face for the rim doesn't seem to be integrated in the model...)
 
 - [ ] Update README
