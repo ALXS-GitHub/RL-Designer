@@ -1,18 +1,20 @@
 import os
 import argparse
 import zipfile
+import shutil
 from pathlib import Path
 from utils.create_index.folders import yield_decal_folders
 from constants.create_index.configs import TEXTURE_CONFIGS
 
-def create_variant_zip(decal_folder, variant_folder, output_dir):
+def create_variant_zip(decal_folder, variant_folder, output_dir, texture_dir):
     """
-    Creates a zip file for a specific variant.
+    Creates a zip file for a specific variant, preserving the original folder structure.
     
     Args:
         decal_folder: Path to the decal folder
         variant_folder: Path to the variant folder
-        output_dir: Directory where to save the zip file
+        output_dir: Base output directory (e.g., zipped/decals)
+        texture_dir: Base texture directory (e.g., decals)
     
     Returns:
         Path to created zip file or None if failed
@@ -20,11 +22,21 @@ def create_variant_zip(decal_folder, variant_folder, output_dir):
     decal_name = decal_folder.name
     variant_name = variant_folder.name
     zip_filename = f"{decal_name}_{variant_name}.zip"
-    zip_path = output_dir / zip_filename
+    
+    # Get relative path from texture_dir to decal_folder
+    try:
+        relative_decal_path = decal_folder.relative_to(texture_dir)
+        # Create the same folder structure in the zipped directory
+        decal_output_dir = output_dir / relative_decal_path
+    except ValueError:
+        # Fallback if relative path fails
+        decal_output_dir = output_dir / decal_name
+    
+    zip_path = decal_output_dir / zip_filename
     
     try:
         # Create output directory if it doesn't exist
-        output_dir.mkdir(parents=True, exist_ok=True)
+        decal_output_dir.mkdir(parents=True, exist_ok=True)
         
         with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
             # Add all files in the variant folder
@@ -75,9 +87,15 @@ def create_zips_for_type(config):
             continue
         
         decal_name = decal_folder.name
-        decal_output_dir = zipped_base_dir / decal_name
         
-        print(f"  📁 Processing decal: {decal_name}")
+        # Get relative path for display
+        try:
+            relative_decal_path = decal_folder.relative_to(texture_dir)
+            display_path = str(relative_decal_path) if str(relative_decal_path) != "." else decal_name
+        except ValueError:
+            display_path = decal_name
+        
+        print(f"  📁 Processing decal: {display_path}")
         
         variant_count = 0
         variant_files_count = 0
@@ -96,14 +114,20 @@ def create_zips_for_type(config):
                 continue
             
             # Create zip for this variant
-            zip_path = create_variant_zip(decal_folder, variant_folder, decal_output_dir)
+            zip_path = create_variant_zip(decal_folder, variant_folder, zipped_base_dir, texture_dir)
             
             if zip_path:
                 file_count = len(files)
                 zip_size = zip_path.stat().st_size
                 zip_size_mb = zip_size / (1024 * 1024)
                 
-                print(f"    📦 Created: {zip_path.name} ({file_count} files, {zip_size_mb:.2f} MB)")
+                # Show relative path to the zip file
+                try:
+                    zip_relative_path = zip_path.relative_to(Path.cwd())
+                    print(f"    📦 Created: {zip_relative_path} ({file_count} files, {zip_size_mb:.2f} MB)")
+                except ValueError:
+                    print(f"    📦 Created: {zip_path.name} ({file_count} files, {zip_size_mb:.2f} MB)")
+                
                 stats['successful_zips'] += 1
                 variant_files_count += file_count
             else:
@@ -132,6 +156,19 @@ def create_zips_for_type(config):
     
     return stats
 
+def clear_zipped_folder():
+    """Clear the zipped folder if it exists."""
+    zipped_path = Path("zipped")
+    if zipped_path.exists():
+        print("🗑️  Clearing existing zipped folder...")
+        try:
+            shutil.rmtree(zipped_path)
+            print("✅ Zipped folder cleared successfully")
+        except Exception as e:
+            print(f"\033[91m❌ Failed to clear zipped folder: {e}\033[0m")
+            return False
+    return True
+
 def zip_decals(texture_type="all"):
     """
     Creates zip files for different texture directories.
@@ -139,6 +176,11 @@ def zip_decals(texture_type="all"):
     Args:
         texture_type: "decals", "balls", "wheels", "boost_meters", or "all"
     """
+    
+    # Clear the zipped folder first
+    if not clear_zipped_folder():
+        print("❌ Failed to clear zipped folder. Aborting.")
+        return
     
     # Determine which textures to process
     if texture_type == "all":

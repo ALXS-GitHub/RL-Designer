@@ -8,9 +8,10 @@
           "files": [
             "image_seq.png",
             "image_seq_baseline.png",
+            "metadata.yaml",
             "Template.json"
           ],
-          "signature": "9419c3f3a7d537a5",
+          "signature": "f497e225c023cb03",
           "imageseq_subuv_path": "image_seq.png"
         }
       ]
