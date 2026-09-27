@@ -1,0 +1,16 @@
+{
+  "Fast and Furious (Esper)": {
+    "Body": {
+      "1_Diffuse_Skin": "hybrid_art.png",
+      "2_Diffuse_Skin_Mask": "hybrid_zones.png",
+      "Diffuse": "esper_body_diffuse.png",
+      "Skin": "esper_skin.png"
+    },
+    "BodyID": 1317,
+    "Chassis": {
+      "Diffuse": "esper_chassis.png"
+    },
+    "Group": "Fast and Furious",
+    "SkinID": 0
+  }
+}

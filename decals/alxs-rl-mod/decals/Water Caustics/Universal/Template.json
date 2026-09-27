@@ -1,0 +1,11 @@
+{
+    "Water Caustics (Universal)": {
+		"Group": "General/Water Caustics",
+		"BodyID": -1,
+		"SkinID": 11609,
+		"Body": {
+			"1_Diffuse_Skin": "body_diffuse.png",
+			"TrimSheet": "TrimSheet.png"
+		}
+    }
+}

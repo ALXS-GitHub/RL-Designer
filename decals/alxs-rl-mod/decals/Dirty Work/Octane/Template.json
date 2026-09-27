@@ -1,0 +1,14 @@
+{
+  "Dirty Work (Octane)": {
+    "Body": {
+      "1_Diffuse_Skin": "hybrid_art.png",
+      "2_Diffuse_Skin_Mask": "hybrid_zones.png"
+    },
+    "BodyID": 23,
+    "Chassis": {
+      "Diffuse": "aespa_chassis.png"
+    },
+    "Group": "Aespa/Dirty Work",
+    "SkinID": 0
+  }
+}

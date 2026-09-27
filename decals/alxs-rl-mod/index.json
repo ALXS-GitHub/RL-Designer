@@ -1,0 +1,536 @@
+{
+  "version": 1,
+  "packs": [
+    {
+      "kind": "decal",
+      "name": "Born To Be Itzy",
+      "group": null,
+      "variants": [
+        {
+          "name": "Fennec",
+          "files": [
+            "Template.json",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        },
+        {
+          "name": "Octane",
+          "files": [
+            "HyperBeast_Chassis.png",
+            "Template.json",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        },
+        {
+          "name": "Venom",
+          "files": [
+            "Template.json",
+            "body_diffuse.png",
+            "body_skin.png",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "Chaewon Heart LeSserafim",
+      "group": null,
+      "variants": [
+        {
+          "name": "Fennec",
+          "files": [
+            "Template.json",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "lesserafim_chassis.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        },
+        {
+          "name": "Octane",
+          "files": [
+            "Template.json",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "lesserafim_chassis.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "Chaewon LeSserafim",
+      "group": null,
+      "variants": [
+        {
+          "name": "Fennec",
+          "files": [
+            "Template.json",
+            "chaewon_nobg2.png",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "lesserafim_chassis.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        },
+        {
+          "name": "Octane",
+          "files": [
+            "Template.json",
+            "chaewon_diffuse - Copie.png",
+            "chaewon_nobg.png",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "lesserafim_chassis.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "Dirty Work",
+      "group": null,
+      "variants": [
+        {
+          "name": "Octane",
+          "files": [
+            "Template.json",
+            "aespa_chassis.png",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "nobg.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "Fast And Furious Skyline",
+      "group": null,
+      "variants": [
+        {
+          "name": "Esper",
+          "files": [
+            "Template.json",
+            "esper_body_diffuse.png",
+            "esper_chassis.png",
+            "esper_skin.png",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "Frozen Crystals",
+      "group": "General",
+      "variants": [
+        {
+          "name": "Universal",
+          "files": [
+            "Template.json",
+            "TrimSheet.png",
+            "body_diffuse.png",
+            "metadata.yaml",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "Galaxy Storm",
+      "group": "General",
+      "variants": [
+        {
+          "name": "Universal",
+          "files": [
+            "Template.json",
+            "TrimSheet.png",
+            "body_diffuse.png",
+            "metadata.yaml",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "HeatFire",
+      "group": "General",
+      "variants": [
+        {
+          "name": "Universal",
+          "files": [
+            "Template.json",
+            "TrimSheet.png",
+            "body_diffuse.png",
+            "metadata.yaml",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "LightningBolt",
+      "group": "General",
+      "variants": [
+        {
+          "name": "Universal",
+          "files": [
+            "Template.json",
+            "TrimSheet.png",
+            "body_diffuse.png",
+            "metadata.yaml",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "Magma Flow",
+      "group": "General",
+      "variants": [
+        {
+          "name": "Universal",
+          "files": [
+            "Template.json",
+            "TrimSheet.png",
+            "body_diffuse.png",
+            "metadata.yaml",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "Sandstorm",
+      "group": "General",
+      "variants": [
+        {
+          "name": "Universal",
+          "files": [
+            "Template.json",
+            "TrimSheet.png",
+            "body_diffuse.png",
+            "metadata.yaml",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "Water Caustics",
+      "group": "General",
+      "variants": [
+        {
+          "name": "Universal",
+          "files": [
+            "Template.json",
+            "TrimSheet.png",
+            "body_diffuse.png",
+            "metadata.yaml",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "Water Waves",
+      "group": "General",
+      "variants": [
+        {
+          "name": "Universal",
+          "files": [
+            "Template.json",
+            "TrimSheet.png",
+            "body_diffuse.png",
+            "metadata.yaml",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "Girls Aespa",
+      "group": null,
+      "variants": [
+        {
+          "name": "Octane",
+          "files": [
+            "HyperBeast_Chassis.png",
+            "Template.json",
+            "girls_nobg.png",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "Rich Man",
+      "group": null,
+      "variants": [
+        {
+          "name": "Fennec",
+          "files": [
+            "Template.json",
+            "chassis_diffuse.png",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        },
+        {
+          "name": "Octane",
+          "files": [
+            "Template.json",
+            "TrimSheet.png",
+            "body_diffuse.png",
+            "body_skin.png",
+            "chassis_diffuse.png",
+            "metadata.yaml",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "Staboz",
+      "group": null,
+      "variants": [
+        {
+          "name": "Octane",
+          "files": [
+            "HyperBeast_Chassis.png",
+            "Template.json",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "Supernova Aespa",
+      "group": null,
+      "variants": [
+        {
+          "name": "Fennec",
+          "files": [
+            "Fennec_Chassis.png",
+            "Template.json",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "Winter Aespa",
+      "group": null,
+      "variants": [
+        {
+          "name": "Fennec",
+          "files": [
+            "Fennec_Chassis.png",
+            "Fennec_Diffuse_nobg.png",
+            "Template.json",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        },
+        {
+          "name": "Octane",
+          "files": [
+            "HyperBeast_Chassis.png",
+            "Template.json",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "oct_nobg.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "Yoko",
+      "group": null,
+      "variants": [
+        {
+          "name": "Fennec",
+          "files": [
+            "Fennec_Chassis.png",
+            "Template.json",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "decal",
+      "name": "Yuna Itzy",
+      "group": null,
+      "variants": [
+        {
+          "name": "Fennec",
+          "files": [
+            "Fennec_Chassis.png",
+            "Template.json",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "preview.png",
+            "yuna_nobg.png"
+          ],
+          "preview": "preview.png"
+        },
+        {
+          "name": "Octane",
+          "files": [
+            "HyperBeast_Chassis.png",
+            "Template.json",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "preview.png",
+            "yuna_nobg.png"
+          ],
+          "preview": "preview.png"
+        },
+        {
+          "name": "Roadhog",
+          "files": [
+            "Template.json",
+            "body_diffuse.png",
+            "body_skin.png",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        },
+        {
+          "name": "Venom",
+          "files": [
+            "Template.json",
+            "body_diffuse.png",
+            "body_skin.png",
+            "hybrid_art.png",
+            "hybrid_zones.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "ball",
+      "name": "Aespa",
+      "group": null,
+      "variants": [
+        {
+          "name": "Default",
+          "files": [
+            "Template.json",
+            "diffuse.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "ball",
+      "name": "Itzy",
+      "group": null,
+      "variants": [
+        {
+          "name": "Default",
+          "files": [
+            "Template.json",
+            "diffuse.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        },
+        {
+          "name": "Zomahx",
+          "files": [
+            "Template.json",
+            "diffuse.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    },
+    {
+      "kind": "ball",
+      "name": "Zomahx",
+      "group": null,
+      "variants": [
+        {
+          "name": "Zomahx",
+          "files": [
+            "Template.json",
+            "diffuse.png",
+            "preview.png"
+          ],
+          "preview": "preview.png"
+        }
+      ]
+    }
+  ]
+}

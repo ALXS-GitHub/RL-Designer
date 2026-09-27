@@ -1,0 +1,11 @@
+{
+  "Born To Be Itzy (Fennec)": {
+    "Body": {
+      "1_Diffuse_Skin": "hybrid_art.png",
+      "2_Diffuse_Skin_Mask": "hybrid_zones.png"
+    },
+    "BodyID": 4284,
+    "Group": "Itzy/Born To Be Itzy",
+    "SkinID": 0
+  }
+}

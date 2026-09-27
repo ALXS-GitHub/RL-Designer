@@ -1,0 +1,14 @@
+{
+    "Rich Man (Octane)": {
+		"Group": "Aespa/Rich Man",
+		"BodyID": 23,
+		"SkinID": 11609,
+		"Chassis": {
+			"Diffuse": "chassis_diffuse.png"
+		},
+		"Body": {
+			"1_Diffuse_Skin": "body_diffuse.png",
+			"TrimSheet": "TrimSheet.png"
+		}
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "Winter Aespa (Octane)": {
+    "Body": {
+      "1_Diffuse_Skin": "hybrid_art.png",
+      "2_Diffuse_Skin_Mask": "hybrid_zones.png"
+    },
+    "BodyID": 23,
+    "Chassis": {
+      "Diffuse": "HyperBeast_Chassis.png"
+    },
+    "Group": "Aespa/Winter Aespa",
+    "SkinID": 0
+  }
+}

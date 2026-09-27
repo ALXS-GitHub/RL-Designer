@@ -1,0 +1,13 @@
+{
+  "Yuna Itzy (Venom)": {
+    "Body": {
+      "1_Diffuse_Skin": "hybrid_art.png",
+      "2_Diffuse_Skin_Mask": "hybrid_zones.png",
+      "Diffuse": "body_diffuse.png",
+      "Skin": "body_skin.png"
+    },
+    "BodyID": 31,
+    "Group": "Itzy/Yuna Itzy",
+    "SkinID": 0
+  }
+}
