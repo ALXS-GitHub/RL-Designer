@@ -2,3 +2,4 @@
 **.tauri
 **.env
 /private
+__pycache__/
